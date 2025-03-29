@@ -34,9 +34,6 @@ const navItems = [
 export default function MenuView() {
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h4" sx={{ textAlign: 'center', mb: 4 }}>
-        Welcome to TobyTango
-      </Typography>
       <Box>
         {navItems.map(item => (
           <MenuCard
