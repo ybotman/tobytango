@@ -40,7 +40,7 @@ export default function AboutPage() {
         Tango: A Dance of Connection
       </Typography>
       <Typography variant="body1" paragraph>
-        Tango in the US is very young compared to Europe and of course Argentina. I am only in since 2015 or so and hence a newbie. But I try to take my life lessons and learnings to tango in a way I don't often see in the US. <br />
+        Tango in the US is very young compared to Europe and of course Argentina. I am only in since 2015 or so and hence a newbie. But I try to take my life lessons and learnings to tango in a way I do not often see in the US. <br />
         Tango is not about an inventory of steps – it’s about partnership, communication, and expression. I began my tango journey at Ultimate Tango with Hernan Brizuela and Anita Flejter. Over the years, my background in other dance forms like Latin, ballroom, country 2-step, and West Coast Swing has enriched my understanding of tango. This diverse experience helps me guide dancers into truly becoming enveloped in the dance.
       </Typography>
 

@@ -1,5 +1,6 @@
 import './globals.css';
 import ThemeRegistry from './components/ThemeRegistry';
+import Header from './components/ui/Header';
 
 export const metadata = {
   title: 'Toby Balsley Tango',
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ThemeRegistry>
+          <Header />
           {children}
         </ThemeRegistry>
       </body>
