@@ -1,6 +1,7 @@
 import './globals.css';
 import ThemeRegistry from './components/ThemeRegistry';
 import Header from './components/ui/Header';
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: 'Toby Balsley Tango',
