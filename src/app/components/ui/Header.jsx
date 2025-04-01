@@ -20,6 +20,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import SchoolIcon from '@mui/icons-material/School';
 import Link from 'next/link';
 
 export default function Header() {
@@ -27,7 +28,8 @@ export default function Header() {
   const [openMenus, setOpenMenus] = useState({
     tango: false,
     vals: false,
-    milonga: false
+    milonga: false,
+    terminology: false
   });
   
   const theme = useTheme();
@@ -72,18 +74,12 @@ export default function Header() {
         </Link>
       </ListItem>
       
-      <ListItem onClick={toggleDrawer(false)}>
-        <Link href="/about" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
-          <ListItemText primary="About" />
-        </Link>
-      </ListItem>
-      
       {/* TANGO SECTION */}
       <ListItemButton onClick={() => handleMenuToggle('tango')}>
         <ListItemIcon>
           <MusicNoteIcon style={{ color: theme.palette.primary.contrastText }} />
         </ListItemIcon>
-        <ListItemText primary="TANGO" />
+        <ListItemText primary="Tango" />
         {openMenus.tango ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       
@@ -91,7 +87,7 @@ export default function Header() {
         <List component="div" disablePadding>
           {/* RHYTHMS */}
           <ListItemButton sx={{ pl: 4 }} onClick={() => handleSubMenuToggle('tango', 'rhythms')}>
-            <ListItemText primary="RHYTHMS" />
+            <ListItemText primary="Rhythms" />
             {isSubMenuOpen('tango', 'rhythms') ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           
@@ -104,13 +100,16 @@ export default function Header() {
                   </Link>
                 </ListItem>
               ))}
+              <ListItem sx={{ pl: 6 }}>
+                <ListItemText primary="Advanced (coming soon)" />
+              </ListItem>
             </List>
           </Collapse>
           
           {/* SUMMARY */}
           <ListItem sx={{ pl: 4 }} onClick={toggleDrawer(false)}>
             <Link href="/rhythms/tango/summary" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
-              <ListItemText primary="SUMMARY" />
+              <ListItemText primary="Summary" />
             </Link>
           </ListItem>
         </List>
@@ -121,18 +120,18 @@ export default function Header() {
         <ListItemIcon>
           <MusicNoteIcon style={{ color: theme.palette.primary.contrastText }} />
         </ListItemIcon>
-        <ListItemText primary="VALS" />
+        <ListItemText primary="Vals" />
         {openMenus.vals ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       
       <Collapse in={openMenus.vals} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItem sx={{ pl: 4 }}>
-            <ListItemText primary="RHYTHMS (Coming soon)" />
+            <ListItemText primary="Rhythms (coming soon)" />
           </ListItem>
           
           <ListItem sx={{ pl: 4 }}>
-            <ListItemText primary="SUMMARY (Coming soon)" />
+            <ListItemText primary="Summary (coming soon)" />
           </ListItem>
         </List>
       </Collapse>
@@ -142,31 +141,50 @@ export default function Header() {
         <ListItemIcon>
           <MusicNoteIcon style={{ color: theme.palette.primary.contrastText }} />
         </ListItemIcon>
-        <ListItemText primary="MILONGA" />
+        <ListItemText primary="Milonga" />
         {openMenus.milonga ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       
       <Collapse in={openMenus.milonga} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItem sx={{ pl: 4 }}>
-            <ListItemText primary="RHYTHMS (Coming soon)" />
+            <ListItemText primary="Rhythms (coming soon)" />
           </ListItem>
           
           <ListItem sx={{ pl: 4 }}>
-            <ListItemText primary="SUMMARY (Coming soon)" />
+            <ListItemText primary="Summary (coming soon)" />
+          </ListItem>
+        </List>
+      </Collapse>
+      
+      {/* TERMINOLOGY SECTION */}
+      <ListItemButton onClick={() => handleMenuToggle('terminology')}>
+        <ListItemIcon>
+          <SchoolIcon style={{ color: theme.palette.primary.contrastText }} />
+        </ListItemIcon>
+        <ListItemText primary="Terminology" />
+        {openMenus.terminology ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      
+      <Collapse in={openMenus.terminology} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem sx={{ pl: 4 }} onClick={toggleDrawer(false)}>
+            <Link href="/terms-music" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+              <ListItemText primary="Musical" />
+            </Link>
+          </ListItem>
+          
+          <ListItem sx={{ pl: 4 }} onClick={toggleDrawer(false)}>
+            <Link href="/terms-dance" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+              <ListItemText primary="Argentine Tango" />
+            </Link>
           </ListItem>
         </List>
       </Collapse>
       
       <ListItem onClick={toggleDrawer(false)}>
-        <Link href="/terms-music" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
-          <ListItemText primary="Musical Terms" />
-        </Link>
-      </ListItem>
-      
-      <ListItem onClick={toggleDrawer(false)}>
-        <Link href="/terms-dance" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
-          <ListItemText primary="Dance Terms" />
+        <Link href="/about" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+          <ListItemText primary="About" />
         </Link>
       </ListItem>
     </List>

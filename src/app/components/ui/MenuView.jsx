@@ -19,11 +19,16 @@ const navItems = [
   },
   {
     id: 3,
+    title: "Journey Practice",
+    mainImage: "/navigation/journey-practica.png",
+    link: "/journey-practica",
+  },
+  {
+    id: 4,
     title: "My Favorite Tango Videos",
     mainImage: "/navigation/videos.png",
     link: "/favorite-videos",
   }
-  // Removed the "About Toby" card
 ];
 
 export default function MenuView() {
