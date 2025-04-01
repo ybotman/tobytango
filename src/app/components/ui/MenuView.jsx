@@ -22,13 +22,8 @@ const navItems = [
     title: "My Favorite Tango Videos",
     mainImage: "/navigation/videos.png",
     link: "/favorite-videos",
-  },
-  {
-    id: 4,
-    title: "About Toby",
-    mainImage: "/navigation/about.png",
-    link: "/about",
-  },
+  }
+  // Removed the "About Toby" card
 ];
 
 export default function MenuView() {

@@ -41,7 +41,7 @@ export default function AboutPage() {
       </Typography>
       <Typography variant="body1" paragraph>
         Tango in the US is very young compared to Europe and of course Argentina. I am only in since 2015 or so and hence a newbie. But I try to take my life lessons and learnings to tango in a way I do not often see in the US. <br />
-        Tango is not about an inventory of steps – it’s about partnership, communication, and expression. I began my tango journey at Ultimate Tango with Hernan Brizuela and Anita Flejter. Over the years, my background in other dance forms like Latin, ballroom, country 2-step, and West Coast Swing has enriched my understanding of tango. This diverse experience helps me guide dancers into truly becoming enveloped in the dance.
+        Tango is not about an inventory of steps – it’s about partnership, communication, and expression. 
       </Typography>
 
       <Typography variant="h5" component="h2" gutterBottom>
@@ -52,7 +52,16 @@ export default function AboutPage() {
       </Typography>
 
       <Typography variant="body1" paragraph>
-       Other hobbies include coffee and all aspects of coffee. How to extract the best flavors from a bean, the chemistry of brewing, and the roasting science of the bean cooking iteslf.  I have explored nearly all methods of brewing coffee from pour-over to siphon, and I even roast my own beans at home. Coffee, like tango, is a blend of art and science, and I find joy in perfecting both.  
+        By night and weekends, i have many other hobbies include coffee, birding, and weird connectis of tech to people. <br />
+  
+        But lets talk coffee. I am a coffee enthusist.  All aspects of coffee. How to extract the best flavors from a bean, the chemistry of brewing, and the roasting science of the bean cooking iteslf.  I have spent way yoo much on my grider and even now may have to upgrade -- it is the one item to spend money on.  I have explored nearly all methods of brewing coffee from pour-over to siphon, and I even been known to roast my own beans at home. <br />
+    
+
+        Birding - well, I am not a birder, but I love to watch birds.  I love to know what birds are saying and how cross species communicate works.  I have spent years thinking, studiing and testing this facinating subject.   Sea birds i love but they are my worst category. My favorite?  Migratory warblers.
+      </Typography>
+
+    <Typography variant="body1" paragraph>
+      Over the dance years (1990), my background studied from  dance forms like Swing, Latin, ballroom, country 2-step, and West Coast Swing. But I began my tango journey at Ultimate Tango with Hernan Brizuela and Anita Flejter.  They ha enriched my understanding of tango. This diverse experience helps me guide dancers into truly becoming enveloped in the dance.
       </Typography>
             <Typography variant="body1" paragraph>
 I am previous life, i was a singer and musician.  I arranged music and am currently exploring how to use generative AI to assist and producinging compiliing and arranging music.  Becuase of this I have a deep appreciation for the musicality of tango, and I believe that understanding music is key to becoming a better dancer. This passion for music informs my teaching and inspires me to help others connect with the rhythms and melodies of tango. 
