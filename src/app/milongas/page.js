@@ -92,7 +92,7 @@ export default function MilongasPage() {
               • The cortina (short non-tango music) signals the end of a tanda
             </Typography>
             <Typography variant="body1" paragraph>
-              • It's customary to dance the full tanda with the same partner
+              • It&apos;s customary to dance the full tanda with the same partner
             </Typography>
             <Typography variant="body1" paragraph>
               • Thank your partner after the tanda and escort them back near their seat

@@ -33,7 +33,7 @@ export default function AboutPage() {
         Teaching &amp; Musicality
       </Typography>
       <Typography variant="body1" paragraph>
-        Alongside our full-time day jobs, we dedicate ourselves to teaching new and intermediate dancers. I regularly lead a musicality class known as Boston Tango Lab, where we explore rhythms, musical phrases, and the subtle interplay between movement and music. My mission is to help make the US more musically aware by inspiring dancers to embrace the deep connection between music and partnered movement.
+        Alongside my full-time day jobs, we dedicate ourselves to teaching new and intermediate dancers. I regularly lead a musicality class known as Boston Tango Lab, where we explore rhythms, musical phrases, and the subtle interplay between movement and music. My mission is to help make the US more musically aware by inspiring dancers to embrace the deep connection between music and partnered movement.
       </Typography>
 
       <Typography variant="h5" component="h2" gutterBottom>
@@ -57,14 +57,14 @@ export default function AboutPage() {
         But lets talk coffee. I am a coffee enthusist.  All aspects of coffee. How to extract the best flavors from a bean, the chemistry of brewing, and the roasting science of the bean cooking iteslf.  I have spent way yoo much on my grider and even now may have to upgrade -- it is the one item to spend money on.  I have explored nearly all methods of brewing coffee from pour-over to siphon, and I even been known to roast my own beans at home. <br />
     
 
-        Birding - well, I am not a birder, but I love to watch birds.  I love to know what birds are saying and how cross species communicate works.  I have spent years thinking, studiing and testing this facinating subject.   Sea birds i love but they are my worst category. My favorite?  Migratory warblers.
+        Birding - well, I am a birder.  I love to know what birds are saying and how cross species communicate works.  I have spent years thinking, studiing and testing this facinating subject.   Sea birds i love but they are my worst category. My favorite?  Migratory warblers.
       </Typography>
 
     <Typography variant="body1" paragraph>
       Over the dance years (1990), my background studied from  dance forms like Swing, Latin, ballroom, country 2-step, and West Coast Swing. But I began my tango journey at Ultimate Tango with Hernan Brizuela and Anita Flejter.  They ha enriched my understanding of tango. This diverse experience helps me guide dancers into truly becoming enveloped in the dance.
       </Typography>
             <Typography variant="body1" paragraph>
-I am previous life, i was a singer and musician.  I arranged music and am currently exploring how to use generative AI to assist and producinging compiliing and arranging music.  Becuase of this I have a deep appreciation for the musicality of tango, and I believe that understanding music is key to becoming a better dancer. This passion for music informs my teaching and inspires me to help others connect with the rhythms and melodies of tango. 
+I am previous life (outside of my consulting work life), i was a singer and musician.  I arranged music and am currently exploring how to use generative AI to assist and producinging compiliing and arranging music.  Becuase of this I have a deep appreciation for the musicality of tango, and I believe that understanding music is key to becoming a better dancer. This passion for music informs my teaching and inspires me to help others connect with the rhythms and melodies of tango. 
       </Typography>
 
       <Typography variant="body1" paragraph>
