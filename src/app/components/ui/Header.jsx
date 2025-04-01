@@ -25,6 +25,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import SchoolIcon from '@mui/icons-material/School';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import PeopleIcon from '@mui/icons-material/People';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Link from 'next/link';
 
@@ -209,6 +210,18 @@ export default function Header() {
           </ListItem>
         </List>
       </Collapse>
+      
+      {/* ARTISTS SECTION - NEW */}
+      <ListItem onClick={toggleDrawer(false)}>
+        <Link href="/artists" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+          <ListItemButton>
+            <ListItemIcon>
+              <PeopleIcon style={{ color: theme.palette.primary.contrastText }} />
+            </ListItemIcon>
+            <ListItemText primary="Tango Artists" />
+          </ListItemButton>
+        </Link>
+      </ListItem>
       
       {/* BEST PRACTICES SECTION */}
       <ListItemButton onClick={() => handleMenuToggle('bestPractices')}>
