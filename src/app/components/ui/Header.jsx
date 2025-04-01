@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { 
   AppBar, 
@@ -19,6 +19,7 @@ import {
   keyframes
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
@@ -197,6 +198,12 @@ export default function Header() {
           
           <ListItem sx={{ pl: 4 }} onClick={toggleDrawer(false)}>
             <Link href="/terms-dance" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+              <ListItemText primary="Dancing" />
+            </Link>
+          </ListItem>
+          
+          <ListItem sx={{ pl: 4 }} onClick={toggleDrawer(false)}>
+            <Link href="/terms-argentine-tango" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
               <ListItemText primary="Argentine Tango" />
             </Link>
           </ListItem>
@@ -257,7 +264,7 @@ export default function Header() {
         }}
       >
         <Toolbar sx={{ minHeight: '64px' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
             <ArrowBackIcon 
               sx={{ 
                 color: '#ffffff',
@@ -294,6 +301,23 @@ export default function Header() {
             >
               MENU
             </Typography>
+            
+            {/* Home button on the right side of the AppBar */}
+            <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>
+              <Link href="/" passHref>
+                <IconButton
+                  aria-label="home"
+                  sx={{ 
+                    color: '#ffffff', 
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.08)'
+                    }
+                  }}
+                >
+                  <HomeIcon sx={{ fontSize: '1.75rem' }} />
+                </IconButton>
+              </Link>
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>
