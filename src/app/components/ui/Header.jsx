@@ -350,6 +350,11 @@ export default function Header() {
                   <ListItemText primary="Famous Dancers" primaryTypographyProps={secondaryStyle} />
                 </Link>
               </ListItem>
+              <ListItem sx={{ pl: 4 }} onClick={toggleDrawer(false)}>
+                <Link href="/favorite-videos" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                  <ListItemText primary="Fun Miscellaneous" primaryTypographyProps={{...secondaryStyle, fontWeight: 'bold'}} />
+                </Link>
+              </ListItem>
               <ListItem sx={{ pl: 4 }}>
                 <ListItemText primary="Dance Styles (coming soon)" primaryTypographyProps={secondaryStyle} />
               </ListItem>
