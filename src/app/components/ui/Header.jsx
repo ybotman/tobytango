@@ -28,6 +28,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import PeopleIcon from '@mui/icons-material/People';
 import ScienceIcon from '@mui/icons-material/Science';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import Link from 'next/link';
 
 // Define a pulsing animation
@@ -331,6 +332,29 @@ export default function Header() {
                 <Link href="/artists" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
                   <ListItemText primary="View All Artists" primaryTypographyProps={secondaryStyle} />
                 </Link>
+              </ListItem>
+            </List>
+          </Collapse>
+          
+          {/* THE DANCERS SECTION */}
+          <ListItemButton onClick={() => handleMenuToggle('dancers')}>
+            <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
+            <ListItemText primary="The Dancers" />
+            {openMenus.dancers ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+          
+          <Collapse in={!!openMenus.dancers} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItem sx={{ pl: 4 }} onClick={toggleDrawer(false)}>
+                <Link href="/dancers" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                  <ListItemText primary="Famous Dancers" primaryTypographyProps={secondaryStyle} />
+                </Link>
+              </ListItem>
+              <ListItem sx={{ pl: 4 }}>
+                <ListItemText primary="Dance Styles (coming soon)" primaryTypographyProps={secondaryStyle} />
+              </ListItem>
+              <ListItem sx={{ pl: 4 }}>
+                <ListItemText primary="Tango History (coming soon)" primaryTypographyProps={secondaryStyle} />
               </ListItem>
             </List>
           </Collapse>

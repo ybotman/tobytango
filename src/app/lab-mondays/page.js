@@ -15,14 +15,87 @@ export default function LabMondaysPage() {
 
       <Box sx={{ mb: 4 }}>
         <Typography variant="h5" gutterBottom>
-          Weekly Focus
+          Monthly Program
         </Typography>
-        <List>
-          <ListItem><strong>Week 1:</strong> 6 classic rhythms. Finding beauty in fewer patterns with deeper musicality. Mastering the Long and None. Mapping patterns on selected songs.</ListItem>
-          <ListItem><strong>Week 2:</strong> Integrate rhythms with systems and rotations.</ListItem>
-          <ListItem><strong>Week 3:</strong> Combine rhythms, systems, and rotations in partnership.</ListItem>
-          <ListItem><strong>Week 4:</strong> Combine everything, discovering orchestral magic.</ListItem>
-        </List>
+        
+        <Accordion defaultExpanded>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h6">Week 1: The Classic Rhythms</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography paragraph>
+              Exploring the six classic tango rhythms and finding beauty in fewer patterns with deeper musicality. 
+              We&apos;ll master the Long and None rhythms and map patterns on selected songs.
+            </Typography>
+            <Typography paragraph>
+              <strong>Focus:</strong> Single, Doubles, and Zero rhythms - understanding their distinct character and how they form the backbone of tango musical expression.
+            </Typography>
+            <Typography paragraph>
+              <strong>Featured Music:</strong> Di Sarli&apos;s &quot;El Amanecer&quot; / &quot;El Flete&quot; and D&apos;Arienzo&apos;s &quot;Dime Mi Amor&quot;
+            </Typography>
+            <Typography>
+              We&apos;ll discover how these iconic pieces showcase the fundamental tango rhythms and create a foundation for musical expression.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h6">Week 2: Systems and Rotations</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography paragraph>
+              Building on our rhythm work, we&apos;ll integrate these patterns with two movement systems and the two rotation types.
+            </Typography>
+            <Typography paragraph>
+              <strong>Focus:</strong> Moving fluidly between different systems while maintaining rhythmic clarity. 
+              Exploring how rotational movements can express the music&apos;s character.
+            </Typography>
+            <Typography>
+              We&apos;ll continue working with the same songs as Week 1, deepening our understanding of how movement systems 
+              enhance our musical interpretation.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h6">Week 3: Communication and Togetherness</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography paragraph>
+              This week focuses on exploring communication and togetherness in the dance partnership.
+            </Typography>
+            <Typography paragraph>
+              We&apos;ll work on how partners can maintain connection while executing complex rhythmic patterns, 
+              and develop a shared sense of musical interpretation.
+            </Typography>
+            <Typography>
+              The emphasis will be on collaborative expression and developing mutual &quot;Cadencia&quot; - 
+              the flowing quality that makes tango partnerships magical.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h6">Week 4: Finding Musicality</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography paragraph>
+              The culmination of our month&apos;s work: discovering orchestral magic by combining rhythms, 
+              systems, rotations, and partnership skills.
+            </Typography>
+            <Typography paragraph>
+              <strong>Focus:</strong> Identifying and responding to orchestral voices, understanding the 
+              layered complexity of tango music, and developing a personal approach to musicality.
+            </Typography>
+            <Typography>
+              We&apos;ll explore how different orchestras present unique opportunities for expression, 
+              and how to adapt your dancing to showcase the character of each piece.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
       </Box>
 
       <Box sx={{ my: 4 }}>
@@ -65,7 +138,7 @@ export default function LabMondaysPage() {
             <List>
               <ListItem>Collaboration focus</ListItem>
               <ListItem>Expand shared expression</ListItem>
-              <ListItem>Develop mutual `&#39;`Cadencia`&#39;`</ListItem>
+              <ListItem>Develop mutual &quot;Cadencia&quot;</ListItem>
             </List>
           </AccordionDetails>
         </Accordion>
