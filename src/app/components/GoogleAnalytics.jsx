@@ -2,13 +2,13 @@
 
 import Script from 'next/script';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { pageview } from '../utils/analytics';
 
 // Get the Google Analytics Measurement ID from environment variables
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
-export default function GoogleAnalytics() {
+function GoogleAnalyticsInner() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -45,5 +45,13 @@ export default function GoogleAnalytics() {
         }}
       />
     </>
+  );
+}
+
+export default function GoogleAnalytics() {
+  return (
+    <Suspense fallback={null}>
+      <GoogleAnalyticsInner />
+    </Suspense>
   );
 }
