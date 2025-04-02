@@ -9,31 +9,50 @@ export default function TangoSummaryPage() {
       </Typography>
 
       <Typography variant="body1" sx={{ mb: 4 }}>
-        This chart shows the distribution and usage of the six fundamental tango rhythms.
+        These charts show the distribution and usage of the six fundamental tango rhythms.
       </Typography>
 
       <Box sx={{ width: '100%', textAlign: 'center', my: 4 }}>
+        <Typography variant="h6" gutterBottom>
+          Goals Distribution
+        </Typography>
         <Box
           component="img"
-          src="/rhythms/percentage.png"
-          alt="Tango Rhythms Distribution Chart"
+          src="/rhythms/Goals-Distribution.png"
+          alt="Tango Rhythms Goals Distribution Chart"
           sx={{
             maxWidth: '100%',
             height: 'auto',
             boxShadow: 3,
-            borderRadius: 1
+            borderRadius: 1,
+            mb: 2
           }}
         />
+        <Typography variant="body2" sx={{ mt: 1, mb: 4 }}>
+          Commentary coming soon
+        </Typography>
       </Box>
 
-      <Typography variant="body1" sx={{ my: 4 }}>
-              Key notes: <br /><br />
-              The BLUE 1-3-.  Over is an over used pattern.<br />
-              The BLUE ---- is way under used!<br />
-<br />
-              Then notice the GREEN (goals) is much more generally &apos;distributed&apos;
-              
-      </Typography>
+      <Box sx={{ width: '100%', textAlign: 'center', my: 4 }}>
+        <Typography variant="h6" gutterBottom>
+          Time Type Distribution
+        </Typography>
+        <Box
+          component="img"
+          src="/rhythms/TimeType-Distribution.png"
+          alt="Tango Rhythms Time Type Distribution Chart"
+          sx={{
+            maxWidth: '100%',
+            height: 'auto',
+            boxShadow: 3,
+            borderRadius: 1,
+            mb: 2
+          }}
+        />
+        <Typography variant="body2" sx={{ mt: 1, mb: 4 }}>
+          Commentary coming soon
+        </Typography>
+      </Box>
     </Container>
   );
 }
