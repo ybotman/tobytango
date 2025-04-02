@@ -58,14 +58,14 @@ export default function AboutPage() {
         Professional Life
       </Typography>
       <Typography variant="body1" paragraph>
-        By day, I work in technology as a strategic thinker focused on delivering value in small, meaningful chunks. Recently, I've become deeply involved in Generative AI and its applications.
+        By day, I work in technology as a strategic thinker focused on delivering value in small, meaningful chunks. Recently, I&apos;ve become deeply involved in Generative AI and its applications.
       </Typography>
 
       <Typography variant="h5" component="h2" gutterBottom>
         Other Interests
       </Typography>
       <Typography variant="body1" paragraph>
-        I'm an avid coffee enthusiast, exploring everything from bean roasting to brewing techniques. I&apos;m also a dedicated birder with a particular interest in migratory warblers and cross-species communication. My background as a singer and musician gives me a deep appreciation for the musicality of tango.
+        I&apos;m an avid coffee enthusiast, exploring everything from bean roasting to brewing techniques. I&apos;m also a dedicated birder with a particular interest in migratory warblers and cross-species communication. My background as a singer and musician gives me a deep appreciation for the musicality of tango.
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mt: 4, fontStyle: 'italic' }}>
