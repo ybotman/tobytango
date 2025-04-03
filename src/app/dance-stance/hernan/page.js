@@ -168,6 +168,63 @@ export default function HernanStancePage() {
         </Typography>
       </Paper>
       
+      <Paper 
+        elevation={3} 
+        sx={{ 
+          p: 3, 
+          mb: 4, 
+          backgroundColor: 'rgba(135, 32, 32, 0.05)',
+          borderLeft: '4px solid #872020',
+          borderRadius: '4px'
+        }}
+      >
+        <Typography 
+          variant="h5" 
+          component="h2" 
+          gutterBottom
+          sx={{ 
+            color: '#872020',
+            fontWeight: 'bold'
+          }}
+        >
+          Balance with Picado and Front Boleo
+        </Typography>
+        
+        <Typography variant="body1" paragraph>
+          Hernan demonstrates how to maintain balance while executing more advanced movements like the picado (sharp tap) 
+          and front boleo. This exercise helps dancers integrate proper balance into dynamic movements.
+        </Typography>
+        
+        <Grid container spacing={3} sx={{ mt: 2 }}>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
+              <Image 
+                src="/dance-stance/hernan-excersizeA-4.png"
+                alt="Hernan Brizuela stance exercise position 4"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </Box>
+            <Typography variant="body2" align="center" sx={{ mt: 1, fontStyle: 'italic' }}>
+              Picado (sharp tap) while maintaining balance
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
+              <Image 
+                src="/dance-stance/hernan-excersizeA-5.png"
+                alt="Hernan Brizuela stance exercise position 5"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </Box>
+            <Typography variant="body2" align="center" sx={{ mt: 1, fontStyle: 'italic' }}>
+              Front boleo with proper balance control
+            </Typography>
+          </Grid>
+        </Grid>
+      </Paper>
+
       <Divider sx={{ my: 4, borderColor: 'rgba(135, 32, 32, 0.3)' }} />
       
       <Box sx={{ mt: 3, mb: 5 }}>
