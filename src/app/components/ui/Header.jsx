@@ -377,6 +377,11 @@ export default function Header() {
                       <ListItemText primary="Carlitos Espinoza" primaryTypographyProps={secondaryStyle} />
                     </Link>
                   </ListItem>
+                  <ListItem sx={{ pl: 6 }} onClick={toggleDrawer(false)}>
+                    <Link href="/dance-stance/hernan" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                      <ListItemText primary="Hernan Brizuela" primaryTypographyProps={secondaryStyle} />
+                    </Link>
+                  </ListItem>
                 </List>
               </Collapse>
               <ListItem sx={{ pl: 4 }}>

@@ -206,12 +206,12 @@ export default function CarlitosStancePage() {
         <Box 
           sx={{ 
             display: 'flex', 
-            flexDirection: { xs: 'column', sm: 'row' }, 
+            flexDirection: { xs: 'column', md: 'row' }, 
             gap: 2,
             mt: 3
           }}
         >
-          <Link href="/dance-stance/chicho" style={{ textDecoration: 'none', flexGrow: 1, flexBasis: '50%' }}>
+          <Link href="/dance-stance/chicho" style={{ textDecoration: 'none', flexGrow: 1, flexBasis: '33%' }}>
             <Paper 
               sx={{ 
                 p: 2, 
@@ -234,7 +234,7 @@ export default function CarlitosStancePage() {
               </Typography>
             </Paper>
           </Link>
-          <Link href="/dance-stance/gustavo" style={{ textDecoration: 'none', flexGrow: 1, flexBasis: '50%' }}>
+          <Link href="/dance-stance/gustavo" style={{ textDecoration: 'none', flexGrow: 1, flexBasis: '33%' }}>
             <Paper 
               sx={{ 
                 p: 2,
@@ -254,6 +254,29 @@ export default function CarlitosStancePage() {
               <Typography variant="h6" sx={{ mb: 1 }}>Gustavo Naveira</Typography>
               <Typography variant="body2" sx={{ opacity: 0.9 }}>
                 Analytical approach with exceptional technique
+              </Typography>
+            </Paper>
+          </Link>
+          <Link href="/dance-stance/hernan" style={{ textDecoration: 'none', flexGrow: 1, flexBasis: '33%' }}>
+            <Paper 
+              sx={{ 
+                p: 2,
+                height: '100%',
+                backgroundColor: '#872020', 
+                color: 'white',
+                borderRadius: 2,
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+                '&:hover': {
+                  backgroundColor: '#6e1a1a',
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 6px 10px rgba(0,0,0,0.15)'
+                }
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 1 }}>Hernan Brizuela</Typography>
+              <Typography variant="body2" sx={{ opacity: 0.9 }}>
+                Exceptional footwork and rhythm
               </Typography>
             </Paper>
           </Link>

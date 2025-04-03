@@ -6,68 +6,119 @@ import {
   Typography, 
   Box, 
   Paper,
-  Alert
+  Alert,
+  Divider
 } from '@mui/material';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import Link from 'next/link';
 
-export default function GustavoStancePage() {
+export default function HernanStancePage() {
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h4" component="h1" gutterBottom>Gustavo Naveira&apos;s Dance Stance Analysis</Typography>
-      
-      <Typography variant="body1" paragraph>
-        Gustavo Naveira is one of the most influential figures in modern tango, known for his analytical approach 
-        to movement and exceptional technique. This page will analyze key stance elements from his performances.
-      </Typography>
+      <Box sx={{ mb: 4, borderBottom: '2px solid #872020', pb: 2 }}>
+        <Typography 
+          variant="h4" 
+          component="h1" 
+          gutterBottom 
+          sx={{ 
+            color: '#872020',
+            fontWeight: 'bold'
+          }}
+        >
+          Hernan Brizuela&apos;s Dance Stance Analysis
+        </Typography>
+        
+        <Typography variant="body1" paragraph sx={{ fontSize: '1.1rem' }}>
+          Hernan Brizuela is known for his exceptional footwork, rhythm, and connection with his partners.
+          His performances demonstrate precise musicality and elegant posture.
+        </Typography>
+      </Box>
       
       <Alert 
         severity="info" 
-        icon={<ConstructionIcon />}
+        icon={<ConstructionIcon sx={{ color: '#872020' }} />}
         sx={{ 
           my: 4, 
-          py: 2,
+          py: 3,
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
+          border: '1px solid rgba(135, 32, 32, 0.3)',
+          backgroundColor: 'rgba(135, 32, 32, 0.05)'
         }}
       >
         <Box>
-          <Typography variant="h6" component="div" gutterBottom>
+          <Typography 
+            variant="h6" 
+            component="div" 
+            gutterBottom
+            sx={{ color: '#872020', fontWeight: 'bold' }}
+          >
             Coming Soon!
           </Typography>
           <Typography variant="body1">
-            We are currently collecting and analyzing images of Gustavo Naveira&apos;s dance stance.
+            We are currently collecting and analyzing images of Hernan Brizuela&apos;s dance stance.
             Check back later for a detailed breakdown of his technique and posture.
           </Typography>
         </Box>
       </Alert>
       
-      <Paper elevation={3} sx={{ p: 3, mb: 4, backgroundColor: '#f5f5f5' }}>
-        <Typography variant="h6" gutterBottom>
+      <Paper 
+        elevation={3} 
+        sx={{ 
+          p: 3, 
+          mb: 4, 
+          backgroundColor: 'rgba(135, 32, 32, 0.05)',
+          borderLeft: '4px solid #872020',
+          borderRadius: '4px'
+        }}
+      >
+        <Typography 
+          variant="h6" 
+          gutterBottom
+          sx={{ 
+            color: '#872020',
+            fontWeight: 'bold'
+          }}
+        >
           What to expect on this page:
         </Typography>
-        <Box component="ul" sx={{ pl: 3 }}>
-          <Typography component="li" sx={{ mb: 1 }}>
-            Detailed images of Gustavo&apos;s stance and posture
-          </Typography>
-          <Typography component="li" sx={{ mb: 1 }}>
-            Analysis of his unique embrace technique
-          </Typography>
-          <Typography component="li" sx={{ mb: 1 }}>
-            Breakdown of weight distribution and axis control
-          </Typography>
-          <Typography component="li" sx={{ mb: 1 }}>
-            Observations on his partnering technique
-          </Typography>
-          <Typography component="li">
-            Comparisons across different performances
-          </Typography>
+        <Box component="ul" sx={{ pl: 2, fontFamily: 'inherit' }}>
+          {[
+            'Detailed images of Hernan&apos;s embrace and axis',
+            'Analysis of his musical interpretation through movement',
+            'Breakdown of his precise footwork technique',
+            'Examination of his connection with different partners',
+            'Observations on his balance and weight transfer'
+          ].map((item, index) => (
+            <Typography 
+              component="li" 
+              key={index} 
+              sx={{ 
+                mb: 1,
+                fontSize: '1rem',
+                fontFamily: 'inherit'
+              }}
+            >
+              {item}
+            </Typography>
+          ))}
         </Box>
       </Paper>
       
-      <Box sx={{ mt: 4 }}>
-        <Typography variant="body1">
-          In the meantime, you can check out our existing stance analysis for:
+      <Divider sx={{ my: 4, borderColor: 'rgba(135, 32, 32, 0.3)' }} />
+      
+      <Box sx={{ mt: 3, mb: 5 }}>
+        <Typography 
+          variant="h5" 
+          gutterBottom
+          sx={{ 
+            color: '#872020',
+            fontWeight: 'bold',
+            borderBottom: '2px solid #872020',
+            pb: 1
+          }}
+        >
+          Explore Other Dancers:
         </Typography>
         <Box 
           sx={{ 
@@ -123,7 +174,7 @@ export default function GustavoStancePage() {
               </Typography>
             </Paper>
           </Link>
-          <Link href="/dance-stance/hernan" style={{ textDecoration: 'none', flexGrow: 1, flexBasis: '33%' }}>
+          <Link href="/dance-stance/gustavo" style={{ textDecoration: 'none', flexGrow: 1, flexBasis: '33%' }}>
             <Paper 
               sx={{ 
                 p: 2,
@@ -140,13 +191,28 @@ export default function GustavoStancePage() {
                 }
               }}
             >
-              <Typography variant="h6" sx={{ mb: 1 }}>Hernan Brizuela</Typography>
+              <Typography variant="h6" sx={{ mb: 1 }}>Gustavo Naveira</Typography>
               <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                Exceptional footwork and rhythm
+                Analytical approach with exceptional technique
               </Typography>
             </Paper>
           </Link>
         </Box>
+      </Box>
+      
+      <Box 
+        sx={{ 
+          mt: 5, 
+          p: 3, 
+          backgroundColor: 'rgba(135, 32, 32, 0.05)', 
+          borderRadius: 2,
+          textAlign: 'center'
+        }}
+      >
+        <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
+          Please note: All stance analyses are provided for educational purposes to help dancers
+          understand different techniques and approaches to Argentine tango.
+        </Typography>
       </Box>
     </Container>
   );
