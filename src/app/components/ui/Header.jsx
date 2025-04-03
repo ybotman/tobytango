@@ -355,9 +355,30 @@ export default function Header() {
                   <ListItemText primary="Fun Miscellaneous" primaryTypographyProps={{...secondaryStyle, fontWeight: 'bold'}} />
                 </Link>
               </ListItem>
-              <ListItem sx={{ pl: 4 }}>
-                <ListItemText primary="Dance Styles (coming soon)" primaryTypographyProps={secondaryStyle} />
-              </ListItem>
+              <ListItemButton sx={{ pl: 4 }} onClick={() => handleMenuToggle('danceStance')}>
+                <ListItemText primary="Dance Stance" primaryTypographyProps={secondaryStyle} />
+                {openMenus.danceStance ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              
+              <Collapse in={!!openMenus.danceStance} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItem sx={{ pl: 6 }} onClick={toggleDrawer(false)}>
+                    <Link href="/dance-stance/chicho" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                      <ListItemText primary="Chicho Frumboli" primaryTypographyProps={secondaryStyle} />
+                    </Link>
+                  </ListItem>
+                  <ListItem sx={{ pl: 6 }} onClick={toggleDrawer(false)}>
+                    <Link href="/dance-stance/gustavo" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                      <ListItemText primary="Gustavo Naveira" primaryTypographyProps={secondaryStyle} />
+                    </Link>
+                  </ListItem>
+                  <ListItem sx={{ pl: 6 }} onClick={toggleDrawer(false)}>
+                    <Link href="/dance-stance/carlitos" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                      <ListItemText primary="Carlitos Espinoza" primaryTypographyProps={secondaryStyle} />
+                    </Link>
+                  </ListItem>
+                </List>
+              </Collapse>
               <ListItem sx={{ pl: 4 }}>
                 <ListItemText primary="Tango History (coming soon)" primaryTypographyProps={secondaryStyle} />
               </ListItem>
