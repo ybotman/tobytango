@@ -44,7 +44,7 @@ export default function FavoriteVideosPage() {
               </a>
             </Box>
             <Typography variant="body2">
-              A stunning modern interpretation that brings fresh energy and perspective to tango while honoring its traditional roots.
+              A stunning modern interpretation that brings fresh energy and perspective to tango while honoring its traditional roots. The performance beautifully demonstrates shared roles and switching playful roles throughout the dance.
             </Typography>
           </Box>
         </Box>

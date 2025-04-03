@@ -212,9 +212,9 @@ export default function Header() {
                     </List>
                   </Collapse>
                   
-                  {/* Half Time */}
+                  {/* Half/Zero Time */}
                   <ListItemButton sx={{ pl: 6 }} onClick={() => handleMenuToggle('halfTime')}>
-                    <ListItemText primary="Half Time" primaryTypographyProps={secondaryStyle} />
+                    <ListItemText primary="Half/Zero Time" primaryTypographyProps={secondaryStyle} />
                     {openMenus.halfTime ? <ExpandLess /> : <ExpandMore />}
                   </ListItemButton>
                   
