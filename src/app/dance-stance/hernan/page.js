@@ -6,10 +6,10 @@ import {
   Typography, 
   Box, 
   Paper,
-  Alert,
+  Grid,
   Divider
 } from '@mui/material';
-import ConstructionIcon from '@mui/icons-material/Construction';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HernanStancePage() {
@@ -34,33 +34,91 @@ export default function HernanStancePage() {
         </Typography>
       </Box>
       
-      <Alert 
-        severity="info" 
-        icon={<ConstructionIcon sx={{ color: '#872020' }} />}
+      <Paper 
+        elevation={3} 
         sx={{ 
-          my: 4, 
-          py: 3,
-          display: 'flex',
-          alignItems: 'center',
-          border: '1px solid rgba(135, 32, 32, 0.3)',
-          backgroundColor: 'rgba(135, 32, 32, 0.05)'
+          p: 3, 
+          mb: 4, 
+          backgroundColor: 'rgba(135, 32, 32, 0.05)',
+          borderLeft: '4px solid #872020',
+          borderRadius: '4px'
         }}
       >
-        <Box>
-          <Typography 
-            variant="h6" 
-            component="div" 
-            gutterBottom
-            sx={{ color: '#872020', fontWeight: 'bold' }}
-          >
-            Coming Soon!
+        <Typography 
+          variant="h5" 
+          component="h2" 
+          gutterBottom
+          sx={{ 
+            color: '#872020',
+            fontWeight: 'bold'
+          }}
+        >
+          Relaxed Balance Exercise
+        </Typography>
+        
+        <Typography variant="body1" paragraph>
+          Hernan emphasizes the importance of relaxed, natural balance in tango. His technique shows how 
+          standing on one foot in a relaxed state creates a natural curve or &quot;banana shape&quot; in the body&apos;s posture.
+        </Typography>
+        
+        <Typography variant="body1" paragraph>
+          <strong>Key points from Hernan&apos;s stance:</strong>
+        </Typography>
+        
+        <Box component="ul" sx={{ pl: 2, mb: 3 }}>
+          <Typography component="li" sx={{ mb: 1 }}>
+            Allow your hips to find their natural position rather than forcing them
           </Typography>
-          <Typography variant="body1">
-            We are currently collecting and analyzing images of Hernan Brizuela&apos;s dance stance.
-            Check back later for a detailed breakdown of his technique and posture.
+          <Typography component="li" sx={{ mb: 1 }}>
+            The banana-shaped curve from the front view is a sign of proper relaxed balance
+          </Typography>
+          <Typography component="li" sx={{ mb: 1 }}>
+            Notice how the body naturally curves when standing on one foot in complete relaxation
           </Typography>
         </Box>
-      </Alert>
+        
+        <Grid container spacing={3} sx={{ mt: 2 }}>
+          <Grid item xs={12} md={4}>
+            <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
+              <Image 
+                src="/dance-stance/hernan-excersizeA-1.png"
+                alt="Hernan Brizuela stance exercise position 1"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </Box>
+            <Typography variant="body2" align="center" sx={{ mt: 1, fontStyle: 'italic' }}>
+              Initial balanced position
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
+              <Image 
+                src="/dance-stance/hernan-excersizeA-2.png"
+                alt="Hernan Brizuela stance exercise position 2"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </Box>
+            <Typography variant="body2" align="center" sx={{ mt: 1, fontStyle: 'italic' }}>
+              Notice the natural curve forming
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
+              <Image 
+                src="/dance-stance/hernan-excersizeA-3.png"
+                alt="Hernan Brizuela stance exercise position 3"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </Box>
+            <Typography variant="body2" align="center" sx={{ mt: 1, fontStyle: 'italic' }}>
+              Complete &quot;banana shape&quot; in full relaxation
+            </Typography>
+          </Grid>
+        </Grid>
+      </Paper>
       
       <Paper 
         elevation={3} 
@@ -73,36 +131,41 @@ export default function HernanStancePage() {
         }}
       >
         <Typography 
-          variant="h6" 
+          variant="h5" 
+          component="h2"
           gutterBottom
           sx={{ 
             color: '#872020',
             fontWeight: 'bold'
           }}
         >
-          What to expect on this page:
+          Applying This to Your Dance
         </Typography>
-        <Box component="ul" sx={{ pl: 2, fontFamily: 'inherit' }}>
-          {[
-            'Detailed images of Hernan&apos;s embrace and axis',
-            'Analysis of his musical interpretation through movement',
-            'Breakdown of his precise footwork technique',
-            'Examination of his connection with different partners',
-            'Observations on his balance and weight transfer'
-          ].map((item, index) => (
-            <Typography 
-              component="li" 
-              key={index} 
-              sx={{ 
-                mb: 1,
-                fontSize: '1rem',
-                fontFamily: 'inherit'
-              }}
-            >
-              {item}
-            </Typography>
-          ))}
+        
+        <Typography variant="body1" paragraph>
+          This exercise demonstrates one of the key principles in Hernan&apos;s approach to tango: 
+          finding natural balance through relaxation rather than tension. The implications for your dancing include:
+        </Typography>
+        
+        <Box component="ul" sx={{ pl: 2, mb: 3 }}>
+          <Typography component="li" sx={{ mb: 1 }}>
+            <strong>Don&apos;t force your hips</strong> - Allow them to find their natural position when standing on one leg
+          </Typography>
+          <Typography component="li" sx={{ mb: 1 }}>
+            <strong>Embrace the natural curve</strong> - The &quot;banana shape&quot; is not a flaw but a sign of proper relaxed balance
+          </Typography>
+          <Typography component="li" sx={{ mb: 1 }}>
+            <strong>Release unnecessary tension</strong> - Notice how the body automatically finds its optimal position
+          </Typography>
+          <Typography component="li" sx={{ mb: 1 }}>
+            <strong>Improve partner connection</strong> - A relaxed frame allows for better communication between dancers
+          </Typography>
         </Box>
+        
+        <Typography variant="body1">
+          Practice this exercise regularly to develop an intuitive understanding of how your body naturally balances.
+          This will translate directly into more fluid movement and better connection in your tango.
+        </Typography>
       </Paper>
       
       <Divider sx={{ my: 4, borderColor: 'rgba(135, 32, 32, 0.3)' }} />
