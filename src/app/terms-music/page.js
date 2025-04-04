@@ -12,6 +12,10 @@ export default function MusicDefinitionsPage() {
       <Typography variant="body1" paragraph>
         A guide to help dancers without a musical background understand key musical concepts as they relate to Argentine Tango.
       </Typography>
+      
+      <Typography variant="body1" paragraph>
+        When we dance, we often use 'standard' terms that are common among dancers. However, music has a much larger pedagogical history and better defined musical terms. These at times differ from dancers' terms, so beware. This page is for Lab Class and is a well-defined list of agreed 'musical' terms, used for distinction and clarity where needed.
+      </Typography>
 
       <Box sx={{ my: 3 }}>
         <Accordion>
