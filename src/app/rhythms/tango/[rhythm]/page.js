@@ -45,20 +45,14 @@ export default function RhythmDetailPage() {
   const mp3Examples = {
     '1-3-': [
       { 
-        id: 'darienzo-cumparsita', 
-        title: "D'Arienzo - La Cumparsita", 
-        file: '/audio/rhythms/1-3-darienzo-cumparsita.mp3', 
-        startTime: 8, 
-        orchestra: "D'Arienzo",
-        year: 1935
-      },
-      { 
-        id: 'disarli-gran-muneca', 
-        title: 'Di Sarli - A la gran muñeca', 
-        file: '/audio/rhythms/1-3-disarli-gran-muneca.mp3', 
-        startTime: 12,
+        id: 'disarli-el-jaguel', 
+        title: 'Di Sarli - El Jaguel', 
+        file: '/audio/Tango/DiSarli/El Jaguel -- 8.mp3', 
+        startTime: 0, 
+        duration: 28, // Limit to 28 seconds with 4 second fade
         orchestra: "Di Sarli",
-        year: 1941
+        year: 1940,
+        comment: "Listen for 3 times of 1-3-, then a 1---, then back to 3 times of 1-3-"
       }
     ],
     '1---': [
@@ -172,8 +166,29 @@ export default function RhythmDetailPage() {
       audio.currentTime = example.startTime || 0;
       audio.play();
       setIsPlaying(prev => ({...prev, [example.id]: true}));
+      
+      // If there's a duration limit, set up fade out and stop
+      if (example.duration) {
+        const fadeDuration = 4; // 4 seconds fade out
+        const stopTime = (example.startTime || 0) + example.duration;
+        
+        setTimeout(() => {
+          // Start fade out
+          const fadeInterval = setInterval(() => {
+            if (audio.volume > 0.05) {
+              audio.volume = Math.max(0, audio.volume - 0.05);
+            } else {
+              clearInterval(fadeInterval);
+              audio.pause();
+              audio.volume = volume; // Reset volume
+              setIsPlaying(prev => ({...prev, [example.id]: false}));
+            }
+          }, 200); // Adjust fade step rate
+        }, (example.duration - fadeDuration) * 1000);
+      }
     } else {
       audio.pause();
+      audio.volume = volume; // Reset volume in case it was fading
       setIsPlaying(prev => ({...prev, [example.id]: false}));
     }
   };
@@ -182,12 +197,22 @@ export default function RhythmDetailPage() {
   const handleTimeUpdate = (example) => {
     const audio = audioRefs.current[example.id];
     setCurrentTime(prev => ({...prev, [example.id]: audio.currentTime}));
+    
+    // If there's a duration limit and we've exceeded it, stop playback
+    if (example.duration && audio.currentTime >= (example.startTime || 0) + example.duration) {
+      audio.pause();
+      setIsPlaying(prev => ({...prev, [example.id]: false}));
+    }
   };
 
   // Handle audio loaded
   const handleLoadedMetadata = (example) => {
     const audio = audioRefs.current[example.id];
-    setDuration(prev => ({...prev, [example.id]: audio.duration}));
+    // Use custom duration if provided, otherwise use audio duration
+    const audioDuration = example.duration 
+      ? (example.startTime || 0) + example.duration 
+      : audio.duration;
+    setDuration(prev => ({...prev, [example.id]: audioDuration}));
   };
 
   // Handle slider change
@@ -331,16 +356,17 @@ export default function RhythmDetailPage() {
                     
                     <Box sx={{ flexGrow: 1, mx: 2 }}>
                       <Slider
-                        value={currentTime[example.id] || 0}
-                        max={duration[example.id] || 100}
-                        onChange={(_, newValue) => handleSliderChange(example, newValue)}
+                        value={currentTime[example.id] ? (currentTime[example.id] - (example.startTime || 0)) : 0}
+                        min={0}
+                        max={example.duration || (duration[example.id] - (example.startTime || 0)) || 100}
+                        onChange={(_, newValue) => handleSliderChange(example, (example.startTime || 0) + newValue)}
                         aria-label="audio position"
                         color="primary"
                       />
                     </Box>
                     
                     <Typography variant="caption" sx={{ minWidth: 60, textAlign: 'right' }}>
-                      {formatTime(currentTime[example.id] || 0)} / {formatTime(duration[example.id] || 0)}
+                      {formatTime((currentTime[example.id] || 0) - (example.startTime || 0))} / {formatTime(example.duration || ((duration[example.id] || 0) - (example.startTime || 0)))}
                     </Typography>
                   </Box>
                   
@@ -361,7 +387,7 @@ export default function RhythmDetailPage() {
                     />
                     
                     <Typography variant="body2" sx={{ ml: 2, flexGrow: 1, fontStyle: 'italic' }}>
-                      Note: Listen for the {rhythm} rhythm pattern starting at {formatTime(example.startTime)}
+                      Note: {example.comment || `Listen for the ${rhythm} rhythm pattern starting at ${formatTime(example.startTime)}`}
                     </Typography>
                   </Box>
                 </Box>

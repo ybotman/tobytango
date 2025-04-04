@@ -1,6 +1,8 @@
 import React from 'react'; 
-import { Container, Typography, Box, Accordion, AccordionSummary, AccordionDetails, Divider } from "@mui/material";
+import { Container, Typography, Box, Accordion, AccordionSummary, AccordionDetails, Button } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Link from 'next/link';
+import TimelineIcon from '@mui/icons-material/Timeline';
 
 export default function TangoArtistsPage() {
   return (
@@ -12,6 +14,19 @@ export default function TangoArtistsPage() {
       <Typography variant="body1" paragraph>
         The &quot;Golden Age&quot; of tango (1935-1955) produced the most influential orchestras and musical directors in tango history. These distinctive artists defined different styles that dancers still study and appreciate today. Here we explore the most important orchestras, their unique sounds, and their contribution to tango.
       </Typography>
+      
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+        <Link href="/artists/timelines" passHref>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            startIcon={<TimelineIcon />}
+            sx={{ px: 3, py: 1.2 }}
+          >
+            View Tango Orchestra Timelines
+          </Button>
+        </Link>
+      </Box>
 
       <Box sx={{ my: 3 }}>
         <Accordion>

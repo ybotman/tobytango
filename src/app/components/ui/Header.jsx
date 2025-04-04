@@ -333,6 +333,11 @@ export default function Header() {
                   <ListItemText primary="View All Artists" primaryTypographyProps={secondaryStyle} />
                 </Link>
               </ListItem>
+              <ListItem sx={{ pl: 4 }} onClick={toggleDrawer(false)}>
+                <Link href="/artists/timelines" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                  <ListItemText primary="Timelines" primaryTypographyProps={secondaryStyle} />
+                </Link>
+              </ListItem>
             </List>
           </Collapse>
           
