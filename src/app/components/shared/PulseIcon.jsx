@@ -82,8 +82,8 @@ export default function PulseIcon({ audioRef, pulseData, isPlaying, size = 120 }
       {currentIconPath && (
         <Box
           sx={{
-            width: size * 0.6,
-            height: size * 0.6,
+            width: size * 0.8,
+            height: size * 0.8,
             borderRadius: '50%',
             display: 'flex',
             justifyContent: 'center',
@@ -97,10 +97,12 @@ export default function PulseIcon({ audioRef, pulseData, isPlaying, size = 120 }
           <Image
             src={`/${currentIconPath}`}
             alt="Rhythm icon"
-            width={size * 0.4}
-            height={size * 0.4}
+            width={size * 0.6}
+            height={size * 0.6}
             style={{
-              objectFit: 'contain'
+              objectFit: 'contain',
+              maxWidth: '100%',
+              maxHeight: '100%'
             }}
           />
         </Box>

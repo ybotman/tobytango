@@ -82,7 +82,7 @@ export default function TangoArtistsTimelinePage() {
         </Box>
         <Box component="li" sx={{ mb: 1 }}>
           <Typography variant="body1">
-            <strong>Golden Age (1940s-1950s):</strong> The pinnacle of tango's popularity and artistic development, 
+            <strong>Golden Age (1940s-1950s):</strong> The pinnacle of tango&apos;s popularity and artistic development, 
             with distinctive orchestra styles fully formed.
           </Typography>
         </Box>

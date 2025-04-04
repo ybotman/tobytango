@@ -14,7 +14,7 @@ export default function MusicDefinitionsPage() {
       </Typography>
       
       <Typography variant="body1" paragraph>
-        When we dance, we often use 'standard' terms that are common among dancers. However, music has a much larger pedagogical history and better defined musical terms. These at times differ from dancers' terms, so beware. This page is for Lab Class and is a well-defined list of agreed 'musical' terms, used for distinction and clarity where needed.
+        When we dance, we often use &apos;standard&apos; terms that are common among dancers. However, music has a much larger pedagogical history and better defined musical terms. These at times differ from dancers&apos; terms, so beware. This page is for Lab Class and is a well-defined list of agreed &apos;musical&apos; terms, used for distinction and clarity where needed.
       </Typography>
 
       <Box sx={{ my: 3 }}>

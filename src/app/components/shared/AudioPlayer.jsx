@@ -54,7 +54,7 @@ export default function AudioPlayer({ example, audioPlayer }) {
               alignItems: 'center',
               width: 120,
               height: 120,
-              bgcolor: 'rgba(33, 150, 243, 0.3)',  // Light blue background with transparency
+              bgcolor: 'rgba(33, 150, 243, 0.15)',  // Very light blue background with transparency
               borderRadius: '50%',
               position: 'relative'
             }}
