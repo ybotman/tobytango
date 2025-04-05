@@ -121,7 +121,7 @@ export default function SongsPage() {
       
       setIsPlaying(false);
     };
-  }, []);
+  }, [currentSong]);
 
   // Handler for accordion expansion
   const handleChange = (panel) => (event, isExpanded) => {

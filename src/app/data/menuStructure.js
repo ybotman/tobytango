@@ -37,22 +37,8 @@ const menuStructure = [
           { title: 'Analysis', path: '/rhythms/tango/summary', isSecondary: true }
         ]
       },
-      { 
-        title: 'Vals', 
-        isSecondary: true,
-        submenus: [
-          { title: 'Rhythms (coming soon)', isSecondary: true },
-          { title: 'Summary (coming soon)', isSecondary: true }
-        ]
-      },
-      { 
-        title: 'Milonga', 
-        isSecondary: true,
-        submenus: [
-          { title: 'Rhythms (coming soon)', isSecondary: true },
-          { title: 'Summary (coming soon)', isSecondary: true }
-        ]
-      }
+      { title: 'Vals', path: '/rhythms/vals', isSecondary: true },
+      { title: 'Milonga', path: '/rhythms/milonga', isSecondary: true }
     ]
   },
   {

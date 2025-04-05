@@ -1,7 +1,8 @@
 /**
- * MP3 examples for each tango rhythm
+ * MP3 examples for each rhythm (tango, vals, and milonga)
  */
 const mp3Examples = {
+  // Tango rhythms
   '1-3-': [
     { 
       id: 'disarli-el-jaguel', 
@@ -52,7 +53,39 @@ const mp3Examples = {
       year: 1935,
       comment: "Listen for how the piece emphasizes beats 2 and 4, creating a distinctive off-beat rhythm."
     }
-  ]
+  ],
+  
+  // Vals rhythms
+  '1--': [
+    { 
+      id: 'darienzo-amor-y-celos', 
+      title: "D'Arienzo - Amor y Celos", 
+      file: "/audio/Vals/D'Arienzo/Amor y Celos.mp3", 
+      startTime: 0, 
+      duration: 25,
+      orchestra: "D'Arienzo",
+      year: 1938,
+      comment: "Listen for the emphasized first beat of each measure, creating the classic vals feel."
+    }
+  ],
+  '12-': [
+    { 
+      id: 'disarli-ausencia', 
+      title: "Di Sarli - Ausencia", 
+      file: "/audio/Vals/DiSarli/Ausencia.mp3", 
+      startTime: 0, 
+      duration: 25,
+      orchestra: "Di Sarli",
+      year: 1943,
+      comment: "Notice how beats 1 and 2 are emphasized with the classic OneTwo vals pattern."
+    }
+  ],
+  '1-3': [],
+  
+  // Milonga rhythms
+  'Lisa': [],
+  'Traspie': [],
+  'Contratiempo': []
 };
 
 export default mp3Examples;
