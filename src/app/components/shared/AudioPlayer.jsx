@@ -31,8 +31,17 @@ export default function AudioPlayer({ example, audioPlayer }) {
     handleLoadedMetadata,
     handleVolumeChange,
     toggleMute,
-    pulseData
+    pulseData,
+    preloadAudioData
   } = audioPlayer;
+  
+  // Preload data when component mounts
+  React.useEffect(() => {
+    // Preload the audio data in the background
+    if (example) {
+      preloadAudioData(example);
+    }
+  }, [example, preloadAudioData]);
 
   return (
     <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>

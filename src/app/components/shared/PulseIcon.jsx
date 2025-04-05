@@ -3,12 +3,34 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
-import Image from 'next/image';
 
 export default function PulseIcon({ audioRef, pulseData, isPlaying, size = 120 }) {
   const [opacity, setOpacity] = useState(0); // Fully transparent by default
   const [animationId, setAnimationId] = useState(null);
   const [currentIconPath, setCurrentIconPath] = useState(null);
+  const [preloadedIcons, setPreloadedIcons] = useState({});
+
+  // Preload all icons used in the pulse data
+  useEffect(() => {
+    if (!pulseData || pulseData.length === 0) return;
+    
+    // Get unique icon paths
+    const uniqueIconPaths = [...new Set(pulseData
+      .filter(pulse => pulse.icon)
+      .map(pulse => pulse.icon))];
+    
+    // Create an object to store preloaded images
+    const iconCache = {};
+    
+    // Preload each unique icon
+    uniqueIconPaths.forEach(path => {
+      const img = new Image();
+      img.src = `/${path}`;
+      iconCache[path] = img;
+    });
+    
+    setPreloadedIcons(iconCache);
+  }, [pulseData]);
 
   // Function to update opacity based on current time
   const updateOpacity = () => {
@@ -94,12 +116,13 @@ export default function PulseIcon({ audioRef, pulseData, isPlaying, size = 120 }
             overflow: 'hidden'
           }}
         >
-          <Image
+          <Box
+            component="img"
             src={`/${currentIconPath}`}
             alt="Rhythm icon"
-            width={size * 0.6}
-            height={size * 0.6}
-            style={{
+            sx={{
+              width: size * 0.6,
+              height: size * 0.6,
               objectFit: 'contain',
               maxWidth: '100%',
               maxHeight: '100%'

@@ -30,6 +30,42 @@ export default function useAudioPlayer(options = {}) {
     return `${minutes}:${seconds}`;
   };
 
+  // Preload pulse data and icons when the component mounts
+  const preloadAudioData = async (example) => {
+    if (!pulseData[example.id]) {
+      try {
+        // Get JSON file path from audio file path (replace extension)
+        const jsonPath = example.file.replace(/\.[^.]+$/, '.json');
+        const response = await fetch(jsonPath);
+        
+        if (response.ok) {
+          const data = await response.json();
+          const pulses = data.pulses || [];
+          setPulseData(prev => ({...prev, [example.id]: pulses}));
+          
+          // Preload all icons used in the pulse data
+          if (pulses && pulses.length > 0) {
+            const uniqueIconPaths = [...new Set(pulses
+              .filter(pulse => pulse.icon)
+              .map(pulse => pulse.icon))];
+            
+            // Preload each icon
+            uniqueIconPaths.forEach(path => {
+              const img = new Image();
+              img.src = `/${path}`;
+            });
+          }
+        } else {
+          console.warn(`No pulse data found for ${example.id}`);
+          setPulseData(prev => ({...prev, [example.id]: []}));
+        }
+      } catch (error) {
+        console.error("Error loading pulse data:", error);
+        setPulseData(prev => ({...prev, [example.id]: []}));
+      }
+    }
+  };
+
   // Handle play/pause
   const togglePlay = async (example) => {
     const audio = audioRefs.current[example.id];
@@ -45,29 +81,12 @@ export default function useAudioPlayer(options = {}) {
     });
     
     if (!isPlaying[example.id]) {
+      // Preload pulse data and icons if not already loaded
+      await preloadAudioData(example);
+      
       audio.currentTime = example.startTime || 0;
       audio.play();
       setIsPlaying(prev => ({...prev, [example.id]: true}));
-      
-      // Fetch pulse data if not already loaded
-      if (!pulseData[example.id]) {
-        try {
-          // Get JSON file path from audio file path (replace extension)
-          const jsonPath = example.file.replace(/\.[^.]+$/, '.json');
-          const response = await fetch(jsonPath);
-          
-          if (response.ok) {
-            const data = await response.json();
-            setPulseData(prev => ({...prev, [example.id]: data.pulses || []}));
-          } else {
-            console.warn(`No pulse data found for ${example.id}`);
-            setPulseData(prev => ({...prev, [example.id]: []}));
-          }
-        } catch (error) {
-          console.error("Error loading pulse data:", error);
-          setPulseData(prev => ({...prev, [example.id]: []}));
-        }
-      }
       
       // If there's a duration limit, set up fade out and stop
       if (example.duration) {
@@ -94,6 +113,19 @@ export default function useAudioPlayer(options = {}) {
       setIsPlaying(prev => ({...prev, [example.id]: false}));
     }
   };
+  
+  // Preload data when audio is loaded
+  const handleLoadedMetadata = (example) => {
+    const audio = audioRefs.current[example.id];
+    // Use custom duration if provided, otherwise use audio duration
+    const audioDuration = example.duration 
+      ? (example.startTime || 0) + example.duration 
+      : audio.duration;
+    setDuration(prev => ({...prev, [example.id]: audioDuration}));
+    
+    // Preload pulse data in the background
+    preloadAudioData(example);
+  };
 
   // Handle time update
   const handleTimeUpdate = (example) => {
@@ -107,15 +139,7 @@ export default function useAudioPlayer(options = {}) {
     }
   };
 
-  // Handle audio loaded
-  const handleLoadedMetadata = (example) => {
-    const audio = audioRefs.current[example.id];
-    // Use custom duration if provided, otherwise use audio duration
-    const audioDuration = example.duration 
-      ? (example.startTime || 0) + example.duration 
-      : audio.duration;
-    setDuration(prev => ({...prev, [example.id]: audioDuration}));
-  };
+  // This function is replaced by the new implementation above
 
   // Handle slider change
   const handleSliderChange = (example, newValue) => {
@@ -162,6 +186,7 @@ export default function useAudioPlayer(options = {}) {
     handleSliderChange,
     handleVolumeChange,
     toggleMute,
-    pulseData
+    pulseData,
+    preloadAudioData
   };
 }

@@ -42,6 +42,13 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#1976d2" />
         <GoogleTagManager />
+        
+        {/* Preload common rhythm icons to prevent delay */}
+        <link rel="preload" as="image" href="/rhythms/icons/1.png" />
+        <link rel="preload" as="image" href="/rhythms/icons/2.png" />
+        <link rel="preload" as="image" href="/rhythms/icons/3.png" />
+        <link rel="preload" as="image" href="/rhythms/icons/4.png" />
+        <link rel="preload" as="image" href="/rhythms/icons/&.png" />
       </head>
       <body>
         <ThemeRegistry>
