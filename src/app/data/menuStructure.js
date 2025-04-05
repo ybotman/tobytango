@@ -30,44 +30,11 @@ const menuStructure = [
         title: 'Tango', 
         isSecondary: true,
         submenus: [
-          {
-            id: 'simpleTime',
-            title: 'Simple Time',
-            isSecondary: true,
-            items: [
-              { title: '1-3-', path: '/rhythms/tango/1-3-' }
-            ]
-          },
-          {
-            id: 'doubleTime',
-            title: 'Double Time',
-            isSecondary: true,
-            items: [
-              { title: '123-', path: '/rhythms/tango/123-' },
-              { title: '1-34', path: '/rhythms/tango/1-34' },
-              { title: '1234', path: '/rhythms/tango/1234' }
-            ]
-          },
-          {
-            id: 'halfTime',
-            title: 'Half/Zero Time',
-            isSecondary: true,
-            items: [
-              { title: '1---', path: '/rhythms/tango/1---' },
-              { title: '----', path: '/rhythms/tango/----' }
-            ]
-          },
-          {
-            id: 'advanced',
-            title: 'Advanced',
-            isSecondary: true,
-            items: [
-              { title: 'OffBeat -2-4 (coming soon)' },
-              { title: 'Syncopa', path: '/rhythms/tango/Syncopa' },
-              { title: '332 (coming soon)' }
-            ]
-          },
-          { title: 'Summary', path: '/rhythms/tango/summary', isSecondary: true }
+          { title: 'Single Time', path: '/rhythms/tango/SingleTime', isSecondary: true },
+          { title: 'Double Time', path: '/rhythms/tango/DoubleTime', isSecondary: true },
+          { title: 'Half/Zero Time', path: '/rhythms/tango/HalfZeroTime', isSecondary: true },
+          { title: 'Advanced Time', path: '/rhythms/tango/Advanced', isSecondary: true },
+          { title: 'Analysis', path: '/rhythms/tango/summary', isSecondary: true }
         ]
       },
       { 
@@ -112,7 +79,7 @@ const menuStructure = [
     title: 'The Songs',
     icon: MusicNoteIcon,
     items: [
-      { title: 'Coming soon', isSecondary: true }
+      { title: 'All Songs', path: '/songs', isSecondary: true }
     ]
   },
   {
@@ -120,8 +87,8 @@ const menuStructure = [
     title: 'The Dancers',
     icon: DirectionsRunIcon,
     items: [
-      { title: 'Famous Dancers', path: '/dancers', isSecondary: true },
-      { title: 'Fun Miscellaneous', path: '/favorite-videos', isSecondary: true, highlight: true },
+      { title: 'Influential Dancers', path: '/dancers', isSecondary: true },
+      { title: 'Just Fun Videos', path: '/favorite-videos', isSecondary: true, highlight: true },
       { 
         title: 'Dance Stance', 
         isSecondary: true,

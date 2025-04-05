@@ -1,0 +1,31 @@
+{
+  "pulses": [
+    { "start": 0.0, "end": 0.5, "type": "1", "icon": "rhythms/icons/1.png" },
+    { "start": 0.9, "end": 1.4, "type": "2", "icon": "rhythms/icons/2.png" },
+    { "start": 1.8, "end": 2.3, "type": "3", "icon": "rhythms/icons/3.png" },
+    { "start": 2.7, "end": 3.2, "type": "4", "icon": "rhythms/icons/4.png" },
+    
+    { "start": 3.6, "end": 4.1, "type": "1", "icon": "rhythms/icons/1.png" },
+    { "start": 4.5, "end": 5.0, "type": "2", "icon": "rhythms/icons/2.png" },
+    { "start": 5.4, "end": 5.9, "type": "3", "icon": "rhythms/icons/3.png" },
+    { "start": 6.3, "end": 6.8, "type": "4", "icon": "rhythms/icons/4.png" },
+    
+    { "start": 7.2, "end": 7.7, "type": "1", "icon": "rhythms/icons/1.png" },
+    { "start": 8.1, "end": 8.6, "type": "2", "icon": "rhythms/icons/2.png" },
+    { "start": 9.0, "end": 9.5, "type": "3", "icon": "rhythms/icons/3.png" },
+    { "start": 9.9, "end": 10.4, "type": "4", "icon": "rhythms/icons/4.png" },
+    
+    { "start": 10.8, "end": 11.3, "type": "1", "icon": "rhythms/icons/1.png" },
+    { "start": 11.7, "end": 12.2, "type": "2", "icon": "rhythms/icons/2.png" },
+    { "start": 12.6, "end": 13.1, "type": "3", "icon": "rhythms/icons/3.png" },
+    { "start": 13.5, "end": 14.0, "type": "4", "icon": "rhythms/icons/4.png" },
+    
+    { "start": 14.4, "end": 14.9, "type": "1", "icon": "rhythms/icons/1.png" },
+    { "start": 15.3, "end": 15.8, "type": "2", "icon": "rhythms/icons/2.png" },
+    { "start": 16.2, "end": 16.7, "type": "3", "icon": "rhythms/icons/3.png" },
+    { "start": 17.1, "end": 17.6, "type": "4", "icon": "rhythms/icons/4.png" },
+    
+    { "start": 18.0, "end": 18.5, "type": "1", "icon": "rhythms/icons/1.png" },
+    { "start": 18.9, "end": 19.4, "type": "2", "icon": "rhythms/icons/2.png" }
+  ]
+}

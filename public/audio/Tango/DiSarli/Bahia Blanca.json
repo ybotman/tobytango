@@ -1,0 +1,20 @@
+{
+  "pulses": [
+    { "start": 2.60, "end": 3.10, "icon": "rhythms/icons/1.png" },
+    { "start": 4.68, "end": 5.18, "icon": "rhythms/icons/1.png" },
+    { "start": 6.76, "end": 7.26, "icon": "rhythms/icons/1.png" },
+    { "start": 8.84, "end": 9.34, "icon": "rhythms/icons/1.png" },
+    { "start": 10.92, "end": 11.42, "icon": "rhythms/icons/1.png" },
+    { "start": 13.00, "end": 13.50, "icon": "rhythms/icons/1.png" },
+    { "start": 15.08, "end": 15.58, "icon": "rhythms/icons/1.png" },
+    { "start": 17.16, "end": 17.66, "icon": "rhythms/icons/1.png" },
+    { "start": 19.24, "end": 19.74, "icon": "rhythms/icons/1.png" },
+    { "start": 21.32, "end": 21.82, "icon": "rhythms/icons/1.png" },
+    { "start": 23.40, "end": 23.90, "icon": "rhythms/icons/1.png" },
+    { "start": 25.48, "end": 25.98, "icon": "rhythms/icons/1.png" },
+    { "start": 27.56, "end": 28.06, "icon": "rhythms/icons/1.png" },
+    { "start": 29.64, "end": 30.14, "icon": "rhythms/icons/1.png" },
+    { "start": 31.72, "end": 32.22, "icon": "rhythms/icons/1.png" },
+    { "start": 33.80, "end": 34.30, "icon": "rhythms/icons/1.png" }
+  ]
+}
