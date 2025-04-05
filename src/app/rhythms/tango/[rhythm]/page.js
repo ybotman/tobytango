@@ -101,6 +101,12 @@ export default function RhythmDetailPage() {
             Musical Examples
           </Typography>
           
+          {(rhythm === '123-' || rhythm === '1-34' || rhythm === '1234' || rhythm === '1--4') && (
+            <Typography variant="body1" color="error.main" fontWeight="bold" sx={{ mb: 2 }}>
+              Time-ing of pulse is wrong
+            </Typography>
+          )}
+          
           <Grid container spacing={4}>
             {examples.map((example) => (
               <Grid key={example.id}>

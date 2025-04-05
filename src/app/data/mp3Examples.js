@@ -28,8 +28,30 @@ const mp3Examples = {
     }
   ],
   '----': [],
-  '1-34': [],
-  '123-': [],
+  '1-34': [
+    { 
+      id: 'donato-el-pollitio', 
+      title: 'Donato - El Pollitio', 
+      file: '/audio/Tango/Donato/El Pollitio.mp3', 
+      startTime: 0, 
+      duration: 30, // Limit to 30 seconds
+      orchestra: "Donato",
+      year: 1938,
+      comment: "Listen for the clear 1-3-4 pattern that creates a driving, syncopated feel."
+    }
+  ],
+  '123-': [
+    { 
+      id: 'donato-tierrita', 
+      title: 'Donato - Tierrita', 
+      file: '/audio/Tango/Donato/Tierrita.mp3', 
+      startTime: 0, 
+      duration: 30, // Limit to 30 seconds
+      orchestra: "Donato",
+      year: 1940,
+      comment: "Notice how beats 1, 2, and 3 are emphasized, creating a fuller, richer rhythm that omits only the 4th beat."
+    }
+  ],
   '1234': [
     { 
       id: 'darienzo-don-juan', 
