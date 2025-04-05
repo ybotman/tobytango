@@ -62,7 +62,7 @@ const menuStructure = [
             title: 'Advanced',
             isSecondary: true,
             items: [
-              { title: '-2-4 (coming soon)' },
+              { title: 'OffBeat -2-4 (coming soon)' },
               { title: 'Syncopa', path: '/rhythms/tango/Syncopa' },
               { title: '332 (coming soon)' }
             ]
@@ -137,7 +137,7 @@ const menuStructure = [
   },
   {
     id: 'bestPractices',
-    title: 'Best Practices',
+    title: 'The Best Practices',
     icon: CheckCircleOutlineIcon,
     items: [
       { title: 'Tango is', path: '/tango-is', isSecondary: true },
@@ -155,6 +155,16 @@ const menuStructure = [
       { title: 'No Standard Patterns', path: '/difficulties/no-patterns', isSecondary: true },
       { title: 'Improvisational', path: '/difficulties/improvisational', isSecondary: true },
       { title: 'No One in Charge', path: '/difficulties/no-one-in-charge', isSecondary: true }
+    ]
+  },
+  {
+    id: 'hurdles',
+    title: 'The Hurdles',
+    icon: CheckCircleOutlineIcon,
+    items: [
+      { title: 'Partnership of Lead and Follow (coming soon)', isSecondary: true },
+      { title: 'Tortion vs Direction (coming soon)', isSecondary: true },
+      { title: 'More coming soon...', isSecondary: true }
     ]
   },
   {

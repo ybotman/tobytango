@@ -54,6 +54,66 @@ export default function NoDrumsPage() {
         <Typography variant="body1" paragraph>
           This creates a rich, complex rhythmic texture rather than an obvious beat to follow.
         </Typography>
+        
+        <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
+          Shifting Rhythmic Responsibility
+        </Typography>
+        
+        <Typography variant="body1" paragraph>
+          One of the unique challenges in tango music is that the rhythmic pulse often moves around between different instruments:
+        </Typography>
+        
+        <List sx={{ pl: 2, mb: 3 }}>
+          <ListItem>
+            <ListItemText 
+              primary={<Typography variant="body1">Sometimes the piano carries the primary rhythm, then it shifts to the violins</Typography>}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemText 
+              primary={<Typography variant="body1">The bandoneón might provide rhythmic accents in one section, then switch to a melodic role</Typography>}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemText 
+              primary={<Typography variant="body1">The double bass often anchors the rhythm but may momentarily yield to other instruments</Typography>}
+            />
+          </ListItem>
+        </List>
+        
+        <Typography variant="body1" paragraph>
+          This rhythmic movement between instruments requires dancers to listen holistically to the orchestra rather than focusing on just one instrument.
+        </Typography>
+        
+        <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
+          The Challenge of Vocals
+        </Typography>
+        
+        <Typography variant="body1" paragraph>
+          Tango singers add another layer of complexity because they often:
+        </Typography>
+        
+        <List sx={{ pl: 2, mb: 3 }}>
+          <ListItem>
+            <ListItemText 
+              primary={<Typography variant="body1">Don&apos;t sing precisely on the beat (using rubato and expressive timing)</Typography>}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemText 
+              primary={<Typography variant="body1">Follow the emotional contour of the lyrics rather than strict musical timing</Typography>}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemText 
+              primary={<Typography variant="body1">Create a counterpoint to the orchestra&apos;s rhythm rather than reinforcing it</Typography>}
+            />
+          </ListItem>
+        </List>
+        
+        <Typography variant="body1" paragraph>
+          This means dancers must decide whether to follow the orchestra&apos;s rhythm, the singer&apos;s interpretation, or create a dialogue between the two.
+        </Typography>
       </Paper>
 
       <Paper elevation={3} sx={{ p: 4, mb: 4, bgcolor: 'rgba(135, 32, 32, 0.05)', borderLeft: '4px solid #872020' }}>
@@ -105,7 +165,7 @@ export default function NoDrumsPage() {
               Start with Rhythmic Orchestras
             </Typography>
             <Typography variant="body1">
-              Begin with orchestras like D&apos;Arienzo, Biagi, and Canaro, which have stronger, more obvious rhythmic patterns.
+              Begin with orchestras like D&apos;Arienzo, Di Sarli, and Canaro, which have stronger, more obvious rhythmic patterns.
             </Typography>
           </Box>
           

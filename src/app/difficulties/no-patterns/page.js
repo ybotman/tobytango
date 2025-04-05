@@ -76,7 +76,12 @@ export default function NoPatternsPage() {
             </ListItem>
             <ListItem>
               <ListItemText 
-                primary={<Typography variant="body1">The dance is built from individual elements that can be combined in countless ways</Typography>}
+                primary={<Typography variant="body1">The dance is built around positions and partnerships rather than an inventory of steps</Typography>}
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText 
+                primary={<Typography variant="body1">Communication methods differ from person to person and style to style</Typography>}
               />
             </ListItem>
             <ListItem>
@@ -129,6 +134,15 @@ export default function NoPatternsPage() {
               Leaders must create the dance in real-time; followers must interpret and respond to unpredictable leads.
             </Typography>
           </Box>
+          
+          <Box component="li" sx={{ mb: 2 }}>
+            <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+              Varied Communication
+            </Typography>
+            <Typography variant="body1">
+              Each partner communicates differently, requiring constant adaptation rather than relying on standardized leads and follows.
+            </Typography>
+          </Box>
         </Box>
       </Paper>
 
@@ -140,10 +154,10 @@ export default function NoPatternsPage() {
         <Box component="ol" sx={{ pl: 3 }}>
           <Box component="li" sx={{ mb: 2 }}>
             <Typography variant="body1" sx={{ fontWeight: 'bold', mb: 0.5 }}>
-              Focus on Building Blocks, Not Figures
+              Focus on Positions and Partnerships, Not Step Inventory
             </Typography>
             <Typography variant="body1">
-              Learn individual steps, pivots, and weight changes as separate elements that can be combined freely.
+              Concentrate on the relationship between partners, body positions, and connection rather than collecting a catalog of steps and figures.
             </Typography>
           </Box>
           
@@ -198,6 +212,11 @@ export default function NoPatternsPage() {
           <Box component="li" sx={{ mb: 1 }}>
             <Typography variant="body1">
               <strong>True Improvisation:</strong> The freedom to create unique dances every time
+            </Typography>
+          </Box>
+          <Box component="li" sx={{ mb: 1 }}>
+            <Typography variant="body1">
+              <strong>Position-Based Dance:</strong> Focus on where you are with your partner rather than what step you&apos;re doing
             </Typography>
           </Box>
           <Box component="li" sx={{ mb: 1 }}>
