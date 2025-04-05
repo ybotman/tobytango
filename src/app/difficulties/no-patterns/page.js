@@ -36,7 +36,7 @@ export default function NoPatternsPage() {
           <List sx={{ pl: 2 }}>
             <ListItem>
               <ListItemText 
-                primary={<Typography variant="body1">Basic steps form a repeatable pattern (e.g., "step-step-close" in waltz)</Typography>}
+                primary={<Typography variant="body1">Basic steps form a repeatable pattern (e.g., &ldquo;step-step-close&rdquo; in waltz)</Typography>}
               />
             </ListItem>
             <ListItem>
