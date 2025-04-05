@@ -6,8 +6,7 @@ import {
   Typography, 
   Box, 
   Paper, 
-  Button, 
-  Grid
+  Button
 } from '@mui/material';
 import { useParams } from 'next/navigation';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
@@ -59,6 +58,13 @@ export default function RhythmDetailPage() {
       </Typography>
       
       <Box component="ul" sx={{ pl: 3 }}>
+        {rhythm === "1-3-" && (
+          <Box component="li" sx={{ mb: 1 }}>
+            <Typography variant="body1">
+              The most common beat early to mid tango dancers use (often more than 60% of steps). We want to use other rhythm patterns more often. This is the first set of pulses we hear and are taught.
+            </Typography>
+          </Box>
+        )}
         <Box component="li" sx={{ mb: 1 }}>
           <Typography variant="body1">
             Weight changes that align with the accented beats

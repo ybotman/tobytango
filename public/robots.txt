@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tobytango.com
+
+# Sitemaps
+Sitemap: https://tobytango.com/sitemap.xml
+Sitemap: https://tobytango.com/server-sitemap.xml

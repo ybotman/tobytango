@@ -4,12 +4,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { 
   Paper, 
-  Typography, 
-  Grid, 
+  Typography,
   Button, 
   Box, 
   IconButton, 
-  Slider 
+  Slider,
+  Grid
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -37,7 +37,7 @@ export default function AudioPlayer({ example, audioPlayer }) {
   return (
     <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={12} sm={4}>
+        <Grid xs={12} md={4}>
           <Typography variant="h6" gutterBottom>
             {example.title}
           </Typography>
@@ -46,7 +46,7 @@ export default function AudioPlayer({ example, audioPlayer }) {
           </Typography>
         </Grid>
         
-        <Grid item xs={12} sm={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid xs={12} md={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Box 
             sx={{ 
               display: 'flex', 
@@ -69,7 +69,7 @@ export default function AudioPlayer({ example, audioPlayer }) {
           </Box>
         </Grid>
         
-        <Grid item xs={12} sm={4} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-end' }, alignItems: 'center' }}>
+        <Grid xs={12} md={4} sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' }, alignItems: 'center' }}>
           <Button 
             variant="contained" 
             color="primary"

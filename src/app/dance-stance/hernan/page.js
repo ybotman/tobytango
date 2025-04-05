@@ -6,8 +6,8 @@ import {
   Typography, 
   Box, 
   Paper,
-  Grid,
-  Divider
+  Divider,
+  Grid
 } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -78,7 +78,7 @@ export default function HernanStancePage() {
         </Box>
         
         <Grid container spacing={3} sx={{ mt: 2 }}>
-          <Grid item xs={12} md={4}>
+          <Grid xs={12} md={4}>
             <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
               <Image 
                 src="/dance-stance/hernan-excersizeA-1.png"
@@ -91,7 +91,7 @@ export default function HernanStancePage() {
               Initial balanced position
             </Typography>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid xs={12} md={4}>
             <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
               <Image 
                 src="/dance-stance/hernan-excersizeA-2.png"
@@ -104,7 +104,7 @@ export default function HernanStancePage() {
               Notice the natural curve forming
             </Typography>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid xs={12} md={4}>
             <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
               <Image 
                 src="/dance-stance/hernan-excersizeA-3.png"
@@ -196,7 +196,7 @@ export default function HernanStancePage() {
         </Typography>
         
         <Grid container spacing={3} sx={{ mt: 2 }}>
-          <Grid item xs={12} md={6}>
+          <Grid xs={12} md={6}>
             <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
               <Image 
                 src="/dance-stance/hernan-excersizeA-4.png"
@@ -209,7 +209,7 @@ export default function HernanStancePage() {
               Picado (sharp tap) while maintaining balance
             </Typography>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid xs={12} md={6}>
             <Box sx={{ position: 'relative', height: 300, borderRadius: '8px', overflow: 'hidden' }}>
               <Image 
                 src="/dance-stance/hernan-excersizeA-5.png"

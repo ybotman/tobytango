@@ -63,7 +63,7 @@ const menuStructure = [
             isSecondary: true,
             items: [
               { title: '-2-4 (coming soon)' },
-              { title: 'Syncopa (coming soon)' },
+              { title: 'Syncopa', path: '/rhythms/tango/Syncopa' },
               { title: '332 (coming soon)' }
             ]
           },
@@ -144,6 +144,17 @@ const menuStructure = [
       { title: 'Tango is NOT', path: '/tango-is-not', isSecondary: true },
       { title: 'Milongas', path: '/milongas', isSecondary: true },
       { title: 'Practicas', path: '/practicas', isSecondary: true }
+    ]
+  },
+  {
+    id: 'difficulties',
+    title: 'The Difficulties',
+    icon: CheckCircleOutlineIcon,
+    items: [
+      { title: 'No Drums', path: '/difficulties/no-drums', isSecondary: true },
+      { title: 'No Standard Patterns', path: '/difficulties/no-patterns', isSecondary: true },
+      { title: 'Improvisational', path: '/difficulties/improvisational', isSecondary: true },
+      { title: 'No One in Charge', path: '/difficulties/no-one-in-charge', isSecondary: true }
     ]
   },
   {

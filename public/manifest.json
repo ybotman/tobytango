@@ -1,0 +1,16 @@
+{
+  "name": "Toby Balsley Tango",
+  "short_name": "TobyTango",
+  "description": "Argentine Tango instruction and resources for dancers of all levels",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1976d2",
+  "theme_color": "#1976d2",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
