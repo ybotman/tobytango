@@ -18,7 +18,7 @@ import rhythmDescriptions from '../../../data/rhythmDescriptions';
 import mp3Examples from '../../../data/mp3Examples';
 
 export default function AdvancedRhythmsPage() {
-  const [expanded, setExpanded] = useState('Syncopa');
+  const [expanded, setExpanded] = useState(false);
   const audioPlayer = useAudioPlayer();
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -107,7 +107,7 @@ export default function AdvancedRhythmsPage() {
                     <>
                       <Box component="li" sx={{ mb: 1 }}>
                         <Typography variant="body1">
-                          Emphasizing the "and" counts between main beats
+                          Emphasizing the &quot;and&quot; counts between main beats
                         </Typography>
                       </Box>
                       <Box component="li" sx={{ mb: 1 }}>

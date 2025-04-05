@@ -17,7 +17,7 @@ import rhythmDescriptions from '../../../data/rhythmDescriptions';
 import mp3Examples from '../../../data/mp3Examples';
 
 export default function SingleTimePage() {
-  const [expanded, setExpanded] = useState('1-3-');
+  const [expanded, setExpanded] = useState(false);
   const audioPlayer = useAudioPlayer();
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -58,7 +58,7 @@ export default function SingleTimePage() {
             }}
           >
             <Typography variant="h5" sx={{ fontWeight: expanded === rhythm ? 'bold' : 'normal' }}>
-              {rhythm === "-2-4" ? "OffBeat " + rhythm : rhythm}
+              {rhythm === "-2-4" ? "OffBeat " + rhythm : rhythm === "1-3-" ? "Regular " + rhythm : rhythm}
             </Typography>
           </AccordionSummary>
           <AccordionDetails sx={{ pt: 3 }}>

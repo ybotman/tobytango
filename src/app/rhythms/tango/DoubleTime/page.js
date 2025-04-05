@@ -17,7 +17,7 @@ import rhythmDescriptions from '../../../data/rhythmDescriptions';
 import mp3Examples from '../../../data/mp3Examples';
 
 export default function DoubleTimePage() {
-  const [expanded, setExpanded] = useState('123-');
+  const [expanded, setExpanded] = useState(false);
   const audioPlayer = useAudioPlayer();
 
   const handleChange = (panel) => (event, isExpanded) => {

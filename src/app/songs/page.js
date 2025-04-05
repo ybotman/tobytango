@@ -55,11 +55,21 @@ const songData = {
   ],
   Milonga: [
     { id: 'darienzo-milonga-de-mis-amores', title: 'Milonga de Mis Amores', orchestra: 'D\'Arienzo', file: '/audio/Milonga/D\'Arienzo/Milonga de Mis Amores.mp3' }
+  ],
+  Interesting: [
+    // Gotan Project
+    { id: 'gotan-vuelvo-al-sur', title: 'Vuelvo Al Sur', orchestra: 'Gotan Project', file: '/audio/Interesting/Gotan/00 Vuelvo Al Sur.mp3' },
+    { id: 'gotan-checkmate', title: 'Checkmate Jaque Mate', orchestra: 'Gotan Project', file: '/audio/Interesting/Gotan/CHECKMATE JAQUE MATE.mp3' },
+    { id: 'gotan-una-musica-brutal', title: 'Una Musica Brutal', orchestra: 'Gotan Project', file: '/audio/Interesting/Gotan/Una Musica Brutal.mp3' },
+    
+    // Piazzolla
+    { id: 'piazzolla-milonga-del-angel', title: 'Milonga del Angel', orchestra: 'Piazzolla', file: '/audio/Interesting/Piazzolla/Milonga_del_angel.mp3' },
+    { id: 'piazzolla-oblivion', title: 'Oblivion', orchestra: 'Piazzolla', file: '/audio/Interesting/Piazzolla/Oblivion.mp3' }
   ]
 };
 
 export default function SongsPage() {
-  const [expanded, setExpanded] = useState('Tango');
+  const [expanded, setExpanded] = useState('Interesting');
   const [currentSong, setCurrentSong] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState({});
@@ -73,13 +83,43 @@ export default function SongsPage() {
     audioElement.current = new Audio();
     
     // Set up audio event handlers
-    audioElement.current.onended = handleSongEnd;
+    audioElement.current.onended = () => {
+      if (currentSong) {
+        setProgress(prev => ({
+          ...prev,
+          [currentSong.id]: 0
+        }));
+      }
+      
+      if (audioElement.current) {
+        audioElement.current.pause();
+        audioElement.current.currentTime = 0;
+      }
+      
+      if (progressInterval.current) {
+        clearInterval(progressInterval.current);
+        progressInterval.current = null;
+      }
+      
+      setIsPlaying(false);
+      setCurrentSong(null);
+    };
     audioElement.current.onpause = () => setIsPlaying(false);
     audioElement.current.onplay = () => setIsPlaying(true);
     
     // Clean up on unmount
     return () => {
-      stopAndCleanup();
+      if (audioElement.current) {
+        audioElement.current.pause();
+        audioElement.current.currentTime = 0;
+      }
+      
+      if (progressInterval.current) {
+        clearInterval(progressInterval.current);
+        progressInterval.current = null;
+      }
+      
+      setIsPlaying(false);
     };
   }, []);
 
@@ -181,7 +221,7 @@ export default function SongsPage() {
       </Typography>
 
       <Typography variant="body1" paragraph sx={{ mb: 4 }}>
-        Explore the essential tango, vals, and milonga songs in our collection. Click on any song to listen.
+        Explore the essential tango, vals, milonga, and interesting fusion songs in our collection. Click on any song to listen.
       </Typography>
 
       {Object.keys(songData).map(category => (
