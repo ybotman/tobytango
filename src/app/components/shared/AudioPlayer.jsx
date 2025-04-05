@@ -46,7 +46,7 @@ export default function AudioPlayer({ example, audioPlayer }) {
   return (
     <Paper elevation={3} sx={{ p: 3, borderRadius: 2 }}>
       <Grid container spacing={2} alignItems="center">
-        <Grid xs={12} md={4}>
+        <Grid item sx={{ gridColumn: { xs: 'span 12', md: 'span 4' } }}>
           <Typography variant="h6" gutterBottom>
             {example.title}
           </Typography>
@@ -55,7 +55,7 @@ export default function AudioPlayer({ example, audioPlayer }) {
           </Typography>
         </Grid>
         
-        <Grid xs={12} md={4} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid item sx={{ gridColumn: { xs: 'span 12', md: 'span 4' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Box 
             sx={{ 
               display: 'flex', 
@@ -78,7 +78,7 @@ export default function AudioPlayer({ example, audioPlayer }) {
           </Box>
         </Grid>
         
-        <Grid xs={12} md={4} sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' }, alignItems: 'center' }}>
+        <Grid item sx={{ gridColumn: { xs: 'span 12', md: 'span 4' }, display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' }, alignItems: 'center' }}>
           <Button 
             variant="contained" 
             color="primary"

@@ -1,0 +1,78 @@
+{
+  "pulses": [
+    {"start": 1.2, "end": 1.5, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 1.646, "end": 1.946, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 2.092, "end": 2.392, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 2.538, "end": 2.838, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 2.984, "end": 3.284, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 3.43, "end": 4, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 4.322, "end": 4.622, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 4.768, "end": 5.068, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 5.214, "end": 5.514, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 5.66, "end": 5.96, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 6.106, "end": 6.406, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 6.552, "end": 6.852, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 6.998, "end": 7.298, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 7.444, "end": 7.744, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 7.89, "end": 8.19, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 8.336, "end": 8.636, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 8.782, "end": 9.082, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 9.228, "end": 9.528, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 9.674, "end": 9.974, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 10.12, "end": 10.42, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 10.566, "end": 10.866, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 10.789, "end": 11.089, "type": "&", "icon": "rhythms/icons/&.png"},
+    {"start": 11.458, "end": 11.758, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 11.904, "end": 12.204, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 12.35, "end": 12.65, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 12.573, "end": 12.873, "type": "&", "icon": "rhythms/icons/&.png"},
+    {"start": 13.242, "end": 13.542, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 13.688, "end": 13.988, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 14.134, "end": 14.8, "type": "1", "icon": "rhythms/icons/1.png"},
+
+    {"start": 15.026, "end": 15.326, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 15.472, "end": 15.772, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 15.918, "end": 16.218, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 16.364, "end": 16.664, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 16.81, "end": 17.11, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 17.256, "end": 17.556, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 17.702, "end": 18.002, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 18.148, "end": 18.448, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 18.594, "end": 18.894, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 19.04, "end": 19.34, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 19.486, "end": 19.786, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 19.932, "end": 20.232, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 20.378, "end": 20.678, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 20.824, "end": 21.124, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 21.27, "end": 21.57, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 21.716, "end": 22.016, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 22.162, "end": 22.462, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 22.608, "end": 22.908, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 23.054, "end": 23.354, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 23.5, "end": 23.8, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 23.946, "end": 24.246, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 24.392, "end": 24.692, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 24.838, "end": 25.138, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 25.284, "end": 25.584, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 25.73, "end": 26.03, "type": "3", "icon": "rhythms/icons/3.png"},
+    {"start": 26.176, "end": 26.476, "type": "4", "icon": "rhythms/icons/4.png"},
+    
+    {"start": 26.622, "end": 26.922, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 27.068, "end": 27.368, "type": "2", "icon": "rhythms/icons/2.png"},
+    {"start": 27.514, "end": 27.814, "type": "3", "icon": "rhythms/icons/3.png"}
+  ]
+}
