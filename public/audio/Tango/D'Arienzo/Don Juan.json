@@ -8,15 +8,15 @@
     {"start": 2.984, "end": 3.284, "type": "4", "icon": "rhythms/icons/4.png"},
     
     {"start": 3.43, "end": 4, "type": "1", "icon": "rhythms/icons/1.png"},
-    {"start": 4.322, "end": 4.622, "type": "3", "icon": "rhythms/icons/3.png"},
-    {"start": 4.768, "end": 5.068, "type": "4", "icon": "rhythms/icons/4.png"},
+    {"start": 4.322, "end": 4.622, "type": "3b", "icon": "rhythms/icons/3b.png"},
+    {"start": 4.768, "end": 5.068, "type": "4b", "icon": "rhythms/icons/4b.png"},
     
-    {"start": 5.214, "end": 5.514, "type": "1", "icon": "rhythms/icons/1.png"},
-    {"start": 5.66, "end": 5.96, "type": "2", "icon": "rhythms/icons/2.png"},
-    {"start": 6.106, "end": 6.406, "type": "3", "icon": "rhythms/icons/3.png"},
-    {"start": 6.552, "end": 6.852, "type": "4", "icon": "rhythms/icons/4.png"},
+    {"start": 5.214, "end": 5.514, "type": "1b", "icon": "rhythms/icons/1b.png"},
+    {"start": 5.66, "end": 5.96, "type": "2b", "icon": "rhythms/icons/2b.png"},
+    {"start": 6.106, "end": 6.406, "type": "3b", "icon": "rhythms/icons/3b.png"},
+    {"start": 6.552, "end": 6.852, "type": "4b", "icon": "rhythms/icons/4b.png"},
     
-    {"start": 6.998, "end": 7.298, "type": "1", "icon": "rhythms/icons/1.png"},
+    {"start": 6.998, "end": 7.298, "type": "1b", "icon": "rhythms/icons/1b.png"},
     {"start": 7.444, "end": 7.744, "type": "2", "icon": "rhythms/icons/2.png"},
     {"start": 7.89, "end": 8.19, "type": "3", "icon": "rhythms/icons/3.png"},
     {"start": 8.336, "end": 8.636, "type": "4", "icon": "rhythms/icons/4.png"},
