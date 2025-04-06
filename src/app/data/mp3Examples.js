@@ -42,13 +42,13 @@ const mp3Examples = {
   ],
   '123-': [
     { 
-      id: 'donato-tierrita', 
-      title: 'Donato - Tierrita', 
-      file: '/audio/Tango/Donato/Tierrita.mp3', 
+      id: 'disarli-comme-il-faut', 
+      title: 'Di Sarli - Comme Il Faut', 
+      file: '/audio/Tango/DiSarli/Comme Il Faut.mp3', 
       startTime: 0, 
-      duration: 30, // Limit to 30 seconds
-      orchestra: "Donato",
-      year: 1940,
+      duration: 31,
+      orchestra: "Di Sarli",
+      year: 1942,
       comment: "Notice how beats 1, 2, and 3 are emphasized, creating a fuller, richer rhythm that omits only the 4th beat."
     }
   ],
