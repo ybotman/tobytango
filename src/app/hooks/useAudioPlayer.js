@@ -18,6 +18,8 @@ export default function useAudioPlayer(options = {}) {
   const [volume, setVolume] = useState(defaultVolume);
   const [muted, setMuted] = useState(false);
   const [pulseData, setPulseData] = useState({});
+  const [isLoading, setIsLoading] = useState({});
+  const [lastToggleTime, setLastToggleTime] = useState({});
   
   // Refs for audio elements
   const audioRefs = useRef({});
@@ -71,6 +73,14 @@ export default function useAudioPlayer(options = {}) {
     const audio = audioRefs.current[example.id];
     
     if (!audio) return;
+
+    // Debounce - prevent rapid toggles
+    const now = Date.now();
+    const lastTime = lastToggleTime[example.id] || 0;
+    if (now - lastTime < 300) {
+      return;
+    }
+    setLastToggleTime(prev => ({...prev, [example.id]: now}));
     
     // Stop all other playing tracks
     Object.keys(audioRefs.current).forEach(id => {
@@ -81,31 +91,70 @@ export default function useAudioPlayer(options = {}) {
     });
     
     if (!isPlaying[example.id]) {
-      // Preload pulse data and icons if not already loaded
-      await preloadAudioData(example);
-      
-      audio.currentTime = example.startTime || 0;
-      audio.play();
-      setIsPlaying(prev => ({...prev, [example.id]: true}));
-      
-      // If there's a duration limit, set up fade out and stop
-      if (example.duration) {
-        const fadeDuration = 4; // 4 seconds fade out
-        const stopTime = (example.startTime || 0) + example.duration;
+      try {
+        setIsLoading(prev => ({...prev, [example.id]: true}));
         
-        setTimeout(() => {
-          // Start fade out
-          const fadeInterval = setInterval(() => {
-            if (audio.volume > 0.05) {
-              audio.volume = Math.max(0, audio.volume - 0.05);
-            } else {
-              clearInterval(fadeInterval);
-              audio.pause();
-              audio.volume = volume; // Reset volume
-              setIsPlaying(prev => ({...prev, [example.id]: false}));
-            }
-          }, 200); // Adjust fade step rate
-        }, (example.duration - fadeDuration) * 1000);
+        // Preload pulse data and icons if not already loaded
+        await preloadAudioData(example);
+        
+        // Ensure audio is ready to play
+        if (audio.readyState < 2) { // HAVE_CURRENT_DATA or lower
+          await new Promise(resolve => {
+            const handleCanPlay = () => {
+              audio.removeEventListener('canplay', handleCanPlay);
+              resolve();
+            };
+            audio.addEventListener('canplay', handleCanPlay);
+            
+            // Timeout fallback if canplay never fires
+            setTimeout(() => {
+              audio.removeEventListener('canplay', handleCanPlay);
+              resolve();
+            }, 2000);
+          });
+        }
+        
+        audio.currentTime = example.startTime || 0;
+        
+        // Debug info in development
+        if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+          console.log(`Audio ${example.id} readyState:`, audio.readyState);
+          console.log(`Audio ${example.id} network state:`, audio.networkState);
+        }
+        
+        // Wait for play promise to resolve before continuing
+        await audio.play().catch(error => {
+          console.warn(`Play failed for ${example.id}:`, error.message);
+          throw error; // Re-throw to be caught by the outer try/catch
+        });
+        
+        setIsPlaying(prev => ({...prev, [example.id]: true}));
+        
+        // If there's a duration limit, set up fade out and stop
+        if (example.duration) {
+          const fadeDuration = 4; // 4 seconds fade out
+          const stopTime = (example.startTime || 0) + example.duration;
+          
+          setTimeout(() => {
+            // Start fade out
+            const fadeInterval = setInterval(() => {
+              if (audio.volume > 0.05) {
+                audio.volume = Math.max(0, audio.volume - 0.05);
+              } else {
+                clearInterval(fadeInterval);
+                audio.pause();
+                audio.volume = volume; // Reset volume
+                setIsPlaying(prev => ({...prev, [example.id]: false}));
+              }
+            }, 200); // Adjust fade step rate
+          }, (example.duration - fadeDuration) * 1000);
+        }
+      } catch (error) {
+        console.error("Error playing audio:", error);
+        // Reset playing state on failure
+        setIsPlaying(prev => ({...prev, [example.id]: false}));
+      } finally {
+        setIsLoading(prev => ({...prev, [example.id]: false}));
       }
     } else {
       audio.pause();
@@ -187,6 +236,7 @@ export default function useAudioPlayer(options = {}) {
     handleVolumeChange,
     toggleMute,
     pulseData,
-    preloadAudioData
+    preloadAudioData,
+    isLoading
   };
 }

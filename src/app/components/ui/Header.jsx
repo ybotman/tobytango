@@ -71,15 +71,15 @@ export default function Header() {
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar sx={{ minHeight: '64px' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-            <ArrowBackIcon 
-              sx={{ 
-                color: '#ffffff',
-                animation: isClient && !open ? `${pulse} 1.5s infinite ease-in-out` : 'none',
-                transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-                transition: 'transform 0.3s ease',
-                mr: 1
-              }} 
-            />
+            {/* Home button moved to the very left */}
+            <Link href="/" passHref>
+              <IconButton
+                aria-label="home"
+                sx={{ color: '#ffffff', mr: 2, '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.08)' }}}
+              >
+                <HomeIcon sx={{ fontSize: '1.75rem' }} />
+              </IconButton>
+            </Link>
             
             <IconButton
               edge="start"
@@ -89,6 +89,17 @@ export default function Header() {
             >
               <MenuIcon sx={{ fontSize: '1.75rem', color: '#ffffff' }} />
             </IconButton>
+            
+            {/* Arrow now after the hamburger menu */}
+            <ArrowBackIcon 
+              sx={{ 
+                color: '#ffffff',
+                ml: 1,
+                animation: isClient && !open ? `${pulse} 1.5s infinite ease-in-out` : 'none',
+                transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.3s ease',
+              }} 
+            />
             
             <Typography 
               variant="button" 
@@ -103,17 +114,7 @@ export default function Header() {
               MENU
             </Typography>
             
-            {/* Home button on the right side of the AppBar */}
-            <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>
-              <Link href="/" passHref>
-                <IconButton
-                  aria-label="home"
-                  sx={{ color: '#ffffff', '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.08)' }}}
-                >
-                  <HomeIcon sx={{ fontSize: '1.75rem' }} />
-                </IconButton>
-              </Link>
-            </Box>
+            <Box sx={{ flexGrow: 1 }} />
           </Box>
         </Toolbar>
       </AppBar>

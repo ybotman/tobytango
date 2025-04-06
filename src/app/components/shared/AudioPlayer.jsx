@@ -9,7 +9,8 @@ import {
   Box, 
   IconButton, 
   Slider,
-  Grid
+  Grid,
+  CircularProgress
 } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -32,7 +33,8 @@ export default function AudioPlayer({ example, audioPlayer }) {
     handleVolumeChange,
     toggleMute,
     pulseData,
-    preloadAudioData
+    preloadAudioData,
+    isLoading
   } = audioPlayer;
   
   // Preload data when component mounts
@@ -82,8 +84,9 @@ export default function AudioPlayer({ example, audioPlayer }) {
           <Button 
             variant="contained" 
             color="primary"
-            startIcon={<MusicNoteIcon />}
+            startIcon={isLoading[example.id] ? <CircularProgress size={16} color="inherit" /> : <MusicNoteIcon />}
             onClick={() => togglePlay(example)}
+            disabled={isLoading[example.id]}
             sx={{ px: 2 }}
           >
             Listen at {formatTime(example.startTime)}
@@ -95,9 +98,11 @@ export default function AudioPlayer({ example, audioPlayer }) {
         <audio
           ref={el => audioRefs.current[example.id] = el}
           src={example.file}
+          preload="auto"
           onTimeUpdate={() => handleTimeUpdate(example)}
           onLoadedMetadata={() => handleLoadedMetadata(example)}
           onEnded={() => setIsPlaying(prev => ({...prev, [example.id]: false}))}
+          onError={(e) => console.error(`Audio error for ${example.id}:`, e)}
         />
         
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
@@ -105,8 +110,11 @@ export default function AudioPlayer({ example, audioPlayer }) {
             onClick={() => togglePlay(example)}
             color="primary"
             size="large"
+            disabled={isLoading[example.id]}
           >
-            {isPlaying[example.id] ? <PauseIcon /> : <PlayArrowIcon />}
+            {isLoading[example.id] ? 
+              <CircularProgress size={24} /> : 
+              (isPlaying[example.id] ? <PauseIcon /> : <PlayArrowIcon />)}
           </IconButton>
           
           <Box sx={{ flexGrow: 1, mx: 2 }}>
