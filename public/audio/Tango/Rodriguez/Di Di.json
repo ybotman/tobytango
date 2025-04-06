@@ -5,22 +5,21 @@
     { "start": 2.27, "end": 2.77, "type": "2", "icon": "rhythms/icons/2.png" },
     { "start": 3.18, "end": 3.68, "type": "4", "icon": "rhythms/icons/4.png" },
     
-    { "start": 4.09, "end": 4.59, "type": "2", "icon": "rhythms/icons/2.png" },
-    { "start": 5.00, "end": 5.50, "type": "4", "icon": "rhythms/icons/4.png" },
-    { "start": 5.91, "end": 6.41, "type": "2", "icon": "rhythms/icons/2.png" },
-    { "start": 6.82, "end": 7.32, "type": "4", "icon": "rhythms/icons/4.png" },
+    { "start": 4.09, "end": 4.59, "type": "2b", "icon": "rhythms/icons/2b.png" },
+    { "start": 5.00, "end": 5.50, "type": "4b", "icon": "rhythms/icons/4b.png" },
+    { "start": 5.91, "end": 6.41, "type": "2b", "icon": "rhythms/icons/2b.png" },
+    { "start": 6.82, "end": 7.32, "type": "4b", "icon": "rhythms/icons/4b.png" },
     
-    { "start": 7.27, "end": 10, "type": "1", "icon": "rhythms/icons/1.png" },
-    
-    
+    { "start": 7.27, "end": 8.4, "type": "1", "icon": "rhythms/icons/1.png" },
+    { "start": 8.97, "end": 11, "type": "0", "icon": "rhythms/icons/0.png" },
+
     { "start": 11.37, "end": 11.87, "type": "2", "icon": "rhythms/icons/2.png" },
     { "start": 12.28, "end": 12.78, "type": "4", "icon": "rhythms/icons/4.png" },
     { "start": 13.19, "end": 13.69, "type": "2", "icon": "rhythms/icons/2.png" },
-    { "start": 14.10, "end": 14.60, "type": "4", "icon": "rhythms/icons/4.png" },
-    
-    { "start": 15.01, "end": 15.51, "type": "2", "icon": "rhythms/icons/2.png" },
-    { "start": 15.92, "end": 16.42, "type": "4", "icon": "rhythms/icons/4.png" },
-    { "start": 16.83, "end": 17.33, "type": "2", "icon": "rhythms/icons/2.png" },
-    { "start": 17.74, "end": 18.24, "type": "4", "icon": "rhythms/icons/4.png" }
+    { "start": 14.10, "end": 14.20, "type": "4", "icon": "rhythms/icons/4.png" },
+
+
+    { "start": 14.51, "end": 16.01, "type": "1", "icon": "rhythms/icons/1.png" },
+    { "start": 18.4, "end": 17.33, "type": "1", "icon": "rhythms/icons/1.png" }
   ]
 }
