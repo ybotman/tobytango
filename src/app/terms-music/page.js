@@ -58,6 +58,17 @@ export default function MusicDefinitionsPage() {
 
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h5" component="h2">RHYTHM</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography variant="body1" paragraph>
+              Rhythm is when things happen in music — the time-based structure behind every melody, harmony, and movement. It's what makes you tap your foot, nod your head.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="h5" component="h2">METER</Typography>
           </AccordionSummary>
           <AccordionDetails>

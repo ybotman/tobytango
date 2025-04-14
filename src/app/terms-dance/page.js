@@ -67,8 +67,11 @@ export default function DanceTermsPage() {
             <Typography variant="h5">RHYTHM</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography variant="body1">
+            <Typography variant="body1" paragraph>
               The choices of beats or sub-beats on which to step or move.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Rhythm is the art of choosing when and how to move — a repeating sense of time and motion that turns steps into music you can see and your partner can feel.
             </Typography>
           </AccordionDetails>
         </Accordion>
