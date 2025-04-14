@@ -41,8 +41,14 @@ export default function DanceTermsPage() {
             <Typography variant="h5">CADENCIA</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography variant="body1">
-              The subtle, rhythmic quality of movement expressing musicality and connection. Often described as the natural sway or flow within Tango movement.
+            <Typography variant="body1" paragraph>
+              The natural flow, pulse, and suspension in a dancer's movement that reflects the breath and soul of the music.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              It's the embodied feeling of weight, timing, and phrasing — how you walk, pause, glide, and transfer energy in harmony with the tango's rhythm and emotion.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Cadencia is not just moving to the music — it's moving with the music, letting it breathe through your body and your partner.
             </Typography>
           </AccordionDetails>
         </Accordion>
