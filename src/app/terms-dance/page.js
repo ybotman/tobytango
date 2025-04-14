@@ -24,22 +24,14 @@ export default function DanceTermsPage() {
 
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h5">SEQUENCE</Typography>
+            <Typography variant="h5">PULSE</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography variant="body1">
-              A series of predefined steps. In Argentine Tango, sequences are primarily tools for learning rather than fixed dance routines.
+            <Typography variant="body1" paragraph>
+              The emphasized beats felt strongly in tango music. Common pulses include beats 1 &amp; 3, sometimes all four beats, or just beat 1, depending on the orchestra&apos;s interpretation.
             </Typography>
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h5">RHYTHM</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body1">
-              The choices of beats or sub-beats on which to step or move.
+            <Typography variant="body1" paragraph>
+              Nearly every tango, vals, and milonga minimally has a pulse that matches a slow walk tempo - much slower than a normal walking pace. Think of a clock tick marking time steadily but deliberately. This underlying pulse creates the foundation upon which all tango movement is built, regardless of the complexity of the music layered above it.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -66,6 +58,28 @@ export default function DanceTermsPage() {
             <Typography variant="body1">
               <strong>Linear:</strong> Movements in a straight line, typically forward, backward, or side steps.<br />
               <strong>Rotational:</strong> Movements involving pivots, turns, or circular actions, typically around the axis of the dancer or partnership.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h5">RHYTHM</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography variant="body1">
+              The choices of beats or sub-beats on which to step or move.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h5">SEQUENCE</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography variant="body1">
+              A series of predefined steps. In Argentine Tango, sequences are primarily tools for learning rather than fixed dance routines.
             </Typography>
           </AccordionDetails>
         </Accordion>
