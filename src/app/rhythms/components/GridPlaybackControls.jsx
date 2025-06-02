@@ -33,7 +33,69 @@ export default function GridPlaybackControls({
 
   return (
     <Paper elevation={2} sx={{ p: 3, mt: 2 }}>
-      <Grid container spacing={3} alignItems="center">
+      {/* Tempo Control - Full Width at Top */}
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="subtitle1" gutterBottom sx={{ textAlign: 'center', fontWeight: 'bold' }}>
+          Tempo Control
+        </Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, mb: 2 }}>
+          <Typography variant="body1" sx={{ minWidth: 60, fontWeight: 'bold' }}>
+            60 BPM
+          </Typography>
+          <Slider
+            value={bpm}
+            onChange={handleBpmChange}
+            min={60}
+            max={200}
+            step={5}
+            valueLabelDisplay="on"
+            valueLabelFormat={formatBpm}
+            color="primary"
+            sx={{ 
+              flexGrow: 1,
+              height: 10,
+              '& .MuiSlider-thumb': {
+                width: 28,
+                height: 28
+              },
+              '& .MuiSlider-track': {
+                height: 10
+              },
+              '& .MuiSlider-rail': {
+                height: 10
+              }
+            }}
+            marks={[
+              { value: 60, label: '60' },
+              { value: 90, label: '90' },
+              { value: 120, label: '120' },
+              { value: 150, label: '150' },
+              { value: 180, label: '180' },
+              { value: 200, label: '200' }
+            ]}
+          />
+          <Typography variant="body1" sx={{ minWidth: 60, fontWeight: 'bold' }}>
+            200 BPM
+          </Typography>
+        </Box>
+        <Typography 
+          variant="h4" 
+          color="primary" 
+          sx={{ 
+            textAlign: 'center', 
+            fontWeight: 'bold',
+            background: 'linear-gradient(45deg, #1976d2, #42a5f5)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}
+        >
+          {bpm} BPM
+        </Typography>
+      </Box>
+
+      {/* Playback Controls and Progress */}
+      <Grid container spacing={3} alignItems="center" justifyContent="center">
         {/* Playback Controls */}
         <Grid item>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -70,41 +132,6 @@ export default function GridPlaybackControls({
             </Typography>
             <Typography variant="caption" color="text.secondary">
               Step
-            </Typography>
-          </Box>
-        </Grid>
-
-        {/* Tempo Control */}
-        <Grid item xs>
-          <Box sx={{ px: 2 }}>
-            <Typography variant="subtitle2" gutterBottom>
-              Tempo
-            </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <Typography variant="body2" sx={{ minWidth: 40 }}>
-                60
-              </Typography>
-              <Slider
-                value={bpm}
-                onChange={handleBpmChange}
-                min={60}
-                max={180}
-                step={5}
-                valueLabelDisplay="auto"
-                valueLabelFormat={formatBpm}
-                color="primary"
-                sx={{ flexGrow: 1 }}
-              />
-              <Typography variant="body2" sx={{ minWidth: 40 }}>
-                180
-              </Typography>
-            </Box>
-            <Typography 
-              variant="h6" 
-              color="primary" 
-              sx={{ textAlign: 'center', mt: 1 }}
-            >
-              {bpm} BPM
             </Typography>
           </Box>
         </Grid>

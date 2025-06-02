@@ -6,8 +6,13 @@ import {
   Typography, 
   Paper,
   Grid,
-  Alert
+  Alert,
+  IconButton,
+  Tooltip,
+  Slider
 } from '@mui/material';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import * as Tone from 'tone';
 import GridCell from './GridCell';
 import GridPlaybackControls from './GridPlaybackControls';
@@ -48,6 +53,19 @@ export default function RhythmGrid() {
   const [bpm, setBpm] = useState(120);
   const [loading, setLoading] = useState(false);
   const [audioError, setAudioError] = useState(null);
+  const [isClient, setIsClient] = useState(false);
+  const [mutedTracks, setMutedTracks] = useState({
+    drumA: false,
+    drumB: false,
+    bass: false,
+    bassB: false
+  });
+  const [trackVolumes, setTrackVolumes] = useState({
+    drumA: 70,
+    drumB: 70, 
+    bass: 70,
+    bassB: 70
+  });
 
   // Tone.js refs
   const synthsRef = useRef({
@@ -80,6 +98,11 @@ export default function RhythmGrid() {
       setAudioError('Failed to initialize audio system. Please check your browser audio settings.');
     }
   }, [bpm]);
+
+  // Client-side initialization to prevent hydration mismatch
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Clean up Tone.js on unmount
   useEffect(() => {
@@ -129,6 +152,44 @@ export default function RhythmGrid() {
     }
   };
 
+  // Handle track mute toggle - works during playback
+  const handleTrackMute = (trackType) => {
+    setMutedTracks(prev => {
+      const newMutedState = !prev[trackType];
+      
+      // Immediately apply mute to the synth if it exists
+      if (synthsRef.current[trackType]) {
+        if (newMutedState) {
+          // Mute: set volume to -Infinity
+          synthsRef.current[trackType].volume.value = -Infinity;
+        } else {
+          // Unmute: restore volume based on track volume setting
+          const trackVolumeDb = (trackVolumes[trackType] / 100) * 40 - 40;
+          synthsRef.current[trackType].volume.value = trackVolumeDb;
+        }
+      }
+      
+      return {
+        ...prev,
+        [trackType]: newMutedState
+      };
+    });
+  };
+
+  // Handle track volume change - works during playback
+  const handleTrackVolume = (trackType, volume) => {
+    setTrackVolumes(prev => ({
+      ...prev,
+      [trackType]: volume
+    }));
+    
+    // Immediately apply volume to the synth if it exists and not muted
+    if (synthsRef.current[trackType] && !mutedTracks[trackType]) {
+      const trackVolumeDb = (volume / 100) * 40 - 40;
+      synthsRef.current[trackType].volume.value = trackVolumeDb;
+    }
+  };
+
   // Create and schedule the sequence
   const createSequence = useCallback(() => {
     if (!rhythmData || !isInitializedRef.current) return;
@@ -142,53 +203,37 @@ export default function RhythmGrid() {
     
     sequenceRef.current = new Tone.Sequence(
       (time, step) => {
-        setCurrentStep(step);
+        // Remove visual step highlighting - not needed
 
-        // Play drum A
+        // Play drum A - muting handled by synth volume
         const drumACell = tracks.drumA[step];
         if (drumACell?.isActive && synthsRef.current.drumA) {
           const sound = DRUM_SOUNDS[drumACell.sound] || DRUM_SOUNDS.kick;
-          const intensity = drumACell.intensity || 'medium';
-          const volume = intensity === 'strong' ? 0 : intensity === 'medium' ? -6 : -12;
-          
-          synthsRef.current.drumA.volume.value = volume;
           synthsRef.current.drumA.triggerAttackRelease(sound.frequency, "8n", time);
         }
 
-        // Play drum B
+        // Play drum B - muting handled by synth volume
         const drumBCell = tracks.drumB[step];
         if (drumBCell?.isActive && synthsRef.current.drumB) {
           const sound = DRUM_SOUNDS[drumBCell.sound] || DRUM_SOUNDS.snare;
-          const intensity = drumBCell.intensity || 'medium';
-          const volume = intensity === 'strong' ? 0 : intensity === 'medium' ? -6 : -12;
-          
-          synthsRef.current.drumB.volume.value = volume;
           synthsRef.current.drumB.triggerAttackRelease(sound.frequency, "8n", time);
         }
 
-        // Play bass
+        // Play bass - muting handled by synth volume
         const bassCell = tracks.bass[step];
         if (bassCell?.isActive && synthsRef.current.bass) {
           const noteFreq = BASS_NOTES[bassCell.note] || BASS_NOTES.A;
           const octaveMultiplier = Math.pow(2, (bassCell.octave || 2) - 1);
           const frequency = noteFreq * octaveMultiplier;
-          const intensity = bassCell.intensity || 'medium';
-          const volume = intensity === 'strong' ? 0 : intensity === 'medium' ? -6 : -12;
-          
-          synthsRef.current.bass.volume.value = volume;
           synthsRef.current.bass.triggerAttackRelease(frequency, "8n", time);
         }
 
-        // Play bass B
+        // Play bass B - muting handled by synth volume
         const bassBCell = tracks.bassB[step];
         if (bassBCell?.isActive && synthsRef.current.bassB) {
           const noteFreq = BASS_NOTES[bassBCell.note] || BASS_NOTES.A;
           const octaveMultiplier = Math.pow(2, (bassBCell.octave || 2) - 1);
           const frequency = noteFreq * octaveMultiplier;
-          const intensity = bassBCell.intensity || 'medium';
-          const volume = intensity === 'strong' ? 0 : intensity === 'medium' ? -6 : -12;
-          
-          synthsRef.current.bassB.volume.value = volume;
           synthsRef.current.bassB.triggerAttackRelease(frequency, "8n", time);
         }
       },
@@ -198,6 +243,13 @@ export default function RhythmGrid() {
 
     sequenceRef.current.loop = true;
   }, [rhythmData]);
+
+  // Recreate sequence only when rhythm data changes (not for mute/volume)
+  useEffect(() => {
+    if (rhythmData && isInitializedRef.current) {
+      createSequence();
+    }
+  }, [rhythmData, createSequence]);
 
   // Handle play
   const handlePlay = async () => {
@@ -245,6 +297,24 @@ export default function RhythmGrid() {
       Tone.Transport.bpm.value = bpm;
     }
   }, [bpm]);
+
+  // Prevent hydration mismatch by only rendering interactive components on client
+  if (!isClient) {
+    return (
+      <Box>
+        <RhythmPresetSelector 
+          selectedPreset={null}
+          onPresetChange={() => {}}
+          loading={false}
+        />
+        <Paper sx={{ p: 3, textAlign: 'center' }}>
+          <Typography variant="h6" color="text.secondary">
+            Loading interactive rhythm grid...
+          </Typography>
+        </Paper>
+      </Box>
+    );
+  }
 
   if (!rhythmData) {
     return (
@@ -301,6 +371,43 @@ export default function RhythmGrid() {
                    trackType === 'bass' ? 'Bass A' :
                    trackType === 'bassB' ? 'Bass B' : trackType}
                 </Typography>
+                
+                {/* Mute Button */}
+                <Tooltip title={mutedTracks[trackType] ? 'Unmute Track' : 'Mute Track'}>
+                  <IconButton
+                    onClick={() => handleTrackMute(trackType)}
+                    size="small"
+                    sx={{
+                      ml: 1,
+                      color: mutedTracks[trackType] ? '#f44336' : '#666',
+                      '&:hover': {
+                        backgroundColor: mutedTracks[trackType] ? 'rgba(244, 67, 54, 0.1)' : 'rgba(0,0,0,0.1)'
+                      }
+                    }}
+                  >
+                    {mutedTracks[trackType] ? <VolumeOffIcon /> : <VolumeUpIcon />}
+                  </IconButton>
+                </Tooltip>
+                
+                {/* Volume Slider */}
+                <Box sx={{ ml: 2, minWidth: 100, maxWidth: 150 }}>
+                  <Slider
+                    value={trackVolumes[trackType]}
+                    onChange={(_, value) => handleTrackVolume(trackType, value)}
+                    min={0}
+                    max={100}
+                    size="small"
+                    valueLabelDisplay="auto"
+                    valueLabelFormat={(value) => `${value}%`}
+                    sx={{
+                      color: (trackType === 'bass' || trackType === 'bassB') ? '#4caf50' : '#1976d2',
+                      '& .MuiSlider-thumb': {
+                        width: 16,
+                        height: 16
+                      }
+                    }}
+                  />
+                </Box>
                 
                 <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                   {trackData.map((cellData, stepIndex) => (

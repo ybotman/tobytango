@@ -89,10 +89,9 @@ export default function SoundSelectionMenu({
         }
       }}
     >
-      {isDrum && (
-        <>
-          <ListSubheader>Sound</ListSubheader>
-          {DRUM_SOUNDS.map((sound) => (
+      {isDrum && [
+          <ListSubheader key="sound-header">Sound</ListSubheader>,
+          ...DRUM_SOUNDS.map((sound) => (
             <MenuItem
               key={sound}
               onClick={() => handleSoundSelect(sound)}
@@ -101,12 +100,12 @@ export default function SoundSelectionMenu({
             >
               {getSoundDisplayName(sound)}
             </MenuItem>
-          ))}
+          )),
           
-          <Divider />
+          <Divider key="divider-1" />,
           
-          <ListSubheader>Intensity</ListSubheader>
-          {INTENSITIES.map((intensity) => (
+          <ListSubheader key="intensity-header">Intensity</ListSubheader>,
+          ...INTENSITIES.map((intensity) => (
             <MenuItem
               key={intensity}
               onClick={() => handleIntensitySelect(intensity)}
@@ -115,14 +114,12 @@ export default function SoundSelectionMenu({
             >
               {getIntensityDisplayName(intensity)}
             </MenuItem>
-          ))}
-        </>
-      )}
+          ))
+      ]}
 
-      {isBass && (
-        <>
-          <ListSubheader>Note</ListSubheader>
-          {BASS_NOTES.map((note) => (
+      {isBass && [
+          <ListSubheader key="note-header">Note</ListSubheader>,
+          ...BASS_NOTES.map((note) => (
             <MenuItem
               key={note}
               onClick={() => handleNoteSelect(note)}
@@ -131,12 +128,12 @@ export default function SoundSelectionMenu({
             >
               {note}
             </MenuItem>
-          ))}
+          )),
           
-          <Divider />
+          <Divider key="divider-2" />,
           
-          <ListSubheader>Octave</ListSubheader>
-          {OCTAVES.map((octave) => (
+          <ListSubheader key="octave-header">Octave</ListSubheader>,
+          ...OCTAVES.map((octave) => (
             <MenuItem
               key={octave}
               onClick={() => handleOctaveSelect(octave)}
@@ -145,23 +142,22 @@ export default function SoundSelectionMenu({
             >
               {octave}
             </MenuItem>
-          ))}
+          )),
           
-          <Divider />
+          <Divider key="divider-3" />,
           
-          <ListSubheader>Intensity</ListSubheader>
-          {INTENSITIES.map((intensity) => (
+          <ListSubheader key="intensity-header-bass">Intensity</ListSubheader>,
+          ...INTENSITIES.map((intensity) => (
             <MenuItem
-              key={intensity}
+              key={`bass-${intensity}`}
               onClick={() => handleIntensitySelect(intensity)}
               selected={currentCellData.intensity === intensity}
               sx={{ pl: 3 }}
             >
               {getIntensityDisplayName(intensity)}
             </MenuItem>
-          ))}
-        </>
-      )}
+          ))
+      ]}
     </Menu>
   );
 }
