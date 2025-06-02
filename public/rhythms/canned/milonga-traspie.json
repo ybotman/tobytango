@@ -16,14 +16,14 @@
       {"isActive": false, "sound": "kick"}
     ],
     "drumB": [
-      {"isActive": false, "sound": "snare"},
-      {"isActive": false, "sound": "hihat", "intensity": "soft"},
-      {"isActive": false, "sound": "snare"},
-      {"isActive": true, "sound": "hihat", "intensity": "soft"},
-      {"isActive": false, "sound": "snare"},
-      {"isActive": false, "sound": "hihat", "intensity": "soft"},
-      {"isActive": false, "sound": "snare"},
-      {"isActive": false, "sound": "hihat", "intensity": "soft"}
+      {"isActive": true, "sound": "shaker", "intensity": "soft"},
+      {"isActive": true, "sound": "shaker", "intensity": "soft"},
+      {"isActive": true, "sound": "shaker", "intensity": "soft"},
+      {"isActive": true, "sound": "shaker", "intensity": "soft"},
+      {"isActive": true, "sound": "shaker", "intensity": "soft"},
+      {"isActive": true, "sound": "shaker", "intensity": "soft"},
+      {"isActive": true, "sound": "shaker", "intensity": "soft"},
+      {"isActive": true, "sound": "shaker", "intensity": "soft"}
     ],
     "bass": [
       {"isActive": true, "note": "A", "octave": 2, "intensity": "medium"},
