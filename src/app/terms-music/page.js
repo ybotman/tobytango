@@ -58,6 +58,17 @@ export default function MusicDefinitionsPage() {
 
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="h5" component="h2">RHYTHM</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography variant="body1" paragraph>
+              Rhythm is when things happen in music — the time-based structure behind every melody, harmony, and movement. It's what makes you tap your foot, nod your head.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Typography variant="h5" component="h2">METER</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -98,17 +109,6 @@ export default function MusicDefinitionsPage() {
               <strong>Tango:</strong> slower, dramatic, expressive.<br />
               <strong>Vals:</strong> flowing, graceful, turning.<br />
               <strong>Milonga:</strong> playful, rhythmic, faster.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-
-        <Accordion>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h5" component="h2">PULSE</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body1" paragraph>
-              The emphasized beats felt strongly in tango music. Common pulses include beats 1 &amp; 3, sometimes all four beats, or just beat 1, depending on the orchestra&apos;s interpretation.
             </Typography>
           </AccordionDetails>
         </Accordion>
