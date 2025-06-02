@@ -10,7 +10,7 @@ import {
   ListSubheader
 } from '@mui/material';
 
-const DRUM_SOUNDS = ['kick', 'snare', 'hihat', 'rim'];
+const DRUM_SOUNDS = ['kick', 'snare', 'hihat', 'rim', 'shaker'];
 const INTENSITIES = ['soft', 'medium', 'strong'];
 const BASS_NOTES = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
 const OCTAVES = [1, 2, 3, 4];
@@ -55,7 +55,8 @@ export default function SoundSelectionMenu({
       kick: 'Kick Drum',
       snare: 'Snare Drum', 
       hihat: 'Hi-Hat',
-      rim: 'Rim Shot'
+      rim: 'Rim Shot',
+      shaker: 'Shaker'
     };
     return names[sound] || sound;
   };

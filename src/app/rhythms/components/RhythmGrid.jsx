@@ -23,7 +23,8 @@ const DRUM_SOUNDS = {
   kick: { frequency: 60, envelope: { attack: 0.01, decay: 0.3, sustain: 0 } },
   snare: { frequency: 200, envelope: { attack: 0.01, decay: 0.2, sustain: 0 } },
   hihat: { frequency: 800, envelope: { attack: 0.01, decay: 0.1, sustain: 0 } },
-  rim: { frequency: 300, envelope: { attack: 0.01, decay: 0.15, sustain: 0 } }
+  rim: { frequency: 300, envelope: { attack: 0.01, decay: 0.15, sustain: 0 } },
+  shaker: { frequency: 1200, envelope: { attack: 0.01, decay: 0.05, sustain: 0 } }
 };
 
 const BASS_NOTES = {
@@ -126,22 +127,31 @@ export default function RhythmGrid() {
     handleStop(); // Stop playback when changing presets
   };
 
-  // Handle cell click (toggle active state)
+  // Handle cell click (toggle active state) - avoid sequence recreation
   const handleCellClick = (trackType, stepIndex, isActive) => {
     if (!rhythmData) return;
 
-    const newRhythmData = { ...rhythmData };
-    newRhythmData.tracks[trackType][stepIndex].isActive = isActive;
-    setRhythmData(newRhythmData);
+    // Create new rhythm data without triggering sequence recreation
+    setRhythmData(prevData => {
+      const newRhythmData = { ...prevData };
+      newRhythmData.tracks[trackType][stepIndex] = {
+        ...newRhythmData.tracks[trackType][stepIndex],
+        isActive: isActive
+      };
+      return newRhythmData;
+    });
   };
 
-  // Handle cell data change (sound, note, intensity, etc.)
+  // Handle cell data change (sound, note, intensity, etc.) - avoid sequence recreation
   const handleCellChange = (trackType, stepIndex, newCellData) => {
     if (!rhythmData) return;
 
-    const newRhythmData = { ...rhythmData };
-    newRhythmData.tracks[trackType][stepIndex] = newCellData;
-    setRhythmData(newRhythmData);
+    // Create new rhythm data without triggering sequence recreation
+    setRhythmData(prevData => {
+      const newRhythmData = { ...prevData };
+      newRhythmData.tracks[trackType][stepIndex] = newCellData;
+      return newRhythmData;
+    });
   };
 
   // Handle BPM change
@@ -191,19 +201,21 @@ export default function RhythmGrid() {
   };
 
   // Create and schedule the sequence
-  const createSequence = useCallback(() => {
-    if (!rhythmData || !isInitializedRef.current) return;
+  const createSequence = useCallback((currentRhythmData) => {
+    const dataToUse = currentRhythmData || rhythmData;
+    if (!dataToUse || !isInitializedRef.current) return;
 
     // Clear existing sequence
     if (sequenceRef.current) {
       sequenceRef.current.dispose();
     }
 
-    const { tracks, loopLength } = rhythmData;
+    const { tracks, loopLength } = dataToUse;
     
     sequenceRef.current = new Tone.Sequence(
       (time, step) => {
-        // Remove visual step highlighting - not needed
+        // Update current step for indicator
+        setCurrentStep(step);
 
         // Play drum A - muting handled by synth volume
         const drumACell = tracks.drumA[step];
@@ -242,14 +254,21 @@ export default function RhythmGrid() {
     );
 
     sequenceRef.current.loop = true;
-  }, [rhythmData]);
+  }, []); // Remove rhythmData dependency to prevent unnecessary recreations
 
-  // Recreate sequence only when rhythm data changes (not for mute/volume)
+  // Track when preset changes to recreate sequence (not for cell edits)
+  const [lastPresetName, setLastPresetName] = useState(null);
+  
+  // Recreate sequence only when preset changes (not for cell edits)
   useEffect(() => {
     if (rhythmData && isInitializedRef.current) {
-      createSequence();
+      // Only recreate sequence if preset changed, not cell edits
+      if (rhythmData.name !== lastPresetName) {
+        setLastPresetName(rhythmData.name);
+        createSequence(rhythmData);
+      }
     }
-  }, [rhythmData, createSequence]);
+  }, [rhythmData, lastPresetName]); // Remove createSequence from dependencies
 
   // Handle play
   const handlePlay = async () => {
@@ -262,7 +281,7 @@ export default function RhythmGrid() {
         await Tone.start();
       }
 
-      createSequence();
+      createSequence(rhythmData);
       
       if (sequenceRef.current) {
         sequenceRef.current.start();

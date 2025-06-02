@@ -1,0 +1,41 @@
+{
+  "name": "Vals 1-2",
+  "rhythmType": "Vals",
+  "timeSignature": "3/4",
+  "loopLength": 6,
+  "defaultBPM": 110,
+  "tracks": {
+    "drumA": [
+      { "isActive": true, "sound": "kick", "intensity": "strong" },
+      { "isActive": true, "sound": "kick" },
+      { "isActive": false, "sound": "kick" },
+      { "isActive": true, "sound": "kick", "intensity": "strong" },
+      { "isActive": false, "sound": "kick" },
+      { "isActive": false, "sound": "kick" }
+    ],
+    "drumB": [
+      { "isActive": true, "sound": "hihat", "intensity": "soft" },
+      { "isActive": true, "sound": "hihat", "intensity": "soft" },
+      { "isActive": false, "sound": "hihat", "intensity": "soft" },
+      { "isActive": true, "sound": "hihat", "intensity": "soft" },
+      { "isActive": false, "sound": "hihat", "intensity": "soft" },
+      { "isActive": false, "sound": "hihat", "intensity": "soft" }
+    ],
+    "bass": [
+      {"isActive": true, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "C#", "octave": 2, "intensity": "soft"},
+      {"isActive": true, "note": "E", "octave": 2, "intensity": "soft"},
+      {"isActive": true, "note": "D", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "F", "octave": 2, "intensity": "soft"},
+      {"isActive": true, "note": "A", "octave": 2, "intensity": "medium"}
+    ],
+    "bassB": [
+      { "isActive": true, "note": "A", "octave": 1, "intensity": "soft" },
+      { "isActive": true, "note": "A", "octave": 1, "intensity": "soft" },
+      { "isActive": true, "note": "A", "octave": 1, "intensity": "soft" },
+      { "isActive": true, "note": "A", "octave": 1, "intensity": "soft" },
+      { "isActive": true, "note": "A", "octave": 1, "intensity": "soft" },
+      { "isActive": true, "note": "A", "octave": 1, "intensity": "soft" }
+    ]
+  }
+}

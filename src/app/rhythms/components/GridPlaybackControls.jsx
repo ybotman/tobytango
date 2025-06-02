@@ -117,7 +117,6 @@ export default function GridPlaybackControls({
               onClick={onStop}
               color="secondary"
               size="large"
-              disabled={!isPlaying}
             >
               <StopIcon />
             </IconButton>

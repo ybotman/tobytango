@@ -9,7 +9,8 @@ const SOUND_COLORS = {
   kick: '#f44336',    // Red
   snare: '#2196f3',   // Blue
   hihat: '#ff9800',   // Orange
-  rim: '#9c27b0'      // Purple
+  rim: '#9c27b0',     // Purple
+  shaker: '#795548'   // Brown
 };
 
 const BASS_COLOR = '#4caf50'; // Green
