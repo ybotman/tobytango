@@ -61,12 +61,30 @@ Document what was discovered, suspected causes, and open questions._
 ## 🛠️ PATCH (Required)
 _Fix details, implementation notes, and blockers.  
 Document what was changed, how, and any technical notes._  
-**Last updated:** 2025-01-06 15:30
+**Last updated:** 2025-01-06 16:00
 
-**Planned Fixes:**
-1. **Grid Cell Click**: Isolate cell toggle from audio sequence
-2. **Step Indicator**: Restore step counter display (1/8)
-3. **Stop Button**: Fix stop functionality to properly reset sequence
+**Implemented Fixes:**
+
+1. **Grid Cell Click Issue - FIXED**:
+   - **Problem**: `handleCellClick` modified `rhythmData` → triggered `useEffect` → called `createSequence()` → stopped playback
+   - **Solution**: Added preset name tracking (`lastPresetName`) to only recreate sequence on preset changes, not cell edits
+   - **Code**: Modified `useEffect` in `RhythmGrid.jsx` to check `rhythmData.name !== lastPresetName`
+
+2. **Step Indicator - RESTORED**:
+   - **Problem**: `setCurrentStep(step)` was removed from sequence callback
+   - **Solution**: Added `setCurrentStep(step)` back to sequence callback without visual track highlighting
+   - **Result**: Step indicator now shows "1/8", "2/8", etc. during playback
+
+3. **Stop Button - FIXED**:
+   - **Problem**: Stop button had `disabled={!isPlaying}` making it unusable when stopped
+   - **Solution**: Removed `disabled` condition from stop button
+   - **Result**: Stop button always available for reset functionality
+
+**Technical Implementation:**
+- **Cell State Updates**: Use functional `setState` to avoid unnecessary re-renders
+- **Sequence Isolation**: Only preset changes trigger sequence recreation
+- **Step Counter**: Real-time step updates without visual cell highlighting
+- **UX Improvement**: Stop button always functional for better user control
 
 ---
 
@@ -79,15 +97,16 @@ Document what was changed, how, and any technical notes._
   - `/src/app/rhythms/components/GridPlaybackControls.jsx`
 
 ## Fix (if known or applied)
-- **Status:** 🚧 In Progress
-- **Fix Description:** TBD - Need to investigate current click handlers
-- **Testing:** Manual testing of grid interactions during playback
+- **Status:** ✅ Fixed
+- **Fix Description:** Isolated cell edits from sequence recreation, restored step indicator, fixed stop button
+- **Testing:** Manual testing confirmed - grid clicks maintain audio playback, step indicator functional
 
 ## Resolution Log
 - **Commit/Branch:** `issue/1001-grid-click-stops-audio`
-- **PR:** TBD
-- **Deployed To:** Local Development
-- **Verified By:** TBD
+- **Commit Hash:** 4ef5c6e
+- **PR:** Ready for merge into feature/3001-milonga-rhythm-grid
+- **Deployed To:** Local Development (localhost:3025)
+- **Verified By:** Patch Mode testing
 
 ---
 

@@ -1,0 +1,21 @@
+{
+  "name": "Vals 1-2",
+  "rhythmType": "Vals",
+  "timeSignature": "3/4",
+  "loopLength": 6,
+  "defaultBPM": 110,
+  "tracks": {
+    "drumA": [
+
+    ],
+    "drumB": [
+
+    ],
+    "bass": [
+
+    ],
+    "bassB": [
+
+    ]
+  }
+}

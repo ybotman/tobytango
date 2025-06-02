@@ -200,15 +200,16 @@ export default function RhythmGrid() {
   };
 
   // Create and schedule the sequence
-  const createSequence = useCallback(() => {
-    if (!rhythmData || !isInitializedRef.current) return;
+  const createSequence = useCallback((currentRhythmData) => {
+    const dataToUse = currentRhythmData || rhythmData;
+    if (!dataToUse || !isInitializedRef.current) return;
 
     // Clear existing sequence
     if (sequenceRef.current) {
       sequenceRef.current.dispose();
     }
 
-    const { tracks, loopLength } = rhythmData;
+    const { tracks, loopLength } = dataToUse;
     
     sequenceRef.current = new Tone.Sequence(
       (time, step) => {
@@ -252,7 +253,7 @@ export default function RhythmGrid() {
     );
 
     sequenceRef.current.loop = true;
-  }, [rhythmData]);
+  }, []); // Remove rhythmData dependency to prevent unnecessary recreations
 
   // Track when preset changes to recreate sequence (not for cell edits)
   const [lastPresetName, setLastPresetName] = useState(null);
@@ -263,10 +264,10 @@ export default function RhythmGrid() {
       // Only recreate sequence if preset changed, not cell edits
       if (rhythmData.name !== lastPresetName) {
         setLastPresetName(rhythmData.name);
-        createSequence();
+        createSequence(rhythmData);
       }
     }
-  }, [rhythmData, createSequence, lastPresetName]);
+  }, [rhythmData, lastPresetName]); // Remove createSequence from dependencies
 
   // Handle play
   const handlePlay = async () => {
@@ -279,7 +280,7 @@ export default function RhythmGrid() {
         await Tone.start();
       }
 
-      createSequence();
+      createSequence(rhythmData);
       
       if (sequenceRef.current) {
         sequenceRef.current.start();

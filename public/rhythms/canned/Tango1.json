@@ -1,0 +1,21 @@
+{
+  "name": "Tago 1-1",
+  "rhythmType": "Tango",
+  "timeSignature": "4/4",
+  "loopLength": 8,
+  "defaultBPM": 110,
+  "tracks": {
+    "drumA": [
+
+    ],
+    "drumB": [
+
+    ],
+    "bass": [
+
+    ],
+    "bassB": [
+
+    ]
+  }
+}
