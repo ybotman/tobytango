@@ -1,5 +1,5 @@
 {
-  "name": "Vals 1-2",
+  "name": "Vals 123",
   "rhythmType": "Vals",
   "timeSignature": "3/4",
   "loopLength": 6,
@@ -8,7 +8,7 @@
     "drumA": [
       { "isActive": true, "sound": "kick", "intensity": "strong" },
       { "isActive": true, "sound": "kick" },
-      { "isActive": false, "sound": "kick" },
+      { "isActive": true, "sound": "kick" },
       { "isActive": true, "sound": "kick", "intensity": "strong" },
       { "isActive": false, "sound": "kick" },
       { "isActive": false, "sound": "kick" }
@@ -16,7 +16,7 @@
     "drumB": [
       { "isActive": true, "sound": "hihat", "intensity": "soft" },
       { "isActive": true, "sound": "hihat", "intensity": "soft" },
-      { "isActive": false, "sound": "hihat", "intensity": "soft" },
+      { "isActive": true, "sound": "hihat", "intensity": "soft" },
       { "isActive": true, "sound": "hihat", "intensity": "soft" },
       { "isActive": false, "sound": "hihat", "intensity": "soft" },
       { "isActive": false, "sound": "hihat", "intensity": "soft" }
@@ -38,4 +38,4 @@
       { "isActive": true, "note": "A", "octave": 1, "intensity": "soft" }
     ]
   }
-}
+} 

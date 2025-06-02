@@ -12,17 +12,28 @@ import {
   CircularProgress
 } from '@mui/material';
 
-// Available rhythm presets - will be expanded with tango, vals, etc.
+// Available rhythm presets - expanded with tango, vals, etc.
 const PRESET_FILES = [
   // Milonga rhythms
   { value: 'milonga-lisa', label: 'Milonga Lisa (Simple)', type: 'milonga' },
   { value: 'milonga-traspie', label: 'Milonga Traspie (Double Step)', type: 'milonga' },
   { value: 'milonga-contratiempo', label: 'Milonga Contratiempo (Off-beat)', type: 'milonga' },
-  // Future: Tango rhythms
-  // { value: 'tango-basic', label: 'Basic Tango (1-3-)', type: 'tango' },
-  // { value: 'tango-double', label: 'Double Time (1234)', type: 'tango' },
-  // Future: Vals rhythms
-  // { value: 'vals-basic', label: 'Basic Vals (1--)', type: 'vals' },
+  
+  // Tango rhythms  
+  { value: 'Tango1', label: 'Tango Basic (1---)', type: 'tango' },
+  { value: 'Tango 1-3', label: 'Tango 1-3- Pattern', type: 'tango' },
+  { value: 'Tango 123', label: 'Tango 123- Pattern', type: 'tango' },
+  { value: 'Tango 134', label: 'Tango 1-34 Pattern', type: 'tango' },
+  { value: 'Tango 2-4', label: 'Tango -2-4 Pattern', type: 'tango' },
+  { value: 'Tango 332', label: 'Tango 3-3-2 Pattern', type: 'tango' },
+  { value: 'Tango 4-1', label: 'Tango 4--1 Pattern', type: 'tango' },
+  { value: 'Tango Sycopa A', label: 'Tango Syncopa A', type: 'tango' },
+  { value: 'Tango Sycopa A-B', label: 'Tango Syncopa A-B', type: 'tango' },
+  
+  // Vals rhythms
+  { value: 'Vals1-1', label: 'Vals 1-1 Pattern', type: 'vals' },
+  { value: 'Vals1-2', label: 'Vals 1-2 Pattern', type: 'vals' },
+  { value: 'Vals3-1', label: 'Vals 3-1 Pattern', type: 'vals' },
 ];
 
 export default function RhythmPresetSelector({ selectedPreset, onPresetChange, loading }) {

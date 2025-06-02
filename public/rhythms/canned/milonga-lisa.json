@@ -35,7 +35,7 @@
       {"isActive": true, "note": "E", "octave": 1, "intensity": "medium"},
       {"isActive": false, "note": "E", "octave": 1, "intensity": "strong"}
     ],
-    "bass": [
+    "bassB": [
       {"isActive": true, "note": "A", "octave": 1, "intensity": "medium"},
       {"isActive": false, "note": "A", "octave": 1, "intensity": "medium"},
       {"isActive": true, "note": "E", "octave": 1, "intensity": "strong"},
