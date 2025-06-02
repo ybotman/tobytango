@@ -34,6 +34,7 @@ const PRESET_FILES = [
   { value: 'Vals1-1', label: 'Vals 1-1 Pattern', type: 'vals' },
   { value: 'Vals1-2', label: 'Vals 1-2 Pattern', type: 'vals' },
   { value: 'Vals3-1', label: 'Vals 3-1 Pattern', type: 'vals' },
+  { value: 'Vals123', label: 'Vals 123 Pattern', type: 'vals' },
 ];
 
 export default function RhythmPresetSelector({ selectedPreset, onPresetChange, loading }) {

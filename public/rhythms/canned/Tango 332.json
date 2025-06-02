@@ -6,16 +6,44 @@
   "defaultBPM": 110,
   "tracks": {
     "drumA": [
-
+      {"isActive": true, "sound": "snare", "intensity": "strong"},
+      {"isActive": false, "sound": "snare"},
+      {"isActive": false, "sound": "snare", "intensity": "medium"},
+      {"isActive": true, "sound": "rimshot", "intensity": "strong"},
+      {"isActive": true, "sound": "snare", "intensity": "strong"},
+      {"isActive": false, "sound": "kick"},
+      {"isActive": true, "sound": "kick", "intensity": "medium"},
+      {"isActive": false, "sound": "kick"}
     ],
     "drumB": [
-
+      {"isActive": false, "sound": "snare"},
+      {"isActive": false, "sound": "hihat", "intensity": "soft"},
+      {"isActive": false, "sound": "snare"},
+      {"isActive": true, "sound": "hihat", "intensity": "soft"},
+      {"isActive": false, "sound": "snare"},
+      {"isActive": false, "sound": "hihat", "intensity": "soft"},
+      {"isActive": false, "sound": "snare"},
+      {"isActive": false, "sound": "hihat", "intensity": "soft"}
     ],
     "bass": [
-
+      {"isActive": true, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": false, "note": "E", "octave": 2, "intensity": "strong"},
+      {"isActive": true, "note": "D#", "octave": 2, "intensity": "strong"},
+      {"isActive": true, "note": "E", "octave": 2, "intensity": "strong"},
+      {"isActive": false, "note": "E", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "E", "octave": 1, "intensity": "medium"},
+      {"isActive": false, "note": "E", "octave": 1, "intensity": "strong"}
     ],
     "bassB": [
-
+      {"isActive": true, "note": "A", "octave": 3, "intensity": "medium"},
+      {"isActive": false, "note": "A", "octave": 1, "intensity": "medium"},
+      {"isActive": true, "note": "E", "octave": 1, "intensity": "strong"},
+      {"isActive": false, "note": "D#", "octave": 3, "intensity": "strong"},
+      {"isActive": true, "note": "E", "octave": 1, "intensity": "strong"},
+      {"isActive": false, "note": "E", "octave": 1, "intensity": "medium"},
+      {"isActive": true, "note": "E", "octave": 1, "intensity": "medium"},
+      {"isActive": false, "note": "E", "octave": 1, "intensity": "strong"}
     ]
   }
 }
