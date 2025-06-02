@@ -38,7 +38,8 @@ const menuStructure = [
         ]
       },
       { title: 'Vals', path: '/rhythms/vals', isSecondary: true },
-      { title: 'Milonga', path: '/rhythms/milonga', isSecondary: true }
+      { title: 'Milonga', path: '/rhythms/milonga', isSecondary: true },
+      { title: 'Interactive Grid', path: '/rhythms/canned', isSecondary: true, highlight: true }
     ]
   },
   {

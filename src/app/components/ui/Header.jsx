@@ -66,6 +66,78 @@ export default function Header() {
     setIsClient(true);
   }, []);
 
+  // Prevent hydration mismatch by only rendering after client-side hydration
+  if (!isClient) {
+    return (
+      <>
+        <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+          <Toolbar sx={{ minHeight: '64px' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+              {/* Home button - functional but no hover effects */}
+              <Link href="/" passHref>
+                <IconButton
+                  aria-label="home"
+                  sx={{ color: '#ffffff', mr: 2 }}
+                >
+                  <HomeIcon sx={{ fontSize: '1.75rem' }} />
+                </IconButton>
+              </Link>
+              
+              <IconButton
+                edge="start"
+                aria-label="menu"
+                onClick={toggleDrawer(!open)}
+                sx={{ color: '#ffffff' }}
+              >
+                <MenuIcon sx={{ fontSize: '1.75rem', color: '#ffffff' }} />
+              </IconButton>
+              
+              <Box sx={{ flexGrow: 1 }} />
+            </Box>
+          </Toolbar>
+        </AppBar>
+        
+        <Toolbar />
+        
+        {/* Drawer - functional but no animations */}
+        <Drawer
+          anchor="left"
+          open={open}
+          onClose={toggleDrawer(false)}
+        >
+          <List sx={{ width: 280 }} onClick={(e) => e.stopPropagation()}>
+            <ListItem onClick={toggleDrawer(false)}>
+              <Link href="/" style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                <ListItemText primary="Home" />
+              </Link>
+            </ListItem>
+            
+            {/* Render menu items from menu structure */}
+            {menuStructure.map((menuItem, index) => (
+              menuItem.path ? (
+                <ListItem key={index} onClick={toggleDrawer(false)}>
+                  <Link href={menuItem.path} style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                    <ListItemText primary={menuItem.title} />
+                  </Link>
+                </ListItem>
+              ) : (
+                <NestedMenuItem
+                  key={index}
+                  item={menuItem}
+                  openMenus={openMenus}
+                  handleMenuToggle={handleMenuToggle}
+                  handleLinkClick={handleLinkClick}
+                  toggleDrawer={toggleDrawer}
+                  secondaryStyle={secondaryStyle}
+                />
+              )
+            ))}
+          </List>
+        </Drawer>
+      </>
+    );
+  }
+
   return (
     <>
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -90,29 +162,34 @@ export default function Header() {
               <MenuIcon sx={{ fontSize: '1.75rem', color: '#ffffff' }} />
             </IconButton>
             
-            {/* Arrow now after the hamburger menu */}
-            <ArrowBackIcon 
-              sx={{ 
-                color: '#ffffff',
-                ml: 1,
-                animation: isClient && !open ? `${pulse} 1.5s infinite ease-in-out` : 'none',
-                transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-                transition: 'transform 0.3s ease',
-              }} 
-            />
+            {/* Arrow now after the hamburger menu - only show after hydration */}
+            {isClient && (
+              <ArrowBackIcon 
+                sx={{ 
+                  color: '#ffffff',
+                  ml: 1,
+                  animation: !open ? `${pulse} 1.5s infinite ease-in-out` : 'none',
+                  transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+                  transition: 'transform 0.3s ease',
+                }} 
+              />
+            )}
             
-            <Typography 
-              variant="button" 
-              sx={{ 
-                ml: 1, 
-                color: '#ffffff', 
-                fontWeight: 'bold',
-                animation: isClient ? `${pulse} 1.5s infinite ease-in-out` : 'none',
-                display: { xs: 'block', sm: 'block' }
-              }}
-            >
-              MENU
-            </Typography>
+            {/* Typography - only show after hydration */}
+            {isClient && (
+              <Typography 
+                variant="button" 
+                sx={{ 
+                  ml: 1, 
+                  color: '#ffffff', 
+                  fontWeight: 'bold',
+                  animation: `${pulse} 1.5s infinite ease-in-out`,
+                  display: { xs: 'block', sm: 'block' }
+                }}
+              >
+                MENU
+              </Typography>
+            )}
             
             <Box sx={{ flexGrow: 1 }} />
           </Box>

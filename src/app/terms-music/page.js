@@ -62,7 +62,7 @@ export default function MusicDefinitionsPage() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              Rhythm is when things happen in music — the time-based structure behind every melody, harmony, and movement. It's what makes you tap your foot, nod your head.
+              Rhythm is when things happen in music — the time-based structure behind every melody, harmony, and movement. It&apos;s what makes you tap your foot, nod your head.
             </Typography>
           </AccordionDetails>
         </Accordion>

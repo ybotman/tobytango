@@ -1,0 +1,49 @@
+{
+  "name": "Milonga Lisa",
+  "rhythmType": "milonga",
+  "timeSignature": "2/4",
+  "loopLength": 8,
+  "defaultBPM": 120,
+  "tracks": {
+    "drumA": [
+      {"isActive": true, "sound": "kick", "intensity": "strong"},
+      {"isActive": false, "sound": "kick"},
+      {"isActive": true, "sound": "kick", "intensity": "medium"},
+      {"isActive": false, "sound": "kick"},
+      {"isActive": true, "sound": "kick", "intensity": "strong"},
+      {"isActive": false, "sound": "kick"},
+      {"isActive": true, "sound": "kick", "intensity": "medium"},
+      {"isActive": false, "sound": "kick"}
+    ],
+    "drumB": [
+      {"isActive": false, "sound": "snare"},
+      {"isActive": true, "sound": "hihat", "intensity": "soft"},
+      {"isActive": false, "sound": "snare"},
+      {"isActive": true, "sound": "hihat", "intensity": "soft"},
+      {"isActive": false, "sound": "snare"},
+      {"isActive": true, "sound": "hihat", "intensity": "soft"},
+      {"isActive": false, "sound": "snare"},
+      {"isActive": true, "sound": "hihat", "intensity": "soft"}
+    ],
+    "bass": [
+      {"isActive": true, "note": "A", "octave": 2, "intensity": "strong"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "E", "octave": 2, "intensity": "strong"},
+      {"isActive": false, "note": "E", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "A", "octave": 2, "intensity": "strong"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "E", "octave": 2, "intensity": "strong"},
+      {"isActive": false, "note": "E", "octave": 2, "intensity": "medium"}
+    ],
+    "bassB": [
+      {"isActive": false, "note": "A", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "A", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "A", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "A", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 3, "intensity": "soft"}
+    ]
+  }
+}

@@ -42,13 +42,13 @@ export default function DanceTermsPage() {
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant="body1" paragraph>
-              The natural flow, pulse, and suspension in a dancer's movement that reflects the breath and soul of the music.
+              The natural flow, pulse, and suspension in a dancer&apos;s movement that reflects the breath and soul of the music.
             </Typography>
             <Typography variant="body1" paragraph>
-              It's the embodied feeling of weight, timing, and phrasing — how you walk, pause, glide, and transfer energy in harmony with the tango's rhythm and emotion.
+              It&apos;s the embodied feeling of weight, timing, and phrasing — how you walk, pause, glide, and transfer energy in harmony with the tango&apos;s rhythm and emotion.
             </Typography>
             <Typography variant="body1" paragraph>
-              Cadencia is not just moving to the music — it's moving with the music, letting it breathe through your body and your partner.
+              Cadencia is not just moving to the music — it&apos;s moving with the music, letting it breathe through your body and your partner.
             </Typography>
           </AccordionDetails>
         </Accordion>
