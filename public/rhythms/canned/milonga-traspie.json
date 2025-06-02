@@ -7,7 +7,7 @@
   "tracks": {
     "drumA": [
       {"isActive": true, "sound": "kick", "intensity": "strong"},
-      {"isActive": true, "sound": "kick", "intensity": "medium"},
+      {"isActive": false, "sound": "kick", "intensity": "medium"},
       {"isActive": false, "sound": "kick"},
       {"isActive": true, "sound": "kick", "intensity": "medium"},
       {"isActive": true, "sound": "kick", "intensity": "strong"},
@@ -26,14 +26,24 @@
       {"isActive": false, "sound": "snare"}
     ],
     "bass": [
-      {"isActive": true, "note": "A", "octave": 2},
-      {"isActive": true, "note": "A", "octave": 2},
-      {"isActive": false, "note": "A", "octave": 2},
-      {"isActive": true, "note": "E", "octave": 2},
-      {"isActive": true, "note": "A", "octave": 2},
-      {"isActive": true, "note": "A", "octave": 2},
-      {"isActive": false, "note": "A", "octave": 2},
-      {"isActive": true, "note": "E", "octave": 2}
+      {"isActive": true, "note": "A", "octave": 2, "intensity": "strong"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "D#", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "E", "octave": 2, "intensity": "strong"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "medium"},
+      {"isActive": true, "note": "A", "octave": 2, "intensity": "medium"}
+    ],
+    "bassB": [
+      {"isActive": false, "note": "E", "octave": 3, "intensity": "soft"},
+      {"isActive": true, "note": "A", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "A", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 3, "intensity": "soft"},
+      {"isActive": true, "note": "A", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 3, "intensity": "soft"},
+      {"isActive": false, "note": "A", "octave": 3, "intensity": "soft"}
     ]
   }
 }

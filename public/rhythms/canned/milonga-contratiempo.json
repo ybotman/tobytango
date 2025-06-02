@@ -26,14 +26,24 @@
       {"isActive": false, "sound": "hihat"}
     ],
     "bass": [
-      {"isActive": false, "note": "A", "octave": 2},
-      {"isActive": true, "note": "A", "octave": 2},
-      {"isActive": false, "note": "E", "octave": 2},
-      {"isActive": true, "note": "E", "octave": 2},
-      {"isActive": false, "note": "A", "octave": 2},
-      {"isActive": true, "note": "A", "octave": 2},
-      {"isActive": false, "note": "E", "octave": 2},
-      {"isActive": true, "note": "E", "octave": 2}
+      {"isActive": false, "note": "A", "octave": 1, "intensity": "medium"},
+      {"isActive": true, "note": "A", "octave": 1, "intensity": "strong"},
+      {"isActive": false, "note": "E", "octave": 1, "intensity": "medium"},
+      {"isActive": true, "note": "E", "octave": 1, "intensity": "strong"},
+      {"isActive": false, "note": "A", "octave": 1, "intensity": "medium"},
+      {"isActive": true, "note": "A", "octave": 1, "intensity": "strong"},
+      {"isActive": false, "note": "E", "octave": 1, "intensity": "medium"},
+      {"isActive": true, "note": "E", "octave": 1, "intensity": "strong"}
+    ],
+    "bassB": [
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "soft"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 2, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 2, "intensity": "soft"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "soft"},
+      {"isActive": false, "note": "A", "octave": 2, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 2, "intensity": "soft"},
+      {"isActive": false, "note": "E", "octave": 2, "intensity": "soft"}
     ]
   }
 }

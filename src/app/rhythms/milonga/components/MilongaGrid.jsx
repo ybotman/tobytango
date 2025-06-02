@@ -22,13 +22,23 @@ const DRUM_SOUNDS = {
 };
 
 const BASS_NOTES = {
-  'A': 55,   // A1
-  'B': 61.74,
-  'C': 65.41,
-  'D': 73.42,
-  'E': 82.41,
-  'F': 87.31,
-  'G': 98.00
+  'A': 55.00,   // A1
+  'A#': 58.27,  // A#1/Bb1
+  'Bb': 58.27,  // Bb1 (same as A#)
+  'B': 61.74,   // B1
+  'C': 65.41,   // C2
+  'C#': 69.30,  // C#2/Db2
+  'Db': 69.30,  // Db2 (same as C#)
+  'D': 73.42,   // D2
+  'D#': 77.78,  // D#2/Eb2
+  'Eb': 77.78,  // Eb2 (same as D#)
+  'E': 82.41,   // E2
+  'F': 87.31,   // F2
+  'F#': 92.50,  // F#2/Gb2
+  'Gb': 92.50,  // Gb2 (same as F#)
+  'G': 98.00,   // G2
+  'G#': 103.83, // G#2/Ab2
+  'Ab': 103.83  // Ab2 (same as G#)
 };
 
 export default function MilongaGrid() {
@@ -43,7 +53,8 @@ export default function MilongaGrid() {
   const synthsRef = useRef({
     drumA: null,
     drumB: null,
-    bass: null
+    bass: null,
+    bassB: null
   });
   const sequenceRef = useRef(null);
   const isInitializedRef = useRef(false);
@@ -57,6 +68,7 @@ export default function MilongaGrid() {
       synthsRef.current.drumA = new Tone.MembraneSynth().toDestination();
       synthsRef.current.drumB = new Tone.MembraneSynth().toDestination();
       synthsRef.current.bass = new Tone.Synth().toDestination();
+      synthsRef.current.bassB = new Tone.Synth().toDestination();
 
       // Set up transport
       Tone.Transport.bpm.value = bpm;
@@ -97,6 +109,15 @@ export default function MilongaGrid() {
 
     const newRhythmData = { ...rhythmData };
     newRhythmData.tracks[trackType][stepIndex].isActive = isActive;
+    setRhythmData(newRhythmData);
+  };
+
+  // Handle cell data change (sound, note, intensity, etc.)
+  const handleCellChange = (trackType, stepIndex, newCellData) => {
+    if (!rhythmData) return;
+
+    const newRhythmData = { ...rhythmData };
+    newRhythmData.tracks[trackType][stepIndex] = newCellData;
     setRhythmData(newRhythmData);
   };
 
@@ -151,8 +172,24 @@ export default function MilongaGrid() {
           const noteFreq = BASS_NOTES[bassCell.note] || BASS_NOTES.A;
           const octaveMultiplier = Math.pow(2, (bassCell.octave || 2) - 1);
           const frequency = noteFreq * octaveMultiplier;
+          const intensity = bassCell.intensity || 'medium';
+          const volume = intensity === 'strong' ? 0 : intensity === 'medium' ? -6 : -12;
           
+          synthsRef.current.bass.volume.value = volume;
           synthsRef.current.bass.triggerAttackRelease(frequency, "8n", time);
+        }
+
+        // Play bass B
+        const bassBCell = tracks.bassB[step];
+        if (bassBCell?.isActive && synthsRef.current.bassB) {
+          const noteFreq = BASS_NOTES[bassBCell.note] || BASS_NOTES.A;
+          const octaveMultiplier = Math.pow(2, (bassBCell.octave || 2) - 1);
+          const frequency = noteFreq * octaveMultiplier;
+          const intensity = bassBCell.intensity || 'medium';
+          const volume = intensity === 'strong' ? 0 : intensity === 'medium' ? -6 : -12;
+          
+          synthsRef.current.bassB.volume.value = volume;
+          synthsRef.current.bassB.triggerAttackRelease(frequency, "8n", time);
         }
       },
       Array.from({ length: loopLength }, (_, i) => i),
@@ -256,11 +293,13 @@ export default function MilongaGrid() {
                   sx={{ 
                     minWidth: { xs: 60, sm: 80 }, 
                     fontWeight: 'bold',
-                    color: trackType === 'bass' ? '#4caf50' : '#1976d2'
+                    color: (trackType === 'bass' || trackType === 'bassB') ? '#4caf50' : '#1976d2'
                   }}
                 >
                   {trackType === 'drumA' ? 'Drum A' : 
-                   trackType === 'drumB' ? 'Drum B' : 'Bass'}
+                   trackType === 'drumB' ? 'Drum B' : 
+                   trackType === 'bass' ? 'Bass A' :
+                   trackType === 'bassB' ? 'Bass B' : trackType}
                 </Typography>
                 
                 <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -273,6 +312,7 @@ export default function MilongaGrid() {
                       isPlaying={isPlaying}
                       currentStep={currentStep}
                       onCellClick={(step, active) => handleCellClick(trackType, step, active)}
+                      onCellChange={(step, newData) => handleCellChange(trackType, step, newData)}
                     />
                   ))}
                 </Box>

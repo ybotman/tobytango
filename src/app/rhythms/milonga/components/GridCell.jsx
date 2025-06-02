@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box, IconButton } from '@mui/material';
+import SoundSelectionMenu from './SoundSelectionMenu';
 
 const SOUND_COLORS = {
   kick: '#f44336',    // Red
@@ -26,16 +27,19 @@ export default function GridCell({
   isPlaying, 
   currentStep, 
   onCellClick,
-  onSoundChange 
+  onCellChange
 }) {
   const { isActive, sound, note, octave, intensity = 'medium' } = cellData;
+  const [menuAnchor, setMenuAnchor] = useState(null);
+  const [pressTimer, setPressTimer] = useState(null);
   
   const isCurrentStep = isPlaying && currentStep === stepIndex;
   const opacity = isActive ? (INTENSITY_OPACITY[intensity] || 0.7) : 0.1;
+  const menuOpen = Boolean(menuAnchor);
   
   // Determine cell color based on track type and sound
   const getCellColor = () => {
-    if (trackType === 'bass') {
+    if (trackType === 'bass' || trackType === 'bassB') {
       return BASS_COLOR;
     }
     return SOUND_COLORS[sound] || '#666';
@@ -45,7 +49,7 @@ export default function GridCell({
   const getCellContent = () => {
     if (!isActive) return '';
     
-    if (trackType === 'bass') {
+    if (trackType === 'bass' || trackType === 'bassB') {
       return `${note}${octave}`;
     }
     
@@ -63,12 +67,52 @@ export default function GridCell({
     onCellClick(stepIndex, !isActive);
   };
 
-  // Handle right click or long press for sound selection
-  const handleSoundSelect = (event) => {
-    event.preventDefault();
-    if (onSoundChange) {
-      onSoundChange(stepIndex);
+  // Handle mouse down for long press detection
+  const handleMouseDown = (event) => {
+    const timer = setTimeout(() => {
+      setMenuAnchor(event.currentTarget);
+    }, 500); // 500ms long press
+    setPressTimer(timer);
+  };
+
+  // Handle mouse up - clear timer or execute click
+  const handleMouseUp = () => {
+    if (pressTimer) {
+      clearTimeout(pressTimer);
+      setPressTimer(null);
     }
+  };
+
+  // Handle context menu (right click)
+  const handleContextMenu = (event) => {
+    event.preventDefault();
+    setMenuAnchor(event.currentTarget);
+  };
+
+  // Handle menu close
+  const handleMenuClose = () => {
+    setMenuAnchor(null);
+  };
+
+  // Handle sound/note/intensity changes
+  const handleSoundChange = (newSound) => {
+    const updatedCell = { ...cellData, sound: newSound };
+    onCellChange(stepIndex, updatedCell);
+  };
+
+  const handleIntensityChange = (newIntensity) => {
+    const updatedCell = { ...cellData, intensity: newIntensity };
+    onCellChange(stepIndex, updatedCell);
+  };
+
+  const handleNoteChange = (newNote) => {
+    const updatedCell = { ...cellData, note: newNote };
+    onCellChange(stepIndex, updatedCell);
+  };
+
+  const handleOctaveChange = (newOctave) => {
+    const updatedCell = { ...cellData, octave: newOctave };
+    onCellChange(stepIndex, updatedCell);
   };
 
   return (
@@ -88,7 +132,10 @@ export default function GridCell({
     >
       <IconButton
         onClick={handleCellClick}
-        onContextMenu={handleSoundSelect}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onContextMenu={handleContextMenu}
         sx={{
           width: '100%',
           height: '100%',
@@ -109,6 +156,19 @@ export default function GridCell({
       >
         {getCellContent()}
       </IconButton>
+      
+      {/* Sound Selection Menu */}
+      <SoundSelectionMenu
+        anchorEl={menuAnchor}
+        open={menuOpen}
+        onClose={handleMenuClose}
+        trackType={trackType}
+        currentCellData={cellData}
+        onSoundChange={handleSoundChange}
+        onIntensityChange={handleIntensityChange}
+        onNoteChange={handleNoteChange}
+        onOctaveChange={handleOctaveChange}
+      />
       
       {/* Step number indicator */}
       <Box
@@ -142,10 +202,10 @@ GridCell.propTypes = {
     octave: PropTypes.number,
     intensity: PropTypes.oneOf(['strong', 'medium', 'soft'])
   }).isRequired,
-  trackType: PropTypes.oneOf(['drumA', 'drumB', 'bass']).isRequired,
+  trackType: PropTypes.oneOf(['drumA', 'drumB', 'bass', 'bassB']).isRequired,
   stepIndex: PropTypes.number.isRequired,
   isPlaying: PropTypes.bool,
   currentStep: PropTypes.number,
   onCellClick: PropTypes.func.isRequired,
-  onSoundChange: PropTypes.func
+  onCellChange: PropTypes.func.isRequired
 };
