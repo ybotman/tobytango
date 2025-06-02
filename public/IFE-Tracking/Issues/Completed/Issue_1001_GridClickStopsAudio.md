@@ -97,16 +97,16 @@ Document what was changed, how, and any technical notes._
   - `/src/app/rhythms/components/GridPlaybackControls.jsx`
 
 ## Fix (if known or applied)
-- **Status:** ✅ Fixed
-- **Fix Description:** Isolated cell edits from sequence recreation, restored step indicator, fixed stop button
-- **Testing:** Manual testing confirmed - grid clicks maintain audio playback, step indicator functional
+- **Status:** ✅ Fixed and Merged
+- **Fix Description:** Isolated cell edits from sequence recreation, restored step indicator, fixed stop button, added shaker sound
+- **Testing:** Manual testing confirmed - grid clicks maintain audio playback, step indicator functional, shaker sound working
 
 ## Resolution Log
 - **Commit/Branch:** `issue/1001-grid-click-stops-audio`
-- **Commit Hash:** 4ef5c6e
-- **PR:** Ready for merge into feature/3001-milonga-rhythm-grid
+- **Final Commit Hash:** 73c2348
+- **Merged Into:** feature/3001-milonga-rhythm-grid
 - **Deployed To:** Local Development (localhost:3025)
-- **Verified By:** Patch Mode testing
+- **Verified By:** User testing - approved
 
 ---
 
