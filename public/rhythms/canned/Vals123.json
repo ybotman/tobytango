@@ -6,12 +6,12 @@
   "defaultBPM": 110,
   "tracks": {
     "drumA": [
-      { "isActive": true, "sound": "kick", "intensity": "strong" },
-      { "isActive": true, "sound": "kick" },
-      { "isActive": true, "sound": "kick" },
-      { "isActive": true, "sound": "kick", "intensity": "strong" },
-      { "isActive": false, "sound": "kick" },
-      { "isActive": false, "sound": "kick" }
+      { "isActive": true, "sound": "hihat", "intensity": "strong" },
+      { "isActive": true, "sound": "hihat" },
+      { "isActive": true, "sound": "hihat" },
+      { "isActive": true, "sound": "hihat", "intensity": "strong" },
+      { "isActive": false, "sound": "hihat" },
+      { "isActive": false, "sound": "hihat" }
     ],
     "drumB": [
       { "isActive": true, "sound": "hihat", "intensity": "soft" },

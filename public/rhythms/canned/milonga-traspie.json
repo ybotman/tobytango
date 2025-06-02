@@ -9,10 +9,10 @@
       {"isActive": true, "sound": "snare", "intensity": "strong"},
       {"isActive": false, "sound": "snare"},
       {"isActive": false, "sound": "snare", "intensity": "medium"},
-      {"isActive": true, "sound": "rimshot", "intensity": "strong"},
       {"isActive": true, "sound": "snare", "intensity": "strong"},
+      {"isActive": false, "sound": "snare", "intensity": "strong"},
       {"isActive": false, "sound": "kick"},
-      {"isActive": true, "sound": "kick", "intensity": "medium"},
+      {"isActive": true, "sound": "rimshot", "intensity": "medium"},
       {"isActive": false, "sound": "kick"}
     ],
     "drumB": [

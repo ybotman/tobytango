@@ -23,7 +23,8 @@ const DRUM_SOUNDS = {
   kick: { frequency: 60, envelope: { attack: 0.01, decay: 0.3, sustain: 0 } },
   snare: { frequency: 200, envelope: { attack: 0.01, decay: 0.2, sustain: 0 } },
   hihat: { frequency: 800, envelope: { attack: 0.01, decay: 0.1, sustain: 0 } },
-  rim: { frequency: 300, envelope: { attack: 0.01, decay: 0.15, sustain: 0 } }
+  rim: { frequency: 300, envelope: { attack: 0.01, decay: 0.15, sustain: 0 } },
+  shaker: { frequency: 1200, envelope: { attack: 0.01, decay: 0.05, sustain: 0 } }
 };
 
 const BASS_NOTES = {
