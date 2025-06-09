@@ -3,8 +3,8 @@
   "leaderLast": "Frumboli",
   "followerFirst": "Juana",
   "followerLast": "Sepulveda",
-  "fullName": "Chicho Frumboli & Juana Sepulveda",
+  "energy": 1,
+  "onTheSpot": 10,
   "shortName": "CFJS",
-  "energy": 9,
-  "onTheSpot": 8
+  "fullName": "Chicho Frumboli & Juana Sepulveda"
 }

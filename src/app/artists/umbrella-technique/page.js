@@ -93,44 +93,46 @@ export default function UmbrellaTechniquePage() {
       </Box>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} md={8}>
-          <Paper sx={{ p: 3, height: 600, position: 'relative' }}>
-            <Box sx={{ position: 'relative', width: 700, height: 550, backgroundColor: '#f5f5f5' }}>
+        <Grid item xs={12} md={9}>
+          <Paper sx={{ p: 3, height: 700, position: 'relative' }}>
+            <Box sx={{ position: 'relative', width: 900, height: 650, backgroundColor: '#2a2a2a' }}>
               {/* Custom grid implementation */}
-              <svg width="700" height="550" style={{ position: 'absolute', top: 0, left: 0 }}>
+              <svg width="900" height="650" style={{ position: 'absolute', top: 0, left: 0 }}>
                 {/* Axis lines at 0,0 */}
-                <line x1="350" y1="50" x2="350" y2="500" stroke="#fff" strokeWidth="2" />
-                <line x1="50" y1="275" x2="650" y2="275" stroke="#fff" strokeWidth="2" />
+                <line x1="450" y1="50" x2="450" y2="600" stroke="#fff" strokeWidth="2" />
+                <line x1="50" y1="325" x2="850" y2="325" stroke="#fff" strokeWidth="2" />
                 
-                {/* Axis labels */}
-                <text x="350" y="30" textAnchor="middle" fontSize="14" fontWeight="bold">Improvised vs Memorized</text>
-                <text x="30" y="280" textAnchor="middle" fontSize="14" fontWeight="bold" transform="rotate(-90 30 280)">Energy</text>
+                {/* Axis labels on the lines */}
+                <text x="450" y="40" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#fff">Improvised</text>
+                <text x="450" y="620" textAnchor="middle" fontSize="16" fontWeight="bold" fill="#fff">Memorized</text>
+                <text x="60" y="320" textAnchor="start" fontSize="16" fontWeight="bold" fill="#fff">Oppositional</text>
+                <text x="840" y="320" textAnchor="end" fontSize="16" fontWeight="bold" fill="#fff">Supportive</text>
                 
                 {/* Axis ticks and labels */}
                 {[-10, -5, 0, 5, 10].map(val => (
                   <g key={`x-${val}`}>
-                    <line x1={350 + val * 30} y1={270} x2={350 + val * 30} y2={280} stroke="#fff" strokeWidth="2" />
-                    <text x={350 + val * 30} y={295} textAnchor="middle" fontSize="12">{val}</text>
+                    <line x1={450 + val * 40} y1={320} x2={450 + val * 40} y2={330} stroke="#fff" strokeWidth="2" />
+                    <text x={450 + val * 40} y={345} textAnchor="middle" fontSize="14" fill="#fff">{val}</text>
                   </g>
                 ))}
                 {[-10, -5, 0, 5, 10].map(val => (
                   <g key={`y-${val}`}>
-                    <line x1={345} y1={275 - val * 22.5} x2={355} y2={275 - val * 22.5} stroke="#fff" strokeWidth="2" />
-                    <text x={330} y={280 - val * 22.5} textAnchor="end" fontSize="12">{val}</text>
+                    <line x1={445} y1={325 - val * 27.5} x2={455} y2={325 - val * 27.5} stroke="#fff" strokeWidth="2" />
+                    <text x={430} y={330 - val * 27.5} textAnchor="end" fontSize="14" fill="#fff">{val}</text>
                   </g>
                 ))}
                 
                 {/* Artist points and labels */}
                 {chartData.map((point, index) => {
-                  const x = 350 + (point.x * 30);
-                  const y = 275 - (point.y * 22.5);
+                  const x = 450 + (point.x * 40);
+                  const y = 325 - (point.y * 27.5);
                   const color = colors[index % colors.length];
                   return (
                     <g key={point.id}>
                       <circle
                         cx={x}
                         cy={y}
-                        r={10}
+                        r={12}
                         fill={color}
                         stroke="#fff"
                         strokeWidth={2}
@@ -138,9 +140,9 @@ export default function UmbrellaTechniquePage() {
                       />
                       <text
                         x={x}
-                        y={y - 15}
+                        y={y - 18}
                         textAnchor="middle"
-                        fontSize="14"
+                        fontSize="16"
                         fontWeight="bold"
                         fill={color}
                       >
@@ -150,18 +152,13 @@ export default function UmbrellaTechniquePage() {
                   );
                 })}
                 
-                {/* Axis end labels */}
-                <text x="50" y="520" fontSize="12" fill="#333">Oppositional (-10)</text>
-                <text x="650" y="520" textAnchor="end" fontSize="12" fill="#333">Supportive (+10)</text>
-                <text x="10" y="60" fontSize="12" fill="#333">Improvised (+10)</text>
-                <text x="10" y="500" fontSize="12" fill="#333">Memorized (-10)</text>
               </svg>
             </Box>
           </Paper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
-          <Paper sx={{ p: 3, maxHeight: 600, overflow: 'auto' }}>
+        <Grid item xs={12} md={3}>
+          <Paper sx={{ p: 3, maxHeight: 700, overflow: 'auto' }}>
             <Typography variant="h6" gutterBottom>
               Select Artists to Display
             </Typography>
@@ -204,7 +201,7 @@ export default function UmbrellaTechniquePage() {
       </Grid>
 
       <Box sx={{ mt: 4 }}>
-        <Typography variant="body1" paragraph>
+        <Typography variant="body1" sx={{ mb: 2 }}>
           This visualization maps tango artist couples across two dimensions:
         </Typography>
         <Typography variant="body2" component="ul">
