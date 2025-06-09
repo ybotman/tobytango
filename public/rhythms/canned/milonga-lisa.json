@@ -9,7 +9,7 @@
       {"isActive": true, "sound": "snare", "intensity": "strong"},
       {"isActive": false, "sound": "snare"},
       {"isActive": false, "sound": "snare", "intensity": "medium"},
-      {"isActive": false, "sound": "hihat"},
+      {"isActive": false, "sound": "rimshot", "intensity": "soft"},
       {"isActive": true, "sound": "snare", "intensity": "strong"},
       {"isActive": false, "sound": "kick"},
       {"isActive": false, "sound": "kick", "intensity": "medium"},

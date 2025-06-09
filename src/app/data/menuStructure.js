@@ -58,7 +58,8 @@ const menuStructure = [
     icon: PeopleIcon,
     items: [
       { title: 'View All Artists', path: '/artists', isSecondary: true },
-      { title: 'Timelines', path: '/artists/timelines', isSecondary: true }
+      { title: 'Timelines', path: '/artists/timelines', isSecondary: true },
+      { title: 'Umbrella Technique', path: '/artists/umbrella-technique', isSecondary: true, highlight: true }
     ]
   },
   {
