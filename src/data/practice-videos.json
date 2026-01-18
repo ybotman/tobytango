@@ -1,0 +1,11 @@
+{
+  "videos": [
+    {
+      "id": "1",
+      "title": "Sample Practice Video",
+      "youtubeUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "description": "Replace this with your first practice video",
+      "addedAt": "2025-01-16T00:00:00.000Z"
+    }
+  ]
+}

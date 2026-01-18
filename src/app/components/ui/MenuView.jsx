@@ -7,24 +7,30 @@ import MenuCard from './MenuCard';
 const navItems = [
   {
     id: 1,
-    title: "TobyTango Lab Mondays",
-    mainImage: "/navigation/lab-mondays.png",
-    link: "/lab-mondays",
+    title: "TangoCollab",
+    mainImage: "/tangoCollab1.png",
+    link: "/tango-collab",
   },
   {
     id: 2,
-    title: "TobyTango Lab Workshop",
+    title: "TangoLab Traveling",
     mainImage: "/navigation/lab-workshops.png",
     link: "/lab-workshop",
   },
   {
     id: 3,
-    title: "Journey Practice",
-    mainImage: "/navigation/journey-practica.png",
-    link: "/journey-practica",
+    title: "Practice Videos",
+    mainImage: "/navigation/tangolab.jpg",
+    link: "/practice-videos",
   },
   {
     id: 4,
+    title: "About Toby",
+    mainImage: "/navigation/about.png",
+    link: "/about",
+  },
+  {
+    id: 5,
     title: "My Favorite Tango Videos",
     mainImage: "/navigation/videos.png",
     link: "/favorite-videos",

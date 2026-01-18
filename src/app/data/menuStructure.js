@@ -12,13 +12,21 @@ import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
  */
 const menuStructure = [
   {
+    title: 'TangoCollab',
+    path: '/tango-collab',
+    icon: null
+  },
+  {
+    title: 'Practice Videos',
+    path: '/practice-videos',
+    icon: null
+  },
+  {
     id: 'lab',
     title: 'The Lab',
     icon: ScienceIcon,
     items: [
-      { title: 'Lab Mondays', path: '/lab-mondays', isSecondary: true },
-      { title: 'Lab Workshop', path: '/lab-workshop', isSecondary: true },
-      { title: 'Journey Practica', path: '/journey-practica', isSecondary: true }
+      { title: 'TangoLab Traveling', path: '/lab-workshop', isSecondary: true }
     ]
   },
   {
