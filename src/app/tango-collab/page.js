@@ -468,7 +468,7 @@ export default function TangoCollabPage() {
         secondaryAction={
           isAdmin && (
             <Box>
-              <IconButton size="small" onClick={() => setEditDialog({ open: true, video: { ...video, tags: video.tags || [], artists: video.artists || [] } })}>
+              <IconButton size="small" onClick={() => { setEditTagInput(''); setEditArtistInput(''); setEditDialog({ open: true, video: { ...video, tags: video.tags || [], artists: video.artists || [] } }); }}>
                 <EditIcon fontSize="small" />
               </IconButton>
               <IconButton size="small" color="error" onClick={() => handleDeleteVideo(video.id)}>
