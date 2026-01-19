@@ -860,13 +860,19 @@ export default function TangoCollabPage() {
             />
             <Button variant="outlined" onClick={() => { if (artistInput.trim()) handleAddArtist(artistInput); }}>Add</Button>
           </Box>
-          {allArtists.length > 0 && (
-            <Box sx={{ mb: 1 }}>
-              <Typography variant="caption" color="text.secondary">Existing artists: </Typography>
-              {allArtists.filter(a => !newVideo.artists.includes(a)).slice(0, 5).map(artist => (
-                <Chip key={artist} label={artist} size="small" variant="outlined" onClick={() => handleAddArtist(artist)} sx={{ mr: 0.5, cursor: 'pointer' }} />
-              ))}
-            </Box>
+          {allArtists.filter(a => !newVideo.artists.includes(a)).length > 0 && (
+            <FormControl size="small" sx={{ mb: 1, minWidth: 200 }}>
+              <InputLabel>Select existing artist</InputLabel>
+              <Select
+                value=""
+                label="Select existing artist"
+                onChange={(e) => { if (e.target.value) handleAddArtist(e.target.value); }}
+              >
+                {allArtists.filter(a => !newVideo.artists.includes(a)).map(artist => (
+                  <MenuItem key={artist} value={artist}>{artist}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           )}
           {newVideo.artists.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
@@ -894,13 +900,19 @@ export default function TangoCollabPage() {
             />
             <Button variant="outlined" onClick={() => { if (tagInput.trim()) handleAddTag(tagInput); }}>Add</Button>
           </Box>
-          {allTags.length > 0 && (
-            <Box sx={{ mb: 1 }}>
-              <Typography variant="caption" color="text.secondary">Existing tags: </Typography>
-              {allTags.filter(t => !newVideo.tags.includes(t)).slice(0, 5).map(tag => (
-                <Chip key={tag} label={tag} size="small" variant="outlined" onClick={() => handleAddTag(tag)} sx={{ mr: 0.5, cursor: 'pointer' }} />
-              ))}
-            </Box>
+          {allTags.filter(t => !newVideo.tags.includes(t)).length > 0 && (
+            <FormControl size="small" sx={{ mb: 1, minWidth: 200 }}>
+              <InputLabel>Select existing tag</InputLabel>
+              <Select
+                value=""
+                label="Select existing tag"
+                onChange={(e) => { if (e.target.value) handleAddTag(e.target.value); }}
+              >
+                {allTags.filter(t => !newVideo.tags.includes(t)).map(tag => (
+                  <MenuItem key={tag} value={tag}>{tag}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           )}
           {newVideo.tags.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
@@ -1002,13 +1014,19 @@ export default function TangoCollabPage() {
                 />
                 <Button variant="outlined" onClick={() => { if (editArtistInput.trim()) handleAddArtist(editArtistInput, true); }}>Add</Button>
               </Box>
-              {allArtists.length > 0 && (
-                <Box sx={{ mb: 1 }}>
-                  <Typography variant="caption" color="text.secondary">Existing artists: </Typography>
-                  {allArtists.filter(a => !(editDialog.video.artists || []).includes(a)).slice(0, 5).map(artist => (
-                    <Chip key={artist} label={artist} size="small" variant="outlined" onClick={() => handleAddArtist(artist, true)} sx={{ mr: 0.5, cursor: 'pointer' }} />
-                  ))}
-                </Box>
+              {allArtists.filter(a => !(editDialog.video.artists || []).includes(a)).length > 0 && (
+                <FormControl size="small" sx={{ mb: 1, minWidth: 200 }}>
+                  <InputLabel>Select existing artist</InputLabel>
+                  <Select
+                    value=""
+                    label="Select existing artist"
+                    onChange={(e) => { if (e.target.value) handleAddArtist(e.target.value, true); }}
+                  >
+                    {allArtists.filter(a => !(editDialog.video.artists || []).includes(a)).map(artist => (
+                      <MenuItem key={artist} value={artist}>{artist}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               )}
               {editDialog.video.artists && editDialog.video.artists.length > 0 && (
                 <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
@@ -1036,13 +1054,19 @@ export default function TangoCollabPage() {
                 />
                 <Button variant="outlined" onClick={() => { if (editTagInput.trim()) handleAddTag(editTagInput, true); }}>Add</Button>
               </Box>
-              {allTags.length > 0 && (
-                <Box sx={{ mb: 1 }}>
-                  <Typography variant="caption" color="text.secondary">Existing tags: </Typography>
-                  {allTags.filter(t => !(editDialog.video.tags || []).includes(t)).slice(0, 5).map(tag => (
-                    <Chip key={tag} label={tag} size="small" variant="outlined" onClick={() => handleAddTag(tag, true)} sx={{ mr: 0.5, cursor: 'pointer' }} />
-                  ))}
-                </Box>
+              {allTags.filter(t => !(editDialog.video.tags || []).includes(t)).length > 0 && (
+                <FormControl size="small" sx={{ mb: 1, minWidth: 200 }}>
+                  <InputLabel>Select existing tag</InputLabel>
+                  <Select
+                    value=""
+                    label="Select existing tag"
+                    onChange={(e) => { if (e.target.value) handleAddTag(e.target.value, true); }}
+                  >
+                    {allTags.filter(t => !(editDialog.video.tags || []).includes(t)).map(tag => (
+                      <MenuItem key={tag} value={tag}>{tag}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               )}
               {editDialog.video.tags && editDialog.video.tags.length > 0 && (
                 <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
