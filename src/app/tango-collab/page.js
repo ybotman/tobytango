@@ -273,19 +273,23 @@ export default function TangoCollabPage() {
     setArtistInput('');
   };
 
-  const handleAddTag = (tag, isEdit = false) => {
-    const normalizedTag = tag.trim().toLowerCase();
+  const handleAddTag = (input, isEdit = false) => {
+    // Support comma-delimited input for multiple tags
+    const tags = input.split(',').map(t => t.trim().toLowerCase()).filter(t => t);
     if (isEdit) {
-      if (normalizedTag && !editDialog.video.tags?.includes(normalizedTag)) {
+      const currentTags = editDialog.video.tags || [];
+      const newTags = tags.filter(t => !currentTags.includes(t));
+      if (newTags.length > 0) {
         setEditDialog({
           ...editDialog,
-          video: { ...editDialog.video, tags: [...(editDialog.video.tags || []), normalizedTag] }
+          video: { ...editDialog.video, tags: [...currentTags, ...newTags] }
         });
       }
       setEditTagInput('');
     } else {
-      if (normalizedTag && !newVideo.tags.includes(normalizedTag)) {
-        setNewVideo({ ...newVideo, tags: [...newVideo.tags, normalizedTag] });
+      const newTags = tags.filter(t => !newVideo.tags.includes(t));
+      if (newTags.length > 0) {
+        setNewVideo({ ...newVideo, tags: [...newVideo.tags, ...newTags] });
       }
       setTagInput('');
     }
@@ -302,19 +306,23 @@ export default function TangoCollabPage() {
     }
   };
 
-  const handleAddArtist = (artist, isEdit = false) => {
-    const normalizedArtist = artist.trim();
+  const handleAddArtist = (input, isEdit = false) => {
+    // Support comma-delimited input for multiple artists
+    const artists = input.split(',').map(a => a.trim()).filter(a => a);
     if (isEdit) {
-      if (normalizedArtist && !editDialog.video.artists?.includes(normalizedArtist)) {
+      const currentArtists = editDialog.video.artists || [];
+      const newArtists = artists.filter(a => !currentArtists.includes(a));
+      if (newArtists.length > 0) {
         setEditDialog({
           ...editDialog,
-          video: { ...editDialog.video, artists: [...(editDialog.video.artists || []), normalizedArtist] }
+          video: { ...editDialog.video, artists: [...currentArtists, ...newArtists] }
         });
       }
       setEditArtistInput('');
     } else {
-      if (normalizedArtist && !newVideo.artists.includes(normalizedArtist)) {
-        setNewVideo({ ...newVideo, artists: [...newVideo.artists, normalizedArtist] });
+      const newArtists = artists.filter(a => !newVideo.artists.includes(a));
+      if (newArtists.length > 0) {
+        setNewVideo({ ...newVideo, artists: [...newVideo.artists, ...newArtists] });
       }
       setArtistInput('');
     }
@@ -839,7 +847,7 @@ export default function TangoCollabPage() {
             <TextField
               fullWidth
               label="Artists"
-              placeholder="Type artist name and click Add"
+              placeholder="Artist names (comma-separated)"
               value={artistInput}
               onChange={(e) => setArtistInput(e.target.value)}
               onKeyDown={(e) => {
@@ -873,7 +881,7 @@ export default function TangoCollabPage() {
             <TextField
               fullWidth
               label="Tags"
-              placeholder="Type tag and click Add"
+              placeholder="Tags (comma-separated)"
               value={tagInput}
               onChange={(e) => setTagInput(e.target.value)}
               onKeyDown={(e) => {
@@ -981,7 +989,7 @@ export default function TangoCollabPage() {
                 <TextField
                   fullWidth
                   label="Artists"
-                  placeholder="Type artist name and click Add"
+                  placeholder="Artist names (comma-separated)"
                   value={editArtistInput}
                   onChange={(e) => setEditArtistInput(e.target.value)}
                   onKeyDown={(e) => {
@@ -1015,7 +1023,7 @@ export default function TangoCollabPage() {
                 <TextField
                   fullWidth
                   label="Tags"
-                  placeholder="Type tag and click Add"
+                  placeholder="Tags (comma-separated)"
                   value={editTagInput}
                   onChange={(e) => setEditTagInput(e.target.value)}
                   onKeyDown={(e) => {
