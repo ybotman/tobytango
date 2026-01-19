@@ -42,6 +42,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import PersonIcon from '@mui/icons-material/Person';
+import WarningIcon from '@mui/icons-material/Warning';
 import { BlobServiceClient } from '@azure/storage-blob';
 
 // Extract YouTube video ID from various URL formats
@@ -50,6 +51,12 @@ function getYouTubeId(url) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
+}
+
+// Check if URL is a valid YouTube URL
+function isValidYouTubeUrl(url) {
+  if (!url) return false;
+  return url.includes('youtube.com') || url.includes('youtu.be');
 }
 
 // Get YouTube thumbnail URL
@@ -333,7 +340,8 @@ export default function TangoCollabPage() {
           description: editDialog.video.description,
           tags: editDialog.video.tags,
           artists: editDialog.video.artists,
-          startTime: editDialog.video.startTime
+          startTime: editDialog.video.startTime,
+          youtubeUrl: editDialog.video.youtubeUrl
         })
       });
 
@@ -438,6 +446,7 @@ export default function TangoCollabPage() {
     const youtubeId = getYouTubeId(video.youtubeUrl);
     const isAzure = isAzureBlobVideo(video.videoUrl);
     const thumbnail = youtubeId ? getYouTubeThumbnail(youtubeId) : null;
+    const hasInvalidUrl = video.youtubeUrl && !isValidYouTubeUrl(video.youtubeUrl);
 
     return (
       <ListItem
@@ -468,6 +477,10 @@ export default function TangoCollabPage() {
             ) : isAzure ? (
               <Box sx={{ width: 64, height: 36, bgcolor: 'grey.800', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
                 <VideoFileIcon sx={{ color: 'grey.400' }} />
+              </Box>
+            ) : hasInvalidUrl ? (
+              <Box sx={{ width: 64, height: 36, bgcolor: 'warning.light', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
+                <WarningIcon sx={{ color: 'warning.dark', fontSize: 20 }} />
               </Box>
             ) : (
               <Box sx={{ width: 64, height: 36, bgcolor: 'grey.200', borderRadius: 1 }} />
@@ -690,8 +703,19 @@ export default function TangoCollabPage() {
                     </video>
                   </Box>
                 ) : (
-                  <Box sx={{ height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'grey.100', borderRadius: 1 }}>
-                    <Typography color="text.secondary">No valid video URL found</Typography>
+                  <Box sx={{ height: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', bgcolor: 'warning.light', borderRadius: 1, p: 2 }}>
+                    <WarningIcon sx={{ fontSize: 40, color: 'warning.dark', mb: 1 }} />
+                    <Typography color="warning.dark" fontWeight="medium" gutterBottom>Cannot play this video</Typography>
+                    <Typography variant="body2" color="text.secondary" textAlign="center">
+                      {selectedVideo.youtubeUrl && !isValidYouTubeUrl(selectedVideo.youtubeUrl)
+                        ? 'URL is not from YouTube. Please use a youtube.com or youtu.be link, or upload the video directly.'
+                        : 'No valid video URL found.'}
+                    </Typography>
+                    {selectedVideo.youtubeUrl && (
+                      <Typography variant="caption" color="text.secondary" sx={{ mt: 1, wordBreak: 'break-all', maxWidth: '100%' }}>
+                        Current URL: {selectedVideo.youtubeUrl.substring(0, 60)}...
+                      </Typography>
+                    )}
                   </Box>
                 )}
               </CardContent>
@@ -726,15 +750,30 @@ export default function TangoCollabPage() {
           />
 
           {dialogTab === 0 ? (
-            <TextField
-              fullWidth
-              label="YouTube URL"
-              value={newVideo.youtubeUrl}
-              onChange={(e) => setNewVideo({ ...newVideo, youtubeUrl: e.target.value })}
-              placeholder="https://www.youtube.com/watch?v=..."
-              sx={{ mb: 2 }}
-              required
-            />
+            <>
+              <TextField
+                fullWidth
+                label="YouTube URL"
+                value={newVideo.youtubeUrl}
+                onChange={(e) => setNewVideo({ ...newVideo, youtubeUrl: e.target.value })}
+                placeholder="https://www.youtube.com/watch?v=..."
+                sx={{ mb: 1 }}
+                required
+                error={newVideo.youtubeUrl && !isValidYouTubeUrl(newVideo.youtubeUrl)}
+                helperText={newVideo.youtubeUrl && !isValidYouTubeUrl(newVideo.youtubeUrl) ? 'URL must be from youtube.com or youtu.be' : ''}
+              />
+              {newVideo.youtubeUrl && isValidYouTubeUrl(newVideo.youtubeUrl) && getYouTubeId(newVideo.youtubeUrl) && (
+                <Box sx={{ mb: 2, textAlign: 'center' }}>
+                  <Typography variant="caption" color="text.secondary">Preview:</Typography>
+                  <Box
+                    component="img"
+                    src={getYouTubeThumbnail(getYouTubeId(newVideo.youtubeUrl))}
+                    alt="Video thumbnail"
+                    sx={{ width: '100%', maxWidth: 200, borderRadius: 1, mt: 0.5 }}
+                  />
+                </Box>
+              )}
+            </>
           ) : (
             <Box
               onDragEnter={handleDrag}
@@ -875,7 +914,7 @@ export default function TangoCollabPage() {
         <DialogActions>
           <Button onClick={resetDialog} disabled={uploading}>Cancel</Button>
           {dialogTab === 0 ? (
-            <Button variant="contained" onClick={handleAddYouTubeVideo} disabled={!newVideo.title || !newVideo.youtubeUrl}>
+            <Button variant="contained" onClick={handleAddYouTubeVideo} disabled={!newVideo.title || !newVideo.youtubeUrl || !isValidYouTubeUrl(newVideo.youtubeUrl)}>
               Add
             </Button>
           ) : (
@@ -909,6 +948,20 @@ export default function TangoCollabPage() {
                 rows={2}
                 sx={{ mb: 2 }}
               />
+
+              {/* YouTube URL field - show if video has youtubeUrl */}
+              {editDialog.video.youtubeUrl !== undefined && (
+                <TextField
+                  fullWidth
+                  label="YouTube URL"
+                  value={editDialog.video.youtubeUrl || ''}
+                  onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, youtubeUrl: e.target.value } })}
+                  placeholder="https://www.youtube.com/watch?v=..."
+                  sx={{ mb: 2 }}
+                  error={editDialog.video.youtubeUrl && !isValidYouTubeUrl(editDialog.video.youtubeUrl)}
+                  helperText={editDialog.video.youtubeUrl && !isValidYouTubeUrl(editDialog.video.youtubeUrl) ? 'URL must be from youtube.com or youtu.be' : ''}
+                />
+              )}
 
               {/* Artists input */}
               <Autocomplete

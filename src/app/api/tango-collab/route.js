@@ -92,7 +92,7 @@ export async function POST(request) {
       }
 
       case 'editVideo': {
-        const { videoId, title, description, tags, artists, startTime } = body;
+        const { videoId, title, description, tags, artists, startTime, youtubeUrl } = body;
         if (!videoId) {
           return NextResponse.json({ error: 'Video ID is required' }, { status: 400 });
         }
@@ -105,6 +105,7 @@ export async function POST(request) {
         if (tags !== undefined) video.tags = tags;
         if (artists !== undefined) video.artists = artists;
         if (startTime !== undefined) video.startTime = parseInt(startTime);
+        if (youtubeUrl !== undefined) video.youtubeUrl = youtubeUrl;
         await writeJsonToBlob(BLOB_NAME, data);
         return NextResponse.json({ success: true, video });
       }
