@@ -1,83 +1,183 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { readJsonFromBlob, writeJsonToBlob } from '@/lib/azure-json-storage';
 
-const dataFilePath = path.join(process.cwd(), 'src/data/tango-collab.json');
+const BLOB_NAME = 'tango-collab.json';
 
 // Admin password for adding/editing videos
-const ADMIN_PASSWORD = process.env.PRACTICE_VIDEOS_ADMIN_PASSWORD || 'admin2025';
+const ADMIN_PASSWORD = (process.env.PRACTICE_VIDEOS_ADMIN_PASSWORD || 'admin2025').trim();
 
-function readVideosFile() {
-  try {
-    const data = fs.readFileSync(dataFilePath, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return { videos: [] };
-  }
+// Initialize data structure if needed
+function initializeData(data) {
+  if (!data.videos) data.videos = [];
+  if (!data.folders) data.folders = [];
+  return data;
 }
 
-function writeVideosFile(data) {
-  fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
-}
-
-// GET - retrieve videos (public - no password required)
+// GET - retrieve videos and folders (public - no password required)
 export async function GET() {
-  const data = readVideosFile();
+  const data = initializeData(await readJsonFromBlob(BLOB_NAME));
   return NextResponse.json(data);
 }
 
-// POST - add a new video (requires admin password)
+// POST - add video, create folder, rename folder, or move video
 export async function POST(request) {
-  const body = await request.json();
-  const { password, title, youtubeUrl, videoUrl, description, type, startTime } = body;
+  try {
+    const body = await request.json();
+    const { password, action } = body;
 
-  if (password !== ADMIN_PASSWORD) {
-    return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
+    if (password !== ADMIN_PASSWORD) {
+      return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
+    }
+
+    const data = initializeData(await readJsonFromBlob(BLOB_NAME));
+
+    // Handle different actions
+    switch (action) {
+      case 'createFolder': {
+        const { name } = body;
+        if (!name) {
+          return NextResponse.json({ error: 'Folder name is required' }, { status: 400 });
+        }
+        const newFolder = {
+          id: Date.now().toString(),
+          name,
+          createdAt: new Date().toISOString()
+        };
+        data.folders.push(newFolder);
+        await writeJsonToBlob(BLOB_NAME, data);
+        return NextResponse.json({ success: true, folder: newFolder });
+      }
+
+      case 'renameFolder': {
+        const { folderId, name } = body;
+        if (!folderId || !name) {
+          return NextResponse.json({ error: 'Folder ID and name are required' }, { status: 400 });
+        }
+        const folder = data.folders.find(f => f.id === folderId);
+        if (!folder) {
+          return NextResponse.json({ error: 'Folder not found' }, { status: 404 });
+        }
+        folder.name = name;
+        await writeJsonToBlob(BLOB_NAME, data);
+        return NextResponse.json({ success: true, folder });
+      }
+
+      case 'moveVideo': {
+        const { videoId, folderId } = body;
+        if (!videoId) {
+          return NextResponse.json({ error: 'Video ID is required' }, { status: 400 });
+        }
+        const video = data.videos.find(v => v.id === videoId);
+        if (!video) {
+          return NextResponse.json({ error: 'Video not found' }, { status: 404 });
+        }
+        // folderId can be null to move to root
+        video.folderId = folderId || null;
+        await writeJsonToBlob(BLOB_NAME, data);
+        return NextResponse.json({ success: true, video });
+      }
+
+      case 'updateTags': {
+        const { videoId, tags } = body;
+        if (!videoId) {
+          return NextResponse.json({ error: 'Video ID is required' }, { status: 400 });
+        }
+        const video = data.videos.find(v => v.id === videoId);
+        if (!video) {
+          return NextResponse.json({ error: 'Video not found' }, { status: 404 });
+        }
+        video.tags = tags || [];
+        await writeJsonToBlob(BLOB_NAME, data);
+        return NextResponse.json({ success: true, video });
+      }
+
+      case 'editVideo': {
+        const { videoId, title, description, tags, artists, startTime } = body;
+        if (!videoId) {
+          return NextResponse.json({ error: 'Video ID is required' }, { status: 400 });
+        }
+        const video = data.videos.find(v => v.id === videoId);
+        if (!video) {
+          return NextResponse.json({ error: 'Video not found' }, { status: 404 });
+        }
+        if (title !== undefined) video.title = title;
+        if (description !== undefined) video.description = description;
+        if (tags !== undefined) video.tags = tags;
+        if (artists !== undefined) video.artists = artists;
+        if (startTime !== undefined) video.startTime = parseInt(startTime);
+        await writeJsonToBlob(BLOB_NAME, data);
+        return NextResponse.json({ success: true, video });
+      }
+
+      default: {
+        // Default: add video
+        const { title, youtubeUrl, videoUrl, description, type, startTime, folderId } = body;
+
+        if (!title) {
+          return NextResponse.json({ error: 'Title is required' }, { status: 400 });
+        }
+
+        if (!youtubeUrl && !videoUrl) {
+          return NextResponse.json({ error: 'Video URL is required' }, { status: 400 });
+        }
+
+        const { tags, artists } = body;
+        const newVideo = {
+          id: Date.now().toString(),
+          title,
+          youtubeUrl: youtubeUrl || null,
+          videoUrl: videoUrl || null,
+          type: type || (youtubeUrl ? 'youtube' : 'azure'),
+          description: description || '',
+          startTime: startTime !== undefined ? parseInt(startTime) : 0,
+          folderId: folderId || null,
+          tags: tags || [],
+          artists: artists || [],
+          addedAt: new Date().toISOString()
+        };
+
+        data.videos.push(newVideo);
+        await writeJsonToBlob(BLOB_NAME, data);
+
+        return NextResponse.json({ success: true, video: newVideo });
+      }
+    }
+  } catch (error) {
+    console.error('POST error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
-
-  if (!title) {
-    return NextResponse.json({ error: 'Title is required' }, { status: 400 });
-  }
-
-  if (!youtubeUrl && !videoUrl) {
-    return NextResponse.json({ error: 'Video URL is required' }, { status: 400 });
-  }
-
-  const data = readVideosFile();
-  const newVideo = {
-    id: Date.now().toString(),
-    title,
-    youtubeUrl: youtubeUrl || null,
-    videoUrl: videoUrl || null,
-    type: type || (youtubeUrl ? 'youtube' : 'azure'),
-    description: description || '',
-    startTime: startTime !== undefined ? parseInt(startTime) : 7,
-    addedAt: new Date().toISOString()
-  };
-
-  data.videos.push(newVideo);
-  writeVideosFile(data);
-
-  return NextResponse.json({ success: true, video: newVideo });
 }
 
-// DELETE - remove a video (requires admin password)
+// DELETE - remove a video or folder (requires admin password)
 export async function DELETE(request) {
   const { searchParams } = new URL(request.url);
   const password = searchParams.get('password');
   const videoId = searchParams.get('id');
+  const folderId = searchParams.get('folderId');
 
   if (password !== ADMIN_PASSWORD) {
     return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
   }
 
-  if (!videoId) {
-    return NextResponse.json({ error: 'Video ID required' }, { status: 400 });
+  const data = initializeData(await readJsonFromBlob(BLOB_NAME));
+
+  // Delete folder
+  if (folderId) {
+    const hasVideos = data.videos.some(v => v.folderId === folderId);
+    if (hasVideos) {
+      return NextResponse.json({ error: 'Cannot delete folder with videos. Move or delete videos first.' }, { status: 400 });
+    }
+    data.folders = data.folders.filter(f => f.id !== folderId);
+    await writeJsonToBlob(BLOB_NAME, data);
+    return NextResponse.json({ success: true });
   }
 
-  const data = readVideosFile();
-  data.videos = data.videos.filter(v => v.id !== videoId);
-  writeVideosFile(data);
+  // Delete video
+  if (videoId) {
+    data.videos = data.videos.filter(v => v.id !== videoId);
+    await writeJsonToBlob(BLOB_NAME, data);
+    return NextResponse.json({ success: true });
+  }
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ error: 'Video ID or Folder ID required' }, { status: 400 });
 }

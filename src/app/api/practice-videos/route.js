@@ -1,26 +1,12 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { readJsonFromBlob, writeJsonToBlob } from '@/lib/azure-json-storage';
 
-const dataFilePath = path.join(process.cwd(), 'src/data/practice-videos.json');
+const BLOB_NAME = 'practice-videos.json';
 
 // Viewer password - user gets this from Facebook
-const VIEWER_PASSWORD = process.env.PRACTICE_VIDEOS_PASSWORD || 'tangolab2025';
+const VIEWER_PASSWORD = (process.env.PRACTICE_VIDEOS_PASSWORD || 'tangolab2025').trim();
 // Admin password for adding/editing videos
-const ADMIN_PASSWORD = process.env.PRACTICE_VIDEOS_ADMIN_PASSWORD || 'admin2025';
-
-function readVideosFile() {
-  try {
-    const data = fs.readFileSync(dataFilePath, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    return { videos: [] };
-  }
-}
-
-function writeVideosFile(data) {
-  fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
-}
+const ADMIN_PASSWORD = (process.env.PRACTICE_VIDEOS_ADMIN_PASSWORD || 'admin2025').trim();
 
 // GET - retrieve videos (requires viewer password)
 export async function GET(request) {
@@ -31,7 +17,7 @@ export async function GET(request) {
     return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
   }
 
-  const data = readVideosFile();
+  const data = await readJsonFromBlob(BLOB_NAME);
   return NextResponse.json(data);
 }
 
@@ -53,7 +39,7 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Video URL is required' }, { status: 400 });
   }
 
-  const data = readVideosFile();
+  const data = await readJsonFromBlob(BLOB_NAME);
   const newVideo = {
     id: Date.now().toString(),
     title,
@@ -66,7 +52,7 @@ export async function POST(request) {
   };
 
   data.videos.push(newVideo);
-  writeVideosFile(data);
+  await writeJsonToBlob(BLOB_NAME, data);
 
   return NextResponse.json({ success: true, video: newVideo });
 }
@@ -85,9 +71,9 @@ export async function DELETE(request) {
     return NextResponse.json({ error: 'Video ID required' }, { status: 400 });
   }
 
-  const data = readVideosFile();
+  const data = await readJsonFromBlob(BLOB_NAME);
   data.videos = data.videos.filter(v => v.id !== videoId);
-  writeVideosFile(data);
+  await writeJsonToBlob(BLOB_NAME, data);
 
   return NextResponse.json({ success: true });
 }

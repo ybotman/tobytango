@@ -14,19 +14,34 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Alert,
   CircularProgress,
   Chip,
   Tabs,
   Tab,
-  LinearProgress
+  LinearProgress,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Autocomplete,
+  InputAdornment
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import VideoFileIcon from '@mui/icons-material/VideoFile';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SearchIcon from '@mui/icons-material/Search';
+import ClearIcon from '@mui/icons-material/Clear';
+import PersonIcon from '@mui/icons-material/Person';
 import { BlobServiceClient } from '@azure/storage-blob';
 
 // Extract YouTube video ID from various URL formats
@@ -35,6 +50,12 @@ function getYouTubeId(url) {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
   return match && match[2].length === 11 ? match[2] : null;
+}
+
+// Get YouTube thumbnail URL
+function getYouTubeThumbnail(youtubeId) {
+  if (!youtubeId) return null;
+  return `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`;
 }
 
 // Check if URL is an Azure blob video
@@ -46,11 +67,24 @@ export default function TangoCollabPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  // Search and filter state
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedTag, setSelectedTag] = useState('');
+  const [selectedArtist, setSelectedArtist] = useState('');
 
   // Add video dialog state
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTab, setDialogTab] = useState(0);
-  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', description: '', startTime: 7 });
+  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', description: '', startTime: 0, tags: [], artists: [] });
+  const [tagInput, setTagInput] = useState('');
+  const [artistInput, setArtistInput] = useState('');
+
+  // Edit dialog state
+  const [editDialog, setEditDialog] = useState({ open: false, video: null });
+  const [editTagInput, setEditTagInput] = useState('');
+  const [editArtistInput, setEditArtistInput] = useState('');
 
   // Upload state
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -87,13 +121,21 @@ export default function TangoCollabPage() {
     const adminPwd = prompt('Enter admin password:');
     if (!adminPwd) return;
 
-    // Store and verify on next action
     sessionStorage.setItem('tangoCollabAdminPassword', adminPwd);
     setIsAdmin(true);
   };
 
+  const getStoredPassword = () => sessionStorage.getItem('tangoCollabAdminPassword');
+
+  const handleAuthError = (errData) => {
+    if (errData.error === 'Admin access required') {
+      setIsAdmin(false);
+      sessionStorage.removeItem('tangoCollabAdminPassword');
+    }
+  };
+
   const handleAddYouTubeVideo = async () => {
-    const storedPassword = sessionStorage.getItem('tangoCollabAdminPassword');
+    const storedPassword = getStoredPassword();
 
     try {
       const response = await fetch('/api/tango-collab', {
@@ -105,6 +147,8 @@ export default function TangoCollabPage() {
           youtubeUrl: newVideo.youtubeUrl,
           description: newVideo.description,
           startTime: newVideo.startTime,
+          tags: newVideo.tags,
+          artists: newVideo.artists,
           type: 'youtube'
         })
       });
@@ -115,10 +159,7 @@ export default function TangoCollabPage() {
         resetDialog();
       } else {
         const errData = await response.json();
-        if (errData.error === 'Admin access required') {
-          setIsAdmin(false);
-          sessionStorage.removeItem('tangoCollabAdminPassword');
-        }
+        handleAuthError(errData);
         alert(errData.error || 'Failed to add video');
       }
     } catch {
@@ -129,7 +170,7 @@ export default function TangoCollabPage() {
   const handleUploadVideo = async () => {
     if (!selectedFile || !newVideo.title) return;
 
-    const storedPassword = sessionStorage.getItem('tangoCollabAdminPassword');
+    const storedPassword = getStoredPassword();
     setUploading(true);
     setUploadProgress(0);
 
@@ -142,10 +183,7 @@ export default function TangoCollabPage() {
 
       if (!tokenResponse.ok) {
         const errData = await tokenResponse.json();
-        if (errData.error === 'Admin access required') {
-          setIsAdmin(false);
-          sessionStorage.removeItem('tangoCollabAdminPassword');
-        }
+        handleAuthError(errData);
         throw new Error(errData.error || 'Failed to get upload token');
       }
 
@@ -179,6 +217,8 @@ export default function TangoCollabPage() {
           title: newVideo.title,
           description: newVideo.description,
           startTime: newVideo.startTime,
+          tags: newVideo.tags,
+          artists: newVideo.artists,
           videoUrl: blobUrl,
           type: 'azure'
         })
@@ -202,15 +242,108 @@ export default function TangoCollabPage() {
 
   const resetDialog = () => {
     setOpenDialog(false);
-    setNewVideo({ title: '', youtubeUrl: '', description: '', startTime: 7 });
+    setNewVideo({ title: '', youtubeUrl: '', description: '', startTime: 0, tags: [], artists: [] });
     setSelectedFile(null);
     setDialogTab(0);
+    setTagInput('');
+    setArtistInput('');
+  };
+
+  const handleAddTag = (tag, isEdit = false) => {
+    const normalizedTag = tag.trim().toLowerCase();
+    if (isEdit) {
+      if (normalizedTag && !editDialog.video.tags?.includes(normalizedTag)) {
+        setEditDialog({
+          ...editDialog,
+          video: { ...editDialog.video, tags: [...(editDialog.video.tags || []), normalizedTag] }
+        });
+      }
+      setEditTagInput('');
+    } else {
+      if (normalizedTag && !newVideo.tags.includes(normalizedTag)) {
+        setNewVideo({ ...newVideo, tags: [...newVideo.tags, normalizedTag] });
+      }
+      setTagInput('');
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove, isEdit = false) => {
+    if (isEdit) {
+      setEditDialog({
+        ...editDialog,
+        video: { ...editDialog.video, tags: editDialog.video.tags.filter(t => t !== tagToRemove) }
+      });
+    } else {
+      setNewVideo({ ...newVideo, tags: newVideo.tags.filter(t => t !== tagToRemove) });
+    }
+  };
+
+  const handleAddArtist = (artist, isEdit = false) => {
+    const normalizedArtist = artist.trim();
+    if (isEdit) {
+      if (normalizedArtist && !editDialog.video.artists?.includes(normalizedArtist)) {
+        setEditDialog({
+          ...editDialog,
+          video: { ...editDialog.video, artists: [...(editDialog.video.artists || []), normalizedArtist] }
+        });
+      }
+      setEditArtistInput('');
+    } else {
+      if (normalizedArtist && !newVideo.artists.includes(normalizedArtist)) {
+        setNewVideo({ ...newVideo, artists: [...newVideo.artists, normalizedArtist] });
+      }
+      setArtistInput('');
+    }
+  };
+
+  const handleRemoveArtist = (artistToRemove, isEdit = false) => {
+    if (isEdit) {
+      setEditDialog({
+        ...editDialog,
+        video: { ...editDialog.video, artists: editDialog.video.artists.filter(a => a !== artistToRemove) }
+      });
+    } else {
+      setNewVideo({ ...newVideo, artists: newVideo.artists.filter(a => a !== artistToRemove) });
+    }
+  };
+
+  const handleEditVideo = async () => {
+    const storedPassword = getStoredPassword();
+    try {
+      const response = await fetch('/api/tango-collab', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: storedPassword,
+          action: 'editVideo',
+          videoId: editDialog.video.id,
+          title: editDialog.video.title,
+          description: editDialog.video.description,
+          tags: editDialog.video.tags,
+          artists: editDialog.video.artists,
+          startTime: editDialog.video.startTime
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setVideos(videos.map(v => v.id === data.video.id ? data.video : v));
+        if (selectedVideo?.id === data.video.id) setSelectedVideo(data.video);
+        setEditDialog({ open: false, video: null });
+      } else {
+        const errData = await response.json();
+        handleAuthError(errData);
+        alert(errData.error || 'Failed to edit video');
+      }
+    } catch {
+      alert('Error editing video');
+    }
   };
 
   const handleDeleteVideo = async (videoId) => {
     if (!confirm('Delete this video?')) return;
 
-    const storedPassword = sessionStorage.getItem('tangoCollabAdminPassword');
+    const storedPassword = getStoredPassword();
 
     try {
       const response = await fetch(
@@ -220,12 +353,10 @@ export default function TangoCollabPage() {
 
       if (response.ok) {
         setVideos(videos.filter(v => v.id !== videoId));
+        if (selectedVideo?.id === videoId) setSelectedVideo(null);
       } else {
         const errData = await response.json();
-        if (errData.error === 'Admin access required') {
-          setIsAdmin(false);
-          sessionStorage.removeItem('tangoCollabAdminPassword');
-        }
+        handleAuthError(errData);
         alert('Failed to delete video');
       }
     } catch {
@@ -272,6 +403,95 @@ export default function TangoCollabPage() {
     }
   };
 
+  // Get all unique tags and artists from videos (auto-built from existing videos)
+  const allTags = [...new Set(videos.flatMap(v => v.tags || []))].sort();
+  const allArtists = [...new Set(videos.flatMap(v => v.artists || []))].sort();
+
+  // Filter videos by search query, selected tag, and selected artist
+  const filteredVideos = videos.filter(v => {
+    const matchesSearch = !searchQuery.trim() ||
+      v.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (v.description && v.description.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (v.tags && v.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))) ||
+      (v.artists && v.artists.some(artist => artist.toLowerCase().includes(searchQuery.toLowerCase())));
+
+    const matchesTag = !selectedTag || (v.tags && v.tags.includes(selectedTag));
+    const matchesArtist = !selectedArtist || (v.artists && v.artists.includes(selectedArtist));
+
+    return matchesSearch && matchesTag && matchesArtist;
+  });
+
+  // Render video list item
+  const renderVideoItem = (video) => {
+    const youtubeId = getYouTubeId(video.youtubeUrl);
+    const isAzure = isAzureBlobVideo(video.videoUrl);
+    const thumbnail = youtubeId ? getYouTubeThumbnail(youtubeId) : null;
+
+    return (
+      <ListItem
+        key={video.id}
+        disablePadding
+        secondaryAction={
+          isAdmin && (
+            <Box>
+              <IconButton size="small" onClick={() => setEditDialog({ open: true, video: { ...video } })}>
+                <EditIcon fontSize="small" />
+              </IconButton>
+              <IconButton size="small" color="error" onClick={() => handleDeleteVideo(video.id)}>
+                <DeleteIcon fontSize="small" />
+              </IconButton>
+            </Box>
+          )
+        }
+      >
+        <ListItemButton onClick={() => setSelectedVideo(video)} selected={selectedVideo?.id === video.id}>
+          <ListItemIcon sx={{ minWidth: 80 }}>
+            {thumbnail ? (
+              <Box
+                component="img"
+                src={thumbnail}
+                alt={video.title}
+                sx={{ width: 64, height: 36, objectFit: 'cover', borderRadius: 1 }}
+              />
+            ) : isAzure ? (
+              <Box sx={{ width: 64, height: 36, bgcolor: 'grey.800', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
+                <VideoFileIcon sx={{ color: 'grey.400' }} />
+              </Box>
+            ) : (
+              <Box sx={{ width: 64, height: 36, bgcolor: 'grey.200', borderRadius: 1 }} />
+            )}
+          </ListItemIcon>
+          <ListItemText
+            primary={video.title}
+            secondary={
+              <Box component="span" sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+                {video.artists && video.artists.length > 0 && (
+                  <Typography variant="caption" color="primary" sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                    <PersonIcon sx={{ fontSize: 12 }} />
+                    {video.artists.join(', ')}
+                  </Typography>
+                )}
+                {video.description && (
+                  <Typography variant="caption" color="text.secondary" noWrap>
+                    {video.description}
+                  </Typography>
+                )}
+                {video.tags && video.tags.length > 0 && (
+                  <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                    {video.tags.map(tag => (
+                      <Chip key={tag} size="small" label={tag} variant="outlined" sx={{ height: 18, fontSize: '0.65rem' }} />
+                    ))}
+                  </Box>
+                )}
+              </Box>
+            }
+            primaryTypographyProps={{ noWrap: true }}
+          />
+        </ListItemButton>
+      </ListItem>
+    );
+  };
+
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 8, textAlign: 'center' }}>
@@ -282,7 +502,7 @@ export default function TangoCollabPage() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h4" component="h1">
           TangoCollab
         </Typography>
@@ -290,7 +510,7 @@ export default function TangoCollabPage() {
         <Box>
           {isAdmin ? (
             <>
-              <Chip label="Admin Mode" color="primary" sx={{ mr: 2 }} onClick={handleAdminToggle} />
+              <Chip label="Admin Mode" color="primary" sx={{ mr: 1 }} onClick={handleAdminToggle} />
               <Button
                 variant="contained"
                 startIcon={<AddIcon />}
@@ -307,87 +527,169 @@ export default function TangoCollabPage() {
         </Box>
       </Box>
 
-      <Typography variant="body1" color="text.secondary" paragraph>
-        A collection of collaborative tango videos and performances.
-      </Typography>
+      {/* Search and Filter Bar */}
+      <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
+        <TextField
+          placeholder="Search videos..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          size="small"
+          sx={{ flex: 1, minWidth: 200 }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon color="action" />
+              </InputAdornment>
+            ),
+            endAdornment: searchQuery && (
+              <InputAdornment position="end">
+                <IconButton size="small" onClick={() => setSearchQuery('')}>
+                  <ClearIcon fontSize="small" />
+                </IconButton>
+              </InputAdornment>
+            )
+          }}
+        />
+        <FormControl size="small" sx={{ minWidth: 140 }}>
+          <InputLabel>Tag</InputLabel>
+          <Select
+            value={selectedTag}
+            label="Tag"
+            onChange={(e) => setSelectedTag(e.target.value)}
+          >
+            <MenuItem value="">All tags</MenuItem>
+            {allTags.map(tag => (
+              <MenuItem key={tag} value={tag}>{tag}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl size="small" sx={{ minWidth: 140 }}>
+          <InputLabel>Artist</InputLabel>
+          <Select
+            value={selectedArtist}
+            label="Artist"
+            onChange={(e) => setSelectedArtist(e.target.value)}
+          >
+            <MenuItem value="">All artists</MenuItem>
+            {allArtists.map(artist => (
+              <MenuItem key={artist} value={artist}>{artist}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        {(selectedTag || selectedArtist) && (
+          <Button size="small" onClick={() => { setSelectedTag(''); setSelectedArtist(''); }}>Clear filters</Button>
+        )}
+      </Box>
 
-      {videos.length === 0 ? (
-        <Alert severity="info">No videos yet. {isAdmin && 'Click "Add Video" to add one.'}</Alert>
-      ) : (
-        <Box sx={{ display: 'grid', gap: 3 }}>
-          {videos.map((video) => {
-            const youtubeId = getYouTubeId(video.youtubeUrl);
-            const isAzure = isAzureBlobVideo(video.videoUrl);
-
-            return (
-              <Card key={video.id} sx={{ position: 'relative' }}>
-                {isAdmin && (
-                  <IconButton
-                    sx={{ position: 'absolute', top: 8, right: 8, zIndex: 1, bgcolor: 'rgba(255,255,255,0.8)' }}
-                    onClick={() => handleDeleteVideo(video.id)}
-                    color="error"
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                )}
-                <CardContent>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                    {isAzure ? <VideoFileIcon color="primary" /> : <YouTubeIcon color="error" />}
-                    <Typography variant="h6">{video.title}</Typography>
-                  </Box>
-                  {video.description && (
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                      {video.description}
-                    </Typography>
-                  )}
-
-                  {youtubeId && (
-                    <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
-                      <iframe
-                        src={`https://www.youtube.com/embed/${youtubeId}?start=${video.startTime || 7}`}
-                        style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%',
-                          border: 0
-                        }}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        title={video.title}
-                      />
-                    </Box>
-                  )}
-
-                  {isAzure && (
-                    <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', bgcolor: '#000' }}>
-                      <video
-                        controls
-                        style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%'
-                        }}
-                        onLoadedMetadata={(e) => { e.target.currentTime = video.startTime || 7; }}
-                      >
-                        <source src={video.videoUrl} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    </Box>
-                  )}
-
-                  {!youtubeId && !isAzure && (
-                    <Alert severity="warning">Invalid video URL</Alert>
-                  )}
-                </CardContent>
-              </Card>
-            );
-          })}
+      <Box sx={{ display: 'flex', gap: 3 }}>
+        {/* Video List - Left Side */}
+        <Box sx={{ width: 420, flexShrink: 0 }}>
+          <Card>
+            <List dense sx={{ maxHeight: 'calc(100vh - 300px)', overflow: 'auto' }}>
+              {filteredVideos.length > 0 ? (
+                filteredVideos.map(renderVideoItem)
+              ) : (
+                <ListItem>
+                  <ListItemText
+                    primary={searchQuery || selectedTag || selectedArtist ? "No matching videos" : "No videos yet"}
+                    secondary={isAdmin && !searchQuery && !selectedTag && !selectedArtist ? 'Click "Add Video" to add one.' : ''}
+                  />
+                </ListItem>
+              )}
+            </List>
+          </Card>
         </Box>
-      )}
+
+        {/* Video Player - Right Side */}
+        <Box sx={{ flex: 1 }}>
+          {selectedVideo ? (
+            <Card>
+              <CardContent>
+                <Typography variant="h6" gutterBottom>{selectedVideo.title}</Typography>
+                {selectedVideo.artists && selectedVideo.artists.length > 0 && (
+                  <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 1, alignItems: 'center' }}>
+                    <PersonIcon fontSize="small" color="primary" />
+                    {selectedVideo.artists.map(artist => (
+                      <Chip
+                        key={artist}
+                        size="small"
+                        label={artist}
+                        color="primary"
+                        variant="outlined"
+                        onClick={() => { setSelectedArtist(artist); setSearchQuery(''); }}
+                        sx={{ cursor: 'pointer' }}
+                      />
+                    ))}
+                  </Box>
+                )}
+                {selectedVideo.description && (
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                    {selectedVideo.description}
+                  </Typography>
+                )}
+                {selectedVideo.tags && selectedVideo.tags.length > 0 && (
+                  <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
+                    {selectedVideo.tags.map(tag => (
+                      <Chip
+                        key={tag}
+                        size="small"
+                        label={tag}
+                        onClick={() => { setSelectedTag(tag); setSearchQuery(''); }}
+                        sx={{ cursor: 'pointer' }}
+                      />
+                    ))}
+                  </Box>
+                )}
+
+                {getYouTubeId(selectedVideo.youtubeUrl) && (
+                  <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
+                    <iframe
+                      src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo.youtubeUrl)}?start=${selectedVideo.startTime || 0}`}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        border: 0
+                      }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={selectedVideo.title}
+                    />
+                  </Box>
+                )}
+
+                {isAzureBlobVideo(selectedVideo.videoUrl) && (
+                  <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', bgcolor: '#000' }}>
+                    <video
+                      controls
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%'
+                      }}
+                      onLoadedMetadata={(e) => { e.target.currentTime = selectedVideo.startTime || 0; }}
+                    >
+                      <source src={selectedVideo.videoUrl} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </Box>
+                )}
+              </CardContent>
+            </Card>
+          ) : (
+            <Card sx={{ height: 400, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Box sx={{ textAlign: 'center', color: 'text.secondary' }}>
+                <PlayArrowIcon sx={{ fontSize: 64, opacity: 0.3 }} />
+                <Typography>Select a video to play</Typography>
+              </Box>
+            </Card>
+          )}
+        </Box>
+      </Box>
 
       {/* Add Video Dialog */}
       <Dialog open={openDialog} onClose={resetDialog} maxWidth="sm" fullWidth>
@@ -427,12 +729,11 @@ export default function TangoCollabPage() {
                 border: '2px dashed',
                 borderColor: dragActive ? 'primary.main' : 'grey.400',
                 borderRadius: 2,
-                p: 4,
+                p: 3,
                 mb: 2,
                 textAlign: 'center',
                 bgcolor: dragActive ? 'action.hover' : 'background.paper',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
+                cursor: 'pointer'
               }}
               onClick={() => document.getElementById('tango-collab-upload-input').click()}
             >
@@ -443,12 +744,12 @@ export default function TangoCollabPage() {
                 onChange={handleFileSelect}
                 style={{ display: 'none' }}
               />
-              <CloudUploadIcon sx={{ fontSize: 48, color: 'grey.500', mb: 1 }} />
+              <CloudUploadIcon sx={{ fontSize: 40, color: 'grey.500', mb: 1 }} />
               {selectedFile ? (
                 <Typography color="primary">{selectedFile.name}</Typography>
               ) : (
-                <Typography color="text.secondary">
-                  Drag and drop a video file here, or click to select
+                <Typography color="text.secondary" variant="body2">
+                  Drag and drop or click to select
                 </Typography>
               )}
             </Box>
@@ -465,13 +766,73 @@ export default function TangoCollabPage() {
 
           <TextField
             fullWidth
-            label="Description (optional)"
+            label="Description"
             value={newVideo.description}
             onChange={(e) => setNewVideo({ ...newVideo, description: e.target.value })}
             multiline
-            rows={3}
+            rows={2}
             sx={{ mb: 2 }}
           />
+
+          {/* Artists input */}
+          <Autocomplete
+            freeSolo
+            options={allArtists.filter(a => !newVideo.artists.includes(a))}
+            inputValue={artistInput}
+            onInputChange={(e, value) => setArtistInput(value)}
+            onChange={(e, value) => { if (value) handleAddArtist(value); }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Artists"
+                placeholder="Type and press Enter"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && artistInput.trim()) {
+                    e.preventDefault();
+                    handleAddArtist(artistInput);
+                  }
+                }}
+              />
+            )}
+            sx={{ mb: 1 }}
+          />
+          {newVideo.artists.length > 0 && (
+            <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
+              {newVideo.artists.map(artist => (
+                <Chip key={artist} label={artist} onDelete={() => handleRemoveArtist(artist)} size="small" color="primary" />
+              ))}
+            </Box>
+          )}
+
+          {/* Tags input */}
+          <Autocomplete
+            freeSolo
+            options={allTags.filter(t => !newVideo.tags.includes(t))}
+            inputValue={tagInput}
+            onInputChange={(e, value) => setTagInput(value)}
+            onChange={(e, value) => { if (value) handleAddTag(value); }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Tags"
+                placeholder="Type and press Enter"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && tagInput.trim()) {
+                    e.preventDefault();
+                    handleAddTag(tagInput);
+                  }
+                }}
+              />
+            )}
+            sx={{ mb: 1 }}
+          />
+          {newVideo.tags.length > 0 && (
+            <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
+              {newVideo.tags.map(tag => (
+                <Chip key={tag} label={tag} onDelete={() => handleRemoveTag(tag)} size="small" />
+              ))}
+            </Box>
+          )}
 
           <TextField
             fullWidth
@@ -479,30 +840,121 @@ export default function TangoCollabPage() {
             type="number"
             value={newVideo.startTime}
             onChange={(e) => setNewVideo({ ...newVideo, startTime: parseInt(e.target.value) || 0 })}
-            helperText="Video will start at this position (default: 7 seconds)"
             inputProps={{ min: 0 }}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={resetDialog} disabled={uploading}>Cancel</Button>
           {dialogTab === 0 ? (
-            <Button
-              variant="contained"
-              onClick={handleAddYouTubeVideo}
-              disabled={!newVideo.title || !newVideo.youtubeUrl}
-            >
-              Add YouTube Video
+            <Button variant="contained" onClick={handleAddYouTubeVideo} disabled={!newVideo.title || !newVideo.youtubeUrl}>
+              Add
             </Button>
           ) : (
-            <Button
-              variant="contained"
-              onClick={handleUploadVideo}
-              disabled={!newVideo.title || !selectedFile || uploading}
-              startIcon={uploading ? <CircularProgress size={20} /> : <CloudUploadIcon />}
-            >
-              {uploading ? 'Uploading...' : 'Upload Video'}
+            <Button variant="contained" onClick={handleUploadVideo} disabled={!newVideo.title || !selectedFile || uploading}>
+              {uploading ? 'Uploading...' : 'Upload'}
             </Button>
           )}
+        </DialogActions>
+      </Dialog>
+
+      {/* Edit Video Dialog */}
+      <Dialog open={editDialog.open} onClose={() => setEditDialog({ open: false, video: null })} maxWidth="sm" fullWidth>
+        <DialogTitle>Edit Video</DialogTitle>
+        <DialogContent>
+          {editDialog.video && (
+            <>
+              <TextField
+                fullWidth
+                label="Title"
+                value={editDialog.video.title}
+                onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, title: e.target.value } })}
+                sx={{ mb: 2, mt: 1 }}
+              />
+
+              <TextField
+                fullWidth
+                label="Description"
+                value={editDialog.video.description || ''}
+                onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, description: e.target.value } })}
+                multiline
+                rows={2}
+                sx={{ mb: 2 }}
+              />
+
+              {/* Artists input */}
+              <Autocomplete
+                freeSolo
+                options={allArtists.filter(a => !(editDialog.video.artists || []).includes(a))}
+                inputValue={editArtistInput}
+                onInputChange={(e, value) => setEditArtistInput(value)}
+                onChange={(e, value) => { if (value) handleAddArtist(value, true); }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Artists"
+                    placeholder="Type and press Enter"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && editArtistInput.trim()) {
+                        e.preventDefault();
+                        handleAddArtist(editArtistInput, true);
+                      }
+                    }}
+                  />
+                )}
+                sx={{ mb: 1 }}
+              />
+              {editDialog.video.artists && editDialog.video.artists.length > 0 && (
+                <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
+                  {editDialog.video.artists.map(artist => (
+                    <Chip key={artist} label={artist} onDelete={() => handleRemoveArtist(artist, true)} size="small" color="primary" />
+                  ))}
+                </Box>
+              )}
+
+              {/* Tags input */}
+              <Autocomplete
+                freeSolo
+                options={allTags.filter(t => !(editDialog.video.tags || []).includes(t))}
+                inputValue={editTagInput}
+                onInputChange={(e, value) => setEditTagInput(value)}
+                onChange={(e, value) => { if (value) handleAddTag(value, true); }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Tags"
+                    placeholder="Type and press Enter"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && editTagInput.trim()) {
+                        e.preventDefault();
+                        handleAddTag(editTagInput, true);
+                      }
+                    }}
+                  />
+                )}
+                sx={{ mb: 1 }}
+              />
+              {editDialog.video.tags && editDialog.video.tags.length > 0 && (
+                <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
+                  {editDialog.video.tags.map(tag => (
+                    <Chip key={tag} label={tag} onDelete={() => handleRemoveTag(tag, true)} size="small" />
+                  ))}
+                </Box>
+              )}
+
+              <TextField
+                fullWidth
+                label="Start Time (seconds)"
+                type="number"
+                value={editDialog.video.startTime || 0}
+                onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, startTime: parseInt(e.target.value) || 0 } })}
+                inputProps={{ min: 0 }}
+              />
+            </>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setEditDialog({ open: false, video: null })}>Cancel</Button>
+          <Button variant="contained" onClick={handleEditVideo}>Save</Button>
         </DialogActions>
       </Dialog>
     </Container>
