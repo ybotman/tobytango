@@ -29,7 +29,7 @@ export async function GET() {
 // POST - add a new video (requires admin password)
 export async function POST(request) {
   const body = await request.json();
-  const { password, title, youtubeUrl, videoUrl, description, type } = body;
+  const { password, title, youtubeUrl, videoUrl, description, type, startTime } = body;
 
   if (password !== ADMIN_PASSWORD) {
     return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
@@ -51,6 +51,7 @@ export async function POST(request) {
     videoUrl: videoUrl || null,
     type: type || (youtubeUrl ? 'youtube' : 'azure'),
     description: description || '',
+    startTime: startTime !== undefined ? parseInt(startTime) : 7,
     addedAt: new Date().toISOString()
   };
 

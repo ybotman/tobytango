@@ -53,7 +53,7 @@ export default function PracticeVideosPage() {
   // Add video dialog state
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTab, setDialogTab] = useState(0); // 0 = YouTube, 1 = Upload
-  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', description: '' });
+  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', description: '', startTime: 7 });
 
   // Upload state
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -109,7 +109,10 @@ export default function PracticeVideosPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           password: storedPassword,
-          ...newVideo,
+          title: newVideo.title,
+          youtubeUrl: newVideo.youtubeUrl,
+          description: newVideo.description,
+          startTime: newVideo.startTime,
           type: 'youtube'
         })
       });
@@ -179,6 +182,7 @@ export default function PracticeVideosPage() {
           password: storedPassword,
           title: newVideo.title,
           description: newVideo.description,
+          startTime: newVideo.startTime,
           videoUrl: blobUrl,
           type: 'azure'
         })
@@ -202,7 +206,7 @@ export default function PracticeVideosPage() {
 
   const resetDialog = () => {
     setOpenDialog(false);
-    setNewVideo({ title: '', youtubeUrl: '', description: '' });
+    setNewVideo({ title: '', youtubeUrl: '', description: '', startTime: 7 });
     setSelectedFile(null);
     setDialogTab(0);
   };
@@ -372,7 +376,7 @@ export default function PracticeVideosPage() {
                   {youtubeId && (
                     <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
                       <iframe
-                        src={`https://www.youtube.com/embed/${youtubeId}`}
+                        src={`https://www.youtube.com/embed/${youtubeId}?start=${video.startTime || 7}`}
                         style={{
                           position: 'absolute',
                           top: 0,
@@ -400,6 +404,7 @@ export default function PracticeVideosPage() {
                           width: '100%',
                           height: '100%'
                         }}
+                        onLoadedMetadata={(e) => { e.target.currentTime = video.startTime || 7; }}
                       >
                         <source src={video.videoUrl} type="video/mp4" />
                         Your browser does not support the video tag.
@@ -500,6 +505,17 @@ export default function PracticeVideosPage() {
             onChange={(e) => setNewVideo({ ...newVideo, description: e.target.value })}
             multiline
             rows={3}
+            sx={{ mb: 2 }}
+          />
+
+          <TextField
+            fullWidth
+            label="Start Time (seconds)"
+            type="number"
+            value={newVideo.startTime}
+            onChange={(e) => setNewVideo({ ...newVideo, startTime: parseInt(e.target.value) || 0 })}
+            helperText="Video will start at this position (default: 7 seconds)"
+            inputProps={{ min: 0 }}
           />
         </DialogContent>
         <DialogActions>
