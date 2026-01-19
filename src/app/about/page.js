@@ -62,6 +62,13 @@ export default function AboutPage() {
       </Typography>
 
       <Typography variant="h5" component="h2" gutterBottom>
+        Building AI Tools for Tango
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Tango is at its essence about the heart – the connection between partners, the emotion in the music, and the joy of movement. But sometimes tools can help fast-track the journey. I&apos;ve been building AI-powered tools to help dancers explore musicality, organize practice videos, and deepen their understanding of this beautiful art form. Technology won&apos;t replace the embrace, but it can help us get there faster.
+      </Typography>
+
+      <Typography variant="h5" component="h2" gutterBottom>
         Other Interests
       </Typography>
       <Typography variant="body1" paragraph>
