@@ -63,6 +63,18 @@ function isAzureBlobVideo(url) {
   return url && url.includes('blob.core.windows.net');
 }
 
+// Convert seconds to minutes and seconds
+function secondsToMinSec(totalSeconds) {
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+  return { mins, secs };
+}
+
+// Convert minutes and seconds to total seconds
+function minSecToSeconds(mins, secs) {
+  return (parseInt(mins) || 0) * 60 + (parseInt(secs) || 0);
+}
+
 export default function TangoCollabPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [videos, setVideos] = useState([]);
@@ -434,7 +446,7 @@ export default function TangoCollabPage() {
         secondaryAction={
           isAdmin && (
             <Box>
-              <IconButton size="small" onClick={() => setEditDialog({ open: true, video: { ...video } })}>
+              <IconButton size="small" onClick={() => setEditDialog({ open: true, video: { ...video, tags: video.tags || [], artists: video.artists || [] } })}>
                 <EditIcon fontSize="small" />
               </IconButton>
               <IconButton size="small" color="error" onClick={() => handleDeleteVideo(video.id)}>
@@ -641,9 +653,10 @@ export default function TangoCollabPage() {
                   </Box>
                 )}
 
-                {getYouTubeId(selectedVideo.youtubeUrl) && (
+                {getYouTubeId(selectedVideo.youtubeUrl) ? (
                   <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
                     <iframe
+                      key={selectedVideo.id}
                       src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo.youtubeUrl)}?start=${selectedVideo.startTime || 0}`}
                       style={{
                         position: 'absolute',
@@ -658,11 +671,10 @@ export default function TangoCollabPage() {
                       title={selectedVideo.title}
                     />
                   </Box>
-                )}
-
-                {isAzureBlobVideo(selectedVideo.videoUrl) && (
+                ) : isAzureBlobVideo(selectedVideo.videoUrl) ? (
                   <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', bgcolor: '#000' }}>
                     <video
+                      key={selectedVideo.id}
                       controls
                       style={{
                         position: 'absolute',
@@ -676,6 +688,10 @@ export default function TangoCollabPage() {
                       <source src={selectedVideo.videoUrl} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
+                  </Box>
+                ) : (
+                  <Box sx={{ height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'grey.100', borderRadius: 1 }}>
+                    <Typography color="text.secondary">No valid video URL found</Typography>
                   </Box>
                 )}
               </CardContent>
@@ -834,14 +850,27 @@ export default function TangoCollabPage() {
             </Box>
           )}
 
-          <TextField
-            fullWidth
-            label="Start Time (seconds)"
-            type="number"
-            value={newVideo.startTime}
-            onChange={(e) => setNewVideo({ ...newVideo, startTime: parseInt(e.target.value) || 0 })}
-            inputProps={{ min: 0 }}
-          />
+          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+            <Typography variant="body2" sx={{ minWidth: 70 }}>Start Time:</Typography>
+            <TextField
+              label="Minutes"
+              type="number"
+              size="small"
+              value={secondsToMinSec(newVideo.startTime).mins}
+              onChange={(e) => setNewVideo({ ...newVideo, startTime: minSecToSeconds(e.target.value, secondsToMinSec(newVideo.startTime).secs) })}
+              inputProps={{ min: 0 }}
+              sx={{ width: 100 }}
+            />
+            <TextField
+              label="Seconds"
+              type="number"
+              size="small"
+              value={secondsToMinSec(newVideo.startTime).secs}
+              onChange={(e) => setNewVideo({ ...newVideo, startTime: minSecToSeconds(secondsToMinSec(newVideo.startTime).mins, e.target.value) })}
+              inputProps={{ min: 0, max: 59 }}
+              sx={{ width: 100 }}
+            />
+          </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={resetDialog} disabled={uploading}>Cancel</Button>
@@ -941,14 +970,27 @@ export default function TangoCollabPage() {
                 </Box>
               )}
 
-              <TextField
-                fullWidth
-                label="Start Time (seconds)"
-                type="number"
-                value={editDialog.video.startTime || 0}
-                onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, startTime: parseInt(e.target.value) || 0 } })}
-                inputProps={{ min: 0 }}
-              />
+              <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                <Typography variant="body2" sx={{ minWidth: 70 }}>Start Time:</Typography>
+                <TextField
+                  label="Minutes"
+                  type="number"
+                  size="small"
+                  value={secondsToMinSec(editDialog.video.startTime || 0).mins}
+                  onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, startTime: minSecToSeconds(e.target.value, secondsToMinSec(editDialog.video.startTime || 0).secs) } })}
+                  inputProps={{ min: 0 }}
+                  sx={{ width: 100 }}
+                />
+                <TextField
+                  label="Seconds"
+                  type="number"
+                  size="small"
+                  value={secondsToMinSec(editDialog.video.startTime || 0).secs}
+                  onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, startTime: minSecToSeconds(secondsToMinSec(editDialog.video.startTime || 0).mins, e.target.value) } })}
+                  inputProps={{ min: 0, max: 59 }}
+                  sx={{ width: 100 }}
+                />
+              </Box>
             </>
           )}
         </DialogContent>
