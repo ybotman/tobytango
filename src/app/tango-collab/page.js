@@ -112,8 +112,14 @@ export default function TangoCollabPage() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   // Load videos on mount (public - no password needed)
+  // Also restore admin state from localStorage
   useEffect(() => {
     fetchVideos();
+    // Auto-login if password was previously saved
+    const savedPassword = localStorage.getItem('tangoCollabAdminPassword');
+    if (savedPassword) {
+      setIsAdmin(true);
+    }
   }, []);
 
   const fetchVideos = async () => {
@@ -133,23 +139,23 @@ export default function TangoCollabPage() {
   const handleAdminToggle = async () => {
     if (isAdmin) {
       setIsAdmin(false);
-      sessionStorage.removeItem('tangoCollabAdminPassword');
+      localStorage.removeItem('tangoCollabAdminPassword');
       return;
     }
 
     const adminPwd = prompt('Enter admin password:');
     if (!adminPwd) return;
 
-    sessionStorage.setItem('tangoCollabAdminPassword', adminPwd);
+    localStorage.setItem('tangoCollabAdminPassword', adminPwd);
     setIsAdmin(true);
   };
 
-  const getStoredPassword = () => sessionStorage.getItem('tangoCollabAdminPassword');
+  const getStoredPassword = () => localStorage.getItem('tangoCollabAdminPassword');
 
   const handleAuthError = (errData) => {
     if (errData.error === 'Admin access required') {
       setIsAdmin(false);
-      sessionStorage.removeItem('tangoCollabAdminPassword');
+      localStorage.removeItem('tangoCollabAdminPassword');
     }
   };
 
