@@ -28,7 +28,8 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  InputAdornment
+  InputAdornment,
+  Autocomplete
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -842,38 +843,32 @@ export default function TangoCollabPage() {
             sx={{ mb: 2 }}
           />
 
-          {/* Artists input */}
-          <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-            <TextField
-              fullWidth
-              label="Artists"
-              placeholder="Artist names (comma-separated)"
-              value={artistInput}
-              onChange={(e) => setArtistInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  if (artistInput.trim()) handleAddArtist(artistInput);
-                }
-              }}
-              size="small"
-            />
-            <Button variant="outlined" onClick={() => { if (artistInput.trim()) handleAddArtist(artistInput); }}>Add</Button>
-          </Box>
-          {allArtists.filter(a => !newVideo.artists.includes(a)).length > 0 && (
-            <FormControl size="small" sx={{ mb: 1, minWidth: 200 }}>
-              <InputLabel>Select existing artist</InputLabel>
-              <Select
-                value=""
-                label="Select existing artist"
-                onChange={(e) => { if (e.target.value) handleAddArtist(e.target.value); }}
-              >
-                {allArtists.filter(a => !newVideo.artists.includes(a)).map(artist => (
-                  <MenuItem key={artist} value={artist}>{artist}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
+          {/* Artists input with typeahead */}
+          <Autocomplete
+            freeSolo
+            options={allArtists.filter(a => !newVideo.artists.includes(a))}
+            inputValue={artistInput}
+            onInputChange={(e, value, reason) => {
+              if (reason !== 'reset') setArtistInput(value);
+            }}
+            onChange={(e, value) => {
+              if (value && typeof value === 'string') {
+                handleAddArtist(value);
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && artistInput.trim()) {
+                e.preventDefault();
+                e.stopPropagation();
+                handleAddArtist(artistInput);
+              }
+            }}
+            renderInput={(params) => (
+              <TextField {...params} label="Artists" placeholder="Type to search or add new" size="small" />
+            )}
+            size="small"
+            sx={{ mb: 1 }}
+          />
           {newVideo.artists.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
               {newVideo.artists.map(artist => (
@@ -882,38 +877,32 @@ export default function TangoCollabPage() {
             </Box>
           )}
 
-          {/* Tags input */}
-          <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-            <TextField
-              fullWidth
-              label="Tags"
-              placeholder="Tags (comma-separated)"
-              value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  if (tagInput.trim()) handleAddTag(tagInput);
-                }
-              }}
-              size="small"
-            />
-            <Button variant="outlined" onClick={() => { if (tagInput.trim()) handleAddTag(tagInput); }}>Add</Button>
-          </Box>
-          {allTags.filter(t => !newVideo.tags.includes(t)).length > 0 && (
-            <FormControl size="small" sx={{ mb: 1, minWidth: 200 }}>
-              <InputLabel>Select existing tag</InputLabel>
-              <Select
-                value=""
-                label="Select existing tag"
-                onChange={(e) => { if (e.target.value) handleAddTag(e.target.value); }}
-              >
-                {allTags.filter(t => !newVideo.tags.includes(t)).map(tag => (
-                  <MenuItem key={tag} value={tag}>{tag}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
+          {/* Tags input with typeahead */}
+          <Autocomplete
+            freeSolo
+            options={allTags.filter(t => !newVideo.tags.includes(t))}
+            inputValue={tagInput}
+            onInputChange={(e, value, reason) => {
+              if (reason !== 'reset') setTagInput(value);
+            }}
+            onChange={(e, value) => {
+              if (value && typeof value === 'string') {
+                handleAddTag(value);
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && tagInput.trim()) {
+                e.preventDefault();
+                e.stopPropagation();
+                handleAddTag(tagInput);
+              }
+            }}
+            renderInput={(params) => (
+              <TextField {...params} label="Tags" placeholder="Type to search or add new" size="small" />
+            )}
+            size="small"
+            sx={{ mb: 1 }}
+          />
           {newVideo.tags.length > 0 && (
             <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
               {newVideo.tags.map(tag => (
@@ -996,38 +985,32 @@ export default function TangoCollabPage() {
                 />
               )}
 
-              {/* Artists input */}
-              <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                <TextField
-                  fullWidth
-                  label="Artists"
-                  placeholder="Artist names (comma-separated)"
-                  value={editArtistInput}
-                  onChange={(e) => setEditArtistInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault();
-                      if (editArtistInput.trim()) handleAddArtist(editArtistInput, true);
-                    }
-                  }}
-                  size="small"
-                />
-                <Button variant="outlined" onClick={() => { if (editArtistInput.trim()) handleAddArtist(editArtistInput, true); }}>Add</Button>
-              </Box>
-              {allArtists.filter(a => !(editDialog.video.artists || []).includes(a)).length > 0 && (
-                <FormControl size="small" sx={{ mb: 1, minWidth: 200 }}>
-                  <InputLabel>Select existing artist</InputLabel>
-                  <Select
-                    value=""
-                    label="Select existing artist"
-                    onChange={(e) => { if (e.target.value) handleAddArtist(e.target.value, true); }}
-                  >
-                    {allArtists.filter(a => !(editDialog.video.artists || []).includes(a)).map(artist => (
-                      <MenuItem key={artist} value={artist}>{artist}</MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              )}
+              {/* Artists input with typeahead */}
+              <Autocomplete
+                freeSolo
+                options={allArtists.filter(a => !(editDialog.video.artists || []).includes(a))}
+                inputValue={editArtistInput}
+                onInputChange={(e, value, reason) => {
+                  if (reason !== 'reset') setEditArtistInput(value);
+                }}
+                onChange={(e, value) => {
+                  if (value && typeof value === 'string') {
+                    handleAddArtist(value, true);
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && editArtistInput.trim()) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleAddArtist(editArtistInput, true);
+                  }
+                }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Artists" placeholder="Type to search or add new" size="small" />
+                )}
+                size="small"
+                sx={{ mb: 1 }}
+              />
               {editDialog.video.artists && editDialog.video.artists.length > 0 && (
                 <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
                   {editDialog.video.artists.map(artist => (
@@ -1036,38 +1019,32 @@ export default function TangoCollabPage() {
                 </Box>
               )}
 
-              {/* Tags input */}
-              <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                <TextField
-                  fullWidth
-                  label="Tags"
-                  placeholder="Tags (comma-separated)"
-                  value={editTagInput}
-                  onChange={(e) => setEditTagInput(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault();
-                      if (editTagInput.trim()) handleAddTag(editTagInput, true);
-                    }
-                  }}
-                  size="small"
-                />
-                <Button variant="outlined" onClick={() => { if (editTagInput.trim()) handleAddTag(editTagInput, true); }}>Add</Button>
-              </Box>
-              {allTags.filter(t => !(editDialog.video.tags || []).includes(t)).length > 0 && (
-                <FormControl size="small" sx={{ mb: 1, minWidth: 200 }}>
-                  <InputLabel>Select existing tag</InputLabel>
-                  <Select
-                    value=""
-                    label="Select existing tag"
-                    onChange={(e) => { if (e.target.value) handleAddTag(e.target.value, true); }}
-                  >
-                    {allTags.filter(t => !(editDialog.video.tags || []).includes(t)).map(tag => (
-                      <MenuItem key={tag} value={tag}>{tag}</MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-              )}
+              {/* Tags input with typeahead */}
+              <Autocomplete
+                freeSolo
+                options={allTags.filter(t => !(editDialog.video.tags || []).includes(t))}
+                inputValue={editTagInput}
+                onInputChange={(e, value, reason) => {
+                  if (reason !== 'reset') setEditTagInput(value);
+                }}
+                onChange={(e, value) => {
+                  if (value && typeof value === 'string') {
+                    handleAddTag(value, true);
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && editTagInput.trim()) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleAddTag(editTagInput, true);
+                  }
+                }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Tags" placeholder="Type to search or add new" size="small" />
+                )}
+                size="small"
+                sx={{ mb: 1 }}
+              />
               {editDialog.video.tags && editDialog.video.tags.length > 0 && (
                 <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
                   {editDialog.video.tags.map(tag => (
