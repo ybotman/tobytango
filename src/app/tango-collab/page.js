@@ -44,7 +44,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import PersonIcon from '@mui/icons-material/Person';
 import WarningIcon from '@mui/icons-material/Warning';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { ContainerClient } from '@azure/storage-blob';
+// Server-side upload - no client SDK needed
 
 // Extract YouTube video ID from various URL formats (including Shorts)
 function getYouTubeId(url) {
@@ -201,39 +201,27 @@ export default function TangoCollabPage() {
     setUploadProgress(0);
 
     try {
-      const tokenResponse = await fetch('/api/tango-collab/upload-token', {
+      // Use server-side upload to avoid SAS token issues
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      formData.append('password', storedPassword);
+
+      setUploadProgress(10); // Show initial progress
+
+      const uploadResponse = await fetch('/api/tango-collab/upload', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: storedPassword })
+        body: formData
       });
 
-      if (!tokenResponse.ok) {
-        const errData = await tokenResponse.json();
+      if (!uploadResponse.ok) {
+        const errData = await uploadResponse.json();
         handleAuthError(errData);
-        throw new Error(errData.error || 'Failed to get upload token');
+        throw new Error(errData.error || 'Failed to upload video');
       }
 
-      const { sasToken, accountName, containerName } = await tokenResponse.json();
+      setUploadProgress(80); // Upload complete, saving record
 
-      // Use ContainerClient directly with container-level SAS token
-      const containerClient = new ContainerClient(
-        `https://${accountName}.blob.core.windows.net/${containerName}?${sasToken}`
-      );
-
-      const timestamp = Date.now();
-      const sanitizedFileName = selectedFile.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-      const blobName = `tango-collab/${timestamp}-${sanitizedFileName}`;
-      const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-
-      await blockBlobClient.uploadData(selectedFile, {
-        blobHTTPHeaders: { blobContentType: selectedFile.type },
-        onProgress: (progress) => {
-          const percent = Math.round((progress.loadedBytes / selectedFile.size) * 100);
-          setUploadProgress(percent);
-        }
-      });
-
-      const blobUrl = `https://${accountName}.blob.core.windows.net/${containerName}/${blobName}`;
+      const { videoUrl: blobUrl } = await uploadResponse.json();
 
       const response = await fetch('/api/tango-collab', {
         method: 'POST',
