@@ -567,13 +567,13 @@ export default function TangoCollabPage() {
       </Box>
 
       {/* Search and Filter Bar */}
-      <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
+      <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap', flexDirection: { xs: 'column', sm: 'row' } }}>
         <TextField
           placeholder="Search videos..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           size="small"
-          sx={{ flex: 1, minWidth: 200 }}
+          sx={{ flex: 1, minWidth: { xs: '100%', sm: 200 } }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -620,11 +620,11 @@ export default function TangoCollabPage() {
         )}
       </Box>
 
-      <Box sx={{ display: 'flex', gap: 3 }}>
-        {/* Video List - Left Side */}
-        <Box sx={{ width: 420, flexShrink: 0 }}>
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
+        {/* Video List */}
+        <Box sx={{ width: { xs: '100%', md: 420 }, flexShrink: 0, order: { xs: 2, md: 1 } }}>
           <Card>
-            <List dense sx={{ maxHeight: 'calc(100vh - 300px)', overflow: 'auto' }}>
+            <List dense sx={{ maxHeight: { xs: 'none', md: 'calc(100vh - 300px)' }, overflow: 'auto' }}>
               {filteredVideos.length > 0 ? (
                 filteredVideos.map(renderVideoItem)
               ) : (
@@ -639,8 +639,8 @@ export default function TangoCollabPage() {
           </Card>
         </Box>
 
-        {/* Video Player - Right Side */}
-        <Box sx={{ flex: 1 }}>
+        {/* Video Player */}
+        <Box sx={{ flex: 1, order: { xs: 1, md: 2 }, width: '100%' }}>
           {selectedVideo ? (
             <Card>
               <CardContent>
@@ -684,7 +684,7 @@ export default function TangoCollabPage() {
                   <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
                     <iframe
                       key={selectedVideo.id}
-                      src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo.youtubeUrl)}?start=${selectedVideo.startTime || 0}`}
+                      src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo.youtubeUrl)}?start=${selectedVideo.startTime || 0}&playsinline=1`}
                       style={{
                         position: 'absolute',
                         top: 0,
@@ -703,6 +703,8 @@ export default function TangoCollabPage() {
                     <video
                       key={selectedVideo.id}
                       controls
+                      playsInline
+                      webkit-playsinline="true"
                       style={{
                         position: 'absolute',
                         top: 0,
