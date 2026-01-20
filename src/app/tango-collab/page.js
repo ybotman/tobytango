@@ -201,27 +201,40 @@ export default function TangoCollabPage() {
     setUploadProgress(0);
 
     try {
-      // Use server-side upload to avoid SAS token issues
-      const formData = new FormData();
-      formData.append('file', selectedFile);
-      formData.append('password', storedPassword);
-
-      setUploadProgress(10); // Show initial progress
-
-      const uploadResponse = await fetch('/api/tango-collab/upload', {
+      // Get blob-specific SAS token from server
+      const tokenResponse = await fetch('/api/tango-collab/upload-token', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: storedPassword, fileName: selectedFile.name })
+      });
+
+      if (!tokenResponse.ok) {
+        const errData = await tokenResponse.json();
+        handleAuthError(errData);
+        throw new Error(errData.error || 'Failed to get upload token');
+      }
+
+      const { sasToken, blobUrl } = await tokenResponse.json();
+      setUploadProgress(10);
+
+      // Upload directly to Azure using PUT with SAS token
+      const uploadUrl = `${blobUrl}?${sasToken}`;
+      const uploadResponse = await fetch(uploadUrl, {
+        method: 'PUT',
+        headers: {
+          'x-ms-blob-type': 'BlockBlob',
+          'Content-Type': selectedFile.type || 'video/mp4',
+        },
+        body: selectedFile
       });
 
       if (!uploadResponse.ok) {
-        const errData = await uploadResponse.json();
-        handleAuthError(errData);
-        throw new Error(errData.error || 'Failed to upload video');
+        const errorText = await uploadResponse.text();
+        console.error('Azure upload error:', errorText);
+        throw new Error('Failed to upload to Azure: ' + uploadResponse.status);
       }
 
-      setUploadProgress(80); // Upload complete, saving record
-
-      const { videoUrl: blobUrl } = await uploadResponse.json();
+      setUploadProgress(80);
 
       const response = await fetch('/api/tango-collab', {
         method: 'POST',
