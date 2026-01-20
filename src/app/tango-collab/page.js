@@ -722,23 +722,36 @@ export default function TangoCollabPage() {
                 )}
 
                 {getYouTubeId(selectedVideo.youtubeUrl) ? (
-                  <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
-                    <iframe
-                      key={selectedVideo.id}
-                      src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo.youtubeUrl)}?start=${selectedVideo.startTime || 0}&playsinline=1`}
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        border: 0
-                      }}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      title={selectedVideo.title}
-                    />
-                  </Box>
+                  <>
+                    <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
+                      <iframe
+                        key={selectedVideo.id}
+                        src={`https://www.youtube.com/embed/${getYouTubeId(selectedVideo.youtubeUrl)}?start=${selectedVideo.startTime || 0}&playsinline=1`}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          border: 0
+                        }}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={selectedVideo.title}
+                      />
+                    </Box>
+                    <Box sx={{ mt: 1, textAlign: 'center' }}>
+                      <Button
+                        size="small"
+                        startIcon={<YouTubeIcon />}
+                        href={`https://www.youtube.com/watch?v=${getYouTubeId(selectedVideo.youtubeUrl)}${selectedVideo.startTime ? `&t=${selectedVideo.startTime}` : ''}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Watch on YouTube
+                      </Button>
+                    </Box>
+                  </>
                 ) : isAzureBlobVideo(selectedVideo.videoUrl) ? (
                   <Box sx={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', bgcolor: '#000' }}>
                     <video
