@@ -38,6 +38,7 @@ export async function POST(request) {
         startsOn: new Date(),
         expiresOn,
         protocol: SASProtocol.Https,
+        version: '2024-11-04', // Pin to stable API version (SDK 12.30.0 defaults to 2026-02-06 which may not be supported)
       },
       sharedKeyCredential
     ).toString();
