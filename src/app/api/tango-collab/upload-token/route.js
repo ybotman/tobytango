@@ -22,9 +22,9 @@ export async function POST(request) {
       return NextResponse.json({ error: 'fileName is required' }, { status: 400 });
     }
 
-    const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-    const accountKey = process.env.AZURE_STORAGE_ACCOUNT_KEY;
-    const containerName = process.env.AZURE_STORAGE_CONTAINER || 'tangolab-study';
+    const accountName = (process.env.AZURE_STORAGE_ACCOUNT_NAME || '').trim();
+    const accountKey = (process.env.AZURE_STORAGE_ACCOUNT_KEY || '').trim();
+    const containerName = (process.env.AZURE_STORAGE_CONTAINER || 'tangolab-study').trim();
 
     if (!accountName || !accountKey) {
       return NextResponse.json({ error: 'Azure Storage not configured' }, { status: 503 });
