@@ -43,6 +43,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import PersonIcon from '@mui/icons-material/Person';
 import WarningIcon from '@mui/icons-material/Warning';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { BlobServiceClient } from '@azure/storage-blob';
 
 // Extract YouTube video ID from various URL formats (including Shorts)
@@ -398,6 +399,43 @@ export default function TangoCollabPage() {
     }
   };
 
+  const handleDuplicateVideo = async (video) => {
+    const storedPassword = getStoredPassword();
+
+    try {
+      const response = await fetch('/api/tango-collab', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: storedPassword,
+          title: `${video.title} (copy)`,
+          youtubeUrl: video.youtubeUrl || null,
+          videoUrl: video.videoUrl || null,
+          description: video.description || '',
+          startTime: video.startTime || 0,
+          tags: video.tags || [],
+          artists: video.artists || [],
+          type: video.type || 'youtube'
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setVideos([...videos, data.video]);
+        // Open edit dialog for the new copy so user can change start time
+        setEditTagInput('');
+        setEditArtistInput('');
+        setEditDialog({ open: true, video: { ...data.video, tags: data.video.tags || [], artists: data.video.artists || [] } });
+      } else {
+        const errData = await response.json();
+        handleAuthError(errData);
+        alert(errData.error || 'Failed to duplicate video');
+      }
+    } catch {
+      alert('Error duplicating video');
+    }
+  };
+
   // Drag and drop handlers
   const handleDrag = useCallback((e) => {
     e.preventDefault();
@@ -469,10 +507,13 @@ export default function TangoCollabPage() {
         secondaryAction={
           isAdmin && (
             <Box>
-              <IconButton size="small" onClick={() => { setEditTagInput(''); setEditArtistInput(''); setEditDialog({ open: true, video: { ...video, tags: video.tags || [], artists: video.artists || [] } }); }}>
+              <IconButton size="small" onClick={() => { setEditTagInput(''); setEditArtistInput(''); setEditDialog({ open: true, video: { ...video, tags: video.tags || [], artists: video.artists || [] } }); }} title="Edit">
                 <EditIcon fontSize="small" />
               </IconButton>
-              <IconButton size="small" color="error" onClick={() => handleDeleteVideo(video.id)}>
+              <IconButton size="small" onClick={() => handleDuplicateVideo(video)} title="Duplicate">
+                <ContentCopyIcon fontSize="small" />
+              </IconButton>
+              <IconButton size="small" color="error" onClick={() => handleDeleteVideo(video.id)} title="Delete">
                 <DeleteIcon fontSize="small" />
               </IconButton>
             </Box>
