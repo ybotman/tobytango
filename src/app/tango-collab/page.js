@@ -44,7 +44,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import PersonIcon from '@mui/icons-material/Person';
 import WarningIcon from '@mui/icons-material/Warning';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { BlobServiceClient } from '@azure/storage-blob';
+import { ContainerClient } from '@azure/storage-blob';
 
 // Extract YouTube video ID from various URL formats (including Shorts)
 function getYouTubeId(url) {
@@ -215,10 +215,10 @@ export default function TangoCollabPage() {
 
       const { sasToken, accountName, containerName } = await tokenResponse.json();
 
-      const blobServiceClient = new BlobServiceClient(
-        `https://${accountName}.blob.core.windows.net?${sasToken}`
+      // Use ContainerClient directly with container-level SAS token
+      const containerClient = new ContainerClient(
+        `https://${accountName}.blob.core.windows.net/${containerName}?${sasToken}`
       );
-      const containerClient = blobServiceClient.getContainerClient(containerName);
 
       const timestamp = Date.now();
       const sanitizedFileName = selectedFile.name.replace(/[^a-zA-Z0-9.-]/g, '_');

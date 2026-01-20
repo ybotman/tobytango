@@ -27,7 +27,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import VideoFileIcon from '@mui/icons-material/VideoFile';
-import { BlobServiceClient } from '@azure/storage-blob';
+import { ContainerClient } from '@azure/storage-blob';
 
 // Extract YouTube video ID from various URL formats
 function getYouTubeId(url) {
@@ -151,11 +151,10 @@ export default function PracticeVideosPage() {
 
       const { sasToken, accountName, containerName } = await tokenResponse.json();
 
-      // Create blob client
-      const blobServiceClient = new BlobServiceClient(
-        `https://${accountName}.blob.core.windows.net?${sasToken}`
+      // Use ContainerClient directly with container-level SAS token
+      const containerClient = new ContainerClient(
+        `https://${accountName}.blob.core.windows.net/${containerName}?${sasToken}`
       );
-      const containerClient = blobServiceClient.getContainerClient(containerName);
 
       // Generate unique blob name
       const timestamp = Date.now();
