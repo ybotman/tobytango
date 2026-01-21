@@ -734,8 +734,8 @@ export default function MyVideosPage() {
               <IconButton size="small" onClick={() => handleDuplicateVideo(video)} title="Duplicate">
                 <ContentCopyIcon fontSize="small" />
               </IconButton>
-              {isAzureBlobVideo(video.videoUrl) && !video.thumbnailUrl && (
-                <IconButton size="small" color="primary" onClick={() => handleRegenerateThumbnail(video)} title="Generate Thumbnail">
+              {isAzureBlobVideo(video.videoUrl) && (
+                <IconButton size="small" color={video.thumbnailUrl ? "default" : "primary"} onClick={() => handleRegenerateThumbnail(video)} title={video.thumbnailUrl ? "Regenerate Thumbnail" : "Generate Thumbnail"}>
                   <ImageIcon fontSize="small" />
                 </IconButton>
               )}
