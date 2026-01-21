@@ -62,6 +62,13 @@ export default function AboutPage() {
       </Typography>
 
       <Typography variant="h5" component="h2" gutterBottom>
+        Tech in the Back Pocket of Tango
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Tango is at its essence about the heart – the connection between partners, the emotion in the music, and the joy of movement. But sometimes technology can help fast-track the journey. I&apos;ve been building tools to help dancers hear and see rhythm, visualize the structure of tango music, and explore movement and balance. These aren&apos;t meant to replace the embrace – they&apos;re quiet helpers that stay in your back pocket until you need them.
+      </Typography>
+
+      <Typography variant="h5" component="h2" gutterBottom>
         Other Interests
       </Typography>
       <Typography variant="body1" paragraph>

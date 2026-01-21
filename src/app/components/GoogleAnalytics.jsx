@@ -14,14 +14,19 @@ function GoogleAnalyticsInner() {
 
   useEffect(() => {
     // Track page views when the route changes
-    if (pathname) {
-      const url = searchParams.size > 0 
+    if (pathname && GA_MEASUREMENT_ID) {
+      const url = searchParams.size > 0
         ? `${pathname}?${searchParams.toString()}`
         : pathname;
-      
+
       pageview(url);
     }
   }, [pathname, searchParams]);
+
+  // Don't render anything if GA ID is not configured
+  if (!GA_MEASUREMENT_ID) {
+    return null;
+  }
 
   return (
     <>

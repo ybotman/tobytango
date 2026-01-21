@@ -3,7 +3,6 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import SchoolIcon from '@mui/icons-material/School';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import PeopleIcon from '@mui/icons-material/People';
-import ScienceIcon from '@mui/icons-material/Science';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 
 /**
@@ -12,14 +11,14 @@ import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
  */
 const menuStructure = [
   {
-    id: 'lab',
-    title: 'The Lab',
-    icon: ScienceIcon,
-    items: [
-      { title: 'Lab Mondays', path: '/lab-mondays', isSecondary: true },
-      { title: 'Lab Workshop', path: '/lab-workshop', isSecondary: true },
-      { title: 'Journey Practica', path: '/journey-practica', isSecondary: true }
-    ]
+    title: 'TangoCollab',
+    path: '/tango-collab',
+    icon: null
+  },
+  {
+    title: 'My Videos',
+    path: '/my-videos',
+    icon: null
   },
   {
     id: 'rhythms',
@@ -58,7 +57,8 @@ const menuStructure = [
     icon: PeopleIcon,
     items: [
       { title: 'View All Artists', path: '/artists', isSecondary: true },
-      { title: 'Timelines', path: '/artists/timelines', isSecondary: true }
+      { title: 'Timelines', path: '/artists/timelines', isSecondary: true },
+      { title: 'Umbrella Technique', path: '/artists/umbrella-technique', isSecondary: true, highlight: true }
     ]
   },
   {
