@@ -3,7 +3,6 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import SchoolIcon from '@mui/icons-material/School';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import PeopleIcon from '@mui/icons-material/People';
-import ScienceIcon from '@mui/icons-material/Science';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 
 /**
@@ -17,17 +16,9 @@ const menuStructure = [
     icon: null
   },
   {
-    title: 'Practice Videos',
-    path: '/practice-videos',
+    title: 'My Videos',
+    path: '/my-videos',
     icon: null
-  },
-  {
-    id: 'lab',
-    title: 'The Lab',
-    icon: ScienceIcon,
-    items: [
-      { title: 'TangoLab Traveling', path: '/lab-workshop', isSecondary: true }
-    ]
   },
   {
     id: 'rhythms',

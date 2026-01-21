@@ -13,28 +13,16 @@ const navItems = [
   },
   {
     id: 2,
-    title: "TangoLab Traveling",
-    mainImage: "/navigation/lab-workshops.png",
-    link: "/lab-workshop",
+    title: "My Videos",
+    mainImage: "/navigation/tangolab.jpg",
+    link: "/my-videos",
   },
   {
     id: 3,
-    title: "Practice Videos",
-    mainImage: "/navigation/tangolab.jpg",
-    link: "/practice-videos",
-  },
-  {
-    id: 4,
     title: "About Toby",
     mainImage: "/navigation/about.png",
     link: "/about",
   },
-  {
-    id: 5,
-    title: "My Favorite Tango Videos",
-    mainImage: "/navigation/videos.png",
-    link: "/favorite-videos",
-  }
 ];
 
 export default function MenuView() {
