@@ -542,8 +542,21 @@ export default function MyVideosPage() {
     const storedPassword = getStoredPassword();
 
     try {
+      console.log('Starting thumbnail regeneration for:', video.title);
+
       // Generate thumbnail from the video URL
-      const thumbnailBlob = await generateThumbnailFromUrl(video.videoUrl);
+      let thumbnailBlob;
+      try {
+        thumbnailBlob = await generateThumbnailFromUrl(video.videoUrl);
+        console.log('Thumbnail blob generated, size:', thumbnailBlob?.size);
+      } catch (genErr) {
+        console.error('Thumbnail generation failed:', genErr);
+        throw new Error('Could not capture video frame. CORS may be blocking access.');
+      }
+
+      if (!thumbnailBlob || thumbnailBlob.size === 0) {
+        throw new Error('Generated thumbnail is empty');
+      }
 
       // Get filename from video URL
       const videoFileName = video.videoUrl.split('/').pop().split('?')[0];
@@ -561,6 +574,7 @@ export default function MyVideosPage() {
       }
 
       const { sasToken, blobUrl } = await thumbTokenResponse.json();
+      console.log('Got upload token, uploading to:', blobUrl);
 
       // Upload thumbnail
       const uploadResponse = await fetch(`${blobUrl}?${sasToken}`, {
@@ -573,8 +587,12 @@ export default function MyVideosPage() {
       });
 
       if (!uploadResponse.ok) {
-        throw new Error('Failed to upload thumbnail');
+        const errorText = await uploadResponse.text();
+        console.error('Upload failed:', uploadResponse.status, errorText);
+        throw new Error(`Failed to upload thumbnail: ${uploadResponse.status}`);
       }
+
+      console.log('Thumbnail uploaded successfully');
 
       // Update video record with thumbnail URL
       const response = await fetch('/api/tango-collab', {
@@ -592,6 +610,7 @@ export default function MyVideosPage() {
         const data = await response.json();
         setVideos(videos.map(v => v.id === data.video.id ? data.video : v));
         if (selectedVideo?.id === data.video.id) setSelectedVideo(data.video);
+        console.log('Video record updated with thumbnail');
       } else {
         throw new Error('Failed to update video record');
       }
