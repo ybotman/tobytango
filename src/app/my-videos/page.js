@@ -554,8 +554,8 @@ export default function MyVideosPage() {
         throw new Error('Could not capture video frame. CORS may be blocking access.');
       }
 
-      if (!thumbnailBlob || thumbnailBlob.size === 0) {
-        throw new Error('Generated thumbnail is empty');
+      if (!thumbnailBlob || thumbnailBlob.size < 5000) {
+        throw new Error('Thumbnail capture failed (CORS blocking canvas). Size: ' + (thumbnailBlob?.size || 0) + ' bytes');
       }
 
       // Get filename from video URL
