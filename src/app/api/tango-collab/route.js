@@ -92,7 +92,7 @@ export async function POST(request) {
       }
 
       case 'editVideo': {
-        const { videoId, title, description, tags, artists, startTime, youtubeUrl } = body;
+        const { videoId, title, description, tags, artists, startTime, youtubeUrl, thumbnailUrl } = body;
         if (!videoId) {
           return NextResponse.json({ error: 'Video ID is required' }, { status: 400 });
         }
@@ -106,13 +106,28 @@ export async function POST(request) {
         if (artists !== undefined) video.artists = artists;
         if (startTime !== undefined) video.startTime = parseInt(startTime);
         if (youtubeUrl !== undefined) video.youtubeUrl = youtubeUrl;
+        if (thumbnailUrl !== undefined) video.thumbnailUrl = thumbnailUrl;
+        await writeJsonToBlob(BLOB_NAME, data);
+        return NextResponse.json({ success: true, video });
+      }
+
+      case 'updateThumbnail': {
+        const { videoId, thumbnailUrl } = body;
+        if (!videoId) {
+          return NextResponse.json({ error: 'Video ID is required' }, { status: 400 });
+        }
+        const video = data.videos.find(v => v.id === videoId);
+        if (!video) {
+          return NextResponse.json({ error: 'Video not found' }, { status: 404 });
+        }
+        video.thumbnailUrl = thumbnailUrl || null;
         await writeJsonToBlob(BLOB_NAME, data);
         return NextResponse.json({ success: true, video });
       }
 
       default: {
         // Default: add video
-        const { title, youtubeUrl, videoUrl, description, type, startTime, folderId } = body;
+        const { title, youtubeUrl, videoUrl, description, type, startTime, folderId, thumbnailUrl } = body;
 
         if (!title) {
           return NextResponse.json({ error: 'Title is required' }, { status: 400 });
@@ -128,6 +143,7 @@ export async function POST(request) {
           title,
           youtubeUrl: youtubeUrl || null,
           videoUrl: videoUrl || null,
+          thumbnailUrl: thumbnailUrl || null,
           type: type || (youtubeUrl ? 'youtube' : 'azure'),
           description: description || '',
           startTime: startTime !== undefined ? parseInt(startTime) : 0,

@@ -44,6 +44,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import PersonIcon from '@mui/icons-material/Person';
 import WarningIcon from '@mui/icons-material/Warning';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ImageIcon from '@mui/icons-material/Image';
 // Server-side upload - no client SDK needed
 
 // Extract YouTube video ID from various URL formats (including Shorts)
@@ -69,6 +70,101 @@ function getYouTubeThumbnail(youtubeId) {
 // Check if URL is an Azure blob video
 function isAzureBlobVideo(url) {
   return url && url.includes('blob.core.windows.net');
+}
+
+// Generate thumbnail from video file at 90% mark
+function generateThumbnail(videoFile) {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement('video');
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    video.preload = 'metadata';
+    video.muted = true;
+    video.playsInline = true;
+
+    const blobUrl = URL.createObjectURL(videoFile);
+
+    video.onloadedmetadata = () => {
+      // Seek to 90% of the video duration
+      const targetTime = video.duration * 0.9;
+      video.currentTime = targetTime;
+    };
+
+    video.onseeked = () => {
+      // Set canvas size to video dimensions (max 320px width for thumbnail)
+      const maxWidth = 320;
+      const scale = Math.min(1, maxWidth / video.videoWidth);
+      canvas.width = video.videoWidth * scale;
+      canvas.height = video.videoHeight * scale;
+
+      // Draw the video frame to canvas
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Convert to blob
+      canvas.toBlob((blob) => {
+        URL.revokeObjectURL(blobUrl);
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject(new Error('Failed to generate thumbnail'));
+        }
+      }, 'image/jpeg', 0.8);
+    };
+
+    video.onerror = () => {
+      URL.revokeObjectURL(blobUrl);
+      reject(new Error('Failed to load video for thumbnail'));
+    };
+
+    video.src = blobUrl;
+  });
+}
+
+// Generate thumbnail from video URL (for existing videos)
+function generateThumbnailFromUrl(videoUrl) {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement('video');
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    video.preload = 'metadata';
+    video.muted = true;
+    video.playsInline = true;
+    video.crossOrigin = 'anonymous';
+
+    video.onloadedmetadata = () => {
+      // Seek to 90% of the video duration
+      const targetTime = video.duration * 0.9;
+      video.currentTime = targetTime;
+    };
+
+    video.onseeked = () => {
+      // Set canvas size to video dimensions (max 320px width for thumbnail)
+      const maxWidth = 320;
+      const scale = Math.min(1, maxWidth / video.videoWidth);
+      canvas.width = video.videoWidth * scale;
+      canvas.height = video.videoHeight * scale;
+
+      // Draw the video frame to canvas
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Convert to blob
+      canvas.toBlob((blob) => {
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject(new Error('Failed to generate thumbnail'));
+        }
+      }, 'image/jpeg', 0.8);
+    };
+
+    video.onerror = () => {
+      reject(new Error('Failed to load video for thumbnail'));
+    };
+
+    video.src = videoUrl;
+  });
 }
 
 // Convert seconds to minutes and seconds
@@ -201,7 +297,17 @@ export default function MyVideosPage() {
     setUploadProgress(0);
 
     try {
-      // Get blob-specific SAS token from server
+      // Generate thumbnail at 90% mark
+      let thumbnailBlob = null;
+      let thumbnailUrl = null;
+      try {
+        thumbnailBlob = await generateThumbnail(selectedFile);
+        setUploadProgress(5);
+      } catch (thumbErr) {
+        console.warn('Could not generate thumbnail:', thumbErr);
+      }
+
+      // Get blob-specific SAS token for video
       const tokenResponse = await fetch('/api/tango-collab/upload-token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -217,7 +323,33 @@ export default function MyVideosPage() {
       const { sasToken, blobUrl } = await tokenResponse.json();
       setUploadProgress(10);
 
-      // Upload directly to Azure using PUT with SAS token
+      // Upload thumbnail if generated
+      if (thumbnailBlob) {
+        const thumbFileName = selectedFile.name.replace(/\.[^/.]+$/, '') + '_thumb.jpg';
+        const thumbTokenResponse = await fetch('/api/tango-collab/upload-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: storedPassword, fileName: thumbFileName })
+        });
+
+        if (thumbTokenResponse.ok) {
+          const { sasToken: thumbSasToken, blobUrl: thumbBlobUrl } = await thumbTokenResponse.json();
+          const thumbUploadResponse = await fetch(`${thumbBlobUrl}?${thumbSasToken}`, {
+            method: 'PUT',
+            headers: {
+              'x-ms-blob-type': 'BlockBlob',
+              'Content-Type': 'image/jpeg',
+            },
+            body: thumbnailBlob
+          });
+          if (thumbUploadResponse.ok) {
+            thumbnailUrl = thumbBlobUrl;
+          }
+        }
+        setUploadProgress(20);
+      }
+
+      // Upload video directly to Azure using PUT with SAS token
       const uploadUrl = `${blobUrl}?${sasToken}`;
       const uploadResponse = await fetch(uploadUrl, {
         method: 'PUT',
@@ -247,6 +379,7 @@ export default function MyVideosPage() {
           tags: newVideo.tags,
           artists: newVideo.artists,
           videoUrl: blobUrl,
+          thumbnailUrl: thumbnailUrl,
           type: 'azure'
         })
       });
@@ -400,6 +533,74 @@ export default function MyVideosPage() {
     }
   };
 
+  const handleRegenerateThumbnail = async (video) => {
+    if (!video.videoUrl || !isAzureBlobVideo(video.videoUrl)) {
+      alert('Can only regenerate thumbnails for uploaded videos');
+      return;
+    }
+
+    const storedPassword = getStoredPassword();
+
+    try {
+      // Generate thumbnail from the video URL
+      const thumbnailBlob = await generateThumbnailFromUrl(video.videoUrl);
+
+      // Get filename from video URL
+      const videoFileName = video.videoUrl.split('/').pop().split('?')[0];
+      const thumbFileName = videoFileName.replace(/\.[^/.]+$/, '') + '_thumb.jpg';
+
+      // Get upload token for thumbnail
+      const thumbTokenResponse = await fetch('/api/tango-collab/upload-token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: storedPassword, fileName: thumbFileName })
+      });
+
+      if (!thumbTokenResponse.ok) {
+        throw new Error('Failed to get upload token');
+      }
+
+      const { sasToken, blobUrl } = await thumbTokenResponse.json();
+
+      // Upload thumbnail
+      const uploadResponse = await fetch(`${blobUrl}?${sasToken}`, {
+        method: 'PUT',
+        headers: {
+          'x-ms-blob-type': 'BlockBlob',
+          'Content-Type': 'image/jpeg',
+        },
+        body: thumbnailBlob
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error('Failed to upload thumbnail');
+      }
+
+      // Update video record with thumbnail URL
+      const response = await fetch('/api/tango-collab', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: storedPassword,
+          action: 'updateThumbnail',
+          videoId: video.id,
+          thumbnailUrl: blobUrl
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setVideos(videos.map(v => v.id === data.video.id ? data.video : v));
+        if (selectedVideo?.id === data.video.id) setSelectedVideo(data.video);
+      } else {
+        throw new Error('Failed to update video record');
+      }
+    } catch (err) {
+      console.error('Regenerate thumbnail error:', err);
+      alert('Error regenerating thumbnail: ' + err.message);
+    }
+  };
+
   const handleDuplicateVideo = async (video) => {
     const storedPassword = getStoredPassword();
 
@@ -498,7 +699,7 @@ export default function MyVideosPage() {
   const renderVideoItem = (video) => {
     const youtubeId = getYouTubeId(video.youtubeUrl);
     const isAzure = isAzureBlobVideo(video.videoUrl);
-    const thumbnail = youtubeId ? getYouTubeThumbnail(youtubeId) : null;
+    const thumbnail = youtubeId ? getYouTubeThumbnail(youtubeId) : video.thumbnailUrl;
     const hasInvalidUrl = video.youtubeUrl && !isValidYouTubeUrl(video.youtubeUrl);
 
     return (
@@ -514,6 +715,11 @@ export default function MyVideosPage() {
               <IconButton size="small" onClick={() => handleDuplicateVideo(video)} title="Duplicate">
                 <ContentCopyIcon fontSize="small" />
               </IconButton>
+              {isAzureBlobVideo(video.videoUrl) && !video.thumbnailUrl && (
+                <IconButton size="small" color="primary" onClick={() => handleRegenerateThumbnail(video)} title="Generate Thumbnail">
+                  <ImageIcon fontSize="small" />
+                </IconButton>
+              )}
               <IconButton size="small" color="error" onClick={() => handleDeleteVideo(video.id)} title="Delete">
                 <DeleteIcon fontSize="small" />
               </IconButton>
