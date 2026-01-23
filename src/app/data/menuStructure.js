@@ -17,13 +17,14 @@ const menuStructure = [
     icon: null
   },
   {
-    title: 'My Videos',
-    path: '/my-videos',
+    title: 'Cool Vids',
+    path: '/cool-vids',
     icon: null
   },
   {
     id: 'tangolab',
     title: 'TangoLab',
+    path: '/tangolab',
     icon: ScienceIcon,
     items: [
       { title: 'Lab Mondays', path: '/lab-mondays', isSecondary: true },
