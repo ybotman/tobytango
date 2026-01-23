@@ -29,7 +29,8 @@ import {
   Select,
   MenuItem,
   InputAdornment,
-  Autocomplete
+  Autocomplete,
+  Checkbox
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -180,6 +181,11 @@ function minSecToSeconds(mins, secs) {
 }
 
 export default function MyVideosPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [authError, setAuthError] = useState('');
+
   const [isAdmin, setIsAdmin] = useState(false);
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -187,8 +193,8 @@ export default function MyVideosPage() {
 
   // Search and filter state
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedTag, setSelectedTag] = useState('');
-  const [selectedArtist, setSelectedArtist] = useState('');
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedArtists, setSelectedArtists] = useState([]);
 
   // Add video dialog state
   const [openDialog, setOpenDialog] = useState(false);
@@ -208,23 +214,62 @@ export default function MyVideosPage() {
   const [dragActive, setDragActive] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
-  // Load videos on mount (public - no password needed)
-  // Also restore admin state from localStorage
+  const getStoredViewerPassword = () => localStorage.getItem('myVideosViewerPassword');
+
+  // Check authentication on mount
   useEffect(() => {
-    fetchVideos();
-    // Auto-login if password was previously saved
-    const savedPassword = localStorage.getItem('myVideosAdminPassword');
-    if (savedPassword) {
+    const savedViewerPassword = localStorage.getItem('myVideosViewerPassword');
+    if (savedViewerPassword) {
+      // Verify the saved password still works
+      verifyPassword(savedViewerPassword);
+    } else {
+      setAuthLoading(false);
+    }
+    // Auto-login admin if password was previously saved
+    const savedAdminPassword = localStorage.getItem('myVideosAdminPassword');
+    if (savedAdminPassword) {
       setIsAdmin(true);
     }
   }, []);
 
+  const verifyPassword = async (password) => {
+    try {
+      const response = await fetch(`/api/tango-collab?password=${encodeURIComponent(password)}`);
+      if (response.ok) {
+        localStorage.setItem('myVideosViewerPassword', password);
+        setIsAuthenticated(true);
+        const data = await response.json();
+        setVideos(data.videos || []);
+        setLoading(false);
+      } else {
+        localStorage.removeItem('myVideosViewerPassword');
+        setAuthError('Invalid password');
+      }
+    } catch {
+      setAuthError('Error verifying password');
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    setAuthError('');
+    setAuthLoading(true);
+    verifyPassword(passwordInput);
+  };
+
   const fetchVideos = async () => {
     try {
-      const response = await fetch('/api/tango-collab');
+      const viewerPassword = getStoredViewerPassword();
+      const response = await fetch(`/api/tango-collab?password=${encodeURIComponent(viewerPassword)}`);
       if (response.ok) {
         const data = await response.json();
         setVideos(data.videos || []);
+      } else if (response.status === 401) {
+        // Password no longer valid
+        localStorage.removeItem('myVideosViewerPassword');
+        setIsAuthenticated(false);
       }
     } catch (err) {
       console.error('Error fetching videos:', err);
@@ -409,12 +454,20 @@ export default function MyVideosPage() {
     setArtistInput('');
   };
 
+  // Normalize tag: first letter uppercase, rest lowercase (case-insensitive)
+  const normalizeTag = (tag) => {
+    const trimmed = tag.trim();
+    if (!trimmed) return '';
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
+  };
+
   const handleAddTag = (input, isEdit = false) => {
     // Support comma-delimited input for multiple tags
-    const tags = input.split(',').map(t => t.trim().toLowerCase()).filter(t => t);
+    const tags = input.split(',').map(t => normalizeTag(t)).filter(t => t);
     if (isEdit) {
       const currentTags = editDialog.video.tags || [];
-      const newTags = tags.filter(t => !currentTags.includes(t));
+      // Case-insensitive duplicate check
+      const newTags = tags.filter(t => !currentTags.some(ct => ct.toLowerCase() === t.toLowerCase()));
       if (newTags.length > 0) {
         setEditDialog({
           ...editDialog,
@@ -423,7 +476,8 @@ export default function MyVideosPage() {
       }
       setEditTagInput('');
     } else {
-      const newTags = tags.filter(t => !newVideo.tags.includes(t));
+      // Case-insensitive duplicate check
+      const newTags = tags.filter(t => !newVideo.tags.some(nt => nt.toLowerCase() === t.toLowerCase()));
       if (newTags.length > 0) {
         setNewVideo({ ...newVideo, tags: [...newVideo.tags, ...newTags] });
       }
@@ -697,10 +751,19 @@ export default function MyVideosPage() {
   };
 
   // Get all unique tags and artists from videos (auto-built from existing videos)
-  const allTags = [...new Set(videos.flatMap(v => v.tags || []))].sort();
+  // Tags are normalized case-insensitively (first letter uppercase)
+  const allTagsRaw = videos.flatMap(v => v.tags || []);
+  const allTagsMap = new Map();
+  allTagsRaw.forEach(tag => {
+    const normalized = normalizeTag(tag);
+    if (normalized && !allTagsMap.has(normalized.toLowerCase())) {
+      allTagsMap.set(normalized.toLowerCase(), normalized);
+    }
+  });
+  const allTags = [...allTagsMap.values()].sort();
   const allArtists = [...new Set(videos.flatMap(v => v.artists || []))].sort();
 
-  // Filter videos by search query, selected tag, and selected artist
+  // Filter videos by search query, selected tags, and selected artists
   const filteredVideos = videos.filter(v => {
     const matchesSearch = !searchQuery.trim() ||
       v.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -708,10 +771,15 @@ export default function MyVideosPage() {
       (v.tags && v.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))) ||
       (v.artists && v.artists.some(artist => artist.toLowerCase().includes(searchQuery.toLowerCase())));
 
-    const matchesTag = !selectedTag || (v.tags && v.tags.includes(selectedTag));
-    const matchesArtist = !selectedArtist || (v.artists && v.artists.includes(selectedArtist));
+    // Multi-select: video must have ALL selected tags (case-insensitive)
+    const matchesTags = selectedTags.length === 0 ||
+      selectedTags.every(st => v.tags && v.tags.some(vt => vt.toLowerCase() === st.toLowerCase()));
 
-    return matchesSearch && matchesTag && matchesArtist;
+    // Multi-select: video must have at least one of the selected artists
+    const matchesArtists = selectedArtists.length === 0 ||
+      selectedArtists.some(sa => v.artists && v.artists.includes(sa));
+
+    return matchesSearch && matchesTags && matchesArtists;
   });
 
   // Render video list item
@@ -798,6 +866,50 @@ export default function MyVideosPage() {
     );
   };
 
+  // Show password gate if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <Container maxWidth="sm" sx={{ py: 8 }}>
+        <Card sx={{ p: 4, textAlign: 'center' }}>
+          <Typography variant="h5" gutterBottom>
+            My Videos
+          </Typography>
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+            This content is password protected.
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handlePasswordSubmit}
+            sx={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}
+          >
+            <TextField
+              type="password"
+              label="Password"
+              value={passwordInput}
+              onChange={(e) => setPasswordInput(e.target.value)}
+              error={!!authError}
+              helperText={authError}
+              disabled={authLoading}
+              sx={{ width: '100%', maxWidth: 300 }}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              disabled={authLoading || !passwordInput}
+            >
+              {authLoading ? <CircularProgress size={24} /> : 'Enter'}
+            </Button>
+          </Box>
+          <Box sx={{ mt: 4, p: 2, bgcolor: 'grey.100', borderRadius: 1 }}>
+            <Typography variant="body2" color="text.secondary">
+              Need the password? Contact Toby on social media to request access.
+            </Typography>
+          </Box>
+        </Card>
+      </Container>
+    );
+  }
+
   if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 8, textAlign: 'center' }}>
@@ -813,10 +925,10 @@ export default function MyVideosPage() {
           My Videos
         </Typography>
 
-        <Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           {isAdmin ? (
             <>
-              <Chip label="Admin Mode" color="primary" sx={{ mr: 1 }} onClick={handleAdminToggle} />
+              <Chip label="Admin Mode" color="primary" onClick={handleAdminToggle} />
               <Button
                 variant="contained"
                 startIcon={<AddIcon />}
@@ -830,6 +942,19 @@ export default function MyVideosPage() {
               <AdminPanelSettingsIcon />
             </IconButton>
           )}
+          <Button
+            size="small"
+            variant="text"
+            onClick={() => {
+              localStorage.removeItem('myVideosViewerPassword');
+              localStorage.removeItem('myVideosAdminPassword');
+              setIsAuthenticated(false);
+              setIsAdmin(false);
+              setPasswordInput('');
+            }}
+          >
+            Logout
+          </Button>
         </Box>
       </Box>
 
@@ -856,34 +981,54 @@ export default function MyVideosPage() {
             )
           }}
         />
-        <FormControl size="small" sx={{ minWidth: 140 }}>
-          <InputLabel>Tag</InputLabel>
+        <FormControl size="small" sx={{ minWidth: 180 }}>
+          <InputLabel>Tags</InputLabel>
           <Select
-            value={selectedTag}
-            label="Tag"
-            onChange={(e) => setSelectedTag(e.target.value)}
+            multiple
+            value={selectedTags}
+            label="Tags"
+            onChange={(e) => setSelectedTags(e.target.value)}
+            renderValue={(selected) => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map(tag => (
+                  <Chip key={tag} label={tag} size="small" sx={{ height: 20 }} />
+                ))}
+              </Box>
+            )}
           >
-            <MenuItem value="">All tags</MenuItem>
             {allTags.map(tag => (
-              <MenuItem key={tag} value={tag}>{tag}</MenuItem>
+              <MenuItem key={tag} value={tag}>
+                <Checkbox checked={selectedTags.some(st => st.toLowerCase() === tag.toLowerCase())} size="small" />
+                {tag}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
-        <FormControl size="small" sx={{ minWidth: 140 }}>
-          <InputLabel>Artist</InputLabel>
+        <FormControl size="small" sx={{ minWidth: 180 }}>
+          <InputLabel>Artists</InputLabel>
           <Select
-            value={selectedArtist}
-            label="Artist"
-            onChange={(e) => setSelectedArtist(e.target.value)}
+            multiple
+            value={selectedArtists}
+            label="Artists"
+            onChange={(e) => setSelectedArtists(e.target.value)}
+            renderValue={(selected) => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map(artist => (
+                  <Chip key={artist} label={artist} size="small" sx={{ height: 20 }} />
+                ))}
+              </Box>
+            )}
           >
-            <MenuItem value="">All artists</MenuItem>
             {allArtists.map(artist => (
-              <MenuItem key={artist} value={artist}>{artist}</MenuItem>
+              <MenuItem key={artist} value={artist}>
+                <Checkbox checked={selectedArtists.includes(artist)} size="small" />
+                {artist}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
-        {(selectedTag || selectedArtist) && (
-          <Button size="small" onClick={() => { setSelectedTag(''); setSelectedArtist(''); }}>Clear filters</Button>
+        {(selectedTags.length > 0 || selectedArtists.length > 0) && (
+          <Button size="small" onClick={() => { setSelectedTags([]); setSelectedArtists([]); }}>Clear filters</Button>
         )}
       </Box>
 
@@ -897,8 +1042,8 @@ export default function MyVideosPage() {
               ) : (
                 <ListItem>
                   <ListItemText
-                    primary={searchQuery || selectedTag || selectedArtist ? "No matching videos" : "No videos yet"}
-                    secondary={isAdmin && !searchQuery && !selectedTag && !selectedArtist ? 'Click "Add Video" to add one.' : ''}
+                    primary={searchQuery || selectedTags.length > 0 || selectedArtists.length > 0 ? "No matching videos" : "No videos yet"}
+                    secondary={isAdmin && !searchQuery && selectedTags.length === 0 && selectedArtists.length === 0 ? 'Click "Add Video" to add one.' : ''}
                   />
                 </ListItem>
               )}
@@ -921,8 +1066,15 @@ export default function MyVideosPage() {
                         size="small"
                         label={artist}
                         color="primary"
-                        variant="outlined"
-                        onClick={() => { setSelectedArtist(artist); setSearchQuery(''); }}
+                        variant={selectedArtists.includes(artist) ? "filled" : "outlined"}
+                        onClick={() => {
+                          if (selectedArtists.includes(artist)) {
+                            setSelectedArtists(selectedArtists.filter(a => a !== artist));
+                          } else {
+                            setSelectedArtists([...selectedArtists, artist]);
+                          }
+                          setSearchQuery('');
+                        }}
                         sx={{ cursor: 'pointer' }}
                       />
                     ))}
@@ -935,15 +1087,28 @@ export default function MyVideosPage() {
                 )}
                 {selectedVideo.tags && selectedVideo.tags.length > 0 && (
                   <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 2 }}>
-                    {selectedVideo.tags.map(tag => (
-                      <Chip
-                        key={tag}
-                        size="small"
-                        label={tag}
-                        onClick={() => { setSelectedTag(tag); setSearchQuery(''); }}
-                        sx={{ cursor: 'pointer' }}
-                      />
-                    ))}
+                    {selectedVideo.tags.map(tag => {
+                      const normalizedTag = normalizeTag(tag);
+                      const isSelected = selectedTags.some(st => st.toLowerCase() === normalizedTag.toLowerCase());
+                      return (
+                        <Chip
+                          key={tag}
+                          size="small"
+                          label={tag}
+                          variant={isSelected ? "filled" : "outlined"}
+                          color={isSelected ? "primary" : "default"}
+                          onClick={() => {
+                            if (isSelected) {
+                              setSelectedTags(selectedTags.filter(st => st.toLowerCase() !== normalizedTag.toLowerCase()));
+                            } else {
+                              setSelectedTags([...selectedTags, normalizedTag]);
+                            }
+                            setSearchQuery('');
+                          }}
+                          sx={{ cursor: 'pointer' }}
+                        />
+                      );
+                    })}
                   </Box>
                 )}
 

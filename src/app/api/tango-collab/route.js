@@ -3,6 +3,9 @@ import { readJsonFromBlob, writeJsonToBlob } from '@/lib/azure-json-storage';
 
 const BLOB_NAME = 'tango-collab.json';
 
+// Viewer password for accessing videos
+const VIEWER_PASSWORD = (process.env.PRACTICE_VIDEOS_PASSWORD || 'viewer2025').trim();
+
 // Admin password for adding/editing videos
 const ADMIN_PASSWORD = (process.env.PRACTICE_VIDEOS_ADMIN_PASSWORD || 'admin2025').trim();
 
@@ -13,8 +16,15 @@ function initializeData(data) {
   return data;
 }
 
-// GET - retrieve videos and folders (public - no password required)
-export async function GET() {
+// GET - retrieve videos and folders (requires viewer password)
+export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const password = searchParams.get('password');
+
+  if (password !== VIEWER_PASSWORD && password !== ADMIN_PASSWORD) {
+    return NextResponse.json({ error: 'Password required' }, { status: 401 });
+  }
+
   const data = initializeData(await readJsonFromBlob(BLOB_NAME));
   return NextResponse.json(data);
 }
