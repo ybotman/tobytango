@@ -30,7 +30,8 @@ import {
   MenuItem,
   InputAdornment,
   Autocomplete,
-  Checkbox
+  Checkbox,
+  Tooltip
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -975,9 +976,11 @@ export default function MyVideosPage() {
             <Typography variant="body2" color="text.secondary">
               Need the password? Contact Toby on social media to request access.
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1, fontStyle: 'italic' }}>
-              Hint: &lt;how many to tango&gt; + &lt;a Tango hug&gt; + &lt;Wow&gt;
-            </Typography>
+            <Tooltip title="<how many to tango> + <a Tango hug> + <Wow>" arrow placement="top">
+              <Typography variant="body2" color="primary" sx={{ mt: 1, cursor: 'pointer', textDecoration: 'underline' }}>
+                Hover for hint
+              </Typography>
+            </Tooltip>
           </Box>
         </Card>
       </Container>
