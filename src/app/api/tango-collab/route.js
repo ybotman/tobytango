@@ -43,6 +43,11 @@ export async function POST(request) {
 
     // Handle different actions
     switch (action) {
+      case 'validateAdmin': {
+        // Just validates that admin password is correct (returns 200 if we got here)
+        return NextResponse.json({ success: true, valid: true });
+      }
+
       case 'createFolder': {
         const { name } = body;
         if (!name) {

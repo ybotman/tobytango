@@ -293,8 +293,26 @@ export default function MyVideosPage() {
     const adminPwd = prompt('Enter admin password:');
     if (!adminPwd) return;
 
-    localStorage.setItem('myVideosAdminPassword', adminPwd);
-    setIsAdmin(true);
+    // Validate admin password against the server
+    try {
+      const response = await fetch('/api/tango-collab', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: adminPwd,
+          action: 'validateAdmin'
+        })
+      });
+
+      if (response.ok) {
+        localStorage.setItem('myVideosAdminPassword', adminPwd);
+        setIsAdmin(true);
+      } else {
+        alert('Invalid admin password');
+      }
+    } catch {
+      alert('Error validating password');
+    }
   };
 
   const getStoredPassword = () => localStorage.getItem('myVideosAdminPassword');
