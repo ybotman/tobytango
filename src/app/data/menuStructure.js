@@ -27,9 +27,7 @@ const menuStructure = [
     path: '/tangolab',
     icon: ScienceIcon,
     items: [
-      { title: 'Lab Mondays', path: '/lab-mondays', isSecondary: true },
-      { title: 'Lab Workshop', path: '/lab-workshop', isSecondary: true },
-      { title: 'Journey Practica', path: '/journey-practica', isSecondary: true },
+      { title: 'TangoLab Home', path: '/tangolab', isSecondary: true },
       {
         title: 'The Rhythms',
         isSecondary: true,

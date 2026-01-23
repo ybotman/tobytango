@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Container, Typography, Box, Card, CardContent, Grid, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
 import ScienceIcon from '@mui/icons-material/Science';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
@@ -12,15 +14,6 @@ import WarningIcon from '@mui/icons-material/Warning';
 import BlockIcon from '@mui/icons-material/Block';
 
 const sections = [
-  {
-    title: 'Classes & Events',
-    icon: <ScienceIcon />,
-    links: [
-      { title: 'Lab Mondays', path: '/lab-mondays' },
-      { title: 'Lab Workshop', path: '/lab-workshop' },
-      { title: 'Journey Practica', path: '/journey-practica' },
-    ]
-  },
   {
     title: 'The Rhythms',
     icon: <MusicNoteIcon />,
@@ -94,6 +87,8 @@ const sections = [
 ];
 
 export default function TangoLabPage() {
+  const router = useRouter();
+
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
@@ -122,8 +117,7 @@ export default function TangoLabPage() {
                   {section.links.map((link) => (
                     <ListItem key={link.path} disablePadding>
                       <ListItemButton
-                        component={Link}
-                        href={link.path}
+                        onClick={() => router.push(link.path)}
                         sx={link.highlight ? { bgcolor: 'action.hover' } : {}}
                       >
                         <ListItemText
