@@ -459,12 +459,15 @@ export default function MyVideosPage() {
     setArtistInput('');
   };
 
-  // Normalize tag: first letter uppercase, rest lowercase (case-insensitive)
-  const normalizeTag = (tag) => {
-    const trimmed = tag.trim();
+  // Normalize: first letter uppercase, rest lowercase (case-insensitive)
+  const normalize = (str) => {
+    const trimmed = str.trim();
     if (!trimmed) return '';
     return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
   };
+
+  // Alias for backward compatibility
+  const normalizeTag = normalize;
 
   const handleAddTag = (input, isEdit = false) => {
     // Support comma-delimited input for multiple tags
@@ -503,10 +506,11 @@ export default function MyVideosPage() {
 
   const handleAddArtist = (input, isEdit = false) => {
     // Support comma-delimited input for multiple artists
-    const artists = input.split(',').map(a => a.trim()).filter(a => a);
+    const artists = input.split(',').map(a => normalize(a)).filter(a => a);
     if (isEdit) {
       const currentArtists = editDialog.video.artists || [];
-      const newArtists = artists.filter(a => !currentArtists.includes(a));
+      // Case-insensitive duplicate check
+      const newArtists = artists.filter(a => !currentArtists.some(ca => ca.toLowerCase() === a.toLowerCase()));
       if (newArtists.length > 0) {
         setEditDialog({
           ...editDialog,
@@ -515,7 +519,8 @@ export default function MyVideosPage() {
       }
       setEditArtistInput('');
     } else {
-      const newArtists = artists.filter(a => !newVideo.artists.includes(a));
+      // Case-insensitive duplicate check
+      const newArtists = artists.filter(a => !newVideo.artists.some(na => na.toLowerCase() === a.toLowerCase()));
       if (newArtists.length > 0) {
         setNewVideo({ ...newVideo, artists: [...newVideo.artists, ...newArtists] });
       }
