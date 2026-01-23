@@ -957,6 +957,9 @@ export default function MyVideosPage() {
             <Typography variant="body2" color="text.secondary">
               Need the password? Contact Toby on social media to request access.
             </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 1, fontStyle: 'italic' }}>
+              Hint: &lt;how many to tango&gt; + &lt;a Tango hug&gt; + &lt;Wow&gt;
+            </Typography>
           </Box>
         </Card>
       </Container>
