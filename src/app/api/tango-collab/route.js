@@ -121,6 +121,20 @@ export async function POST(request) {
         return NextResponse.json({ success: true, video });
       }
 
+      case 'toggleQueued': {
+        const { videoId, queued } = body;
+        if (!videoId) {
+          return NextResponse.json({ error: 'Video ID is required' }, { status: 400 });
+        }
+        const video = data.videos.find(v => v.id === videoId);
+        if (!video) {
+          return NextResponse.json({ error: 'Video not found' }, { status: 404 });
+        }
+        video.queued = !!queued;
+        await writeJsonToBlob(BLOB_NAME, data);
+        return NextResponse.json({ success: true, video });
+      }
+
       case 'updateThumbnail': {
         const { videoId, thumbnailUrl } = body;
         if (!videoId) {

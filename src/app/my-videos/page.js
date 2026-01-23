@@ -46,6 +46,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import WarningIcon from '@mui/icons-material/Warning';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ImageIcon from '@mui/icons-material/Image';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import ViewListIcon from '@mui/icons-material/ViewList';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
 // Server-side upload - no client SDK needed
 
 // Extract YouTube video ID from various URL formats (including Shorts)
@@ -195,6 +198,8 @@ export default function MyVideosPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedArtists, setSelectedArtists] = useState([]);
+  const [showQueuedOnly, setShowQueuedOnly] = useState(false);
+  const [compactView, setCompactView] = useState(false);
 
   // Add video dialog state
   const [openDialog, setOpenDialog] = useState(false);
@@ -711,6 +716,36 @@ export default function MyVideosPage() {
     }
   };
 
+  const handleToggleQueued = async (video) => {
+    const storedPassword = getStoredPassword();
+    const newQueuedState = !video.queued;
+
+    try {
+      const response = await fetch('/api/tango-collab', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: storedPassword,
+          action: 'toggleQueued',
+          videoId: video.id,
+          queued: newQueuedState
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setVideos(videos.map(v => v.id === data.video.id ? data.video : v));
+        if (selectedVideo?.id === data.video.id) setSelectedVideo(data.video);
+      } else {
+        const errData = await response.json();
+        handleAuthError(errData);
+        alert(errData.error || 'Failed to update queue status');
+      }
+    } catch {
+      alert('Error updating queue status');
+    }
+  };
+
   // Drag and drop handlers
   const handleDrag = useCallback((e) => {
     e.preventDefault();
@@ -763,7 +798,7 @@ export default function MyVideosPage() {
   const allTags = [...allTagsMap.values()].sort();
   const allArtists = [...new Set(videos.flatMap(v => v.artists || []))].sort();
 
-  // Filter videos by search query, selected tags, and selected artists
+  // Filter videos by search query, selected tags, selected artists, and queue status
   const filteredVideos = videos.filter(v => {
     const matchesSearch = !searchQuery.trim() ||
       v.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -779,7 +814,10 @@ export default function MyVideosPage() {
     const matchesArtists = selectedArtists.length === 0 ||
       selectedArtists.some(sa => v.artists && v.artists.includes(sa));
 
-    return matchesSearch && matchesTags && matchesArtists;
+    // Queue filter
+    const matchesQueue = !showQueuedOnly || v.queued;
+
+    return matchesSearch && matchesTags && matchesArtists && matchesQueue;
   });
 
   // Render video list item
@@ -794,24 +832,32 @@ export default function MyVideosPage() {
         key={video.id}
         disablePadding
         secondaryAction={
-          isAdmin && (
-            <Box>
-              <IconButton size="small" onClick={() => { setEditTagInput(''); setEditArtistInput(''); setEditDialog({ open: true, video: { ...video, tags: video.tags || [], artists: video.artists || [] } }); }} title="Edit">
-                <EditIcon fontSize="small" />
-              </IconButton>
-              <IconButton size="small" onClick={() => handleDuplicateVideo(video)} title="Duplicate">
-                <ContentCopyIcon fontSize="small" />
-              </IconButton>
-              {isAzureBlobVideo(video.videoUrl) && (
-                <IconButton size="small" color={video.thumbnailUrl ? "default" : "primary"} onClick={() => handleRegenerateThumbnail(video)} title={video.thumbnailUrl ? "Regenerate Thumbnail" : "Generate Thumbnail"}>
-                  <ImageIcon fontSize="small" />
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {isAdmin && (
+              <>
+                <IconButton size="small" onClick={() => handleToggleQueued(video)} title={video.queued ? "Remove from queue" : "Add to queue"} color={video.queued ? "primary" : "default"}>
+                  <PsychologyIcon fontSize="small" />
                 </IconButton>
-              )}
-              <IconButton size="small" color="error" onClick={() => handleDeleteVideo(video.id)} title="Delete">
-                <DeleteIcon fontSize="small" />
-              </IconButton>
-            </Box>
-          )
+                <IconButton size="small" onClick={() => { setEditTagInput(''); setEditArtistInput(''); setEditDialog({ open: true, video: { ...video, tags: video.tags || [], artists: video.artists || [] } }); }} title="Edit">
+                  <EditIcon fontSize="small" />
+                </IconButton>
+                <IconButton size="small" onClick={() => handleDuplicateVideo(video)} title="Duplicate">
+                  <ContentCopyIcon fontSize="small" />
+                </IconButton>
+                {isAzureBlobVideo(video.videoUrl) && (
+                  <IconButton size="small" color={video.thumbnailUrl ? "default" : "primary"} onClick={() => handleRegenerateThumbnail(video)} title={video.thumbnailUrl ? "Regenerate Thumbnail" : "Generate Thumbnail"}>
+                    <ImageIcon fontSize="small" />
+                  </IconButton>
+                )}
+                <IconButton size="small" color="error" onClick={() => handleDeleteVideo(video.id)} title="Delete">
+                  <DeleteIcon fontSize="small" />
+                </IconButton>
+              </>
+            )}
+            {!isAdmin && video.queued && (
+              <PsychologyIcon fontSize="small" color="primary" sx={{ mr: 1 }} />
+            )}
+          </Box>
         }
       >
         <ListItemButton onClick={() => setSelectedVideo(video)} selected={selectedVideo?.id === video.id}>
@@ -838,26 +884,28 @@ export default function MyVideosPage() {
           <ListItemText
             primary={video.title}
             secondary={
-              <Box component="span" sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                {video.artists && video.artists.length > 0 && (
-                  <Typography variant="caption" color="primary" sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                    <PersonIcon sx={{ fontSize: 12 }} />
-                    {video.artists.join(', ')}
-                  </Typography>
-                )}
-                {video.description && (
-                  <Typography variant="caption" color="text.secondary" noWrap>
-                    {video.description}
-                  </Typography>
-                )}
-                {video.tags && video.tags.length > 0 && (
-                  <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
-                    {video.tags.map(tag => (
-                      <Chip key={tag} size="small" label={tag} variant="outlined" sx={{ height: 18, fontSize: '0.65rem' }} />
-                    ))}
-                  </Box>
-                )}
-              </Box>
+              compactView ? null : (
+                <Box component="span" sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+                  {video.artists && video.artists.length > 0 && (
+                    <Typography variant="caption" color="primary" sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                      <PersonIcon sx={{ fontSize: 12 }} />
+                      {video.artists.join(', ')}
+                    </Typography>
+                  )}
+                  {video.description && (
+                    <Typography variant="caption" color="text.secondary" noWrap>
+                      {video.description}
+                    </Typography>
+                  )}
+                  {video.tags && video.tags.length > 0 && (
+                    <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                      {video.tags.map(tag => (
+                        <Chip key={tag} size="small" label={tag} variant="outlined" sx={{ height: 18, fontSize: '0.65rem' }} />
+                      ))}
+                    </Box>
+                  )}
+                </Box>
+              )
             }
             primaryTypographyProps={{ noWrap: true }}
           />
@@ -872,7 +920,7 @@ export default function MyVideosPage() {
       <Container maxWidth="sm" sx={{ py: 8 }}>
         <Card sx={{ p: 4, textAlign: 'center' }}>
           <Typography variant="h5" gutterBottom>
-            My Videos
+            Cool Vids
           </Typography>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
             This content is password protected.
@@ -922,10 +970,24 @@ export default function MyVideosPage() {
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h4" component="h1">
-          My Videos
+          Cool Vids
         </Typography>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <IconButton
+            onClick={() => setShowQueuedOnly(!showQueuedOnly)}
+            title={showQueuedOnly ? "Show all videos" : "Show queued only"}
+            color={showQueuedOnly ? "primary" : "default"}
+          >
+            <PsychologyIcon />
+          </IconButton>
+          <IconButton
+            onClick={() => setCompactView(!compactView)}
+            title={compactView ? "Detailed view" : "Compact view"}
+            color={compactView ? "primary" : "default"}
+          >
+            {compactView ? <ViewListIcon /> : <ViewModuleIcon />}
+          </IconButton>
           {isAdmin ? (
             <>
               <Chip label="Admin Mode" color="primary" onClick={handleAdminToggle} />
