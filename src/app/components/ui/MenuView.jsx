@@ -13,9 +13,9 @@ const navItems = [
   },
   {
     id: 2,
-    title: "My Videos",
+    title: "Cool Vids",
     mainImage: "/navigation/tangolab.jpg",
-    link: "/my-videos",
+    link: "/cool-vids",
   },
   {
     id: 3,

@@ -78,7 +78,7 @@ export default function TangoCollabPage() {
       <Box sx={{ textAlign: 'center' }}>
         <Button
           component={Link}
-          href="/my-videos"
+          href="/cool-vids"
           variant="contained"
           size="large"
           startIcon={<VideoLibraryIcon />}

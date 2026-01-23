@@ -122,6 +122,9 @@ export default function TangoLabPage() {
         <Typography variant="body1" paragraph>
           Mostly, we are here to explore, share, and learn from each other in a positive and supportive place.
         </Typography>
+        <Typography variant="body1" paragraph>
+          No more than 30 minutes with a single partnership, then go participate elsewhere.
+        </Typography>
         <Typography variant="body1" sx={{ fontStyle: 'italic', fontWeight: 'medium' }}>
           This is not teaching, but sharing. Did we mention collaborate and share?
         </Typography>
