@@ -98,9 +98,33 @@ export default function TangoLabPage() {
             TangoLab
           </Typography>
           <Typography variant="subtitle1" color="text.secondary">
-            Explore the art and science of Argentine Tango
+            Collaborate and share the art and science of Argentine Tango
           </Typography>
         </Box>
+      </Box>
+
+      <Box sx={{ mb: 4, p: 3, bgcolor: 'grey.50', borderRadius: 2 }}>
+        <Typography variant="h6" gutterBottom color="primary">
+          Our Philosophy
+        </Typography>
+        <Typography variant="body1" paragraph>
+          We are a sharing and collaborating group, invite only, but we are all here to share with each other.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          We spread our enthusiasm, learnings, and attitude to all others in the tango community.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          We are not here to correct or fix each other, but to share with each other. When the relationship is positive, constructive two-way conversation is always appropriate.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          We are not here to just dance tandas, but rather to use a tanda to practice the things we are working on.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Mostly, we are here to explore, share, and learn from each other in a positive and supportive place.
+        </Typography>
+        <Typography variant="body1" sx={{ fontStyle: 'italic', fontWeight: 'medium' }}>
+          This is not teaching, but sharing. Did we mention collaborate and share?
+        </Typography>
       </Box>
 
       <Grid container spacing={3}>
