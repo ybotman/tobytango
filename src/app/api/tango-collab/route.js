@@ -156,13 +156,13 @@ export async function POST(request) {
 
       default: {
         // Default: add video
-        const { title, youtubeUrl, videoUrl, description, type, startTime, folderId, thumbnailUrl } = body;
+        const { title, youtubeUrl, videoUrl, instagramUrl, description, type, startTime, folderId, thumbnailUrl } = body;
 
         if (!title) {
           return NextResponse.json({ error: 'Title is required' }, { status: 400 });
         }
 
-        if (!youtubeUrl && !videoUrl) {
+        if (!youtubeUrl && !videoUrl && !instagramUrl) {
           return NextResponse.json({ error: 'Video URL is required' }, { status: 400 });
         }
 
@@ -172,8 +172,9 @@ export async function POST(request) {
           title,
           youtubeUrl: youtubeUrl || null,
           videoUrl: videoUrl || null,
+          instagramUrl: instagramUrl || null,
           thumbnailUrl: thumbnailUrl || null,
-          type: type || (youtubeUrl ? 'youtube' : 'azure'),
+          type: type || (youtubeUrl ? 'youtube' : instagramUrl ? 'instagram' : 'azure'),
           description: description || '',
           startTime: startTime !== undefined ? parseInt(startTime) : 0,
           folderId: folderId || null,

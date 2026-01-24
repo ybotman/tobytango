@@ -50,6 +50,8 @@ import ImageIcon from '@mui/icons-material/Image';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import Script from 'next/script';
 // Server-side upload - no client SDK needed
 
 // Extract YouTube video ID from various URL formats (including Shorts)
@@ -75,6 +77,22 @@ function getYouTubeThumbnail(youtubeId) {
 // Check if URL is an Azure blob video
 function isAzureBlobVideo(url) {
   return url && url.includes('blob.core.windows.net');
+}
+
+// Extract Instagram post URL (handles /p/, /reel/, /tv/ formats)
+function getInstagramUrl(url) {
+  if (!url) return null;
+  const regExp = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(p|reel|tv)\/([A-Za-z0-9_-]+)/;
+  const match = url.match(regExp);
+  if (match) {
+    return `https://www.instagram.com/${match[1]}/${match[2]}/`;
+  }
+  return null;
+}
+
+// Check if URL is an Instagram video/post
+function isInstagramVideo(url) {
+  return url && (url.includes('instagram.com/p/') || url.includes('instagram.com/reel/') || url.includes('instagram.com/tv/'));
 }
 
 // Generate thumbnail from video file at 90% mark
@@ -205,7 +223,7 @@ export default function MyVideosPage() {
   // Add video dialog state
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTab, setDialogTab] = useState(0);
-  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', description: '', startTime: 0, tags: [], artists: [] });
+  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', instagramUrl: '', description: '', startTime: 0, tags: [], artists: [] });
   const [tagInput, setTagInput] = useState('');
   const [artistInput, setArtistInput] = useState('');
 
@@ -358,6 +376,49 @@ export default function MyVideosPage() {
     }
   };
 
+  const handleAddInstagramVideo = async () => {
+    const storedPassword = getStoredPassword();
+    const cleanUrl = getInstagramUrl(newVideo.instagramUrl);
+
+    if (!cleanUrl) {
+      alert('Invalid Instagram URL. Please use a link like: https://www.instagram.com/reel/ABC123/');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/tango-collab', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: storedPassword,
+          title: newVideo.title,
+          instagramUrl: cleanUrl,
+          description: newVideo.description,
+          startTime: newVideo.startTime,
+          tags: newVideo.tags,
+          artists: newVideo.artists,
+          type: 'instagram'
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setVideos([...videos, data.video]);
+        resetDialog();
+        // Reload Instagram embeds
+        if (window.instgrm) {
+          window.instgrm.Embeds.process();
+        }
+      } else {
+        const errData = await response.json();
+        handleAuthError(errData);
+        alert(errData.error || 'Failed to add video');
+      }
+    } catch {
+      alert('Error adding video');
+    }
+  };
+
   const handleUploadVideo = async () => {
     if (!selectedFile || !newVideo.title) return;
 
@@ -471,7 +532,7 @@ export default function MyVideosPage() {
 
   const resetDialog = () => {
     setOpenDialog(false);
-    setNewVideo({ title: '', youtubeUrl: '', description: '', startTime: 0, tags: [], artists: [] });
+    setNewVideo({ title: '', youtubeUrl: '', instagramUrl: '', description: '', startTime: 0, tags: [], artists: [] });
     setSelectedFile(null);
     setDialogTab(0);
     setTagInput('');
@@ -809,6 +870,13 @@ export default function MyVideosPage() {
     }
   };
 
+  // Process Instagram embeds when videos change or selected video changes
+  useEffect(() => {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  }, [videos, selectedVideo]);
+
   // Get all unique tags and artists from videos (auto-built from existing videos)
   // Tags are normalized case-insensitively (first letter uppercase)
   const allTagsRaw = videos.flatMap(v => v.tags || []);
@@ -848,8 +916,9 @@ export default function MyVideosPage() {
   const renderVideoItem = (video) => {
     const youtubeId = getYouTubeId(video.youtubeUrl);
     const isAzure = isAzureBlobVideo(video.videoUrl);
+    const isInstagram = isInstagramVideo(video.instagramUrl);
     const thumbnail = youtubeId ? getYouTubeThumbnail(youtubeId) : video.thumbnailUrl;
-    const hasInvalidUrl = video.youtubeUrl && !isValidYouTubeUrl(video.youtubeUrl);
+    const hasInvalidUrl = video.youtubeUrl && !isValidYouTubeUrl(video.youtubeUrl) && !isInstagram;
 
     return (
       <ListItem
@@ -896,6 +965,10 @@ export default function MyVideosPage() {
             ) : isAzure ? (
               <Box sx={{ width: 64, height: 36, bgcolor: 'grey.800', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
                 <VideoFileIcon sx={{ color: 'grey.400' }} />
+              </Box>
+            ) : isInstagram ? (
+              <Box sx={{ width: 64, height: 36, background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
+                <CameraAltIcon sx={{ color: 'white', fontSize: 20 }} />
               </Box>
             ) : hasInvalidUrl ? (
               <Box sx={{ width: 64, height: 36, bgcolor: 'warning.light', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
@@ -1254,6 +1327,25 @@ export default function MyVideosPage() {
                       Your browser does not support the video tag.
                     </video>
                   </Box>
+                ) : isInstagramVideo(selectedVideo.instagramUrl) ? (
+                  <Box sx={{ display: 'flex', justifyContent: 'center', py: 2 }}>
+                    <blockquote
+                      className="instagram-media"
+                      data-instgrm-permalink={getInstagramUrl(selectedVideo.instagramUrl)}
+                      data-instgrm-version="14"
+                      style={{
+                        background: '#FFF',
+                        border: 0,
+                        borderRadius: '3px',
+                        boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)',
+                        margin: '1px',
+                        maxWidth: '540px',
+                        minWidth: '326px',
+                        padding: 0,
+                        width: '100%'
+                      }}
+                    />
+                  </Box>
                 ) : (
                   <Box sx={{ height: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', bgcolor: 'warning.light', borderRadius: 1, p: 2 }}>
                     <WarningIcon sx={{ fontSize: 40, color: 'warning.dark', mb: 1 }} />
@@ -1288,8 +1380,9 @@ export default function MyVideosPage() {
         <DialogTitle>Add Video</DialogTitle>
         <DialogContent>
           <Tabs value={dialogTab} onChange={(e, v) => setDialogTab(v)} sx={{ mb: 2 }}>
-            <Tab icon={<YouTubeIcon />} label="YouTube Link" />
-            <Tab icon={<CloudUploadIcon />} label="Upload Video" />
+            <Tab icon={<YouTubeIcon />} label="YouTube" />
+            <Tab icon={<CloudUploadIcon />} label="Upload" />
+            <Tab icon={<CameraAltIcon />} label="Instagram (BETA)" />
           </Tabs>
 
           <TextField
@@ -1301,7 +1394,7 @@ export default function MyVideosPage() {
             required
           />
 
-          {dialogTab === 0 ? (
+          {dialogTab === 0 && (
             <>
               <TextField
                 fullWidth
@@ -1326,7 +1419,9 @@ export default function MyVideosPage() {
                 </Box>
               )}
             </>
-          ) : (
+          )}
+
+          {dialogTab === 1 && (
             <Box
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
@@ -1360,6 +1455,19 @@ export default function MyVideosPage() {
                 </Typography>
               )}
             </Box>
+          )}
+
+          {dialogTab === 2 && (
+            <TextField
+              fullWidth
+              label="Instagram URL"
+              value={newVideo.instagramUrl}
+              onChange={(e) => setNewVideo({ ...newVideo, instagramUrl: e.target.value })}
+              placeholder="https://www.instagram.com/reel/ABC123/"
+              helperText="Paste a link to an Instagram post, reel, or IGTV video"
+              sx={{ mb: 2 }}
+              required
+            />
           )}
 
           {uploading && (
@@ -1473,17 +1581,39 @@ export default function MyVideosPage() {
         </DialogContent>
         <DialogActions>
           <Button onClick={resetDialog} disabled={uploading}>Cancel</Button>
-          {dialogTab === 0 ? (
+          {dialogTab === 0 && (
             <Button variant="contained" onClick={handleAddYouTubeVideo} disabled={!newVideo.title || !newVideo.youtubeUrl || !isValidYouTubeUrl(newVideo.youtubeUrl)}>
               Add
             </Button>
-          ) : (
+          )}
+          {dialogTab === 1 && (
             <Button variant="contained" onClick={handleUploadVideo} disabled={!newVideo.title || !selectedFile || uploading}>
               {uploading ? 'Uploading...' : 'Upload'}
             </Button>
           )}
+          {dialogTab === 2 && (
+            <Button
+              variant="contained"
+              onClick={handleAddInstagramVideo}
+              disabled={!newVideo.title || !newVideo.instagramUrl}
+              sx={{ bgcolor: '#E4405F', '&:hover': { bgcolor: '#d63050' } }}
+            >
+              Add Instagram
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
+
+      {/* Instagram embed script */}
+      <Script
+        src="//www.instagram.com/embed.js"
+        strategy="lazyOnload"
+        onLoad={() => {
+          if (window.instgrm) {
+            window.instgrm.Embeds.process();
+          }
+        }}
+      />
 
       {/* Edit Video Dialog */}
       <Dialog open={editDialog.open} onClose={() => setEditDialog({ open: false, video: null })} maxWidth="sm" fullWidth>
