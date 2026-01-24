@@ -246,6 +246,7 @@ export default function MyVideosPage() {
   const [uploading, setUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [instagramThumbnail, setInstagramThumbnail] = useState(null);
 
   const getStoredViewerPassword = () => localStorage.getItem('myVideosViewerPassword');
 
@@ -395,6 +396,34 @@ export default function MyVideosPage() {
     }
 
     try {
+      setUploading(true);
+      let thumbnailUrl = null;
+
+      // Upload thumbnail if provided
+      if (instagramThumbnail) {
+        const thumbFileName = `instagram_thumb_${Date.now()}.${instagramThumbnail.name.split('.').pop()}`;
+        const thumbTokenResponse = await fetch('/api/tango-collab/upload-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: storedPassword, fileName: thumbFileName })
+        });
+
+        if (thumbTokenResponse.ok) {
+          const { sasToken, blobUrl } = await thumbTokenResponse.json();
+          const thumbUploadResponse = await fetch(`${blobUrl}?${sasToken}`, {
+            method: 'PUT',
+            headers: {
+              'x-ms-blob-type': 'BlockBlob',
+              'Content-Type': instagramThumbnail.type || 'image/jpeg',
+            },
+            body: instagramThumbnail
+          });
+          if (thumbUploadResponse.ok) {
+            thumbnailUrl = blobUrl;
+          }
+        }
+      }
+
       const response = await fetch('/api/tango-collab', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -406,6 +435,7 @@ export default function MyVideosPage() {
           startTime: newVideo.startTime,
           tags: newVideo.tags,
           artists: newVideo.artists,
+          thumbnailUrl: thumbnailUrl,
           type: 'instagram'
         })
       });
@@ -425,6 +455,8 @@ export default function MyVideosPage() {
       }
     } catch {
       alert('Error adding video');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -543,6 +575,7 @@ export default function MyVideosPage() {
     setOpenDialog(false);
     setNewVideo({ title: '', youtubeUrl: '', instagramUrl: '', description: '', startTime: 0, tags: [], artists: [] });
     setSelectedFile(null);
+    setInstagramThumbnail(null);
     setDialogTab(0);
     setTagInput('');
     setArtistInput('');
@@ -1477,16 +1510,52 @@ export default function MyVideosPage() {
           )}
 
           {dialogTab === 2 && (
-            <TextField
-              fullWidth
-              label="Instagram URL"
-              value={newVideo.instagramUrl}
-              onChange={(e) => setNewVideo({ ...newVideo, instagramUrl: e.target.value })}
-              placeholder="https://www.instagram.com/reel/ABC123/"
-              helperText="Paste a link to an Instagram post, reel, or IGTV video"
-              sx={{ mb: 2 }}
-              required
-            />
+            <>
+              <TextField
+                fullWidth
+                label="Instagram URL"
+                value={newVideo.instagramUrl}
+                onChange={(e) => setNewVideo({ ...newVideo, instagramUrl: e.target.value })}
+                placeholder="https://www.instagram.com/reel/ABC123/"
+                helperText="Paste a link to an Instagram post, reel, or IGTV video"
+                sx={{ mb: 2 }}
+                required
+              />
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                  Thumbnail (optional - helps identify video in list)
+                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Button
+                    variant="outlined"
+                    component="label"
+                    size="small"
+                    startIcon={<ImageIcon />}
+                  >
+                    {instagramThumbnail ? 'Change' : 'Add Thumbnail'}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      hidden
+                      onChange={(e) => setInstagramThumbnail(e.target.files?.[0] || null)}
+                    />
+                  </Button>
+                  {instagramThumbnail && (
+                    <>
+                      <Box
+                        component="img"
+                        src={URL.createObjectURL(instagramThumbnail)}
+                        alt="Thumbnail preview"
+                        sx={{ width: 64, height: 36, objectFit: 'cover', borderRadius: 1 }}
+                      />
+                      <Typography variant="caption" color="text.secondary">
+                        {instagramThumbnail.name}
+                      </Typography>
+                    </>
+                  )}
+                </Box>
+              </Box>
+            </>
           )}
 
           {uploading && (
