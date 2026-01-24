@@ -79,20 +79,22 @@ function isAzureBlobVideo(url) {
   return url && url.includes('blob.core.windows.net');
 }
 
-// Extract Instagram post URL (handles /p/, /reel/, /tv/ formats)
+// Extract Instagram post URL (handles /p/, /reel/, /reels/, /tv/ formats)
 function getInstagramUrl(url) {
   if (!url) return null;
-  const regExp = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(p|reel|tv)\/([A-Za-z0-9_-]+)/;
+  const regExp = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(p|reels?|tv)\/([A-Za-z0-9_-]+)/;
   const match = url.match(regExp);
   if (match) {
-    return `https://www.instagram.com/${match[1]}/${match[2]}/`;
+    // Normalize reels -> reel for embed URL
+    const type = match[1] === 'reels' ? 'reel' : match[1];
+    return `https://www.instagram.com/${type}/${match[2]}/`;
   }
   return null;
 }
 
 // Check if URL is an Instagram video/post
 function isInstagramVideo(url) {
-  return url && (url.includes('instagram.com/p/') || url.includes('instagram.com/reel/') || url.includes('instagram.com/tv/'));
+  return url && (url.includes('instagram.com/p/') || url.includes('instagram.com/reel/') || url.includes('instagram.com/reels/') || url.includes('instagram.com/tv/'));
 }
 
 // Generate thumbnail from video file at 90% mark
@@ -381,7 +383,7 @@ export default function MyVideosPage() {
     const cleanUrl = getInstagramUrl(newVideo.instagramUrl);
 
     if (!cleanUrl) {
-      alert('Invalid Instagram URL. Please use a link like: https://www.instagram.com/reel/ABC123/');
+      alert('Invalid Instagram URL. Please use a link like: https://www.instagram.com/reel/ABC123/ or https://www.instagram.com/reels/ABC123/');
       return;
     }
 
