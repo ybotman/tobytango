@@ -92,6 +92,13 @@ function getInstagramUrl(url) {
   return null;
 }
 
+// Get Instagram embed iframe URL
+function getInstagramEmbedUrl(url) {
+  const cleanUrl = getInstagramUrl(url);
+  if (!cleanUrl) return null;
+  return `${cleanUrl}embed/`;
+}
+
 // Check if URL is an Instagram video/post
 function isInstagramVideo(url) {
   return url && (url.includes('instagram.com/p/') || url.includes('instagram.com/reel/') || url.includes('instagram.com/reels/') || url.includes('instagram.com/tv/'));
@@ -1331,28 +1338,32 @@ export default function MyVideosPage() {
                     </video>
                   </Box>
                 ) : isInstagramVideo(selectedVideo.instagramUrl) ? (
-                  <Box key={selectedVideo.id} sx={{ display: 'flex', justifyContent: 'center', py: 2 }}>
-                    <blockquote
-                      className="instagram-media"
-                      data-instgrm-permalink={getInstagramUrl(selectedVideo.instagramUrl)}
-                      data-instgrm-version="14"
-                      data-instgrm-captioned
-                      style={{
-                        background: '#FFF',
-                        border: 0,
-                        borderRadius: '3px',
-                        boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)',
-                        margin: '1px',
-                        maxWidth: '540px',
-                        minWidth: '326px',
-                        padding: 0,
-                        width: '100%'
-                      }}
+                  <Box key={selectedVideo.id} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', py: 2 }}>
+                    <Box sx={{ width: '100%', maxWidth: 540, aspectRatio: '9/16', maxHeight: 600 }}>
+                      <iframe
+                        src={getInstagramEmbedUrl(selectedVideo.instagramUrl)}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          border: 'none',
+                          borderRadius: '8px'
+                        }}
+                        allowFullScreen
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                        title={selectedVideo.title}
+                      />
+                    </Box>
+                    <Button
+                      variant="text"
+                      size="small"
+                      href={getInstagramUrl(selectedVideo.instagramUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      startIcon={<CameraAltIcon />}
+                      sx={{ mt: 1, background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)', color: 'white', '&:hover': { opacity: 0.9 } }}
                     >
-                      <a href={getInstagramUrl(selectedVideo.instagramUrl)} target="_blank" rel="noopener noreferrer">
-                        View on Instagram
-                      </a>
-                    </blockquote>
+                      Open in Instagram
+                    </Button>
                   </Box>
                 ) : (
                   <Box sx={{ height: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', bgcolor: 'warning.light', borderRadius: 1, p: 2 }}>
