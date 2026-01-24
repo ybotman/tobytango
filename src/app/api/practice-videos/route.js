@@ -24,7 +24,7 @@ export async function GET(request) {
 // POST - add a new video (requires admin password)
 export async function POST(request) {
   const body = await request.json();
-  const { password, title, youtubeUrl, videoUrl, description, type, startTime } = body;
+  const { password, title, youtubeUrl, videoUrl, instagramUrl, description, type, startTime } = body;
 
   if (password !== ADMIN_PASSWORD) {
     return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
@@ -34,8 +34,8 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Title is required' }, { status: 400 });
   }
 
-  // Require either YouTube URL or Azure blob URL
-  if (!youtubeUrl && !videoUrl) {
+  // Require either YouTube URL, Azure blob URL, or Instagram URL
+  if (!youtubeUrl && !videoUrl && !instagramUrl) {
     return NextResponse.json({ error: 'Video URL is required' }, { status: 400 });
   }
 
@@ -45,7 +45,8 @@ export async function POST(request) {
     title,
     youtubeUrl: youtubeUrl || null,
     videoUrl: videoUrl || null,
-    type: type || (youtubeUrl ? 'youtube' : 'azure'),
+    instagramUrl: instagramUrl || null,
+    type: type || (youtubeUrl ? 'youtube' : instagramUrl ? 'instagram' : 'azure'),
     description: description || '',
     startTime: startTime !== undefined ? parseInt(startTime) : 7,
     addedAt: new Date().toISOString()

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -27,7 +27,9 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import VideoFileIcon from '@mui/icons-material/VideoFile';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import { ContainerClient } from '@azure/storage-blob';
+import Script from 'next/script';
 
 // Extract YouTube video ID from various URL formats
 function getYouTubeId(url) {
@@ -42,6 +44,22 @@ function isAzureBlobVideo(url) {
   return url && url.includes('blob.core.windows.net');
 }
 
+// Extract Instagram post URL (handles /p/, /reel/, /tv/ formats)
+function getInstagramUrl(url) {
+  if (!url) return null;
+  const regExp = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(p|reel|tv)\/([A-Za-z0-9_-]+)/;
+  const match = url.match(regExp);
+  if (match) {
+    return `https://www.instagram.com/${match[1]}/${match[2]}/`;
+  }
+  return null;
+}
+
+// Check if URL is an Instagram video/post
+function isInstagramVideo(url) {
+  return url && (url.includes('instagram.com/p/') || url.includes('instagram.com/reel/') || url.includes('instagram.com/tv/'));
+}
+
 export default function PracticeVideosPage() {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -52,8 +70,8 @@ export default function PracticeVideosPage() {
 
   // Add video dialog state
   const [openDialog, setOpenDialog] = useState(false);
-  const [dialogTab, setDialogTab] = useState(0); // 0 = YouTube, 1 = Upload
-  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', description: '', startTime: 7 });
+  const [dialogTab, setDialogTab] = useState(0); // 0 = YouTube, 1 = Upload, 2 = Instagram
+  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', instagramUrl: '', description: '', startTime: 7 });
 
   // Upload state
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -121,6 +139,46 @@ export default function PracticeVideosPage() {
         const data = await response.json();
         setVideos([...videos, data.video]);
         resetDialog();
+      } else {
+        const errData = await response.json();
+        alert(errData.error || 'Failed to add video');
+      }
+    } catch {
+      alert('Error adding video');
+    }
+  };
+
+  const handleAddInstagramVideo = async () => {
+    const storedPassword = sessionStorage.getItem('practiceVideosPassword');
+    const cleanUrl = getInstagramUrl(newVideo.instagramUrl);
+
+    if (!cleanUrl) {
+      alert('Invalid Instagram URL. Please use a link like: https://www.instagram.com/reel/ABC123/');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/practice-videos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: storedPassword,
+          title: newVideo.title,
+          instagramUrl: cleanUrl,
+          description: newVideo.description,
+          startTime: newVideo.startTime,
+          type: 'instagram'
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setVideos([...videos, data.video]);
+        resetDialog();
+        // Reload Instagram embeds
+        if (window.instgrm) {
+          window.instgrm.Embeds.process();
+        }
       } else {
         const errData = await response.json();
         alert(errData.error || 'Failed to add video');
@@ -205,7 +263,7 @@ export default function PracticeVideosPage() {
 
   const resetDialog = () => {
     setOpenDialog(false);
-    setNewVideo({ title: '', youtubeUrl: '', description: '', startTime: 7 });
+    setNewVideo({ title: '', youtubeUrl: '', instagramUrl: '', description: '', startTime: 7 });
     setSelectedFile(null);
     setDialogTab(0);
   };
@@ -269,6 +327,13 @@ export default function PracticeVideosPage() {
       }
     }
   };
+
+  // Process Instagram embeds when videos change
+  useEffect(() => {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  }, [videos]);
 
   // Password entry screen
   if (!isAuthenticated) {
@@ -348,6 +413,8 @@ export default function PracticeVideosPage() {
           {videos.map((video) => {
             const youtubeId = getYouTubeId(video.youtubeUrl);
             const isAzure = isAzureBlobVideo(video.videoUrl);
+            const instagramUrl = getInstagramUrl(video.instagramUrl);
+            const isInstagram = isInstagramVideo(video.instagramUrl);
 
             return (
               <Card key={video.id} sx={{ position: 'relative' }}>
@@ -362,7 +429,7 @@ export default function PracticeVideosPage() {
                 )}
                 <CardContent>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                    {isAzure ? <VideoFileIcon color="primary" /> : <YouTubeIcon color="error" />}
+                    {isAzure ? <VideoFileIcon color="primary" /> : isInstagram ? <CameraAltIcon sx={{ color: '#E4405F' }} /> : <YouTubeIcon color="error" />}
                     <Typography variant="h6">{video.title}</Typography>
                   </Box>
                   {video.description && (
@@ -411,7 +478,29 @@ export default function PracticeVideosPage() {
                     </Box>
                   )}
 
-                  {!youtubeId && !isAzure && (
+                  {/* Instagram embed */}
+                  {isInstagram && instagramUrl && (
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                      <blockquote
+                        className="instagram-media"
+                        data-instgrm-permalink={instagramUrl}
+                        data-instgrm-version="14"
+                        style={{
+                          background: '#FFF',
+                          border: 0,
+                          borderRadius: '3px',
+                          boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)',
+                          margin: '1px',
+                          maxWidth: '540px',
+                          minWidth: '326px',
+                          padding: 0,
+                          width: '100%'
+                        }}
+                      />
+                    </Box>
+                  )}
+
+                  {!youtubeId && !isAzure && !isInstagram && (
                     <Alert severity="warning">Invalid video URL</Alert>
                   )}
                 </CardContent>
@@ -426,8 +515,9 @@ export default function PracticeVideosPage() {
         <DialogTitle>Add Practice Video</DialogTitle>
         <DialogContent>
           <Tabs value={dialogTab} onChange={(e, v) => setDialogTab(v)} sx={{ mb: 2 }}>
-            <Tab icon={<YouTubeIcon />} label="YouTube Link" />
-            <Tab icon={<CloudUploadIcon />} label="Upload Video" />
+            <Tab icon={<YouTubeIcon />} label="YouTube" />
+            <Tab icon={<CloudUploadIcon />} label="Upload" />
+            <Tab icon={<CameraAltIcon />} label="Instagram (BETA)" />
           </Tabs>
 
           <TextField
@@ -439,7 +529,7 @@ export default function PracticeVideosPage() {
             required
           />
 
-          {dialogTab === 0 ? (
+          {dialogTab === 0 && (
             // YouTube tab
             <TextField
               fullWidth
@@ -450,7 +540,9 @@ export default function PracticeVideosPage() {
               sx={{ mb: 2 }}
               required
             />
-          ) : (
+          )}
+
+          {dialogTab === 1 && (
             // Upload tab
             <Box
               onDragEnter={handleDrag}
@@ -488,6 +580,20 @@ export default function PracticeVideosPage() {
             </Box>
           )}
 
+          {dialogTab === 2 && (
+            // Instagram tab
+            <TextField
+              fullWidth
+              label="Instagram URL"
+              value={newVideo.instagramUrl}
+              onChange={(e) => setNewVideo({ ...newVideo, instagramUrl: e.target.value })}
+              placeholder="https://www.instagram.com/reel/ABC123/"
+              helperText="Paste a link to an Instagram post, reel, or IGTV video"
+              sx={{ mb: 2 }}
+              required
+            />
+          )}
+
           {uploading && (
             <Box sx={{ mb: 2 }}>
               <LinearProgress variant="determinate" value={uploadProgress} />
@@ -519,7 +625,7 @@ export default function PracticeVideosPage() {
         </DialogContent>
         <DialogActions>
           <Button onClick={resetDialog} disabled={uploading}>Cancel</Button>
-          {dialogTab === 0 ? (
+          {dialogTab === 0 && (
             <Button
               variant="contained"
               onClick={handleAddYouTubeVideo}
@@ -527,7 +633,8 @@ export default function PracticeVideosPage() {
             >
               Add YouTube Video
             </Button>
-          ) : (
+          )}
+          {dialogTab === 1 && (
             <Button
               variant="contained"
               onClick={handleUploadVideo}
@@ -537,8 +644,29 @@ export default function PracticeVideosPage() {
               {uploading ? 'Uploading...' : 'Upload Video'}
             </Button>
           )}
+          {dialogTab === 2 && (
+            <Button
+              variant="contained"
+              onClick={handleAddInstagramVideo}
+              disabled={!newVideo.title || !newVideo.instagramUrl}
+              sx={{ bgcolor: '#E4405F', '&:hover': { bgcolor: '#d63050' } }}
+            >
+              Add Instagram Video
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
+
+      {/* Instagram embed script */}
+      <Script
+        src="//www.instagram.com/embed.js"
+        strategy="lazyOnload"
+        onLoad={() => {
+          if (window.instgrm) {
+            window.instgrm.Embeds.process();
+          }
+        }}
+      />
     </Container>
   );
 }
