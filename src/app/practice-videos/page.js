@@ -482,11 +482,12 @@ export default function PracticeVideosPage() {
 
                   {/* Instagram embed */}
                   {isInstagram && instagramUrl && (
-                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Box key={video.id} sx={{ display: 'flex', justifyContent: 'center' }}>
                       <blockquote
                         className="instagram-media"
                         data-instgrm-permalink={instagramUrl}
                         data-instgrm-version="14"
+                        data-instgrm-captioned
                         style={{
                           background: '#FFF',
                           border: 0,
@@ -498,7 +499,11 @@ export default function PracticeVideosPage() {
                           padding: 0,
                           width: '100%'
                         }}
-                      />
+                      >
+                        <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+                          View on Instagram
+                        </a>
+                      </blockquote>
                     </Box>
                   )}
 

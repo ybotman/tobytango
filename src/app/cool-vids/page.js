@@ -636,7 +636,8 @@ export default function MyVideosPage() {
           tags: editDialog.video.tags,
           artists: editDialog.video.artists,
           startTime: editDialog.video.startTime,
-          youtubeUrl: editDialog.video.youtubeUrl
+          youtubeUrl: editDialog.video.youtubeUrl,
+          instagramUrl: editDialog.video.instagramUrl
         })
       });
 
@@ -1330,11 +1331,12 @@ export default function MyVideosPage() {
                     </video>
                   </Box>
                 ) : isInstagramVideo(selectedVideo.instagramUrl) ? (
-                  <Box sx={{ display: 'flex', justifyContent: 'center', py: 2 }}>
+                  <Box key={selectedVideo.id} sx={{ display: 'flex', justifyContent: 'center', py: 2 }}>
                     <blockquote
                       className="instagram-media"
                       data-instgrm-permalink={getInstagramUrl(selectedVideo.instagramUrl)}
                       data-instgrm-version="14"
+                      data-instgrm-captioned
                       style={{
                         background: '#FFF',
                         border: 0,
@@ -1346,7 +1348,11 @@ export default function MyVideosPage() {
                         padding: 0,
                         width: '100%'
                       }}
-                    />
+                    >
+                      <a href={getInstagramUrl(selectedVideo.instagramUrl)} target="_blank" rel="noopener noreferrer">
+                        View on Instagram
+                      </a>
+                    </blockquote>
                   </Box>
                 ) : (
                   <Box sx={{ height: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', bgcolor: 'warning.light', borderRadius: 1, p: 2 }}>
@@ -1652,6 +1658,19 @@ export default function MyVideosPage() {
                   sx={{ mb: 2 }}
                   error={editDialog.video.youtubeUrl && !isValidYouTubeUrl(editDialog.video.youtubeUrl)}
                   helperText={editDialog.video.youtubeUrl && !isValidYouTubeUrl(editDialog.video.youtubeUrl) ? 'URL must be from youtube.com or youtu.be' : ''}
+                />
+              )}
+
+              {/* Instagram URL field - show if video has instagramUrl */}
+              {editDialog.video.instagramUrl !== undefined && (
+                <TextField
+                  fullWidth
+                  label="Instagram URL"
+                  value={editDialog.video.instagramUrl || ''}
+                  onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, instagramUrl: e.target.value } })}
+                  placeholder="https://www.instagram.com/reel/ABC123/"
+                  sx={{ mb: 2 }}
+                  helperText="Supports /p/, /reel/, /reels/, /tv/ formats"
                 />
               )}
 
