@@ -96,7 +96,7 @@ export const timelineCategories = [
           { name: "Astor Piazzolla", type: "individual", role: "Nuevo tango — 'music to listen to, not dance to'; split community" },
           { name: "Rock Nacional", type: "movement", role: "Replaced tango as Argentina's most popular music" }
         ],
-        paperPath: null
+        paperPath: "/tango-papers/argentina/decadencia.md"
       },
       {
         id: "renacimiento",

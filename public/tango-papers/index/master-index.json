@@ -1066,7 +1066,67 @@
       "categories": ["argentina"],
       "summary": "The dark years (1955–1983) when tango nearly died",
       "definition": "Period from Perón's overthrow to democracy's return. Tango never explicitly banned but crushed through curfews, gathering restrictions, lunfardo censorship, and Peronist association. Milongueros stopped 20-30 years; orquestas collapsed from hundreds to single digits; mentor system destroyed overnight.",
-      "appearsIn": [],
+      "appearsIn": ["/tango-papers/argentina/decadencia.md"],
+      "status": "complete"
+    },
+    {
+      "id": "juan-carlos-copes",
+      "type": "person",
+      "displayName": "Juan Carlos Copes",
+      "born": "1931-05-31",
+      "died": "2021-01-16",
+      "categories": ["dancers", "argentina"],
+      "eras": ["epoca-de-oro", "decadencia", "renacimiento"],
+      "summary": "Pioneer of tango escenario; Ed Sullivan Show 1962; survived entire Decadencia performing professionally; choreographic advisor for Tango Argentino",
+      "appearsIn": ["/tango-papers/argentina/decadencia.md"],
+      "status": "complete"
+    },
+    {
+      "id": "maria-nieves",
+      "type": "person",
+      "displayName": "María Nieves",
+      "fullName": "María Nieves Rego",
+      "categories": ["dancers", "argentina"],
+      "eras": ["epoca-de-oro", "decadencia", "renacimiento"],
+      "summary": "Copes' partner for 30+ years; Tango Argentino lead; later independent career",
+      "appearsIn": ["/tango-papers/argentina/decadencia.md"],
+      "status": "stub"
+    },
+    {
+      "id": "sexteto-mayor",
+      "type": "orchestra",
+      "displayName": "Sexteto Mayor",
+      "founded": "late 1970s",
+      "founders": "José Libertella, Luis Stazo",
+      "categories": ["orchestras", "argentina"],
+      "eras": ["decadencia", "renacimiento"],
+      "summary": "Bridge ensemble through Decadencia; provided music for Tango Argentino show",
+      "appearsIn": ["/tango-papers/argentina/decadencia.md"],
+      "status": "stub"
+    },
+    {
+      "id": "horacio-salgan",
+      "type": "person",
+      "displayName": "Horacio Salgán",
+      "born": "1916-06-15",
+      "died": "2016-08-19",
+      "categories": ["musicians", "argentina"],
+      "eras": ["epoca-de-oro", "decadencia", "renacimiento"],
+      "summary": "Lived to 100; maintained duo with Ubaldo de Lío through Decadencia; co-founded Quinteto Real (1960)",
+      "appearsIn": ["/tango-papers/argentina/decadencia.md"],
+      "status": "stub"
+    },
+    {
+      "id": "tango-argentino-show",
+      "type": "event",
+      "displayName": "Tango Argentino (Show)",
+      "date": "1983-11-11",
+      "location": "Théâtre du Châtelet, Paris",
+      "creators": "Claudio Segovia, Héctor Orezzoli",
+      "categories": ["events", "argentina", "europe"],
+      "eras": ["renacimiento"],
+      "summary": "The show that saved tango — Paris premiere Nov 11, 1983; Broadway Oct 9, 1985 (199 performances); cast flew on military cargo plane; sparked global revival",
+      "appearsIn": ["/tango-papers/argentina/decadencia.md", "/tango-papers/usa/ballroom-era.md"],
       "status": "complete"
     }
   ]
