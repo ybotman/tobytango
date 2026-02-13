@@ -210,6 +210,15 @@ export default function TangoHistoryPage() {
           <Typography variant="body1" color="text.secondary" paragraph>
             Era bands sized by duration. Navigate events below to highlight corresponding eras.
           </Typography>
+
+          {/* Disclaimer */}
+          <Paper sx={{ p: 2, bgcolor: 'grey.100', borderLeft: '4px solid', borderColor: 'warning.main' }}>
+            <Typography variant="body2" color="text.secondary">
+              <strong>Disclaimer:</strong> This timeline was researched and compiled using AI assistance (Claude/Anthropic).
+              Toby Balsley facilitated and curated this research but is not the author of the historical content.
+              Errors may exist — corrections and contributions from the tango community are welcome.
+            </Typography>
+          </Paper>
         </Box>
 
         {/* Legend */}
