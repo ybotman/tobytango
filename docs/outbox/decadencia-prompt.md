@@ -296,14 +296,11 @@ Create a comprehensive white paper documenting **La Decadencia (The Decline) of 
 
 ## DELIVERY FORMAT
 
-Please provide your response as a **Recommendations Document** with these sections:
+**White paper only.** Provide a comprehensive markdown document.
 
-1. **Structured Data Updates** — JS code for tangoTimelineData.js
-2. **Index Entries** — JSON for master-index.json (people, venues, events)
-3. **Paper Content** — Full markdown white paper
-4. **Cross-References** — Links to/from other categories
-5. **Implementation Checklist** — Files to create/update
-6. **Verification Summary** — Confidence levels and items flagged for HITM review
+**Handling gaps:** Where specific dates or facts aren't verifiable through available sources, flag them clearly with `[HITM REVIEW NEEDED]` for human expert verification.
+
+**Cross-references:** Include inline notes like `[Cross-Reference → Orchestras: Pugliese's persistence]` where connections to other timeline categories exist.
 
 ---
 
