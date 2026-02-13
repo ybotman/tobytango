@@ -26,10 +26,10 @@ export const timelineCategories = [
         yearEnd: 1920,
         status: "partial",
         summary: [
-          "Tango's birth in conventillos and port neighborhoods",
-          "African-Argentine candombe, habanera, milonga criolla fusion",
-          "Canyengue style emerges - danced in brothels, patios, street corners",
-          "Paris validation (1910-1913) brings respectability back to Buenos Aires"
+          "Tango's birth in Río de la Plata — Buenos Aires and Montevideo",
+          "African candombe, habanera, milonga criolla fusion",
+          "Canyengue style emerges in conventillos, academias, patios",
+          "Paris validation (1910-1913) brings respectability"
         ],
         keyFigures: [],
         paperPath: null
@@ -550,6 +550,28 @@ export const timelineCategories = [
         paperPath: null
       },
       {
+        id: "guardia-nueva-orchestras",
+        title: "Guardia Nueva Orchestras",
+        subtitle: "Birth of the Orquesta Típica",
+        yearStart: 1920,
+        yearEnd: 1935,
+        status: "partial",
+        summary: [
+          "Julio De Caro invents modern tango orchestration (1924)",
+          "Transition from sextet to orquesta típica format",
+          "Bandoneon becomes central instrument",
+          "Roberto Firpo, Francisco Canaro, Eduardo Arolas define the sound"
+        ],
+        keyFigures: [
+          { name: "Julio De Caro", type: "orchestra", role: "Father of modern tango orchestration (1899–1980)" },
+          { name: "Eduardo Arolas", type: "individual", role: "El Tigre del Bandoneón (1892–1924)" },
+          { name: "Roberto Firpo", type: "orchestra", role: "First to record 'La Cumparsita' (1884–1969)" },
+          { name: "Francisco Canaro", type: "orchestra", role: "Prolific recording pioneer (1888–1964)" },
+          { name: "Osvaldo Fresedo", type: "orchestra", role: "Early aristocratic style (1897–1984)" }
+        ],
+        paperPath: null
+      },
+      {
         id: "golden-orchestras",
         title: "Golden Age Orchestras",
         subtitle: "The Big Four and More",
@@ -571,7 +593,9 @@ export const timelineCategories = [
           { name: "Rodolfo Biagi", type: "orchestra", role: "Manos Brujas (1906–1969)" },
           { name: "Miguel Caló", type: "orchestra", role: "Orquesta de las Estrellas (1907–1972)" },
           { name: "Alfredo De Angelis", type: "orchestra", role: "Glostora Tango Club (1910–1992)" },
-          { name: "Francisco Canaro", type: "orchestra", role: "3,792 recordings (1888–1964)" }
+          { name: "Francisco Canaro", type: "orchestra", role: "3,792 recordings (1888–1964)" },
+          { name: "Ángel D'Agostino", type: "orchestra", role: "With Vargas — essential dance music (1900–1991)" },
+          { name: "Osvaldo Fresedo", type: "orchestra", role: "63-year career, aristocratic style (1897–1984)" }
         ],
         paperPath: "/tango-papers/argentina/epoca-de-oro.md"
       },
