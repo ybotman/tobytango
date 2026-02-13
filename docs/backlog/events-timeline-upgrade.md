@@ -239,4 +239,112 @@ const eraBackgrounds = [
 
 ---
 
+## Event Detail Pages (User Request)
+
+Each event point should link to its own page with full details:
+
+```
+/tango-history/events/gardel-death
+/tango-history/events/tango-argentino-show
+/tango-history/events/di-sarli-death
+/tango-history/events/dirty-war
+```
+
+### Page Structure
+
+```markdown
+# Gardel Dies
+## June 24, 1935 — Medellín, Colombia
+
+[Hero image if available]
+
+### What Happened
+[Full narrative from papers/research]
+
+### Context
+[Cross-reference to era: Guardia Nueva ending]
+
+### Impact
+[What this meant for tango]
+
+### Related
+- [Carlos Gardel](/tango-history/glossary/carlos-gardel)
+- [Guardia Nueva Era](/tango-history/argentina#guardia-nueva)
+- [Golden Age Begins](/tango-history/events/darienzo-revolution)
+
+### Sources
+[Citations]
+
+### Media
+[YouTube embed if available]
+```
+
+### Empty/TBD Pages
+
+For events without content yet:
+
+```jsx
+// /tango-history/events/[eventId]/page.js
+
+export default function EventPage({ params }) {
+  const event = getEventById(params.eventId);
+
+  if (!event.hasContent) {
+    return (
+      <Container>
+        <Typography variant="h3">{event.title}</Typography>
+        <Typography variant="h6" color="text.secondary">
+          {event.date}
+        </Typography>
+        <Paper sx={{ p: 4, mt: 4, textAlign: 'center', bgcolor: 'grey.100' }}>
+          <Typography variant="h5" gutterBottom>
+            Content Coming Soon
+          </Typography>
+          <Typography color="text.secondary">
+            This event page is being researched.
+            Check back later or contribute your knowledge.
+          </Typography>
+        </Paper>
+
+        {/* Still show what we know */}
+        <Box sx={{ mt: 4 }}>
+          <Typography variant="h6">What We Know</Typography>
+          <ul>
+            {event.summary.map(s => <li key={s}>{s}</li>)}
+          </ul>
+        </Box>
+
+        {/* Related links still work */}
+        <RelatedLinks event={event} />
+      </Container>
+    );
+  }
+
+  return <FullEventPage event={event} />;
+}
+```
+
+### Data Structure Addition
+
+```javascript
+// In tangoTimelineData.js events
+{
+  id: "gardel-death",
+  title: "Gardel Dies",
+  date: "1935-06-24",
+  hasContent: true,  // NEW: has full page content
+  paperPath: "/tango-papers/events/gardel-death.md",  // NEW: link to paper
+  // ... rest of fields
+}
+```
+
+### Implementation Phases
+
+1. **Dynamic route**: `/tango-history/events/[eventId]/page.js`
+2. **TBD template**: Show summary + "coming soon" for empty events
+3. **Full template**: Render paper content for populated events
+4. **Click handling**: Timeline events link to their pages
+
+---
+
 *This is a structural upgrade that will make the timeline more useful and maintainable. The current dual-data-source approach is fragile.*
