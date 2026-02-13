@@ -246,9 +246,7 @@ export const timelineCategories = [
         keyFigures: [
           { name: "Gustavo Naveira", type: "individual" },
           { name: "Fabian Salas", type: "individual" },
-          { name: "Chicho Frumboli", type: "individual" },
-          { name: "Carlos Gavito", type: "individual" },
-          { name: "Pablo Verón", type: "individual" }
+          { name: "Chicho Frumboli", type: "individual" }
         ],
         paperPath: null
       },
@@ -268,6 +266,8 @@ export const timelineCategories = [
           { name: "Juan Carlos Copes & María Nieves", type: "couple" },
           { name: "Gloria & Rodolfo Dinzel", type: "couple" },
           { name: "Virulazo & Elvira", type: "couple" },
+          { name: "Carlos Gavito", type: "individual", role: "Forever Tango; minimalist stage style" },
+          { name: "Pablo Verón", type: "individual", role: "The Tango Lesson (1997); film star" },
           { name: "Miguel Angel Zotto", type: "individual" }
         ],
         paperPath: null
@@ -355,7 +355,7 @@ export const timelineCategories = [
         yearEnd: 1985,
         status: "partial",
         summary: [
-          "'Tango Argentino' premieres Théâtre du Châtelet, November 13, 1983",
+          "'Tango Argentino' premieres Théâtre du Châtelet, November 11, 1983",
           "Paris audiences stunned - nothing like ballroom tango",
           "Transfers to Broadway 1985, nominated for Tony",
           "Demand for authentic instruction explodes"
@@ -677,7 +677,7 @@ export const timelineCategories = [
         yearStart: 1983,
         yearEnd: 1985,
         status: "populated",
-        summary: ["Paris premiere Nov 13, 1983", "Broadway 1985 - Tony nomination", "Ignites worldwide tango revival"],
+        summary: ["Paris premiere Nov 11, 1983", "Broadway 1985 - Tony nomination", "Ignites worldwide tango revival"],
         keyFigures: [
           { name: "Claudio Segovia", type: "individual" },
           { name: "Copes & Nieves", type: "couple" }
