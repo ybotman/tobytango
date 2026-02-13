@@ -536,8 +536,8 @@
       "born": "1905-12-02",
       "died": "1995-07-25",
       "categories": ["orchestras", "argentina"],
-      "eras": ["epoca-de-oro"],
-      "summary": "Dramatic, symphonic intensity — created 'La Yumba' (1946)",
+      "eras": ["epoca-de-oro", "decadencia", "renacimiento"],
+      "summary": "Last survivor of Big Four — imprisoned by every regime, red carnation defiance, cooperative orchestra; kept tango alive through Decadencia; created 'La Yumba' (1946)",
       "appearsIn": ["/tango-papers/argentina/epoca-de-oro.md"],
       "status": "complete"
     },
@@ -855,11 +855,13 @@
       "type": "person",
       "displayName": "Virulazo",
       "fullName": "Jorge Martín Orcaizaguirre",
+      "weight": "278 pounds",
       "categories": ["dancers", "argentina"],
       "eras": ["guardian-generation", "renacimiento"],
-      "summary": "Tango Argentino cast member — discovered working in a meat market, danced at 58",
+      "summary": "Tango Argentino cast member — discovered in obscurity (butcher shop or illegal gambling), 278 lbs, flew to Paris on military cargo plane, sold out every show",
       "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
-      "status": "complete"
+      "status": "complete",
+      "notes": "[HITM REVIEW NEEDED: Sources conflict on pre-show job — butcher shop vs. illegal gambling]"
     },
     {
       "id": "francisco-fiorentino",
@@ -993,9 +995,9 @@
       "died": "1992-07-04",
       "categories": ["musicians", "argentina"],
       "eras": ["epoca-de-oro", "decadencia"],
-      "summary": "Nuevo tango — globally recognized, controversial in dance community",
+      "summary": "Nuevo tango — 'music to listen to, not dance to'; split community into piazzolistas and antipiazzolistas; international success while rejected at home",
       "appearsIn": [],
-      "status": "stub"
+      "status": "partial"
     },
     {
       "id": "gerardo-matos-rodriguez",
@@ -1008,6 +1010,64 @@
       "summary": "Composed La Cumparsita (1917) — most famous tango ever written",
       "appearsIn": [],
       "status": "stub"
+    },
+    {
+      "id": "rock-nacional",
+      "type": "movement",
+      "displayName": "Rock Nacional",
+      "categories": ["culture", "argentina"],
+      "eras": ["decadencia"],
+      "yearStart": 1965,
+      "summary": "Argentine rock movement that replaced tango as most popular music; captured youth while tango became 'grandparents' music'",
+      "appearsIn": [],
+      "status": "stub"
+    },
+    {
+      "id": "red-carnation",
+      "type": "term",
+      "displayName": "Red Carnation (Clavel Rojo)",
+      "spanish": "clavel rojo",
+      "categories": ["culture", "argentina"],
+      "eras": ["decadencia"],
+      "summary": "Pugliese orchestra tradition — red carnation on piano as defiance symbol; Pugliese imprisoned by every successive regime",
+      "definition": "When Pugliese was imprisoned or couldn't perform, his orchestra played with a red carnation on his empty piano as symbol of resistance. Became tradition of solidarity.",
+      "appearsIn": [],
+      "status": "stub"
+    },
+    {
+      "id": "claudio-segovia",
+      "type": "person",
+      "displayName": "Claudio Segovia",
+      "born": "1938",
+      "died": "2011",
+      "categories": ["creators", "argentina"],
+      "eras": ["renacimiento"],
+      "summary": "Co-creator of 'Tango Argentino' (1983) with Héctor Orezzoli — the show that sparked global tango revival",
+      "appearsIn": [],
+      "status": "stub"
+    },
+    {
+      "id": "hector-orezzoli",
+      "type": "person",
+      "displayName": "Héctor Orezzoli",
+      "born": "1954",
+      "died": "1991",
+      "categories": ["creators", "argentina"],
+      "eras": ["renacimiento"],
+      "summary": "Co-creator of 'Tango Argentino' (1983) with Claudio Segovia — rescued forgotten milongueros like Virulazo",
+      "appearsIn": [],
+      "status": "stub"
+    },
+    {
+      "id": "decadencia-era",
+      "type": "term",
+      "displayName": "La Decadencia",
+      "spanish": "la decadencia",
+      "categories": ["argentina"],
+      "summary": "The dark years (1955–1983) when tango nearly died",
+      "definition": "Period from Perón's overthrow to democracy's return. Tango never explicitly banned but crushed through curfews, gathering restrictions, lunfardo censorship, and Peronist association. Milongueros stopped 20-30 years; orquestas collapsed from hundreds to single digits; mentor system destroyed overnight.",
+      "appearsIn": [],
+      "status": "complete"
     }
   ]
 }

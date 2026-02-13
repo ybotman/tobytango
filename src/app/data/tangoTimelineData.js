@@ -82,14 +82,20 @@ export const timelineCategories = [
         subtitle: "The Decline",
         yearStart: 1955,
         yearEnd: 1983,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Perón overthrown 1955, tango culture suppressed",
-          "Military governments impose curfews, view tango with suspicion",
-          "Rock and roll, folk music capture younger generations",
-          "Most milongueros stop dancing for 20-30 years"
+          "Never explicitly banned — but effectively crushed through curfews, gathering bans, lunfardo censorship",
+          "Tango = Peronist = politically suspect; selective enforcement closed milongas while rock clubs stayed open",
+          "Rock nacional, cumbia, folklore revival capture youth; tango becomes 'grandparents' music'",
+          "Orquestas típicas collapse: hundreds → single digits; large orchestras → duos/quintets",
+          "Big Four die: Di Sarli (1960), Troilo (1975), D'Arienzo (1976) — only Pugliese survives",
+          "Milongueros stop dancing 20-30 years; mentor system destroyed; generational knowledge gap"
         ],
-        keyFigures: [],
+        keyFigures: [
+          { name: "Osvaldo Pugliese", type: "orchestra", role: "Imprisoned by every regime; red carnation defiance; kept tango alive" },
+          { name: "Astor Piazzolla", type: "individual", role: "Nuevo tango — 'music to listen to, not dance to'; split community" },
+          { name: "Rock Nacional", type: "movement", role: "Replaced tango as Argentina's most popular music" }
+        ],
         paperPath: null
       },
       {
@@ -605,9 +611,17 @@ export const timelineCategories = [
         subtitle: "Evolution & Decline",
         yearStart: 1955,
         yearEnd: 1990,
-        status: "placeholder",
-        summary: ["Content coming soon"],
-        keyFigures: [],
+        status: "partial",
+        summary: [
+          "Big Four collapse: Di Sarli dies 1960, Troilo 1975, D'Arienzo 1976",
+          "Orquestas típicas: hundreds → single digits; economics force downsizing to duos/quintets",
+          "Pugliese alone survives — imprisoned by every regime, red carnation defiance",
+          "Piazzolla's nuevo tango splits community: 'music to listen to, not dance to'"
+        ],
+        keyFigures: [
+          { name: "Osvaldo Pugliese", type: "orchestra", role: "Last survivor of Big Four (1905–1995)" },
+          { name: "Astor Piazzolla", type: "individual", role: "Nuevo tango revolution (1921–1992)" }
+        ],
         paperPath: null
       },
       {
