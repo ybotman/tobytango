@@ -45,6 +45,11 @@ import PersonIcon from '@mui/icons-material/Person';
 import WarningIcon from '@mui/icons-material/Warning';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ImageIcon from '@mui/icons-material/Image';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import ViewListIcon from '@mui/icons-material/ViewList';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import Script from 'next/script';
 // Server-side upload - no client SDK needed
 
 // Extract YouTube video ID from various URL formats (including Shorts)
@@ -70,6 +75,31 @@ function getYouTubeThumbnail(youtubeId) {
 // Check if URL is an Azure blob video
 function isAzureBlobVideo(url) {
   return url && url.includes('blob.core.windows.net');
+}
+
+// Extract Instagram post URL (handles /p/, /reel/, /reels/, /tv/ formats)
+function getInstagramUrl(url) {
+  if (!url) return null;
+  const regExp = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(p|reels?|tv)\/([A-Za-z0-9_-]+)/;
+  const match = url.match(regExp);
+  if (match) {
+    // Normalize reels -> reel for embed URL
+    const type = match[1] === 'reels' ? 'reel' : match[1];
+    return `https://www.instagram.com/${type}/${match[2]}/`;
+  }
+  return null;
+}
+
+// Get Instagram embed iframe URL
+function getInstagramEmbedUrl(url) {
+  const cleanUrl = getInstagramUrl(url);
+  if (!cleanUrl) return null;
+  return `${cleanUrl}embed/`;
+}
+
+// Check if URL is an Instagram video/post
+function isInstagramVideo(url) {
+  return url && (url.includes('instagram.com/p/') || url.includes('instagram.com/reel/') || url.includes('instagram.com/reels/') || url.includes('instagram.com/tv/'));
 }
 
 // Generate thumbnail from video file at 90% mark
@@ -193,7 +223,7 @@ export default function MyVideosPage() {
   // Add video dialog state
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTab, setDialogTab] = useState(0);
-  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', description: '', startTime: 0, tags: [], artists: [] });
+  const [newVideo, setNewVideo] = useState({ title: '', youtubeUrl: '', instagramUrl: '', description: '', startTime: 0, tags: [], artists: [] });
   const [tagInput, setTagInput] = useState('');
   const [artistInput, setArtistInput] = useState('');
 
@@ -207,6 +237,7 @@ export default function MyVideosPage() {
   const [uploading, setUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [instagramThumbnail, setInstagramThumbnail] = useState(null);
 
   // Load videos on mount (public - no password needed)
   // Also restore admin state from localStorage
@@ -286,6 +317,80 @@ export default function MyVideosPage() {
       }
     } catch {
       alert('Error adding video');
+    }
+  };
+
+  const handleAddInstagramVideo = async () => {
+    const storedPassword = getStoredPassword();
+    const cleanUrl = getInstagramUrl(newVideo.instagramUrl);
+
+    if (!cleanUrl) {
+      alert('Invalid Instagram URL. Please use a link like: https://www.instagram.com/reel/ABC123/ or https://www.instagram.com/reels/ABC123/');
+      return;
+    }
+
+    try {
+      setUploading(true);
+      let thumbnailUrl = null;
+
+      // Upload thumbnail if provided
+      if (instagramThumbnail) {
+        const thumbFileName = `instagram_thumb_${Date.now()}.${instagramThumbnail.name.split('.').pop()}`;
+        const thumbTokenResponse = await fetch('/api/tango-collab/upload-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: storedPassword, fileName: thumbFileName })
+        });
+
+        if (thumbTokenResponse.ok) {
+          const { sasToken, blobUrl } = await thumbTokenResponse.json();
+          const thumbUploadResponse = await fetch(`${blobUrl}?${sasToken}`, {
+            method: 'PUT',
+            headers: {
+              'x-ms-blob-type': 'BlockBlob',
+              'Content-Type': instagramThumbnail.type || 'image/jpeg',
+            },
+            body: instagramThumbnail
+          });
+          if (thumbUploadResponse.ok) {
+            thumbnailUrl = blobUrl;
+          }
+        }
+      }
+
+      const response = await fetch('/api/tango-collab', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          password: storedPassword,
+          title: newVideo.title,
+          instagramUrl: cleanUrl,
+          description: newVideo.description,
+          startTime: newVideo.startTime,
+          tags: newVideo.tags,
+          artists: newVideo.artists,
+          thumbnailUrl: thumbnailUrl,
+          type: 'instagram'
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setVideos([...videos, data.video]);
+        resetDialog();
+        // Reload Instagram embeds
+        if (window.instgrm) {
+          window.instgrm.Embeds.process();
+        }
+      } else {
+        const errData = await response.json();
+        handleAuthError(errData);
+        alert(errData.error || 'Failed to add video');
+      }
+    } catch {
+      alert('Error adding video');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -402,8 +507,9 @@ export default function MyVideosPage() {
 
   const resetDialog = () => {
     setOpenDialog(false);
-    setNewVideo({ title: '', youtubeUrl: '', description: '', startTime: 0, tags: [], artists: [] });
+    setNewVideo({ title: '', youtubeUrl: '', instagramUrl: '', description: '', startTime: 0, tags: [], artists: [] });
     setSelectedFile(null);
+    setInstagramThumbnail(null);
     setDialogTab(0);
     setTagInput('');
     setArtistInput('');
@@ -490,7 +596,8 @@ export default function MyVideosPage() {
           tags: editDialog.video.tags,
           artists: editDialog.video.artists,
           startTime: editDialog.video.startTime,
-          youtubeUrl: editDialog.video.youtubeUrl
+          youtubeUrl: editDialog.video.youtubeUrl,
+          instagramUrl: editDialog.video.instagramUrl
         })
       });
 
@@ -677,6 +784,13 @@ export default function MyVideosPage() {
     }
   };
 
+  // Process Instagram embeds when videos change or selected video changes
+  useEffect(() => {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  }, [videos, selectedVideo]);
+
   // Get all unique tags and artists from videos (auto-built from existing videos)
   const allTags = [...new Set(videos.flatMap(v => v.tags || []))].sort();
   const allArtists = [...new Set(videos.flatMap(v => v.artists || []))].sort();
@@ -699,8 +813,9 @@ export default function MyVideosPage() {
   const renderVideoItem = (video) => {
     const youtubeId = getYouTubeId(video.youtubeUrl);
     const isAzure = isAzureBlobVideo(video.videoUrl);
+    const isInstagram = isInstagramVideo(video.instagramUrl);
     const thumbnail = youtubeId ? getYouTubeThumbnail(youtubeId) : video.thumbnailUrl;
-    const hasInvalidUrl = video.youtubeUrl && !isValidYouTubeUrl(video.youtubeUrl);
+    const hasInvalidUrl = video.youtubeUrl && !isValidYouTubeUrl(video.youtubeUrl) && !isInstagram;
 
     return (
       <ListItem
@@ -739,6 +854,10 @@ export default function MyVideosPage() {
             ) : isAzure ? (
               <Box sx={{ width: 64, height: 36, bgcolor: 'grey.800', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
                 <VideoFileIcon sx={{ color: 'grey.400' }} />
+              </Box>
+            ) : isInstagram ? (
+              <Box sx={{ width: 64, height: 36, background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
+                <CameraAltIcon sx={{ color: 'white', fontSize: 20 }} />
               </Box>
             ) : hasInvalidUrl ? (
               <Box sx={{ width: 64, height: 36, bgcolor: 'warning.light', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 1 }}>
@@ -980,6 +1099,34 @@ export default function MyVideosPage() {
                       Your browser does not support the video tag.
                     </video>
                   </Box>
+                ) : isInstagramVideo(selectedVideo.instagramUrl) ? (
+                  <Box key={selectedVideo.id} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', py: 2 }}>
+                    <Box sx={{ width: '100%', maxWidth: 540, aspectRatio: '9/16', maxHeight: 600 }}>
+                      <iframe
+                        src={getInstagramEmbedUrl(selectedVideo.instagramUrl)}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          border: 'none',
+                          borderRadius: '8px'
+                        }}
+                        allowFullScreen
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                        title={selectedVideo.title}
+                      />
+                    </Box>
+                    <Button
+                      variant="text"
+                      size="small"
+                      href={getInstagramUrl(selectedVideo.instagramUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      startIcon={<CameraAltIcon />}
+                      sx={{ mt: 1, background: 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)', color: 'white', '&:hover': { opacity: 0.9 } }}
+                    >
+                      Open in Instagram
+                    </Button>
+                  </Box>
                 ) : (
                   <Box sx={{ height: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', bgcolor: 'warning.light', borderRadius: 1, p: 2 }}>
                     <WarningIcon sx={{ fontSize: 40, color: 'warning.dark', mb: 1 }} />
@@ -1014,8 +1161,9 @@ export default function MyVideosPage() {
         <DialogTitle>Add Video</DialogTitle>
         <DialogContent>
           <Tabs value={dialogTab} onChange={(e, v) => setDialogTab(v)} sx={{ mb: 2 }}>
-            <Tab icon={<YouTubeIcon />} label="YouTube Link" />
-            <Tab icon={<CloudUploadIcon />} label="Upload Video" />
+            <Tab icon={<YouTubeIcon />} label="YouTube" />
+            <Tab icon={<CloudUploadIcon />} label="Upload" />
+            <Tab icon={<CameraAltIcon />} label="Instagram (BETA)" />
           </Tabs>
 
           <TextField
@@ -1027,7 +1175,7 @@ export default function MyVideosPage() {
             required
           />
 
-          {dialogTab === 0 ? (
+          {dialogTab === 0 && (
             <>
               <TextField
                 fullWidth
@@ -1052,7 +1200,9 @@ export default function MyVideosPage() {
                 </Box>
               )}
             </>
-          ) : (
+          )}
+
+          {dialogTab === 1 && (
             <Box
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
@@ -1086,6 +1236,55 @@ export default function MyVideosPage() {
                 </Typography>
               )}
             </Box>
+          )}
+
+          {dialogTab === 2 && (
+            <>
+              <TextField
+                fullWidth
+                label="Instagram URL"
+                value={newVideo.instagramUrl}
+                onChange={(e) => setNewVideo({ ...newVideo, instagramUrl: e.target.value })}
+                placeholder="https://www.instagram.com/reel/ABC123/"
+                helperText="Paste a link to an Instagram post, reel, or IGTV video"
+                sx={{ mb: 2 }}
+                required
+              />
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                  Thumbnail (optional - helps identify video in list)
+                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Button
+                    variant="outlined"
+                    component="label"
+                    size="small"
+                    startIcon={<ImageIcon />}
+                  >
+                    {instagramThumbnail ? 'Change' : 'Add Thumbnail'}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      hidden
+                      onChange={(e) => setInstagramThumbnail(e.target.files?.[0] || null)}
+                    />
+                  </Button>
+                  {instagramThumbnail && (
+                    <>
+                      <Box
+                        component="img"
+                        src={URL.createObjectURL(instagramThumbnail)}
+                        alt="Thumbnail preview"
+                        sx={{ width: 64, height: 36, objectFit: 'cover', borderRadius: 1 }}
+                      />
+                      <Typography variant="caption" color="text.secondary">
+                        {instagramThumbnail.name}
+                      </Typography>
+                    </>
+                  )}
+                </Box>
+              </Box>
+            </>
           )}
 
           {uploading && (
@@ -1199,17 +1398,39 @@ export default function MyVideosPage() {
         </DialogContent>
         <DialogActions>
           <Button onClick={resetDialog} disabled={uploading}>Cancel</Button>
-          {dialogTab === 0 ? (
+          {dialogTab === 0 && (
             <Button variant="contained" onClick={handleAddYouTubeVideo} disabled={!newVideo.title || !newVideo.youtubeUrl || !isValidYouTubeUrl(newVideo.youtubeUrl)}>
               Add
             </Button>
-          ) : (
+          )}
+          {dialogTab === 1 && (
             <Button variant="contained" onClick={handleUploadVideo} disabled={!newVideo.title || !selectedFile || uploading}>
               {uploading ? 'Uploading...' : 'Upload'}
             </Button>
           )}
+          {dialogTab === 2 && (
+            <Button
+              variant="contained"
+              onClick={handleAddInstagramVideo}
+              disabled={!newVideo.title || !newVideo.instagramUrl}
+              sx={{ bgcolor: '#E4405F', '&:hover': { bgcolor: '#d63050' } }}
+            >
+              Add Instagram
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
+
+      {/* Instagram embed script */}
+      <Script
+        src="//www.instagram.com/embed.js"
+        strategy="lazyOnload"
+        onLoad={() => {
+          if (window.instgrm) {
+            window.instgrm.Embeds.process();
+          }
+        }}
+      />
 
       {/* Edit Video Dialog */}
       <Dialog open={editDialog.open} onClose={() => setEditDialog({ open: false, video: null })} maxWidth="sm" fullWidth>
@@ -1246,6 +1467,19 @@ export default function MyVideosPage() {
                   sx={{ mb: 2 }}
                   error={editDialog.video.youtubeUrl && !isValidYouTubeUrl(editDialog.video.youtubeUrl)}
                   helperText={editDialog.video.youtubeUrl && !isValidYouTubeUrl(editDialog.video.youtubeUrl) ? 'URL must be from youtube.com or youtu.be' : ''}
+                />
+              )}
+
+              {/* Instagram URL field - show if video has instagramUrl */}
+              {editDialog.video.instagramUrl !== undefined && (
+                <TextField
+                  fullWidth
+                  label="Instagram URL"
+                  value={editDialog.video.instagramUrl || ''}
+                  onChange={(e) => setEditDialog({ ...editDialog, video: { ...editDialog.video, instagramUrl: e.target.value } })}
+                  placeholder="https://www.instagram.com/reel/ABC123/"
+                  sx={{ mb: 2 }}
+                  helperText="Supports /p/, /reel/, /reels/, /tv/ formats"
                 />
               )}
 
