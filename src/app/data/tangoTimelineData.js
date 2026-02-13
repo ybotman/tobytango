@@ -479,10 +479,22 @@ export const timelineCategories = [
         subtitle: "American Tango Diverges",
         yearStart: 1930,
         yearEnd: 1985,
-        status: "placeholder",
-        summary: ["Content coming soon"],
-        keyFigures: [],
-        paperPath: null
+        status: "populated",
+        summary: [
+          "Arthur Murray & Fred Astaire franchises industrialize 'tango'",
+          "Bronze/Silver/Gold syllabus replaces improvisation with choreography",
+          "Head snaps, roses, arm's-length hold — none from Argentina",
+          "Golden Age recordings unknown; strict-tempo accordion music instead",
+          "Complete disconnect: Americans knew nothing of real tango until 1985"
+        ],
+        keyFigures: [
+          { name: "Vernon & Irene Castle", type: "couple", role: "Sanitized tango for America (1912-1918)" },
+          { name: "Arthur Murray", type: "individual", role: "Franchise empire, footprint diagrams (1895-1991)" },
+          { name: "Fred Astaire", type: "individual", role: "Dance studios from 1947, Hollywood tango" },
+          { name: "Rudolph Valentino", type: "individual", role: "Fixed tango-as-spectacle image (1921)" },
+          { name: "Xavier Cugat", type: "individual", role: "Waldorf-Astoria bandleader, commercial 'tango'" }
+        ],
+        paperPath: "/tango-papers/usa/ballroom-era.md"
       },
       {
         id: "broadway-impact",

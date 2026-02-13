@@ -742,6 +742,124 @@
       "definition": "Argot of the lower classes of Buenos Aires featuring vesre (syllable reversal): tango→gotán, café→feca. Banned from radio 1943-1949.",
       "appearsIn": ["/tango-papers/argentina/epoca-de-oro.md"],
       "status": "complete"
+    },
+    {
+      "id": "arthur-murray",
+      "type": "person",
+      "displayName": "Arthur Murray",
+      "fullName": "Arthur Murray (Moses Teichman)",
+      "born": "1895-04-04",
+      "died": "1991-03-03",
+      "categories": ["usa"],
+      "eras": ["ballroom-era"],
+      "summary": "Built franchise empire that industrialized ballroom tango — footprint diagrams, Bronze/Silver/Gold syllabus",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "fred-astaire-studios",
+      "type": "institution",
+      "displayName": "Fred Astaire Dance Studios",
+      "founded": "1947",
+      "categories": ["usa"],
+      "eras": ["ballroom-era"],
+      "summary": "Dance studio chain competing with Arthur Murray, emphasizing Hollywood glamour",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "vernon-irene-castle",
+      "type": "couple",
+      "displayName": "Vernon & Irene Castle",
+      "partner1": "Vernon Castle (1887-1918)",
+      "partner2": "Irene Castle (1893-1969)",
+      "categories": ["usa"],
+      "eras": ["early-usa"],
+      "summary": "Sanitized tango for American audiences — removed embrace, improvisation, 'objectionable' movements",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "rudolph-valentino",
+      "type": "person",
+      "displayName": "Rudolph Valentino",
+      "fullName": "Rodolfo Alfonso Raffaello Pierre Filibert Guglielmi",
+      "born": "1895",
+      "died": "1926",
+      "categories": ["usa", "film"],
+      "eras": ["early-usa"],
+      "summary": "Four Horsemen of the Apocalypse (1921) fixed tango-as-spectacle image in American imagination",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "xavier-cugat",
+      "type": "person",
+      "displayName": "Xavier Cugat",
+      "fullName": "Francesc d'Assís Xavier Cugat",
+      "born": "1900",
+      "died": "1990",
+      "categories": ["usa", "musicians"],
+      "eras": ["ballroom-era"],
+      "summary": "Waldorf-Astoria bandleader 1933-1949 — commercial Latin music Americans thought was tango",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "daniel-trenner",
+      "type": "person",
+      "displayName": "Daniel Trenner",
+      "fullName": "Daniel Trenner",
+      "categories": ["usa", "dancers"],
+      "eras": ["broadway-impact"],
+      "summary": "Johnny Appleseed of tango — first BA tours, 80+ instructional videos, studied with Balmaceda",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "orlando-paiva",
+      "type": "person",
+      "displayName": "Orlando Paiva",
+      "fullName": "Orlando Paiva",
+      "born": "1935",
+      "died": "2006",
+      "categories": ["usa", "dancers"],
+      "eras": ["ballroom-era"],
+      "summary": "One of first authentic Argentine tango teachers in USA — LA from early 1970s, danced with Pugliese/Caló",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "tango-argentino-broadway",
+      "type": "event",
+      "displayName": "Tango Argentino (Broadway)",
+      "date": "1985-10-09",
+      "categories": ["usa", "events"],
+      "eras": ["broadway-impact"],
+      "summary": "198 performances at Mark Hellinger Theatre — Americans saw real tango for the first time",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "american-ballroom-tango",
+      "type": "style",
+      "displayName": "American Ballroom Tango",
+      "aliases": ["American Smooth Tango"],
+      "categories": ["usa"],
+      "summary": "Arm's-length hold, head snaps, heel leads, strict-tempo music — nothing to do with Argentine tango",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
+    },
+    {
+      "id": "virulazo",
+      "type": "person",
+      "displayName": "Virulazo",
+      "fullName": "Jorge Martín Orcaizaguirre",
+      "categories": ["dancers", "argentina"],
+      "eras": ["guardian-generation", "renacimiento"],
+      "summary": "Tango Argentino cast member — discovered working in a meat market, danced at 58",
+      "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
+      "status": "complete"
     }
   ]
 }
