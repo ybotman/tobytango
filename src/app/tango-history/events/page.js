@@ -16,6 +16,43 @@ const timelineData = {
       "text": "<p>Key moments that shaped tango — shows, films, recordings, political events, and the passing of the masters.</p>"
     }
   },
+  "eras": [
+    {
+      "start_date": { "year": "1880" },
+      "end_date": { "year": "1920" },
+      "text": { "headline": "Guardia Vieja" }
+    },
+    {
+      "start_date": { "year": "1920" },
+      "end_date": { "year": "1935" },
+      "text": { "headline": "Guardia Nueva" }
+    },
+    {
+      "start_date": { "year": "1935" },
+      "end_date": { "year": "1955" },
+      "text": { "headline": "Época de Oro" }
+    },
+    {
+      "start_date": { "year": "1955" },
+      "end_date": { "year": "1983" },
+      "text": { "headline": "Decadencia" }
+    },
+    {
+      "start_date": { "year": "1983" },
+      "end_date": { "year": "1995" },
+      "text": { "headline": "Renacimiento" }
+    },
+    {
+      "start_date": { "year": "1995" },
+      "end_date": { "year": "2010" },
+      "text": { "headline": "Investigación" }
+    },
+    {
+      "start_date": { "year": "2010" },
+      "end_date": { "year": "2030" },
+      "text": { "headline": "Neo-Traditional" }
+    }
+  ],
   "events": [
     {
       "start_date": { "year": "1906" },
