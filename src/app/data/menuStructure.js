@@ -22,6 +22,16 @@ const menuStructure = [
     icon: null
   },
   {
+    title: 'History',
+    path: '/tango-history',
+    icon: null
+  },
+  {
+    title: 'Glossary',
+    path: '/tango-history/glossary',
+    icon: null
+  },
+  {
     id: 'tangolab',
     title: 'TangoLab',
     path: '/tangolab',
