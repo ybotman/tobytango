@@ -19,6 +19,12 @@ const navItems = [
   },
   {
     id: 3,
+    title: "Tango History",
+    mainImage: "/navigation/tango-history.png",
+    link: "/tango-history",
+  },
+  {
+    id: 4,
     title: "About Toby",
     mainImage: "/navigation/about.png",
     link: "/about",

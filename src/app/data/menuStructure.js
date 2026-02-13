@@ -87,8 +87,21 @@ const menuStructure = [
               { title: 'Carlitos Espinoza', path: '/dance-stance/carlitos', isSecondary: true },
               { title: 'Hernan Brizuela', path: '/dance-stance/hernan', isSecondary: true }
             ]
-          },
-          { title: 'Tango History (coming soon)', isSecondary: true }
+          }
+        ]
+      },
+      {
+        title: 'Tango History',
+        isSecondary: true,
+        highlight: true,
+        submenus: [
+          { title: 'Timeline Overview', path: '/tango-history', isSecondary: true },
+          { title: 'Tango Argentina', path: '/tango-history/argentina', isSecondary: true },
+          { title: 'Dancers & Couples', path: '/tango-history/dancers', isSecondary: true, highlight: true },
+          { title: 'Tango Europe', path: '/tango-history/europe', isSecondary: true },
+          { title: 'Tango USA', path: '/tango-history/usa', isSecondary: true },
+          { title: 'Orchestras', path: '/tango-history/orchestras', isSecondary: true },
+          { title: 'Glossary', path: '/tango-history/glossary', isSecondary: true }
         ]
       },
       {
