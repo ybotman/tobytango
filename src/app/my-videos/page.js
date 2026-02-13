@@ -187,7 +187,7 @@ export default function MyVideosPage() {
 
   // Search and filter state
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedTag, setSelectedTag] = useState('');
+  const [selectedTags, setSelectedTags] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState('');
 
   // Add video dialog state
@@ -689,7 +689,7 @@ export default function MyVideosPage() {
       (v.tags && v.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))) ||
       (v.artists && v.artists.some(artist => artist.toLowerCase().includes(searchQuery.toLowerCase())));
 
-    const matchesTag = !selectedTag || (v.tags && v.tags.includes(selectedTag));
+    const matchesTag = selectedTags.length === 0 || (v.tags && v.tags.some(tag => selectedTags.includes(tag)));
     const matchesArtist = !selectedArtist || (v.artists && v.artists.includes(selectedArtist));
 
     return matchesSearch && matchesTag && matchesArtist;
@@ -838,13 +838,14 @@ export default function MyVideosPage() {
           }}
         />
         <FormControl size="small" sx={{ minWidth: 140 }}>
-          <InputLabel>Tag</InputLabel>
+          <InputLabel>Tags</InputLabel>
           <Select
-            value={selectedTag}
-            label="Tag"
-            onChange={(e) => setSelectedTag(e.target.value)}
+            multiple
+            value={selectedTags}
+            label="Tags"
+            onChange={(e) => setSelectedTags(e.target.value)}
+            renderValue={(selected) => selected.length === 1 ? selected[0] : `${selected.length} tags`}
           >
-            <MenuItem value="">All tags</MenuItem>
             {allTags.map(tag => (
               <MenuItem key={tag} value={tag}>{tag}</MenuItem>
             ))}
@@ -863,8 +864,8 @@ export default function MyVideosPage() {
             ))}
           </Select>
         </FormControl>
-        {(selectedTag || selectedArtist) && (
-          <Button size="small" onClick={() => { setSelectedTag(''); setSelectedArtist(''); }}>Clear filters</Button>
+        {(selectedTags.length > 0 || selectedArtist) && (
+          <Button size="small" onClick={() => { setSelectedTags([]); setSelectedArtist(''); }}>Clear filters</Button>
         )}
       </Box>
 
@@ -878,8 +879,8 @@ export default function MyVideosPage() {
               ) : (
                 <ListItem>
                   <ListItemText
-                    primary={searchQuery || selectedTag || selectedArtist ? "No matching videos" : "No videos yet"}
-                    secondary={isAdmin && !searchQuery && !selectedTag && !selectedArtist ? 'Click "Add Video" to add one.' : ''}
+                    primary={searchQuery || selectedTags.length > 0 || selectedArtist ? "No matching videos" : "No videos yet"}
+                    secondary={isAdmin && !searchQuery && selectedTags.length === 0 && !selectedArtist ? 'Click "Add Video" to add one.' : ''}
                   />
                 </ListItem>
               )}
@@ -921,7 +922,7 @@ export default function MyVideosPage() {
                         key={tag}
                         size="small"
                         label={tag}
-                        onClick={() => { setSelectedTag(tag); setSearchQuery(''); }}
+                        onClick={() => { setSelectedTags(prev => prev.includes(tag) ? prev : [...prev, tag]); setSearchQuery(''); }}
                         sx={{ cursor: 'pointer' }}
                       />
                     ))}
