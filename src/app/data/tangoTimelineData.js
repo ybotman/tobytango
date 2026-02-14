@@ -763,10 +763,89 @@ export const timelineCategories = [
         subtitle: "Primeras Grabaciones",
         yearStart: 1905,
         yearEnd: 1910,
-        status: "partial",
-        summary: ["First tango recordings made", "Angel Villoldo records 'El Choclo' (1906)"],
-        keyFigures: [{ name: "Angel Villoldo", type: "individual" }],
+        status: "populated",
+        summary: [
+          "Villoldo records 'El Choclo' in Philadelphia (1906) — tango enters recorded history",
+          "Vicente Greco records 'Don Juan' (1910) — first Orquesta Típica recording"
+        ],
+        keyFigures: [
+          { name: "Ángel Villoldo", type: "individual", role: "First tango recordings" },
+          { name: "Vicente Greco", type: "orchestra", role: "First orquesta típica recording" }
+        ],
         eventType: "recording"
+      },
+      {
+        id: "mi-noche-triste",
+        title: "'Mi Noche Triste'",
+        subtitle: "Birth of Tango-Canción",
+        yearStart: 1917,
+        yearEnd: 1918,
+        status: "populated",
+        summary: [
+          "Gardel records 'Mi Noche Triste' — first tango with integrated sentimental lyrics",
+          "Invents tango-canción; transforms tango from dance music to storytelling"
+        ],
+        keyFigures: [{ name: "Carlos Gardel", type: "individual", role: "Singer" }],
+        eventType: "recording"
+      },
+      {
+        id: "valentino-tango",
+        title: "Valentino's Tango",
+        subtitle: "Four Horsemen",
+        yearStart: 1921,
+        yearEnd: 1922,
+        status: "populated",
+        summary: [
+          "Rudolph Valentino's gaucho tango in 'Four Horsemen of the Apocalypse'",
+          "Fixes tango-as-exotic-spectacle image in American imagination for decades"
+        ],
+        keyFigures: [{ name: "Rudolph Valentino", type: "individual", role: "Actor" }],
+        eventType: "film"
+      },
+      {
+        id: "arolas-death",
+        title: "Arolas Dies",
+        subtitle: "El Tigre del Bandoneón",
+        yearStart: 1924,
+        yearEnd: 1925,
+        status: "populated",
+        summary: [
+          "Eduardo Arolas dies alone in Paris at 32 (Sept 29, 1924)",
+          "Greatest bandoneonist of Guardia Vieja — genius lost to poverty and addiction"
+        ],
+        keyFigures: [{ name: "Eduardo Arolas", type: "individual", role: "El Tigre" }],
+        eventType: "death"
+      },
+      {
+        id: "gardel-films",
+        title: "Gardel Films",
+        subtitle: "Paramount Era",
+        yearStart: 1931,
+        yearEnd: 1935,
+        status: "populated",
+        summary: [
+          "Gardel makes films for Paramount in Paris & NYC (1931–1935)",
+          "'El Día Que Me Quieras' (1935) released after his death — immortalizes his image"
+        ],
+        keyFigures: [
+          { name: "Carlos Gardel", type: "individual", role: "Star" },
+          { name: "Alfredo Le Pera", type: "individual", role: "Lyricist" }
+        ],
+        eventType: "film"
+      },
+      {
+        id: "tango-1933-film",
+        title: "'¡Tango!'",
+        subtitle: "First Argentine Sound Film",
+        yearStart: 1933,
+        yearEnd: 1934,
+        status: "populated",
+        summary: [
+          "Argentina's first sound film — directed by Luis Moglia Barth",
+          "Stars Tita Merello, Libertad Lamarque, Alberto Gómez"
+        ],
+        keyFigures: [{ name: "Tita Merello", type: "individual", role: "Actress" }],
+        eventType: "film"
       },
       {
         id: "paris-tangomania",
@@ -801,14 +880,102 @@ export const timelineCategories = [
         eventType: "music"
       },
       {
+        id: "lunfardo-ban",
+        title: "Lunfardo Banned",
+        subtitle: "Censorship Begins",
+        yearStart: 1943,
+        yearEnd: 1944,
+        status: "populated",
+        summary: [
+          "Military government bans lunfardo slang from radio",
+          "Tango lyrics forced to use 'proper' Spanish — kills authentic voice"
+        ],
+        eventType: "political"
+      },
+      {
+        id: "lunfardo-restored",
+        title: "Lunfardo Restored",
+        subtitle: "Delegation to Perón",
+        yearStart: 1949,
+        yearEnd: 1950,
+        status: "populated",
+        summary: [
+          "March 25, 1949: Canaro, Troilo, Manzi, Cadícamo petition Perón",
+          "Lunfardo ban lifted — tango can speak in its own voice again"
+        ],
+        keyFigures: [
+          { name: "Francisco Canaro", type: "orchestra" },
+          { name: "Aníbal Troilo", type: "orchestra" }
+        ],
+        eventType: "political"
+      },
+      {
         id: "peron-fall",
         title: "Perón Overthrown",
         subtitle: "Caída de Perón",
         yearStart: 1955,
         yearEnd: 1956,
-        status: "partial",
-        summary: ["Military coup ends Perón era", "Beginning of tango's decline"],
+        status: "populated",
+        summary: [
+          "September 16, 1955: Military coup overthrows Perón",
+          "Tango = Peronist = suspect; beginning of La Decadencia"
+        ],
         eventType: "political"
+      },
+      {
+        id: "di-sarli-death",
+        title: "Di Sarli Dies",
+        subtitle: "El Señor del Tango",
+        yearStart: 1960,
+        yearEnd: 1961,
+        status: "populated",
+        summary: [
+          "Carlos Di Sarli dies January 12, 1960",
+          "First of the Big Four to pass — elegant walking music silenced"
+        ],
+        keyFigures: [{ name: "Carlos Di Sarli", type: "orchestra" }],
+        eventType: "death"
+      },
+      {
+        id: "rca-masters-destroyed",
+        title: "RCA Masters Destroyed",
+        subtitle: "Cultural Catastrophe",
+        yearStart: 1964,
+        yearEnd: 1965,
+        status: "populated",
+        summary: [
+          "RCA Argentina destroys warehouse of original metal masters",
+          "Irreplaceable Golden Age recordings lost forever — cultural vandalism"
+        ],
+        eventType: "recording"
+      },
+      {
+        id: "troilo-death",
+        title: "Troilo Dies",
+        subtitle: "Pichuco",
+        yearStart: 1975,
+        yearEnd: 1976,
+        status: "populated",
+        summary: [
+          "Aníbal Troilo dies May 18, 1975",
+          "Buenos Aires mourns — 'the musician's musician' is gone"
+        ],
+        keyFigures: [{ name: "Aníbal Troilo", type: "orchestra" }],
+        eventType: "death"
+      },
+      {
+        id: "darienzo-death",
+        title: "D'Arienzo Dies",
+        subtitle: "El Rey del Compás",
+        yearStart: 1976,
+        yearEnd: 1977,
+        status: "populated",
+        summary: [
+          "Juan D'Arienzo dies January 14, 1976",
+          "The King of the Beat — three of Big Four now gone"
+        ],
+        keyFigures: [{ name: "Juan D'Arienzo", type: "orchestra" }],
+        eventType: "death"
       },
       {
         id: "dirty-war",
@@ -816,9 +983,25 @@ export const timelineCategories = [
         subtitle: "Guerra Sucia",
         yearStart: 1976,
         yearEnd: 1983,
-        status: "partial",
-        summary: ["Military junta, curfews, gatherings banned", "Milongas close or go underground"],
+        status: "populated",
+        summary: [
+          "Military junta, curfews, gatherings of 3+ banned",
+          "Milongas close or go underground — tango survives but barely"
+        ],
         eventType: "political"
+      },
+      {
+        id: "national-tango-day",
+        title: "National Tango Day",
+        subtitle: "Día Nacional del Tango",
+        yearStart: 1977,
+        yearEnd: 1978,
+        status: "populated",
+        summary: [
+          "December 11 declared National Tango Day",
+          "Date honors both Gardel and Julio De Caro (same birthday)"
+        ],
+        eventType: "cultural"
       },
       {
         id: "tango-argentino-show",
@@ -845,15 +1028,73 @@ export const timelineCategories = [
         eventType: "political"
       },
       {
+        id: "exilio-gardel-film",
+        title: "Tangos: el exilio de Gardel",
+        subtitle: "Solanas Film",
+        yearStart: 1985,
+        yearEnd: 1986,
+        status: "populated",
+        summary: [
+          "Fernando Solanas film about Argentine exiles in Paris",
+          "Tango as metaphor for displaced identity during dictatorship"
+        ],
+        keyFigures: [{ name: "Fernando Solanas", type: "individual", role: "Director" }],
+        eventType: "film"
+      },
+      {
         id: "finito-death",
         title: "Finito Dies",
         subtitle: "Muerte de Finito",
         yearStart: 1987,
         yearEnd: 1988,
-        status: "partial",
-        summary: ["Ramón 'Finito' Rivera dies at ~55", "Best social dancer of 1980s revival lost young"],
+        status: "populated",
+        summary: [
+          "Ramón 'Finito' Rivera dies May 11, 1987 at ~58",
+          "Best social dancer of 1980s revival — died dancing at Club Akarense"
+        ],
         keyFigures: [{ name: "Finito", type: "individual" }],
         eventType: "death"
+      },
+      {
+        id: "forever-tango-sf",
+        title: "Forever Tango (SF)",
+        subtitle: "92-Week Run",
+        yearStart: 1994,
+        yearEnd: 1995,
+        status: "populated",
+        summary: [
+          "Luis Bravo's Forever Tango runs 92 weeks in San Francisco",
+          "Bay Area tango explodes — BAATA list grows from 400 to 1,400 dancers"
+        ],
+        keyFigures: [{ name: "Luis Bravo", type: "individual", role: "Creator" }],
+        eventType: "show"
+      },
+      {
+        id: "pugliese-death",
+        title: "Pugliese Dies",
+        subtitle: "San Pugliese",
+        yearStart: 1995,
+        yearEnd: 1996,
+        status: "populated",
+        summary: [
+          "Osvaldo Pugliese dies July 25, 1995 at 89",
+          "Last of Big Four — imprisoned by every regime, red carnation defiance, kept tango alive"
+        ],
+        keyFigures: [{ name: "Osvaldo Pugliese", type: "orchestra" }],
+        eventType: "death"
+      },
+      {
+        id: "ley-nacional-tango",
+        title: "Ley Nacional del Tango",
+        subtitle: "National Patrimony",
+        yearStart: 1996,
+        yearEnd: 1997,
+        status: "populated",
+        summary: [
+          "Argentina declares tango part of national cultural patrimony",
+          "Legal recognition of what the world already knew"
+        ],
+        eventType: "cultural"
       },
       {
         id: "pepito-death",
@@ -867,14 +1108,51 @@ export const timelineCategories = [
         eventType: "death"
       },
       {
+        id: "forever-tango-broadway",
+        title: "Forever Tango (Broadway)",
+        subtitle: "Gavito Stars",
+        yearStart: 1997,
+        yearEnd: 1998,
+        status: "populated",
+        summary: [
+          "Forever Tango opens Broadway June 19, 1997 — 322+ performances",
+          "Carlos Gavito & Marcela Durán's 'A Evaristo Carriego' becomes iconic"
+        ],
+        keyFigures: [
+          { name: "Carlos Gavito", type: "individual", role: "Star" },
+          { name: "Luis Bravo", type: "individual", role: "Creator" }
+        ],
+        eventType: "show"
+      },
+      {
         id: "tango-lesson-film",
         title: "'The Tango Lesson'",
         subtitle: "Film de Sally Potter",
         yearStart: 1997,
         yearEnd: 1998,
-        status: "partial",
-        summary: ["Sally Potter film with Pablo Verón", "Brings tango to mainstream cinema"],
-        keyFigures: [{ name: "Pablo Verón", type: "individual" }],
+        status: "populated",
+        summary: [
+          "Sally Potter film with Pablo Verón",
+          "Brings tango to mainstream art-house cinema"
+        ],
+        keyFigures: [
+          { name: "Pablo Verón", type: "individual", role: "Dancer/Actor" },
+          { name: "Sally Potter", type: "individual", role: "Director" }
+        ],
+        eventType: "film"
+      },
+      {
+        id: "tango-saura-film",
+        title: "Tango (Saura)",
+        subtitle: "Oscar Nominated",
+        yearStart: 1998,
+        yearEnd: 1999,
+        status: "populated",
+        summary: [
+          "Carlos Saura's 'Tango' nominated for Academy Award",
+          "Tango recognized as high art by international film establishment"
+        ],
+        keyFigures: [{ name: "Carlos Saura", type: "individual", role: "Director" }],
         eventType: "film"
       },
       {
@@ -883,9 +1161,26 @@ export const timelineCategories = [
         subtitle: "Crisis Argentina",
         yearStart: 2001,
         yearEnd: 2002,
-        status: "partial",
-        summary: ["Peso collapses", "Argentine teachers migrate to Europe/USA", "BA becomes affordable for tango tourists"],
+        status: "populated",
+        summary: [
+          "December 2001: Peso collapses, banks freeze accounts",
+          "Argentine teachers migrate to Europe/USA; BA becomes affordable for tango tourists"
+        ],
         eventType: "political"
+      },
+      {
+        id: "assassination-tango-film",
+        title: "Assassination Tango",
+        subtitle: "Duvall's Devotion",
+        yearStart: 2002,
+        yearEnd: 2003,
+        status: "populated",
+        summary: [
+          "Robert Duvall writes, directs, stars in tango film",
+          "American devotee's love letter to Buenos Aires milongas"
+        ],
+        keyFigures: [{ name: "Robert Duvall", type: "individual", role: "Director/Star" }],
+        eventType: "film"
       },
       {
         id: "mundial-begins",
@@ -893,8 +1188,11 @@ export const timelineCategories = [
         subtitle: "Primer Campeonato",
         yearStart: 2003,
         yearEnd: 2004,
-        status: "partial",
-        summary: ["First Campeonato Mundial de Tango", "Salón and Escenario categories"],
+        status: "populated",
+        summary: [
+          "First Campeonato Mundial de Tango in Buenos Aires",
+          "Two categories: Tango de Pista (social) and Tango Escenario (stage)"
+        ],
         eventType: "cultural"
       },
       {
@@ -903,19 +1201,25 @@ export const timelineCategories = [
         subtitle: "Muerte de Gavito",
         yearStart: 2005,
         yearEnd: 2006,
-        status: "partial",
-        summary: ["Carlos Gavito dies", "Theatrical tango master lost"],
+        status: "populated",
+        summary: [
+          "Carlos Gavito dies July 29, 2005 in Buenos Aires",
+          "Forever Tango star — theatrical pauses, dramatic intensity, white scarf"
+        ],
         keyFigures: [{ name: "Carlos Gavito", type: "individual" }],
         eventType: "death"
       },
       {
         id: "vidort-death",
         title: "Vidort Dies",
-        subtitle: "Muerte de Vidort",
+        subtitle: "The Last Compadrito",
         yearStart: 2006,
         yearEnd: 2007,
-        status: "partial",
-        summary: ["Ricardo Vidort dies in Santa Fe, NM", "The Last Compadrito"],
+        status: "populated",
+        summary: [
+          "Ricardo Vidort dies September 26, 2006 in Santa Fe, NM",
+          "The Last Compadrito — old-style porteño character, teaching to the end"
+        ],
         keyFigures: [{ name: "Ricardo Vidort", type: "individual" }],
         eventType: "death"
       },
@@ -925,8 +1229,11 @@ export const timelineCategories = [
         subtitle: "Pérdidas de 2007",
         yearStart: 2007,
         yearEnd: 2008,
-        status: "partial",
-        summary: ["Pupi Castello and Gerardo Portalea both die in 2007", "Two pillars of Villa Urquiza lost"],
+        status: "populated",
+        summary: [
+          "Pupi Castello and Gerardo Portalea both die in 2007",
+          "Two pillars of Villa Urquiza style lost in same year"
+        ],
         keyFigures: [
           { name: "Pupi Castello", type: "individual" },
           { name: "Gerardo Portalea", type: "individual" }
@@ -934,13 +1241,30 @@ export const timelineCategories = [
         eventType: "death"
       },
       {
+        id: "cafe-maestros-film",
+        title: "Café de los Maestros",
+        subtitle: "Documentary",
+        yearStart: 2008,
+        yearEnd: 2009,
+        status: "populated",
+        summary: [
+          "Documentary reunites surviving Golden Age musicians",
+          "Horacio Salgán, Leopoldo Federico, others — living history captured on film"
+        ],
+        keyFigures: [{ name: "Horacio Salgán", type: "individual", role: "Pianist" }],
+        eventType: "film"
+      },
+      {
         id: "unesco-recognition",
         title: "UNESCO Heritage",
         subtitle: "Patrimonio UNESCO",
         yearStart: 2009,
         yearEnd: 2010,
-        status: "partial",
-        summary: ["Tango declared Intangible Cultural Heritage of Humanity", "September 30, 2009"],
+        status: "populated",
+        summary: [
+          "September 30, 2009: Tango declared Intangible Cultural Heritage of Humanity",
+          "Joint Argentina/Uruguay nomination — tango officially belongs to the world"
+        ],
         eventType: "cultural"
       },
       {
@@ -949,10 +1273,30 @@ export const timelineCategories = [
         subtitle: "Muerte de Tete",
         yearStart: 2010,
         yearEnd: 2011,
-        status: "partial",
-        summary: ["Pedro 'Tete' Rusconi dies Jan 7, 2010", "Two days before his 74th birthday"],
+        status: "populated",
+        summary: [
+          "Pedro 'Tete' Rusconi dies January 7, 2010 — two days before his 74th birthday",
+          "The milonguero's milonguero — epitome of simple elegance and musicality"
+        ],
         keyFigures: [{ name: "Tete Rusconi", type: "individual" }],
         eventType: "death"
+      },
+      {
+        id: "our-last-tango-film",
+        title: "Our Last Tango",
+        subtitle: "Un Tango Más",
+        yearStart: 2015,
+        yearEnd: 2016,
+        status: "populated",
+        summary: [
+          "Documentary on Juan Carlos Copes & María Nieves",
+          "Story of legendary partnership, love, betrayal — history through their bodies"
+        ],
+        keyFigures: [
+          { name: "Juan Carlos Copes", type: "individual" },
+          { name: "María Nieves", type: "individual" }
+        ],
+        eventType: "film"
       },
       {
         id: "covid-pandemic",
@@ -960,9 +1304,26 @@ export const timelineCategories = [
         subtitle: "Pandemia",
         yearStart: 2020,
         yearEnd: 2022,
-        status: "partial",
-        summary: ["Milongas worldwide close", "Tango communities devastated", "Slow rebuilding begins"],
+        status: "populated",
+        summary: [
+          "March 2020: Milongas worldwide close — embrace becomes danger",
+          "Tango communities devastated; slow rebuilding begins 2022"
+        ],
         eventType: "political"
+      },
+      {
+        id: "copes-death",
+        title: "Copes Dies",
+        subtitle: "COVID Claims Pioneer",
+        yearStart: 2021,
+        yearEnd: 2022,
+        status: "populated",
+        summary: [
+          "Juan Carlos Copes dies January 16, 2021 at 89 — COVID",
+          "Pioneer of tango escenario, 'Tango Argentino' star, controversial legacy"
+        ],
+        keyFigures: [{ name: "Juan Carlos Copes", type: "individual" }],
+        eventType: "death"
       }
     ]
   }
