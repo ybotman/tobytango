@@ -245,6 +245,35 @@ export const timelineCategories = [
         paperPath: "/tango-papers/dancers/generations/pre-nuevo-masters.md"
       },
       {
+        id: "dark-years",
+        title: "The Dark Years",
+        subtitle: "La Decadencia — When Dancing Stopped",
+        yearStart: 1955,
+        yearEnd: 1983,
+        status: "populated",
+        summary: [
+          "Military coup (1955) overthrows Perón — tango associated with peronismo becomes suspect",
+          "Curfews, gathering restrictions make milongas impossible; orquestas collapse from hundreds to single digits",
+          "Most milongueros STOP dancing for 20-30 years — working, raising families, surviving",
+          "Only stage professionals (Copes, María Nieves) and a few stubborn milongueros persist",
+          "Rock Nacional captures youth; tango becomes 'music of grandparents'",
+          "Mentor system destroyed — no new generation learns in the milongas",
+          "Tango Argentino show (Paris 1983) rescues forgotten dancers from obscurity"
+        ],
+        keyFigures: [
+          { name: "Juan Carlos Copes", type: "individual", role: "Stage professional who survived entire Decadencia performing" },
+          { name: "María Nieves", type: "individual", role: "Copes' partner 30+ years, kept dancing through dark years" },
+          { name: "Virulazo", type: "individual", role: "Discovered in obscurity for Tango Argentino cast" },
+          { name: "Osvaldo Pugliese", type: "orchestra", role: "Only major orchestra that kept playing; red carnation defiance" }
+        ],
+        whatHappened: {
+          stoppedDancing: ["Tete", "Pepito", "Pupi", "Vidort", "Portalea", "El Turco José", "most milongueros"],
+          keptDancing: ["Copes & María Nieves (stage)", "Virulazo (underground)", "a handful of stubborn old-timers"],
+          yearsLost: "20-30 years for most Guardian Generation dancers"
+        },
+        paperPath: "/tango-papers/argentina/decadencia.md"
+      },
+      {
         id: "bridge-generation",
         title: "Bridge Generation",
         subtitle: "Codifiers and Teachers",
