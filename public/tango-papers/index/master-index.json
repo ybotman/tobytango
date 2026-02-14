@@ -1,7 +1,193 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "lastUpdated": "2026-02-13",
   "entities": [
+    {
+      "id": "angel-villoldo",
+      "type": "person",
+      "displayName": "Ángel Villoldo",
+      "fullName": "Ángel Gregorio Villoldo",
+      "nickname": "El Padre del Tango",
+      "born": "1861-02-16",
+      "died": "1919-10-14",
+      "categories": ["composers", "argentina"],
+      "eras": ["guardia-vieja"],
+      "summary": "El Padre del Tango — 'El Choclo' (1903), 'La Morocha' (1905), first tango recordings in Philadelphia",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "rosendo-mendizabal",
+      "type": "person",
+      "displayName": "Rosendo Mendizábal",
+      "fullName": "Rosendo Mendizábal",
+      "born": "1868-04-21",
+      "died": "1913-06-30",
+      "categories": ["composers", "argentina"],
+      "eras": ["guardia-vieja"],
+      "africanHeritage": true,
+      "summary": "Afro-Argentine — composed 'El Entrerriano' (1897/98), first tango published in musical notation",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "casimiro-alcorta",
+      "type": "person",
+      "displayName": "Casimiro Alcorta",
+      "born": "~1840",
+      "died": "1913",
+      "categories": ["musicians", "dancers", "argentina"],
+      "eras": ["guardia-vieja"],
+      "africanHeritage": true,
+      "summary": "Afro-Argentine — 'father of tango', formed first documented tango ensemble with El Mulato Sinforoso",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "gerardo-matos-rodriguez",
+      "type": "person",
+      "displayName": "Gerardo Matos Rodríguez",
+      "born": "1897-03-28",
+      "died": "1948-04-25",
+      "categories": ["composers", "uruguay"],
+      "eras": ["guardia-vieja", "guardia-nueva"],
+      "summary": "Uruguayan — composed 'La Cumparsita' (1916), most famous tango ever written",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "eduardo-arolas",
+      "type": "person",
+      "displayName": "Eduardo Arolas",
+      "nickname": "El Tigre del Bandoneón",
+      "born": "1892-02-24",
+      "died": "1924-09-29",
+      "categories": ["musicians", "argentina"],
+      "eras": ["guardia-vieja", "guardia-nueva"],
+      "summary": "El Tigre del Bandoneón — died alone in Paris at 32",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "roberto-firpo",
+      "type": "orchestra",
+      "displayName": "Roberto Firpo",
+      "born": "1884-05-10",
+      "died": "1969-06-14",
+      "categories": ["orchestras", "argentina"],
+      "eras": ["guardia-vieja", "guardia-nueva"],
+      "summary": "Established piano in tango orchestra; first 'La Cumparsita' recording (1916); ~3,000 recordings",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "vicente-greco",
+      "type": "orchestra",
+      "displayName": "Vicente Greco",
+      "born": "1888-02-03",
+      "died": "1924-10-05",
+      "categories": ["orchestras", "argentina"],
+      "eras": ["guardia-vieja"],
+      "summary": "Coined 'Orquesta Típica Criolla' (1910) — set the template for tango orchestras",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "gabino-ezeiza",
+      "type": "person",
+      "displayName": "Gabino Ezeiza",
+      "born": "1858-02-03",
+      "died": "1916-10-12",
+      "categories": ["musicians", "argentina"],
+      "eras": ["guardia-vieja"],
+      "africanHeritage": true,
+      "summary": "Afro-Argentine payador — explicitly linked milonga to candombe: 'milonga was the daughter of African Candombe'",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "agustin-bardi",
+      "type": "person",
+      "displayName": "Agustín Bardi",
+      "nickname": "Mascotita",
+      "born": "1884-08-13",
+      "died": "1941-04-21",
+      "categories": ["composers", "argentina"],
+      "eras": ["guardia-vieja", "guardia-nueva"],
+      "summary": "Harmonically ahead of his time — 'Qué noche', 'Tinta verde', 'Lorenzo'",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "el-cachafaz",
+      "type": "person",
+      "displayName": "El Cachafaz",
+      "fullName": "Ovidio José Bianquet",
+      "born": "1885",
+      "died": "1942",
+      "categories": ["dancers", "argentina"],
+      "eras": ["guardia-vieja", "guardia-nueva"],
+      "summary": "Most legendary early tango dancer — bridges Guardia Vieja to Golden Age",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "conventillo-medio-mundo",
+      "type": "venue",
+      "displayName": "Conventillo del Medio Mundo",
+      "location": "Cuareim 1080, Barrio Sur, Montevideo",
+      "built": "1885",
+      "demolished": "1978-12-03",
+      "categories": ["uruguay"],
+      "eras": ["guardia-vieja"],
+      "summary": "Most important nucleus of Afro-Uruguayan culture — demolished by military dictatorship Dec 3, 1978 (now National Day of Candombe)",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "candombe",
+      "type": "style",
+      "displayName": "Candombe",
+      "categories": ["music", "uruguay", "argentina"],
+      "eras": ["guardia-vieja"],
+      "summary": "African-derived drum music — foundation of tango's rhythm; three drums: chico, repique, piano",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "habanera",
+      "type": "term",
+      "displayName": "Habanera",
+      "spanish": "habanera",
+      "categories": ["music"],
+      "summary": "Cuban-born rhythm that became foundational to tango — dotted 2/4 pattern with syncopated bass",
+      "definition": "Despite the name ('from Havana'), the habanera's syncopated character derives from the African tresillo rhythm. Traveled route: Africa → Cuba → Spain → Río de la Plata.",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "compadrito",
+      "type": "term",
+      "displayName": "Compadrito",
+      "spanish": "compadrito",
+      "categories": ["culture", "argentina"],
+      "summary": "The cultural figure who mediated between rural criollo world and immigrant city — 'a gaucho who had unsaddled'",
+      "definition": "Young man of modest social condition inhabiting Buenos Aires outskirts. Descended from gauchos who came to city as frontier closed. Brought rural milonga and payada traditions into urban tango.",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
+    {
+      "id": "tangomania-1912",
+      "type": "event",
+      "displayName": "Tangomania (1912-1914)",
+      "yearStart": "1912",
+      "yearEnd": "1914",
+      "categories": ["events", "europe"],
+      "eras": ["guardia-vieja"],
+      "summary": "1913 called 'the year of the tango' — Pope banned it, Kaiser forbade officers, tango conquered anyway",
+      "appearsIn": ["/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
+    },
     {
       "id": "tete-rusconi",
       "type": "person",
@@ -180,7 +366,7 @@
       "eras": ["epoca-de-oro", "renacimiento"],
       "styles": ["canyengue"],
       "summary": "Authority on canyengue, revived the oldest tango style",
-      "appearsIn": ["/tango-papers/dancers/generations/milonguero-generation.md"],
+      "appearsIn": ["/tango-papers/dancers/generations/milonguero-generation.md", "/tango-papers/argentina/guardia-vieja.md"],
       "status": "complete"
     },
     {
@@ -193,8 +379,8 @@
       "categories": ["dancers", "argentina"],
       "eras": ["renacimiento"],
       "styles": ["canyengue"],
-      "summary": "Canyengue researcher and practitioner with Luis Grondona",
-      "appearsIn": ["/tango-papers/dancers/generations/milonguero-generation.md"],
+      "summary": "Canyengue researcher and practitioner with Luis Grondona; co-founded Mo.C.C.A. (2002)",
+      "appearsIn": ["/tango-papers/dancers/generations/milonguero-generation.md", "/tango-papers/argentina/guardia-vieja.md"],
       "status": "complete"
     },
     {
@@ -388,8 +574,8 @@
       "displayName": "Canyengue",
       "aliases": ["Canyengue Style"],
       "categories": ["dancers", "argentina"],
-      "summary": "Oldest tango form (1920s-30s), bent knees, African-Argentine roots",
-      "appearsIn": ["/tango-papers/dancers/generations/milonguero-generation.md"],
+      "summary": "Oldest tango form (1890s-1920s), bent knees, African-Argentine roots",
+      "appearsIn": ["/tango-papers/dancers/generations/milonguero-generation.md", "/tango-papers/argentina/guardia-vieja.md"],
       "status": "complete"
     },
     {
@@ -603,10 +789,10 @@
       "nickname": "Pirincho",
       "born": "1888-11-26",
       "died": "1964-12-14",
-      "categories": ["orchestras", "argentina"],
-      "eras": ["guardia-nueva", "epoca-de-oro"],
-      "summary": "3,792 recordings — tango's greatest entrepreneur",
-      "appearsIn": ["/tango-papers/argentina/epoca-de-oro.md"],
+      "categories": ["orchestras", "argentina", "uruguay"],
+      "eras": ["guardia-vieja", "guardia-nueva", "epoca-de-oro"],
+      "summary": "Born Uruguay, added double bass 1917; 3,792 recordings — tango's greatest entrepreneur",
+      "appearsIn": ["/tango-papers/argentina/epoca-de-oro.md", "/tango-papers/argentina/guardia-vieja.md"],
       "status": "complete"
     },
     {
@@ -743,7 +929,7 @@
       "categories": ["culture"],
       "summary": "Buenos Aires slang — 5,000-6,000 words from Italian dialects",
       "definition": "Argot of the lower classes of Buenos Aires featuring vesre (syllable reversal): tango→gotán, café→feca. Banned from radio 1943-1949.",
-      "appearsIn": ["/tango-papers/argentina/epoca-de-oro.md"],
+      "appearsIn": ["/tango-papers/argentina/epoca-de-oro.md", "/tango-papers/argentina/guardia-vieja.md"],
       "status": "complete"
     },
     {
@@ -861,10 +1047,9 @@
       "weight": "278 pounds",
       "categories": ["dancers", "argentina"],
       "eras": ["guardian-generation", "renacimiento"],
-      "summary": "Tango Argentino cast member — discovered in obscurity (butcher shop or illegal gambling), 278 lbs, flew to Paris on military cargo plane, sold out every show",
+      "summary": "Tango Argentino cast member — discovered in obscurity, 278 lbs, flew to Paris on military cargo plane, sold out every show",
       "appearsIn": ["/tango-papers/usa/ballroom-era.md"],
-      "status": "complete",
-      "notes": "[HITM REVIEW NEEDED: Sources conflict on pre-show job — butcher shop vs. illegal gambling]"
+      "status": "complete"
     },
     {
       "id": "francisco-fiorentino",
@@ -1008,23 +1193,10 @@
       "composer": "Gerardo Matos Rodríguez",
       "year": "1916",
       "categories": ["music", "uruguay"],
-      "eras": ["guardia-nueva"],
-      "summary": "Most famous tango ever — adapted ~2,700 times, closes virtually every milonga worldwide",
-      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md"],
-      "status": "complete"
-    },
-    {
-      "id": "eduardo-arolas",
-      "type": "person",
-      "displayName": "Eduardo Arolas",
-      "nickname": "El Tigre del Bandoneón",
-      "born": "1892-02-25",
-      "died": "1924-09-29",
-      "categories": ["orchestras", "argentina"],
       "eras": ["guardia-vieja", "guardia-nueva"],
-      "summary": "Bridged early and modern tango — died tragically young in Paris",
-      "appearsIn": [],
-      "status": "stub"
+      "summary": "Most famous tango ever — adapted ~2,700 times, closes virtually every milonga worldwide",
+      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md", "/tango-papers/argentina/guardia-vieja.md"],
+      "status": "complete"
     },
     {
       "id": "angel-dagostino",
@@ -1061,18 +1233,6 @@
       "summary": "Nuevo tango — 'music to listen to, not dance to'; split community into piazzolistas and antipiazzolistas; international success while rejected at home",
       "appearsIn": [],
       "status": "partial"
-    },
-    {
-      "id": "gerardo-matos-rodriguez",
-      "type": "person",
-      "displayName": "Gerardo Matos Rodríguez",
-      "born": "1897-03-28",
-      "died": "1948-04-25",
-      "categories": ["composers", "uruguay"],
-      "eras": ["guardia-nueva"],
-      "summary": "Composed La Cumparsita (1917) — most famous tango ever written",
-      "appearsIn": [],
-      "status": "stub"
     },
     {
       "id": "rock-nacional",

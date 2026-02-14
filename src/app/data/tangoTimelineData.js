@@ -24,15 +24,30 @@ export const timelineCategories = [
         subtitle: "The Old Guard",
         yearStart: 1880,
         yearEnd: 1920,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Tango's birth in Río de la Plata — Buenos Aires and Montevideo",
-          "African candombe, habanera, milonga criolla fusion",
-          "Canyengue style emerges in conventillos, academias, patios",
-          "Paris validation (1910-1913) brings respectability"
+          "Tango born in cultural estuary of Buenos Aires AND Montevideo — UNESCO 2009 recognized both",
+          "African candombe foundation: cortes, quebradas, bent-knee canyengue — later erased by nationalist myth",
+          "Afro-Argentine pioneers: Casimiro Alcorta, Rosendo Mendizábal ('El Entrerriano' 1898)",
+          "5.9 million European immigrants 1870-1914; 52% of Buenos Aires foreign-born by 1895",
+          "Conventillos, academias, street corners — NOT primarily brothels (scholarly consensus)",
+          "Bandoneón arrives ~1870, becomes central by 1910s (Maglio, Arolas)",
+          "Paris tangomania 1912-1914: Pope bans it, Kaiser forbids officers, tango conquers anyway",
+          "Villoldo's 'El Choclo' (1903), Matos Rodríguez's 'La Cumparsita' (1916) define the era"
         ],
-        keyFigures: [],
-        paperPath: null
+        keyFigures: [
+          { name: "Ángel Villoldo", type: "individual", role: "El Padre del Tango — 'El Choclo', 'La Morocha' (1861–1919)" },
+          { name: "Rosendo Mendizábal", type: "individual", role: "Afro-Argentine — first published tango 'El Entrerriano' (1868–1913)" },
+          { name: "Casimiro Alcorta", type: "individual", role: "Afro-Argentine — 'father of tango', first ensemble (~1840–1913)" },
+          { name: "Gerardo Matos Rodríguez", type: "individual", role: "Uruguayan — composed 'La Cumparsita' (1897–1948)" },
+          { name: "Eduardo Arolas", type: "individual", role: "El Tigre del Bandoneón — died Paris at 32 (1892–1924)" },
+          { name: "Roberto Firpo", type: "orchestra", role: "Established piano, first 'La Cumparsita' recording (1884–1969)" },
+          { name: "Vicente Greco", type: "orchestra", role: "Created Orquesta Típica Criolla format (1888–1924)" },
+          { name: "Francisco Canaro", type: "orchestra", role: "Born Uruguay, added double bass, ~3,800 recordings (1888–1964)" },
+          { name: "Gabino Ezeiza", type: "individual", role: "Afro-Argentine payador — linked milonga to candombe (1858–1916)" },
+          { name: "El Cachafaz", type: "individual", role: "Legendary early dancer, bridges to Golden Age (1885–1942)" }
+        ],
+        paperPath: "/tango-papers/argentina/guardia-vieja.md"
       },
       {
         id: "guardia-nueva",
@@ -561,13 +576,30 @@ export const timelineCategories = [
       {
         id: "early-orchestras",
         title: "Early Orchestras",
-        subtitle: "Guitar & Flute Era",
+        subtitle: "Guitar, Flute & First Bandoneón",
         yearStart: 1880,
         yearEnd: 1920,
-        status: "placeholder",
-        summary: ["Content coming soon"],
-        keyFigures: [],
-        paperPath: null
+        status: "populated",
+        summary: [
+          "Earliest trios: flute, guitar, violin (sometimes clarinet) — 1880s-1890s",
+          "First ensemble: Casimiro Alcorta + El Mulato Sinforoso + guitarist (1870s-1890s)",
+          "Bandoneón arrives ~1870 via German/Italian emigrants — slows music to accommodate instrument",
+          "Vicente Greco coins 'Orquesta Típica Criolla' (1910) — sets the template",
+          "Roberto Firpo establishes piano (1913), Canaro adds double bass (1917)",
+          "First recordings: Villoldo 'El Choclo' (Philadelphia, 1906), Greco 'Don Juan' (1910)",
+          "2/4 time, fast tempo, largely improvised, three-section structure"
+        ],
+        keyFigures: [
+          { name: "Casimiro Alcorta", type: "individual", role: "Afro-Argentine — first documented tango ensemble (~1840–1913)" },
+          { name: "Vicente Greco", type: "orchestra", role: "Created Orquesta Típica Criolla name/format (1888–1924)" },
+          { name: "Roberto Firpo", type: "orchestra", role: "Established piano, first 'La Cumparsita' (1884–1969)" },
+          { name: "Juan 'Pacho' Maglio", type: "individual", role: "First popular bandoneón recordings 1912-13 (1880–1934)" },
+          { name: "Eduardo Arolas", type: "individual", role: "El Tigre del Bandoneón (1892–1924)" },
+          { name: "Ángel Villoldo", type: "individual", role: "El Padre del Tango — first recordings (1861–1919)" },
+          { name: "Francisco Canaro", type: "orchestra", role: "Added double bass 1917, Uruguayan-born (1888–1964)" },
+          { name: "Agustín Bardi", type: "individual", role: "Harmonically advanced, ahead of his time (1884–1941)" }
+        ],
+        paperPath: "/tango-papers/argentina/guardia-vieja.md"
       },
       {
         id: "guardia-nueva-orchestras",
