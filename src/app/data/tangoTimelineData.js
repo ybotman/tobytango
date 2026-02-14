@@ -40,15 +40,29 @@ export const timelineCategories = [
         subtitle: "The New Guard",
         yearStart: 1920,
         yearEnd: 1935,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Tango becomes respectable and mainstream",
-          "Bandoneon becomes central instrument",
-          "First great orchestras form (De Caro, Firpo, Canaro)",
-          "Carlos Gardel becomes global voice of tango (dies 1935)"
+          "Julio De Caro's 1924 orchestral revolution invents modern tango arrangement",
+          "Carlos Gardel creates tango canción — 'Mi noche triste' (1917) births the sung tango",
+          "Bandoneon finds its true voice: Arolas, Maffia, Laurenz unlock its dark, lyrical potential",
+          "Sextet to orquesta típica: 2 bandoneons, 2 violins, piano, bass becomes standard format",
+          "Records (4M/year by 1926) and radio (25 stations) carry tango into every Argentine home",
+          "Tango lyrics become literature: Discépolo, Manzi, Flores, Cadícamo",
+          "September 1930 coup begins Década Infame — but tango proves resilient"
         ],
-        keyFigures: [],
-        paperPath: null
+        keyFigures: [
+          { name: "Julio De Caro", type: "orchestra", role: "Inventor of modern tango orchestration (1899–1980)" },
+          { name: "Carlos Gardel", type: "singer", role: "El Zorzal Criollo — voice of tango, 800+ recordings (1890–1935)" },
+          { name: "Eduardo Arolas", type: "individual", role: "El Tigre del Bandoneón — died Paris 1924 at 32" },
+          { name: "Pedro Maffia", type: "individual", role: "Found bandoneon's dark, singing voice (1899–1967)" },
+          { name: "Pedro Laurenz", type: "individual", role: "El Cadenero — vibrant rhythmic precision (1902–1972)" },
+          { name: "Francisco Canaro", type: "orchestra", role: "Pirincho — ~3,800 recordings, founded SADAIC (1888–1964)" },
+          { name: "Roberto Firpo", type: "orchestra", role: "First to record 'La Cumparsita' (1884–1969)" },
+          { name: "Osvaldo Fresedo", type: "orchestra", role: "El Pibe de La Paternal — aristocratic style (1897–1984)" },
+          { name: "Enrique Santos Discépolo", type: "lyricist", role: "Philosophical depth — 'Cambalache', 'Yira Yira' (1901–1951)" },
+          { name: "Alfredo Le Pera", type: "lyricist", role: "Gardel's partner — 'Volver', 'Por una cabeza' (1900–1935)" }
+        ],
+        paperPath: "/tango-papers/argentina/guardia-nueva.md"
       },
       {
         id: "epoca-de-oro",
@@ -561,21 +575,28 @@ export const timelineCategories = [
         subtitle: "Birth of the Orquesta Típica",
         yearStart: 1920,
         yearEnd: 1935,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Julio De Caro invents modern tango orchestration (1924)",
-          "Transition from sextet to orquesta típica format",
-          "Bandoneon becomes central instrument",
-          "Roberto Firpo, Francisco Canaro, Eduardo Arolas define the sound"
+          "Julio De Caro's 1924 revolution: written arrangements, counterpoint, instrumental independence",
+          "Sexteto típico codified: 2 bandoneons, 2 violins, piano, double bass",
+          "De Caro introduces Stroh violin (violín-corneta) as visual/sonic trademark",
+          "Francisco De Caro's piano becomes 'heart of the orchestra' — melodic, ornamental, linking",
+          "Bandoneon trio: Arolas (octave phrasing), Maffia (dark voice), Laurenz (rhythmic fire)",
+          "By 1926: 4 million discs/year, Victor vs Odeon rivalry shapes tango's evolution",
+          "Escuela Decareana directly leads to Troilo, Pugliese, Salgán, Piazzolla"
         ],
         keyFigures: [
-          { name: "Julio De Caro", type: "orchestra", role: "Father of modern tango orchestration (1899–1980)" },
-          { name: "Eduardo Arolas", type: "individual", role: "El Tigre del Bandoneón (1892–1924)" },
-          { name: "Roberto Firpo", type: "orchestra", role: "First to record 'La Cumparsita' (1884–1969)" },
-          { name: "Francisco Canaro", type: "orchestra", role: "Prolific recording pioneer (1888–1964)" },
-          { name: "Osvaldo Fresedo", type: "orchestra", role: "Early aristocratic style (1897–1984)" }
+          { name: "Julio De Caro", type: "orchestra", role: "Father of modern orchestration — 420+ works (1899–1980)" },
+          { name: "Francisco De Caro", type: "individual", role: "Piano innovation, co-led sextet (1898–1976)" },
+          { name: "Pedro Maffia", type: "individual", role: "Discovered bandoneon's singing voice (1899–1967)" },
+          { name: "Pedro Laurenz", type: "individual", role: "El Cadenero — 'Los dos Pedritos' with Maffia (1902–1972)" },
+          { name: "Eduardo Arolas", type: "individual", role: "El Tigre del Bandoneón — died Paris at 32 (1892–1924)" },
+          { name: "Francisco Canaro", type: "orchestra", role: "~3,800 tracks, founded SADAIC, pioneered estribillista (1888–1964)" },
+          { name: "Roberto Firpo", type: "orchestra", role: "Established piano in orchestra, first 'La Cumparsita' (1884–1969)" },
+          { name: "Osvaldo Fresedo", type: "orchestra", role: "Aristocratic style, 63-year career, 1,250+ recordings (1897–1984)" },
+          { name: "Juan Carlos Cobián", type: "orchestra", role: "Tango romanza pioneer — 'Nostalgias' (1896–1953)" }
         ],
-        paperPath: null
+        paperPath: "/tango-papers/argentina/guardia-nueva.md"
       },
       {
         id: "golden-orchestras",

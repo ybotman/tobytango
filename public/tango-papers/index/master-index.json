@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "lastUpdated": "2026-02-13",
   "entities": [
     {
@@ -627,13 +627,16 @@
       "id": "carlos-gardel",
       "type": "person",
       "displayName": "Carlos Gardel",
-      "fullName": "Carlos Gardel",
+      "fullName": "Charles Romuald Gardès",
+      "nickname": "El Zorzal Criollo",
       "born": "1890-12-11",
+      "birthplace": "Toulouse, France",
       "died": "1935-06-24",
+      "deathplace": "Medellín, Colombia",
       "categories": ["singers", "argentina"],
       "eras": ["guardia-nueva"],
-      "summary": "Tango's first global star — 800+ recordings, died in Medellín plane crash",
-      "appearsIn": ["/tango-papers/argentina/epoca-de-oro.md"],
+      "summary": "Voice of tango — 800+ recordings, UNESCO Memory of the World, created tango canción with 'Mi noche triste' (1917), 8 Paramount films; 'Gardel cada día canta mejor'",
+      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md", "/tango-papers/argentina/epoca-de-oro.md"],
       "status": "complete"
     },
     {
@@ -946,9 +949,69 @@
       "died": "1980-03-11",
       "categories": ["orchestras", "argentina"],
       "eras": ["guardia-nueva"],
-      "summary": "Invented modern tango orchestration — most important figure between Guardia Vieja and Golden Age",
-      "appearsIn": [],
-      "status": "stub"
+      "summary": "Inventor of modern tango orchestration — 420+ works, National Tango Day named for his birthday",
+      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md"],
+      "status": "complete"
+    },
+    {
+      "id": "pedro-maffia",
+      "type": "person",
+      "displayName": "Pedro Maffia",
+      "born": "1899-08-28",
+      "died": "1967-10-16",
+      "categories": ["musicians", "argentina"],
+      "eras": ["guardia-nueva"],
+      "summary": "Found bandoneon's dark, singing voice — first professor of bandoneon",
+      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md"],
+      "status": "complete"
+    },
+    {
+      "id": "alfredo-le-pera",
+      "type": "person",
+      "displayName": "Alfredo Le Pera",
+      "born": "1900-06-07",
+      "died": "1935-06-24",
+      "categories": ["lyricists", "argentina"],
+      "eras": ["guardia-nueva"],
+      "summary": "Gardel's lyricist partner — 'Volver', 'Por una cabeza', 'El día que me quieras'; died with Gardel in Medellín",
+      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md"],
+      "status": "complete"
+    },
+    {
+      "id": "celedonio-flores",
+      "type": "person",
+      "displayName": "Celedonio Flores",
+      "born": "1896",
+      "died": "1947",
+      "categories": ["lyricists", "argentina"],
+      "eras": ["guardia-nueva"],
+      "summary": "Former boxer, saturated lyrics with lunfardo — 'Mano a Mano', Gardel recorded 21 of his songs",
+      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md"],
+      "status": "complete"
+    },
+    {
+      "id": "enrique-cadicamo",
+      "type": "person",
+      "displayName": "Enrique Cadícamo",
+      "born": "1900",
+      "died": "1999",
+      "categories": ["lyricists", "argentina"],
+      "eras": ["guardia-nueva", "epoca-de-oro"],
+      "summary": "Lived to 99, Symbolist poetry influences — 'Anclao en París', 'Nostalgias'",
+      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md"],
+      "status": "complete"
+    },
+    {
+      "id": "la-cumparsita",
+      "type": "work",
+      "displayName": "La Cumparsita",
+      "composer": "Gerardo Matos Rodríguez",
+      "year": "1916",
+      "categories": ["music", "uruguay"],
+      "eras": ["guardia-nueva"],
+      "summary": "Most famous tango ever — adapted ~2,700 times, closes virtually every milonga worldwide",
+      "appearsIn": ["/tango-papers/argentina/guardia-nueva.md"],
+      "status": "complete"
     },
     {
       "id": "eduardo-arolas",
