@@ -189,7 +189,7 @@ export const timelineCategories = [
         id: "neo-traditional",
         title: "Neo-Traditional",
         subtitle: "Return to Roots",
-        yearStart: 2012,
+        yearStart: 2008,
         yearEnd: 2030,
         status: "partial",
         summary: [
@@ -247,7 +247,7 @@ export const timelineCategories = [
       {
         id: "dark-years",
         title: "The Dark Years",
-        subtitle: "La Decadencia — When Dancing Stopped",
+        subtitle: "La Decadencia — When Dancing Went Underground",
         yearStart: 1955,
         yearEnd: 1983,
         status: "populated",
@@ -277,7 +277,7 @@ export const timelineCategories = [
         id: "bridge-generation",
         title: "Bridge Generation",
         subtitle: "Codifiers and Teachers",
-        yearStart: 1980,
+        yearStart: 1983,
         yearEnd: 2000,
         status: "partial",
         summary: [
@@ -298,7 +298,7 @@ export const timelineCategories = [
         id: "nuevo-innovators",
         title: "Nuevo Innovators",
         subtitle: "The Investigation Generation",
-        yearStart: 1995,
+        yearStart: 1990,
         yearEnd: 2010,
         status: "placeholder",
         summary: [
@@ -349,22 +349,31 @@ export const timelineCategories = [
         id: "first-tangomania",
         title: "First Tangomania",
         subtitle: "Paris Goes Mad",
-        yearStart: 1910,
+        yearStart: 1907,
         yearEnd: 1914,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Tango arrives in Paris around 1910-1913",
-          "Tangomania sweeps the city - tango teas, tango fashion",
-          "Vatican condemns it, Kaiser bans officers from dancing it",
-          "Europe gets tango before Argentina fully respected it"
+          "Villoldo travels to Paris 1907; Flora Rodríguez records 'La Morocha' — first tango vocal in Europe",
+          "1913: H.G. Wells calls it 'the year of the tango' — Magic-City becomes epicenter",
+          "Pope Pius X condemns tango Nov 1913; Kaiser bans officers in uniform Nov 17, 1913",
+          "Niños bien (Argentine rich sons) transmit dance they'd never do at home",
+          "Thé dansant format spreads tango to bourgeois women without scandal",
+          "Fashion revolution: corsets cast off, slit skirts appear, 'Tango Orange' color craze",
+          "WWI kills first tangomania — but validation has boomeranged back to Buenos Aires"
         ],
-        keyFigures: [],
-        paperPath: null
+        keyFigures: [
+          { name: "Ángel Villoldo", type: "individual", role: "Paris 1907; first tango recordings in Europe" },
+          { name: "Enrique Saborido", type: "individual", role: "Composer of 'La Morocha', taught Paris 1911-1914" },
+          { name: "Camille de Rhynal", type: "individual", role: "Sanitized tango for European ballrooms" },
+          { name: "Maurice Mouvet", type: "individual", role: "First professional to perform tango in Paris (1908)" },
+          { name: "Vernon & Irene Castle", type: "couple", role: "Made tango 'acceptable' — young, clean, married" }
+        ],
+        paperPath: "/tango-papers/europe/paris-tango.md"
       },
       {
         id: "interwar",
         title: "Interwar Period",
-        subtitle: "European Golden Period",
+        subtitle: "Tango Continuation",
         yearStart: 1920,
         yearEnd: 1940,
         status: "partial",
@@ -398,7 +407,7 @@ export const timelineCategories = [
         title: "Piazzolla's Europe",
         subtitle: "Musical Survival",
         yearStart: 1970,
-        yearEnd: 1985,
+        yearEnd: 1990,
         status: "partial",
         summary: [
           "Piazzolla keeps tango music alive in European consciousness",
@@ -417,19 +426,25 @@ export const timelineCategories = [
         subtitle: "'Tango Argentino' Premiere",
         yearStart: 1983,
         yearEnd: 1985,
-        status: "partial",
+        status: "populated",
         summary: [
-          "'Tango Argentino' premieres Théâtre du Châtelet, November 11, 1983",
-          "Paris audiences stunned - nothing like ballroom tango",
-          "Transfers to Broadway 1985, nominated for Tony",
-          "Demand for authentic instruction explodes"
+          "'Tango Argentino' premieres Théâtre du Châtelet, Nov 11, 1983 — Festival d'Automne",
+          "Cast flew on Argentine Air Force cargo plane; Virulazo found in butcher shop, 278 lbs",
+          "Only 250 tickets sold before opening — sold out every night for 6 days",
+          "Libération: 'Le tango est entré de nouveau dans Paris' — Paris validates tango, again",
+          "Broadway Oct 1985: 198 performances, 3 Tony nominations, $6.2M gross",
+          "Cast seeded tango communities worldwide wherever they toured for 15 years"
         ],
         keyFigures: [
-          { name: "Claudio Segovia & Héctor Orezzoli", type: "couple", role: "Creators" },
-          { name: "Juan Carlos Copes & María Nieves", type: "couple", role: "Cast" },
-          { name: "Gloria & Rodolfo Dinzel", type: "couple", role: "Cast" }
+          { name: "Claudio Segovia", type: "individual", role: "Co-creator, visionary designer (1933–2025)" },
+          { name: "Héctor Orezzoli", type: "individual", role: "Co-creator, 'Yuyo' (1953–1991)" },
+          { name: "Juan Carlos Copes & María Nieves", type: "couple", role: "Headliners, choreography" },
+          { name: "Virulazo & Elvira Santamaría", type: "couple", role: "Raw milonguero authenticity" },
+          { name: "Gloria & Rodolfo Dinzel", type: "couple", role: "Scholarly precision" },
+          { name: "Sexteto Mayor", type: "orchestra", role: "House orchestra" },
+          { name: "Roberto Goyeneche", type: "individual", role: "Sang at world premiere" }
         ],
-        paperPath: null
+        paperPath: "/tango-papers/europe/paris-tango.md"
       },
       {
         id: "first-communities",
@@ -566,10 +581,25 @@ export const timelineCategories = [
         subtitle: "'Tango Argentino' Arrives",
         yearStart: 1985,
         yearEnd: 1995,
-        status: "placeholder",
-        summary: ["Content coming soon"],
-        keyFigures: [],
-        paperPath: null
+        status: "populated",
+        summary: [
+          "'Tango Argentino' opens Mark Hellinger Theatre Oct 9, 1985 — 198 performances, $6.2M gross",
+          "Cast average age 42; one set, four bandoneóns, no English — broke every Broadway rule",
+          "Americans see real tango for first time — nothing like ballroom's head-snaps and roses",
+          "Sandra Cameron's Greenwich Village school: tango enrollment triples overnight (40 → 124)",
+          "Stanford Tango Week founded 1991 by Richard Powers — first US tango festival",
+          "Daniel Trenner's 'Bridge to the Tango' tours bring 1,500+ Americans to Buenos Aires by 2001"
+        ],
+        keyFigures: [
+          { name: "Juan Carlos Copes & María Nieves", type: "couple", role: "Headliners, 30+ year partnership" },
+          { name: "Virulazo & Elvira", type: "couple", role: "278-lb former butcher, raw milonguero truth" },
+          { name: "Gloria & Rodolfo Dinzel", type: "couple", role: "Scholarly precision, created Dinzel System" },
+          { name: "Daniel Trenner", type: "individual", role: "Johnny Appleseed of tango — 100+ US cities" },
+          { name: "Paul Pellicoro", type: "individual", role: "DanceSport NYC, trained Al Pacino for Scent of a Woman" },
+          { name: "Nora Dinzelbacher", type: "individual", role: "First Argentine tango teacher at Stanford 1991" },
+          { name: "Sandra Cameron", type: "individual", role: "Greenwich Village studio, first dedicated AT program" }
+        ],
+        paperPath: "/tango-papers/usa/broadway-impact.md"
       },
       {
         id: "american-growth",
