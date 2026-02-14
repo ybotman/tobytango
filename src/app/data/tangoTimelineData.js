@@ -279,18 +279,22 @@ export const timelineCategories = [
         subtitle: "Codifiers and Teachers",
         yearStart: 1983,
         yearEnd: 2000,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Learned directly from Guardian Generation in the revival window",
-          "Codified, systematized and taught tango methodology",
-          "Graciela González creates first Followers Technique seminar (1994)",
-          "Susana Miller codifies milonguero style"
+          "Learned directly from Guardian Generation in critical 1985–1995 transmission window",
+          "Transformed instinctive knowledge into teachable methodology",
+          "Graciela González: first Followers Technique seminar (1994), 20 years studying with Pupi",
+          "Susana Miller: codified 'milonguero style' as distinct approach, studied with Tete",
+          "Silvia Ceriani: Tete's partner from 1995, musicalizadora, continues transmitting",
+          "Daniel Trenner: 'Johnny Appleseed' — brought 1,500+ Americans to BA, taught 100+ US cities"
         ],
         keyFigures: [
-          { name: "Graciela González", type: "individual", role: "La Leona del Tango, pedagogical pioneer" },
-          { name: "Silvia Ceriani", type: "individual", role: "Partner of Tete, co-teacher" },
-          { name: "Myriam Pincen", type: "individual", role: "30+ year milonguera, keeper of tradition" },
-          { name: "Susana Miller", type: "individual", role: "Codified milonguero style" }
+          { name: "Graciela González", type: "individual", role: "La Leona del Tango — first followers technique pedagogy" },
+          { name: "Susana Miller", type: "individual", role: "Codified milonguero style, studied with Tete" },
+          { name: "Silvia Ceriani", type: "individual", role: "Tete's partner from 1995, musicalizadora" },
+          { name: "Myriam Pincen", type: "individual", role: "30+ year milonguera, Vidort's partner" },
+          { name: "Daniel Trenner", type: "individual", role: "Bridge to the Tango tours — US pioneer" },
+          { name: "Gloria & Rodolfo Dinzel", type: "couple", role: "Dinzel System — 3,600+ catalogued figures" }
         ],
         paperPath: "/tango-papers/dancers/generations/pre-nuevo-masters.md"
       },
@@ -300,19 +304,23 @@ export const timelineCategories = [
         subtitle: "The Investigation Generation",
         yearStart: 1990,
         yearEnd: 2010,
-        status: "placeholder",
+        status: "populated",
         summary: [
-          "Systematically analyzed tango mechanics",
-          "Created nuevo vocabulary (colgadas, volcadas, soltadas)",
-          "Brought tango to global festival circuits",
-          "Tension between social and stage tango grows"
+          "Naveira & Salas: Cochabamba 444 prácticas (1987–97), crowds of 200+ — systematic investigation",
+          "Shift from 'what to dance' → 'how to dance': axis, dissociation, projection analyzed",
+          "Vocabulary named/created: colgadas, volcadas, soltadas — physics of improvisation decoded",
+          "Electrotango soundtracks: Gotan Project (2001), Bajofondo (2002) — new audiences",
+          "Peak 2003–2008: Practica X opens 2004, international visibility peak 2005–07",
+          "Decline: Aug 2008 'retrenchment to close embrace' (Merritt); Chicho repudiates nuevo (Dec 2009)"
         ],
         keyFigures: [
-          { name: "Gustavo Naveira", type: "individual" },
-          { name: "Fabian Salas", type: "individual" },
-          { name: "Chicho Frumboli", type: "individual" }
+          { name: "Gustavo Naveira", type: "individual", role: "Investigation leader, studied with Pepito & Todaro" },
+          { name: "Fabián Salas", type: "individual", role: "Partner in investigation, analytical methodology" },
+          { name: "Chicho Frumboli", type: "individual", role: "Learned with last milongueros, repudiated nuevo 2009" },
+          { name: "Sebastián Arce & Mariana Montes", type: "couple", role: "Nuevo era teachers and performers" },
+          { name: "Giselle Anne", type: "individual", role: "Classical ballet background, analytical approach" }
         ],
-        paperPath: null
+        paperPath: "/tango-papers/dancers/nuevo-innovators.md"
       },
       {
         id: "stage-pioneers",
@@ -320,21 +328,27 @@ export const timelineCategories = [
         subtitle: "Theatrical Tango",
         yearStart: 1983,
         yearEnd: 2000,
-        status: "placeholder",
+        status: "populated",
         summary: [
-          "'Tango Argentino' cast brings authentic tango to world stage (1983)",
-          "Stage tango diverges from social tango",
-          "International audiences discover Argentine tango"
+          "'Tango Argentino' (1983): Copes & María Nieves headliners; Virulazo found in butcher shop",
+          "Dinzels create 'Dinzel System' — 3,600+ catalogued figures; Naveira credits as first teachers",
+          "Forever Tango (1997): Carlos Gavito's minimalist stage style — 'tent' embrace, dramatic pauses",
+          "Pablo Verón: 'The Tango Lesson' (1997) brings tango to art-house cinema",
+          "Miguel Ángel Zotto & Milena Plebs: founded Tango x 2 (1988), studied with Dinzels, Todaro, Pepito",
+          "Stage vs. social divide: Mundial (2003) formalizes Salón vs. Escenario categories"
         ],
         keyFigures: [
-          { name: "Juan Carlos Copes & María Nieves", type: "couple" },
-          { name: "Gloria & Rodolfo Dinzel", type: "couple" },
-          { name: "Virulazo & Elvira", type: "couple" },
-          { name: "Carlos Gavito", type: "individual", role: "Forever Tango; minimalist stage style" },
-          { name: "Pablo Verón", type: "individual", role: "The Tango Lesson (1997); film star" },
-          { name: "Miguel Angel Zotto", type: "individual" }
+          { name: "Juan Carlos Copes", type: "individual", role: "'Tango Argentino' choreographer (1931–2021)" },
+          { name: "María Nieves Rego", type: "individual", role: "Partner age 14, Ed Sullivan appearances (b. 1934)" },
+          { name: "Virulazo & Elvira Santamaría", type: "couple", role: "Raw milonguero authenticity, 278 lbs" },
+          { name: "Gloria & Rodolfo Dinzel", type: "couple", role: "Dinzel System, Centro Educativo del Tango" },
+          { name: "Carlos Gavito", type: "individual", role: "Forever Tango star, minimalist stage (1942–2005)" },
+          { name: "Pablo Verón", type: "individual", role: "'The Tango Lesson' film star (b. ~1963)" },
+          { name: "Miguel Ángel Zotto & Milena Plebs", type: "couple", role: "Tango x 2 founders (b. 1958)" },
+          { name: "Nelson Avila & Nélida Rodriguez de Aure", type: "couple", role: "Speed and acrobatic steps" },
+          { name: "Héctor & Elsa María Mayoral", type: "couple", role: "Elegant salon style" }
         ],
-        paperPath: null
+        paperPath: "/tango-papers/dancers/stage-pioneers.md"
       }
     ]
   },
@@ -547,10 +561,23 @@ export const timelineCategories = [
         subtitle: "Vernon & Irene Castle Era",
         yearStart: 1910,
         yearEnd: 1930,
-        status: "placeholder",
-        summary: ["Content coming soon"],
-        keyFigures: [],
-        paperPath: null
+        status: "populated",
+        summary: [
+          "Tango arrives via Paris (~1911); 'tango pirates' teach in hotels for tips",
+          "Moral panic: clergy condemn, cities attempt bans — makes tango more desirable",
+          "Vernon & Irene Castle (1912-1918) sanitize tango — 'young, clean, married, well-mannered'",
+          "Castle's 'Modern Dancing' (1914) removes close embrace, sensuality, improvisation",
+          "Rudolph Valentino's gaucho tango in Four Horsemen (1921) fixes exotic spectacle image",
+          "Tea dances, hotel ballrooms, cabarets — tango becomes American social dance (heavily altered)"
+        ],
+        keyFigures: [
+          { name: "Vernon Castle", type: "individual", role: "English-born; sanitized tango (1887–1918)" },
+          { name: "Irene Castle", type: "individual", role: "Fashion icon, Castle Bob haircut (1893–1969)" },
+          { name: "James Reese Europe", type: "individual", role: "African American bandleader; Castles' music director" },
+          { name: "Rudolph Valentino", type: "individual", role: "Four Horsemen tango scene (1895–1926)" },
+          { name: "Maurice Mouvet", type: "individual", role: "Professional exhibition dancer, tango star" }
+        ],
+        paperPath: "/tango-papers/usa/early-usa.md"
       },
       {
         id: "ballroom-era",
@@ -607,10 +634,24 @@ export const timelineCategories = [
         subtitle: "Coast to Coast",
         yearStart: 1995,
         yearEnd: 2010,
-        status: "placeholder",
-        summary: ["Content coming soon"],
-        keyFigures: [],
-        paperPath: null
+        status: "populated",
+        summary: [
+          "Post-1995: festivals multiply (ValenTango '97, Denver Memorial Day, Austin, Miami, Chicago)",
+          "Forever Tango Broadway (1997): 322 performances, Carlos Gavito becomes iconic",
+          "Internet era: Tango-L mailing list, TangoCD.com for music, early websites connect scenes",
+          "Argentina's 2001 crisis: peso collapses, teachers migrate, BA becomes affordable tango tourism",
+          "Style wars: open vs. close embrace, nuevo vs. traditional, regional scenes diverge",
+          "Communities reach critical mass: self-sustaining milongas in 30+ US cities"
+        ],
+        keyFigures: [
+          { name: "Carlos Gavito", type: "individual", role: "Forever Tango star (1942–2005)" },
+          { name: "Luis Bravo", type: "individual", role: "Forever Tango creator (1990)" },
+          { name: "Alberto Paz & Valorie Hart", type: "couple", role: "Planet Tango, Tango Our Dance — Bay Area" },
+          { name: "Homer & Cristina Ladas", type: "couple", role: "Bay Area teaching, festival circuit" },
+          { name: "Clay Nelson", type: "individual", role: "Portland scene builder" },
+          { name: "Rebecca Shulman", type: "individual", role: "NYC organizer, Triangulo connection" }
+        ],
+        paperPath: "/tango-papers/usa/american-growth.md"
       },
       {
         id: "american-present",
@@ -618,8 +659,15 @@ export const timelineCategories = [
         subtitle: "Mature Communities",
         yearStart: 2010,
         yearEnd: 2030,
-        status: "placeholder",
-        summary: ["Content coming soon"],
+        status: "populated",
+        summary: [
+          "Neo-traditional turn: close embrace, Golden Age music, códigos adoption accelerates",
+          "YouTube transforms learning — demo videos, milonga footage, historical archives",
+          "Encuentro/marathon format imports from Europe; traditional milonga format valued",
+          "COVID devastation (2020–2022): venues close, teachers pivot, communities rebuild",
+          "Post-COVID: smaller but more committed communities; some scenes did not survive",
+          "American-trained teachers now teach internationally; US no longer purely 'importing'"
+        ],
         keyFigures: [],
         paperPath: null
       }
@@ -742,10 +790,28 @@ export const timelineCategories = [
         subtitle: "New Generations",
         yearStart: 1990,
         yearEnd: 2030,
-        status: "placeholder",
-        summary: ["Content coming soon"],
-        keyFigures: [],
-        paperPath: null
+        status: "populated",
+        summary: [
+          "Color Tango (1990): Roberto Álvarez (Pugliese's first bandoneón) preserves arrangements note-for-note",
+          "Orquesta Típica Fernández Fierro (2001): punk energy, cooperative model, own venue — reaches new audiences",
+          "Sexteto Milonguero (2006–2020): focused on dance-floor practicality, Golden Age faithful",
+          "International expansion: Bandonegro (Poland, 2010) proves non-Argentines can play authentic tango",
+          "Training pipeline rebuilt: Escuela de Música Popular de Avellaneda, Orquesta Escuela Emilio Balcarce",
+          "The challenge: competing with 50,000 perfect Golden Age recordings; bandoneón supply limited"
+        ],
+        keyFigures: [
+          { name: "Color Tango", type: "orchestra", role: "First revival orchestra (1990), Pugliese faithful" },
+          { name: "Roberto Álvarez", type: "individual", role: "Pugliese's first bandoneón, Color Tango founder" },
+          { name: "Orquesta Típica Fernández Fierro", type: "orchestra", role: "Punk tango cooperative (2001)" },
+          { name: "Sexteto Milonguero", type: "orchestra", role: "Dance-focused orchestra (2006–2020)" },
+          { name: "El Arranque", type: "orchestra", role: "Early revival, traditional approach" },
+          { name: "Tango Bardo", type: "orchestra", role: "Nuevo generation orchestra" },
+          { name: "Orquesta Rascacielos", type: "orchestra", role: "Contemporary revival orchestra" },
+          { name: "Bandonegro", type: "orchestra", role: "Polish orchestra, international circuit (2010)" },
+          { name: "Gotan Project", type: "orchestra", role: "Electrotango — listeners not dancers (2001)" },
+          { name: "Bajofondo", type: "orchestra", role: "Electronic tango collective (2002)" }
+        ],
+        paperPath: "/tango-papers/orchestras/revival-orchestras.md"
       }
     ]
   }
