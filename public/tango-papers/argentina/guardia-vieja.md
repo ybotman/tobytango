@@ -211,3 +211,7 @@ What the Guardia Vieja demands of us is honesty:
 ---
 
 *Research compiled from UNESCO documentation, George Reid Andrews' scholarship on Afro-Argentine history, Ricardo Garcia Blaya's Todo Tango archive, Christine Denniston's historical research, and primary sources including Afro-Argentine newspapers and colonial records.*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

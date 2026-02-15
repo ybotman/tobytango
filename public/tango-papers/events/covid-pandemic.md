@@ -31,3 +31,7 @@ The tango community that re-emerged was smaller, poorer, and forever changed.
 **Location:** Global
 
 **Note:** No freely licensed image specifically depicting the COVID pandemic's impact on Buenos Aires tango/milonga culture could be located. News photography from The Washington Post and Global Press Journal documented the period extensively but images are under copyright.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

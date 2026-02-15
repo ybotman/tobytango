@@ -33,3 +33,7 @@ When Vidort walked into a milonga, everyone — admirers and critics alike — p
 **HITM Review Needed:** Entry compiled primarily from tango community sources; recommend cross-referencing with Ewa's memorial blog at ricardovidort.wordpress.com.
 
 **Note:** No public domain or Creative Commons photograph of Ricardo Vidort could be located.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

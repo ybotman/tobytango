@@ -115,3 +115,7 @@ The most important finding is how completely the nuevo methodology was absorbed.
 ---
 
 *Cross-references: [Stage Pioneers](/tango-papers/dancers/stage-pioneers.md), [Thirty-Year Window](/tango-papers/dancers/generations/thirty-year-window.md), [Bridge Generation](/tango-papers/dancers/generations/pre-nuevo-masters.md)*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

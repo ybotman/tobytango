@@ -39,3 +39,7 @@ Tango teachers around the world reported a surge of new students who walked in s
 - [Fabián Salas](/tango-papers/index/fabian-salas) — Featured dancer
 
 **Note:** No public domain or Creative Commons images from the film could be located. Film information available at Sally Potter's official site and IMDb.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

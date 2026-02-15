@@ -564,3 +564,7 @@ The styles that emerged from their world — Villa Urquiza, milonguero, salon, o
 ---
 
 *Research compiled February 2026. Sources include TodoTango, Tango and Chaos, Tango Chamuyo, Tango Voice, Escuela de Tango de Buenos Aires, El Firulete, Tangology 101, tango.info, and various tango community blogs and forums.*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

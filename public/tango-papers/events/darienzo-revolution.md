@@ -26,3 +26,7 @@ The D'Arienzo-Biagi partnership (Biagi left in 1938 to form his own orchestra) l
 - [Rodolfo Biagi](/tango-papers/index/rodolfo-biagi) — Pianist, catalyst of the revolution
 
 **Image:** [Juan D'Arienzo](https://upload.wikimedia.org/wikipedia/commons/b/b5/Darienzo_photo.jpg) — Public domain (PD-AR-Photo), via Wikimedia Commons.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

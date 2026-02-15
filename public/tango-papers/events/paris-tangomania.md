@@ -29,3 +29,7 @@ None of it mattered. By the time World War I interrupted the party, tango had co
 **Location:** Paris
 
 **Image:** ["El Tango" by Rafael Barradas, 1913](https://commons.wikimedia.org/wiki/Special:FilePath/Rafael_Barradas_-_El_Tango,_1913.jpg) — Public domain (artist died 1929), via Wikimedia Commons.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

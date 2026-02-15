@@ -139,3 +139,7 @@ Carlos Gavito offered the simplest summary: "We are painters. We paint the music
 *[Cross-Reference → Argentina: Decadencia for the decline that made the 1983 rescue necessary]*
 *[Cross-Reference → USA: Broadway Impact for the American chapter of the revival]*
 *[Cross-Reference → Dancers: Guardian Generation for detailed profiles of the Tango Argentino cast]*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

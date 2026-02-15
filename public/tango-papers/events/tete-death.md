@@ -31,3 +31,7 @@ Tete's counsel to the community survived him as a kind of manifesto: **"I would 
 **Related:** [Pina Bausch](https://en.wikipedia.org/wiki/Pina_Bausch), [Susana Miller](/tango-papers/index/susana-miller)
 
 **Note:** No public domain or Creative Commons photograph of Tete Rusconi could be located. Video footage of his dancing is available on YouTube and through the Pina Bausch Foundation.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

@@ -29,3 +29,7 @@ As one milonga owner put it during the darkest days: **"During the crisis, peopl
 **Location:** Argentina
 
 **Image:** [Protest against the corralito banking freeze, Buenos Aires, February 6, 2002](https://commons.wikimedia.org/wiki/Special:FilePath/Buenos_Aires_-_Manifestación_contra_el_Corralito_-_20020206-01.JPG) — Photo by Barcex, GFDL / CC BY-SA 2.5, via Wikimedia Commons.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

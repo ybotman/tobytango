@@ -284,3 +284,6 @@ The story of La Decadencia is not a story of gradual decline but of systematic d
 Yet tango's near-death gave rise to two developments that define its modern form. First, the revival was ignited **from abroad** — the Paris premiere of *Tango Argentino* in November 1983 — creating the internationalized tango culture that now spans sixty countries. Second, the revival depended on **a handful of survivors** whose authority derived not from formal credentials but from lived experience, making the modern tango world permanently preoccupied with questions of authenticity, lineage, and the relationship between old and new.
 
 The last twenty-eight years of tango's first century were the years it almost died. The next forty were the years it came back — changed, globalized, debated, but alive. The red carnation is no longer needed on the piano. But it should never be forgotten.
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

@@ -27,3 +27,7 @@ The show toured the world for more than fifteen years and spawned imitators like
 - [Sexteto Mayor](/tango-papers/index/sexteto-mayor) — Orchestra
 
 **Image:** Men dancing tango in Buenos Aires, early 20th century. Public domain, Archivo General de la Nación Argentina, via Wikimedia Commons. (Note: No freely licensed images of the original production are available.)
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

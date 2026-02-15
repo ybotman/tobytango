@@ -41,3 +41,7 @@ Months later, both were gone. As Buenos Aires newspaper *Clarín* wrote, the mil
 **HITM Review Needed:** Portalea's details especially need verification with Villa Urquiza tango community contacts.
 
 **Note:** No public domain or Creative Commons photographs of Pupi Castello or Gerardo Portalea could be located. The BBC documentary *La Confiteria Ideal* (2005) contains footage of both dancers.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

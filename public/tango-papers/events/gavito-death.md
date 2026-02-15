@@ -29,3 +29,7 @@ Ricardo Plazaola later published his biography, *I Wanted to Dance*, a title tha
 **Key Figure:** [Carlos Gavito](/tango-papers/index/carlos-gavito)
 
 **Image:** [Gavito and Plazaola, Stockholm Workshop, 2004](https://commons.wikimedia.org/wiki/Special:FilePath/Gavito_and_Plazaola,_Stockholm_Workshop,_2004-08-27_b.jpg) — Via Wikimedia Commons.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

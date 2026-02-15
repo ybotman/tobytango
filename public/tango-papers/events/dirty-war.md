@@ -29,3 +29,7 @@ By the time the junta collapsed after the Falklands War defeat in 1982, tango ha
 **Location:** Argentina
 
 **Image:** [Argentine military junta, 1976](https://upload.wikimedia.org/wikipedia/commons/9/98/Junta_Militar_argentina_1976.png) — Argentine Presidency archives, CC BY 2.0 / PD-AR-Photo, via Wikimedia Commons.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

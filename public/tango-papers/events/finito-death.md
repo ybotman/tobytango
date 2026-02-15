@@ -25,3 +25,7 @@ Finito carried the legacy of the legendary "Milonguita," the dancer who never we
 **HITM Review Needed:** Birth year (~1932), death circumstances, and full name require verification with Buenos Aires tango community contacts.
 
 **Note:** No public domain or Creative Commons photograph of Ramón "Finito" Rivera could be located.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

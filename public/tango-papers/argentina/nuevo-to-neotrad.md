@@ -121,3 +121,7 @@ A skilled social dancer today moves in close embrace with awareness of biomechan
 ---
 
 *Cross-references: [La Investigación](/tango-papers/argentina/investigacion.md), [Nuevo Innovators](/tango-papers/dancers/nuevo-innovators.md), [UNESCO Heritage](/tango-papers/events/unesco-heritage.md)*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

@@ -118,3 +118,7 @@ The deepest lesson of *la investigación* may be this: **it proved that tango's 
 ---
 
 *Cross-references: [Nuevo Innovators](/tango-papers/dancers/nuevo-innovators.md), [Nuevo to Neo-Traditional](/tango-papers/argentina/nuevo-to-neotrad.md), [Thirty-Year Window](/tango-papers/dancers/generations/thirty-year-window.md)*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

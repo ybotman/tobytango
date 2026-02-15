@@ -175,3 +175,7 @@ The fifteen years between 1920 and 1935 transformed tango more profoundly than a
 The era's paradox: its greatest musical achievement — De Caro's sophisticated tango — nearly killed tango as a dance. It took D'Arienzo's rhythmic counter-revolution in 1935 to restore the beat and ignite the Golden Age.
 
 Everything that makes Golden Age tango what it is was invented between the New Year's Eve party where the De Caro brothers reunited in December 1923 and the runway in Medellín where Gardel's plane caught fire in June 1935.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

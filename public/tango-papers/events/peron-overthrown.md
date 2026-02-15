@@ -27,3 +27,7 @@ The decline that started in 1955 would last nearly 30 years, pushing tango to th
 **Location:** Buenos Aires
 
 **Note:** The commonly used image shows the 1976 military junta (Videla era), not the 1955 Revolución Libertadora. A period-accurate image exists on Wikimedia Commons (Revolucion_libertadora.JPG).
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

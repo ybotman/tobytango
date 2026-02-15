@@ -262,7 +262,7 @@ export const timelineCategories = [
           { name: "Estilo del Barrio / Villa Urquiza", description: "Upright, elegant walking, can open" }
         ],
         paperPath: "/tango-papers/dancers/generations/pre-nuevo-masters.md",
-        additionalPapers: ["/tango-papers/dancers/generations/thirty-year-window.md"]
+        additionalPapers: ["/tango-papers/dancers/generations/thirty-year-window.md", "/tango-papers/dancers/generations/milonguero-generation.md"]
       },
       {
         id: "dark-years",
@@ -786,7 +786,8 @@ export const timelineCategories = [
           { name: "Ángel D'Agostino", type: "orchestra", role: "With Vargas — essential dance music (1900–1991)" },
           { name: "Osvaldo Fresedo", type: "orchestra", role: "63-year career, aristocratic style (1897–1984)" }
         ],
-        paperPath: "/tango-papers/argentina/epoca-de-oro.md"
+        paperPath: "/tango-papers/argentina/epoca-de-oro.md",
+        additionalPapers: ["/tango-papers/orchestras/golden-age-singers.md"]
       },
       {
         id: "post-golden",

@@ -127,3 +127,7 @@ The Golden Age orchestras evolved *with* the dancers in a nightly feedback loop 
 ---
 
 *Cross-references: [La Decadencia](/tango-papers/argentina/decadencia.md), [Revival Orchestras](/tango-papers/orchestras/revival-orchestras.md), [Golden Age Orchestras](/tango-papers/argentina/epoca-de-oro.md)*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

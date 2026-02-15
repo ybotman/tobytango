@@ -161,3 +161,7 @@ The large orchestra format died. But the recordings survived. The **1935–1955 
 *[Cross-Reference → Orchestras: Golden Age Orchestras (1935–1955)]*
 *[Cross-Reference → Argentina: La Época de Oro and La Decadencia]*
 *[Cross-Reference → Dancers: Guardian Generation (who danced to live orchestras)]*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

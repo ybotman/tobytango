@@ -39,3 +39,7 @@ The music of the slums was suddenly in living rooms across the world, and nothin
 **Image:** [Ángel Villoldo (1861–1919)](https://upload.wikimedia.org/wikipedia/commons/d/d5/%C3%81ngel_Villoldo_%281861-1919%29.jpg) — Public domain, via Wikimedia Commons.
 
 **Audio:** A 1907 audio recording of "El Choclo" is available on Wikimedia Commons.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

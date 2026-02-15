@@ -289,3 +289,7 @@ Tandas/cortinas: early 2000s adoption, widespread by 2005–2007. Cabeceo: slowl
 
 *Document prepared for the TangoTiempo History Timeline project.*
 *Last updated: February 2026*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

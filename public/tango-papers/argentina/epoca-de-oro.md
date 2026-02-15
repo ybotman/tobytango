@@ -354,3 +354,6 @@ The Golden Age ended because its conditions were historically specific: a partic
 - Tango Time Travel (tangotimetravel.be) — 78 RPM recovery and restoration project
 
 > **Note on historiography:** Much Golden Age dance history relies on oral transmission and personal memories of aging milongueros, as documented by researchers like Denniston and others. Hard data — exact dates, precise venue counts, specific earnings figures — is often unavailable or approximate. The codes, styles, and social practices described in this paper represent a scholarly consensus drawn from interviews with surviving Golden Age dancers conducted primarily in the 1990s and 2000s, supplemented by contemporaneous newspaper accounts, photographs, and film footage. Areas where historians disagree or documentation is insufficient have been noted throughout.
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

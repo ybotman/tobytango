@@ -171,3 +171,6 @@ The result was a seventy-year experiment in what happens when a dance is separat
 When those nineteen middle-aged Argentines took the stage at the Mark Hellinger Theatre in October 1985, what Americans experienced was not just a different dance. It was the revelation that something they thought they knew was actually something they had never encountered. The head snaps, the roses, the arm's-length frame, the strict-tempo accordion music — all of it was suddenly revealed as a seventy-year misunderstanding. The show ran for 198 performances. The unlearning is still underway.
 
 In milongas around the world today, you can still spot the occasional dancer struggling to shed their ballroom training — the heel lead that won't soften, the frame that won't close, the head that wants to snap. They are the living evidence of America's long wrong turn, and their struggle to find the *abrazo* is, in its own way, one of the most hopeful stories in dance: proof that even after seventy years of misdirection, the real thing is powerful enough to call people home.
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

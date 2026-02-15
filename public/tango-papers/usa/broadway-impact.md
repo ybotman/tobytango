@@ -141,3 +141,7 @@ Alberto Paz put it plainly: "There has never been a time in history when so many
 *[Cross-Reference → USA: Ballroom Era for what Americans thought tango was before 1985]*
 *[Cross-Reference → Argentina: Renacimiento for the parallel Argentine revival story]*
 *[Cross-Reference → Dancers: Guardian Generation for profiles of the maestros]*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

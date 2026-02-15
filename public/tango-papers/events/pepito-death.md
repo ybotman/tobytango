@@ -29,3 +29,7 @@ On April 29, 1996, Pepito died at 65, a man who had lived for dance in a world t
 **Key Figure:** [Pepito Avellaneda](/tango-papers/index/pepito-avellaneda)
 
 **Note:** No public domain or Creative Commons photograph of Pepito Avellaneda could be located. A biographical profile with photographs is available at [TodoTango](https://www.todotango.com/english/artists/biography/658/Pepito-Avellaneda/).
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

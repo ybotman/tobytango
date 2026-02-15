@@ -150,3 +150,7 @@ This total disconnect is why the arrival of the show *Tango Argentino* on Broadw
 
 *Document prepared for the TangoTiempo History Timeline project.*
 *Last updated: February 2026*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

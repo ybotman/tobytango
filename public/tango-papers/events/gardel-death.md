@@ -21,3 +21,7 @@ Argentines say "Gardel sings better every day" — and they mean it. In 2003, UN
 **Key Figure:** [Carlos Gardel](/tango-papers/index/carlos-gardel)
 
 **Image:** [Carlos Gardel at his home, 1933](https://upload.wikimedia.org/wikipedia/commons/2/27/Carlos_gardel_en_su_casa_1933.jpg) — Public domain (PD-AR-Photo), via Wikimedia Commons.
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.

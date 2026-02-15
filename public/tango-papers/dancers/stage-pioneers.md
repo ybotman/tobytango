@@ -115,3 +115,7 @@ The stage pioneers didn't just save tango from extinction — they transformed i
 ---
 
 *Cross-references: [Thirty-Year Window](/tango-papers/dancers/generations/thirty-year-window.md), [Tango Argentino Show](/tango-papers/events/tango-argentino-show.md), [Nuevo Innovators](/tango-papers/dancers/nuevo-innovators.md)*
+
+---
+
+**Note**: This content was developed with AI assistance and should be verified against primary sources for academic use.
