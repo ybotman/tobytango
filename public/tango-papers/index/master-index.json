@@ -1,5 +1,5 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "lastUpdated": "2026-02-14",
   "entities": [
     {
@@ -1597,6 +1597,126 @@
       "eras": ["interwar"],
       "summary": "Bandoneonist; arrived Paris 1920; formed house orchestra at El Garrón; with brothers maintained nightclubs that became 'Mecca of tango in Paris'",
       "appearsIn": ["/tango-papers/europe/paris-tango.md"],
+      "status": "complete"
+    },
+    {
+      "id": "chicho-frumboli",
+      "type": "person",
+      "displayName": "Chicho Frumboli",
+      "fullName": "Mariano Frumboli",
+      "born": "1970-09-21",
+      "categories": ["dancers", "argentina"],
+      "eras": ["nuevo-innovators"],
+      "summary": "Investigation pioneer; studied with Tete; 'In one month-and-a-half I learned what I hadn't learned in two years' (on Naveira); repudiated 'nuevo' as style label (2009)",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md"],
+      "status": "complete"
+    },
+    {
+      "id": "lampazo",
+      "type": "person",
+      "displayName": "Lampazo",
+      "fullName": "José Vásquez",
+      "categories": ["dancers", "argentina"],
+      "eras": ["guardian-generation"],
+      "styles": ["villa-urquiza"],
+      "summary": "Villa Urquiza master; nickname from extraordinary foot rotation 'as if mopping the floor'; Carlos & Rosa Pérez continued his classes at Sunderland after his death",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md"],
+      "status": "complete"
+    },
+    {
+      "id": "rebecca-shulman",
+      "type": "person",
+      "displayName": "Rebecca Shulman",
+      "categories": ["dancers", "usa"],
+      "eras": ["broadway-impact"],
+      "summary": "NYC pioneer; began 1991 with Trenner; studied with Naveira, Tete, Todaro, Pupi, Graciela González; built Dance Manhattan AT program 1994-2014; co-founded TangoMujer",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md"],
+      "status": "complete"
+    },
+    {
+      "id": "christine-denniston",
+      "type": "person",
+      "displayName": "Christine Denniston",
+      "categories": ["dancers", "europe"],
+      "eras": ["renacimiento"],
+      "summary": "Author of 'The Meaning of Tango' (2007); first non-Argentine to teach tango in Buenos Aires; built UK scene from early 1990s; documented male-only práctica system",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md"],
+      "status": "complete"
+    },
+    {
+      "id": "marcela-duran",
+      "type": "person",
+      "displayName": "Marcela Durán",
+      "categories": ["dancers", "argentina"],
+      "eras": ["renacimiento"],
+      "summary": "Gavito's partner in Forever Tango; their 'A Evaristo Carriego' became one of most famous tango performances ever staged; trained by Antonio Todaro",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md", "/tango-papers/events/gavito-death.md"],
+      "status": "complete"
+    },
+    {
+      "id": "elvira-santamaria",
+      "type": "person",
+      "displayName": "Elvira Santamaría",
+      "died": "1999",
+      "categories": ["dancers", "argentina"],
+      "eras": ["guardian-generation", "renacimiento"],
+      "summary": "Virulazo's partner; the slap on her fanny became their trademark (originally a spontaneous correction of misstep 20 years prior); Tango Argentino cast",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md", "/tango-papers/events/tango-argentino-show.md"],
+      "status": "complete"
+    },
+    {
+      "id": "fabian-salas",
+      "type": "person",
+      "displayName": "Fabián Salas",
+      "categories": ["dancers", "argentina"],
+      "eras": ["nuevo-innovators"],
+      "summary": "Investigation co-founder with Naveira; ~12 years of 'choreographic analysis of the dance'; co-created CITA festival with Lola Díaz",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md", "/tango-papers/events/tango-lesson-film.md"],
+      "status": "complete"
+    },
+    {
+      "id": "gustavo-naveira",
+      "type": "person",
+      "displayName": "Gustavo Naveira",
+      "born": "1960-08-12",
+      "birthplace": "Comodoro Rivadavia",
+      "categories": ["dancers", "argentina"],
+      "eras": ["nuevo-innovators"],
+      "summary": "Investigation leader; Cochabamba 444 prácticas 1987-1997; reduced all tango to three steps (cruce adelante, apertura, cruce atrás); studied with Pepito, Todaro, Virulazo, Portalea; explicitly rejected 'tango nuevo' as style label",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md", "/tango-papers/events/tango-lesson-film.md"],
+      "status": "complete"
+    },
+    {
+      "id": "pablo-veron",
+      "type": "person",
+      "displayName": "Pablo Verón",
+      "born": "~1963",
+      "categories": ["dancers", "argentina"],
+      "eras": ["renacimiento", "stage-pioneers"],
+      "summary": "'The feet of God' (NYT); The Tango Lesson star (1997); Libération: 'the best dancer in the world'; brought salon aesthetics to film",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md", "/tango-papers/events/tango-lesson-film.md", "/tango-papers/dancers/stage-pioneers.md"],
+      "status": "complete"
+    },
+    {
+      "id": "miguel-angel-zotto",
+      "type": "person",
+      "displayName": "Miguel Ángel Zotto",
+      "born": "1958",
+      "categories": ["dancers", "argentina"],
+      "eras": ["renacimiento", "stage-pioneers"],
+      "summary": "Founded Tango x 2 (1988); studied with Todaro and Finito; 'meticulous work of stylistic archaeology'; opened European academies",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md", "/tango-papers/dancers/stage-pioneers.md"],
+      "status": "complete"
+    },
+    {
+      "id": "mora-godoy",
+      "type": "person",
+      "displayName": "Mora Godoy",
+      "born": "1972",
+      "categories": ["dancers", "argentina"],
+      "eras": ["renacimiento"],
+      "summary": "Trained by Pepito, Todaro, Graciela González; performed for Rolling Stones; danced with President Obama at 2016 state dinner; Guinness record highest-altitude tango",
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md"],
       "status": "complete"
     }
   ]

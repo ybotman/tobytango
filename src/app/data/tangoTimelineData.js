@@ -242,7 +242,8 @@ export const timelineCategories = [
           { name: "Estilo del Centro / Milonguero", description: "Close embrace, compact, apilado" },
           { name: "Estilo del Barrio / Villa Urquiza", description: "Upright, elegant walking, can open" }
         ],
-        paperPath: "/tango-papers/dancers/generations/pre-nuevo-masters.md"
+        paperPath: "/tango-papers/dancers/generations/pre-nuevo-masters.md",
+        additionalPapers: ["/tango-papers/dancers/generations/thirty-year-window.md"]
       },
       {
         id: "dark-years",
@@ -296,7 +297,8 @@ export const timelineCategories = [
           { name: "Daniel Trenner", type: "individual", role: "Bridge to the Tango tours — US pioneer" },
           { name: "Gloria & Rodolfo Dinzel", type: "couple", role: "Dinzel System — 3,600+ catalogued figures" }
         ],
-        paperPath: "/tango-papers/dancers/generations/pre-nuevo-masters.md"
+        paperPath: "/tango-papers/dancers/generations/pre-nuevo-masters.md",
+        additionalPapers: ["/tango-papers/dancers/generations/thirty-year-window.md"]
       },
       {
         id: "nuevo-innovators",
@@ -320,7 +322,8 @@ export const timelineCategories = [
           { name: "Sebastián Arce & Mariana Montes", type: "couple", role: "Nuevo era teachers and performers" },
           { name: "Giselle Anne", type: "individual", role: "Classical ballet background, analytical approach" }
         ],
-        paperPath: "/tango-papers/dancers/nuevo-innovators.md"
+        paperPath: "/tango-papers/dancers/nuevo-innovators.md",
+        additionalPapers: ["/tango-papers/dancers/generations/thirty-year-window.md"]
       },
       {
         id: "stage-pioneers",
@@ -348,7 +351,8 @@ export const timelineCategories = [
           { name: "Nelson Avila & Nélida Rodriguez de Aure", type: "couple", role: "Speed and acrobatic steps" },
           { name: "Héctor & Elsa María Mayoral", type: "couple", role: "Elegant salon style" }
         ],
-        paperPath: "/tango-papers/dancers/stage-pioneers.md"
+        paperPath: "/tango-papers/dancers/stage-pioneers.md",
+        additionalPapers: ["/tango-papers/dancers/generations/thirty-year-window.md"]
       }
     ]
   },
@@ -831,14 +835,17 @@ export const timelineCategories = [
         yearEnd: 1910,
         status: "populated",
         summary: [
-          "Villoldo records 'El Choclo' in Philadelphia (1906) — tango enters recorded history",
-          "Vicente Greco records 'Don Juan' (1910) — first Orquesta Típica recording"
+          "April 1905: Columbia Records sends engineers to Río de la Plata — Villoldo records first matrices",
+          "1907: Villoldo travels to Paris with Gobbis, records 'El Choclo' for international distribution",
+          "'La Morocha' sells 280,000+ sheet music copies — first tango exported to Europe",
+          "By 1910: 350+ tango discs; over 1/3 of all gramophone records feature tango"
         ],
         keyFigures: [
           { name: "Ángel Villoldo", type: "individual", role: "First tango recordings" },
           { name: "Vicente Greco", type: "orchestra", role: "First orquesta típica recording" }
         ],
-        eventType: "recording"
+        eventType: "recording",
+        paperPath: "/tango-papers/events/first-recordings.md"
       },
       {
         id: "mi-noche-triste",
@@ -919,9 +926,16 @@ export const timelineCategories = [
         subtitle: "Tangomanía en París",
         yearStart: 1912,
         yearEnd: 1914,
-        status: "partial",
-        summary: ["Tango conquers Paris", "Vatican condemns the dance"],
-        eventType: "cultural"
+        status: "populated",
+        summary: [
+          "Tango arrives like fire — first a flicker, then an inferno by 1913",
+          "Pope Pius X condemns it (Nov 1913); Kaiser, Queen Mary, Italian War Minister all ban it",
+          "Fashion revolution: split skirts, 'tango orange' color, thé dansants",
+          "Argentine ambassador warns French it's 'found only in whorehouses' — French don't care",
+          "WWI interrupts the party, but tango has permanently escaped Buenos Aires slums"
+        ],
+        eventType: "cultural",
+        paperPath: "/tango-papers/events/paris-tangomania.md"
       },
       {
         id: "gardel-death",
@@ -929,10 +943,16 @@ export const timelineCategories = [
         subtitle: "Muerte de Gardel",
         yearStart: 1935,
         yearEnd: 1936,
-        status: "partial",
-        summary: ["Carlos Gardel dies in plane crash, Medellín", "June 24, 1935 - tango loses its voice"],
+        status: "populated",
+        summary: [
+          "June 24, 1935: Ford Trimotor crashes at Medellín — 17 dead including Gardel and lyricist Le Pera",
+          "800+ recordings, 8 Paramount films — transformed tango from arrabal dance to global art",
+          "Body travels through Colombia, Venezuela, NYC, Rio before Montevideo and final rest at Chacarita",
+          "UNESCO Memory of the World (2003); 'Gardel cada día canta mejor'"
+        ],
         keyFigures: [{ name: "Carlos Gardel", type: "individual" }],
-        eventType: "death"
+        eventType: "death",
+        paperPath: "/tango-papers/events/gardel-death.md"
       },
       {
         id: "darienzo-revolution",
@@ -940,10 +960,19 @@ export const timelineCategories = [
         subtitle: "Revolución D'Arienzo",
         yearStart: 1935,
         yearEnd: 1938,
-        status: "partial",
-        summary: ["D'Arienzo returns tango to its rhythmic roots", "Dance floors fill again"],
-        keyFigures: [{ name: "Juan D'Arienzo", type: "orchestra" }],
-        eventType: "music"
+        status: "populated",
+        summary: [
+          "Pianist Rodolfo Biagi pushes D'Arienzo back to 2/4 beat of Guardia Vieja",
+          "1935-1939: 116 sides recorded, outselling Canaro and Troilo combined",
+          "El Rey del Compás — 'Laugh if you will, but without D'Arienzo we'd all be out of work' (Troilo)",
+          "Launches the Golden Age, filling dance floors for next 20 years"
+        ],
+        keyFigures: [
+          { name: "Juan D'Arienzo", type: "orchestra" },
+          { name: "Rodolfo Biagi", type: "individual", role: "Pianist" }
+        ],
+        eventType: "music",
+        paperPath: "/tango-papers/events/darienzo-revolution.md"
       },
       {
         id: "lunfardo-ban",
@@ -983,10 +1012,13 @@ export const timelineCategories = [
         yearEnd: 1956,
         status: "populated",
         summary: [
-          "September 16, 1955: Military coup overthrows Perón",
-          "Tango = Peronist = suspect; beginning of La Decadencia"
+          "September 16, 1955: Military rises, Navy threatens to bomb BA; Perón flees on gunboat",
+          "Revolución Libertadora bans Peronist party, blacklists artists, 'de-Peronization'",
+          "Lunfardo censored, milongas restricted, tango = Peronist = suspect",
+          "Rock arrives from US; no formal teaching tradition means broken transmission = evaporating knowledge"
         ],
-        eventType: "political"
+        eventType: "political",
+        paperPath: "/tango-papers/events/peron-overthrown.md"
       },
       {
         id: "di-sarli-death",
@@ -1051,10 +1083,13 @@ export const timelineCategories = [
         yearEnd: 1983,
         status: "populated",
         summary: [
-          "Military junta, curfews, gatherings of 3+ banned",
-          "Milongas close or go underground — tango survives but barely"
+          "March 24, 1976: Military seizes power — 22,000-30,000 disappeared",
+          "10 PM curfew in culture where milongas start at midnight; gatherings of 3+ banned",
+          "No explicit ban needed; rock clubs could bribe, milonga organizers couldn't",
+          "By 1982: tango at 'minimum expression' — knowledge held by shrinking handful of old men"
         ],
-        eventType: "political"
+        eventType: "political",
+        paperPath: "/tango-papers/events/dirty-war.md"
       },
       {
         id: "national-tango-day",
@@ -1076,12 +1111,20 @@ export const timelineCategories = [
         yearStart: 1983,
         yearEnd: 1985,
         status: "populated",
-        summary: ["Paris premiere Nov 11, 1983", "Broadway 1985 - Tony nomination", "Ignites worldwide tango revival"],
+        summary: [
+          "Paris premiere Nov 11, 1983 — sold out Châtelet every night, crowds outside just to listen",
+          "Broadway Oct 9, 1985: 199 performances, Tony nomination, $6.2M gross",
+          "Sinatra, Madonna, Baryshnikov attended — tango lesson demand triples overnight",
+          "Toured 15+ years; spawned Forever Tango, Tango Pasión — 'If today milongas in Verona or Alaska, Tango Argentino is responsible'"
+        ],
         keyFigures: [
           { name: "Claudio Segovia", type: "individual" },
-          { name: "Copes & Nieves", type: "couple" }
+          { name: "Héctor Orezzoli", type: "individual" },
+          { name: "Copes & Nieves", type: "couple" },
+          { name: "Virulazo & Elvira", type: "couple" }
         ],
-        eventType: "show"
+        eventType: "show",
+        paperPath: "/tango-papers/events/tango-argentino-show.md"
       },
       {
         id: "democracy-returns",
@@ -1089,9 +1132,15 @@ export const timelineCategories = [
         subtitle: "Vuelta a la Democracia",
         yearStart: 1983,
         yearEnd: 1984,
-        status: "partial",
-        summary: ["Alfonsín elected president", "Cultural programs restart", "Milongueros return to the floor"],
-        eventType: "political"
+        status: "populated",
+        summary: [
+          "October 30, 1983: Alfonsín elected; December 10: civilian government returns",
+          "Cadícamo: 'The tango in 1983 was a memory'",
+          "Old milongueros emerge from isolation — suspicious, reluctant, but they come back",
+          "Two currents: BA milongueros reclaim floors + Paris premiere sparks international revival"
+        ],
+        eventType: "political",
+        paperPath: "/tango-papers/events/democracy-returns.md"
       },
       {
         id: "exilio-gardel-film",
@@ -1115,11 +1164,14 @@ export const timelineCategories = [
         yearEnd: 1988,
         status: "populated",
         summary: [
-          "Ramón 'Finito' Rivera dies May 11, 1987 at ~58",
-          "Best social dancer of 1980s revival — died dancing at Club Akarense"
+          "1987: Ramón 'Finito' Rivera dies at ~55 — best social dancer of 1980s revival",
+          "Villa Urquiza master; stopped dancing 20-25 years during dictatorship, returned with democracy",
+          "Appeared in Tango: Baile Nuestro alongside Portalea and Balmaceda",
+          "HITM FLAG: Sources scarce — dates, birth year need verification"
         ],
         keyFigures: [{ name: "Finito", type: "individual" }],
-        eventType: "death"
+        eventType: "death",
+        paperPath: "/tango-papers/events/finito-death.md"
       },
       {
         id: "forever-tango-sf",
@@ -1168,10 +1220,16 @@ export const timelineCategories = [
         subtitle: "Muerte de Pepito",
         yearStart: 1996,
         yearEnd: 1997,
-        status: "partial",
-        summary: ["Pepito Avellaneda dies", "King of the Milonga passes"],
+        status: "populated",
+        summary: [
+          "April 29, 1996: José Domingo Monteleone dies at 65",
+          "King of the Milonga — danced orillero style from Avellaneda",
+          "Pizzero by day, taught Amsterdam 1991-96, Northwestern 1995",
+          "Got 5-year US visa; never got to use it"
+        ],
         keyFigures: [{ name: "Pepito Avellaneda", type: "individual" }],
-        eventType: "death"
+        eventType: "death",
+        paperPath: "/tango-papers/events/pepito-death.md"
       },
       {
         id: "forever-tango-broadway",
@@ -1198,14 +1256,18 @@ export const timelineCategories = [
         yearEnd: 1998,
         status: "populated",
         summary: [
-          "Sally Potter film with Pablo Verón",
-          "Brings tango to mainstream art-house cinema"
+          "Sally Potter semi-autobiographical film — showed world what real Argentine tango looks like",
+          "Cast includes Verón ('feet of God' — NYT), plus Naveira and Salas",
+          "Venice Film Festival premiere; Best Film Mar del Plata; Sony Pictures Classics",
+          "Teachers worldwide report surge of students: 'I saw this film'"
         ],
         keyFigures: [
           { name: "Pablo Verón", type: "individual", role: "Dancer/Actor" },
-          { name: "Sally Potter", type: "individual", role: "Director" }
+          { name: "Sally Potter", type: "individual", role: "Director" },
+          { name: "Gustavo Naveira", type: "individual", role: "Featured dancer" }
         ],
-        eventType: "film"
+        eventType: "film",
+        paperPath: "/tango-papers/events/tango-lesson-film.md"
       },
       {
         id: "tango-saura-film",
@@ -1229,10 +1291,13 @@ export const timelineCategories = [
         yearEnd: 2002,
         status: "populated",
         summary: [
-          "December 2001: Peso collapses, banks freeze accounts",
-          "Argentine teachers migrate to Europe/USA; BA becomes affordable for tango tourists"
+          "December 1, 2001: Corralito freezes accounts; peso loses 3/4 value; $95B default",
+          "President flees by helicopter; 5 presidents in 2 weeks; milonga attendance drops 40%",
+          "Paradox: crisis spreads tango globally — teachers migrate, collapsed peso makes BA cheap",
+          "Tango tourism emerges; 'During crisis, people need a place to meet, distract themselves'"
         ],
-        eventType: "political"
+        eventType: "political",
+        paperPath: "/tango-papers/events/economic-crisis.md"
       },
       {
         id: "assassination-tango-film",
@@ -1256,10 +1321,13 @@ export const timelineCategories = [
         yearEnd: 2004,
         status: "populated",
         summary: [
-          "First Campeonato Mundial de Tango in Buenos Aires",
-          "Two categories: Tango de Pista (social) and Tango Escenario (stage)"
+          "2003: First Campeonato Mundial — 218 couples ages 18-85",
+          "Two categories: Tango de Pista (social) and Tango Escenario (stage)",
+          "By 2024: 750 couples from 53 countries; pre-qualifying in 30+ cities; $460M economic impact",
+          "2013: Same-sex couples allowed; controversial among purists re: competition vs. social dancing"
         ],
-        eventType: "cultural"
+        eventType: "cultural",
+        paperPath: "/tango-papers/events/mundial-begins.md"
       },
       {
         id: "gavito-death",
@@ -1269,11 +1337,14 @@ export const timelineCategories = [
         yearEnd: 2006,
         status: "populated",
         summary: [
-          "Carlos Gavito dies July 29, 2005 in Buenos Aires",
-          "Forever Tango star — theatrical pauses, dramatic intensity, white scarf"
+          "July 1, 2005: Dies of cancer at 63 in Buenos Aires",
+          "Forever Tango star — 'A Evaristo Carriego' with Marcela Durán became iconic",
+          "'The tent' embrace — minimalist, intensely dramatic; 'The milonga is a cathedral — tango is a religion'",
+          "'The man who does not make the woman look like a Queen will never be King'"
         ],
         keyFigures: [{ name: "Carlos Gavito", type: "individual" }],
-        eventType: "death"
+        eventType: "death",
+        paperPath: "/tango-papers/events/gavito-death.md"
       },
       {
         id: "vidort-death",
@@ -1283,11 +1354,14 @@ export const timelineCategories = [
         yearEnd: 2007,
         status: "populated",
         summary: [
-          "Ricardo Vidort dies September 26, 2006 in Santa Fe, NM",
-          "The Last Compadrito — old-style porteño character, teaching to the end"
+          "May 21, 2006: Dies in Santa Fe, NM at 76 — 'The Last Compadrito'",
+          "Danced the phrase, not the rhythm; incorporated compás into giros/corridas uniquely",
+          "One of only two milongueros (with Gavito) who learned English — intimate international teaching",
+          "HITM FLAG: Primary sources are tango community blogs"
         ],
         keyFigures: [{ name: "Ricardo Vidort", type: "individual" }],
-        eventType: "death"
+        eventType: "death",
+        paperPath: "/tango-papers/events/vidort-death.md"
       },
       {
         id: "pupi-portalea-death",
@@ -1297,14 +1371,17 @@ export const timelineCategories = [
         yearEnd: 2008,
         status: "populated",
         summary: [
-          "Pupi Castello and Gerardo Portalea both die in 2007",
-          "Two pillars of Villa Urquiza style lost in same year"
+          "2007: Villa Urquiza loses both pillars within a month of each other",
+          "Pupi (~July 20): extrovert, 19-year partner of Graciela González, BBC documentary star",
+          "Portalea: gravedigger, serious, modest — 'the finest dancer the northern barrios produced'",
+          "HITM FLAG: Portalea details need verification; correct name is GERARDO (not Osvaldo)"
         ],
         keyFigures: [
           { name: "Pupi Castello", type: "individual" },
           { name: "Gerardo Portalea", type: "individual" }
         ],
-        eventType: "death"
+        eventType: "death",
+        paperPath: "/tango-papers/events/pupi-portalea-death.md"
       },
       {
         id: "cafe-maestros-film",
@@ -1328,10 +1405,13 @@ export const timelineCategories = [
         yearEnd: 2010,
         status: "populated",
         summary: [
-          "September 30, 2009: Tango declared Intangible Cultural Heritage of Humanity",
-          "Joint Argentina/Uruguay nomination — tango officially belongs to the world"
+          "September 30, 2009 in Abu Dhabi: Tango declared Intangible Cultural Heritage of Humanity",
+          "Joint Argentina/Uruguay nomination — historic rivals set aside ownership dispute",
+          "Recognition covers dance, music, poetry, milonga rituals, oral traditions",
+          "Second attempt (2001 rejected as 'too global'); gives 60+ country communities legitimacy"
         ],
-        eventType: "cultural"
+        eventType: "cultural",
+        paperPath: "/tango-papers/events/unesco-heritage.md"
       },
       {
         id: "tete-death",
@@ -1341,11 +1421,14 @@ export const timelineCategories = [
         yearEnd: 2011,
         status: "populated",
         summary: [
-          "Pedro 'Tete' Rusconi dies January 7, 2010 — two days before his 74th birthday",
-          "The milonguero's milonguero — epitome of simple elegance and musicality"
+          "January 7, 2010: Dies in Almagro, two days before 74th birthday — filmed at Canning 10 days prior",
+          "Pina Bausch: 'He has an orchestra in his head' — danced Nur Du with Tanztheater Wuppertal 1995-97",
+          "'Dance the music. Because the music is the tango.'",
+          "Taught through Susana Miller who coined 'milonguero style' based on his dancing"
         ],
         keyFigures: [{ name: "Tete Rusconi", type: "individual" }],
-        eventType: "death"
+        eventType: "death",
+        paperPath: "/tango-papers/events/tete-death.md"
       },
       {
         id: "our-last-tango-film",
@@ -1372,10 +1455,13 @@ export const timelineCategories = [
         yearEnd: 2022,
         status: "populated",
         summary: [
-          "March 2020: Milongas worldwide close — embrace becomes danger",
-          "Tango communities devastated; slow rebuilding begins 2022"
+          "March 8, 2020: All BA milongas close simultaneously — 118-200 venues, 18 months quarantine",
+          "50+ milongas closed permanently; 10,000-person industry collapses",
+          "Musicians pawn bandoneóns; 'Many older people died of sadness more than COVID'",
+          "Reopening Sept 2021: 'We're back, but the industry isn't on its feet yet'"
         ],
-        eventType: "political"
+        eventType: "political",
+        paperPath: "/tango-papers/events/covid-pandemic.md"
       },
       {
         id: "copes-death",
