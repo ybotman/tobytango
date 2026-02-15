@@ -24,7 +24,11 @@ const menuStructure = [
   {
     title: 'History',
     path: '/tango-history',
-    icon: null
+    icon: null,
+    items: [
+      { title: 'Era Map', path: '/tango-history' },
+      { title: 'Key Events', path: '/tango-history/events' }
+    ]
   },
   {
     title: 'Glossary',
@@ -105,7 +109,8 @@ const menuStructure = [
         isSecondary: true,
         highlight: true,
         submenus: [
-          { title: 'Timeline Overview', path: '/tango-history', isSecondary: true },
+          { title: 'Era Map', path: '/tango-history', isSecondary: true },
+          { title: 'Key Events', path: '/tango-history/events', isSecondary: true },
           { title: 'Tango Argentina', path: '/tango-history/argentina', isSecondary: true },
           { title: 'Dancers & Couples', path: '/tango-history/dancers', isSecondary: true, highlight: true },
           { title: 'Tango Europe', path: '/tango-history/europe', isSecondary: true },

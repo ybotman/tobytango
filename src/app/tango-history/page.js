@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Typography,
@@ -8,11 +8,13 @@ import {
   Paper,
   Chip,
   Tooltip,
+  Button,
   useTheme,
   useMediaQuery
 } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import Script from 'next/script';
+import Link from 'next/link';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import timelineCategories from '../data/tangoTimelineData';
 
 // Timeline configuration
@@ -98,63 +100,12 @@ timelineCategories.forEach(category => {
 // Display order for timeline columns
 const categoryOrder = ['argentina', 'orchestras', 'dancers', 'europe', 'usa'];
 
-// TimelineJS event data
-const timelineEvents = {
-  "title": {
-    "text": {
-      "headline": "Key Events / Eventos Clave",
-      "text": "<p>Navigate events to highlight corresponding eras above</p>"
-    }
-  },
-  "events": [
-    { "start_date": { "year": "1906" }, "text": { "headline": "First Recordings", "text": "<p>Angel Villoldo records 'El Choclo'</p>" }, "group": "Recording" },
-    { "start_date": { "year": "1912" }, "end_date": { "year": "1914" }, "text": { "headline": "Paris Tangomania", "text": "<p>Tango conquers Paris. Vatican condemns it.</p>" }, "group": "Cultural" },
-    { "start_date": { "year": "1935", "month": "6", "day": "24" }, "text": { "headline": "Gardel Dies", "text": "<p>Carlos Gardel dies in plane crash, Medellín</p>" }, "group": "Death" },
-    { "start_date": { "year": "1935" }, "text": { "headline": "D'Arienzo Revolution", "text": "<p>Golden Age begins - dance floors fill again</p>" }, "group": "Music" },
-    { "start_date": { "year": "1955", "month": "9" }, "text": { "headline": "Perón Overthrown", "text": "<p>Military coup - tango's decline begins</p>" }, "group": "Political" },
-    { "start_date": { "year": "1976" }, "end_date": { "year": "1983" }, "text": { "headline": "Dirty War", "text": "<p>Military junta. Milongas close. 30,000 disappeared.</p>" }, "group": "Political" },
-    { "start_date": { "year": "1983", "month": "11", "day": "13" }, "text": { "headline": "'Tango Argentino' Paris", "text": "<p>The show that changed everything</p>" }, "group": "Show" },
-    { "start_date": { "year": "1983", "month": "12" }, "text": { "headline": "Democracy Returns", "text": "<p>Alfonsín elected. Milongueros return.</p>" }, "group": "Political" },
-    { "start_date": { "year": "1985" }, "text": { "headline": "'Tango Argentino' Broadway", "text": "<p>Tony nomination. America discovers tango.</p>" }, "group": "Show" },
-    { "start_date": { "year": "1987" }, "text": { "headline": "Finito Dies", "text": "<p>Best social dancer of 1980s revival lost at ~55</p>" }, "group": "Death" },
-    { "start_date": { "year": "1994" }, "text": { "headline": "Graciela's Technique Seminar", "text": "<p>First systematic followers technique workshop</p>" }, "group": "Cultural" },
-    { "start_date": { "year": "1994" }, "end_date": { "year": "1997" }, "text": { "headline": "Tete & Pina Bausch", "text": "<p>'An orchestra in his head' - Tanztheater Wuppertal</p>" }, "group": "Show" },
-    { "start_date": { "year": "1996", "month": "4" }, "text": { "headline": "Pepito Dies", "text": "<p>King of the Milonga passes</p>" }, "group": "Death" },
-    { "start_date": { "year": "1997" }, "text": { "headline": "'The Tango Lesson'", "text": "<p>Sally Potter film with Pablo Verón</p>" }, "group": "Film" },
-    { "start_date": { "year": "2001" }, "end_date": { "year": "2002" }, "text": { "headline": "Economic Crisis", "text": "<p>Peso collapses. Teachers migrate. BA becomes affordable.</p>" }, "group": "Political" },
-    { "start_date": { "year": "2003" }, "text": { "headline": "Mundial Begins", "text": "<p>First World Tango Championship</p>" }, "group": "Cultural" },
-    { "start_date": { "year": "2006", "month": "5" }, "text": { "headline": "Vidort Dies", "text": "<p>The Last Compadrito - Santa Fe, NM</p>" }, "group": "Death" },
-    { "start_date": { "year": "2007" }, "text": { "headline": "Pupi & Portalea Die", "text": "<p>Two Villa Urquiza pillars lost</p>" }, "group": "Death" },
-    { "start_date": { "year": "2009", "month": "9", "day": "30" }, "text": { "headline": "UNESCO Heritage", "text": "<p>Tango declared Intangible Cultural Heritage</p>" }, "group": "Cultural" },
-    { "start_date": { "year": "2010", "month": "1", "day": "7" }, "text": { "headline": "Tete Dies", "text": "<p>Two days before his 74th birthday</p>" }, "group": "Death" },
-    { "start_date": { "year": "2020", "month": "3" }, "end_date": { "year": "2022" }, "text": { "headline": "COVID Pandemic", "text": "<p>Milongas close worldwide. The embrace forbidden.</p>" }, "group": "Political" }
-  ]
-};
-
-// Find which eras contain a given year
-const findErasForYear = (year) => {
-  const matches = [];
-  timelineCategories.forEach(category => {
-    if (!categoryOrder.includes(category.categoryId)) return;
-    category.eras.forEach(era => {
-      if (year >= era.yearStart && year <= era.yearEnd) {
-        matches.push(`${category.categoryId}-${era.id}`);
-      }
-    });
-  });
-  return matches;
-};
 
 export default function TangoHistoryPage() {
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [hoveredEra, setHoveredEra] = useState(null);
-  const [highlightedEras, setHighlightedEras] = useState([]);
-  const [activeEventYear, setActiveEventYear] = useState(null);
-  const [timelineLoaded, setTimelineLoaded] = useState(false);
-  const timelineRef = useRef(null);
-  const timelineInstance = useRef(null);
 
   const handleEraClick = (categoryId, eraId) => {
     router.push(`/tango-history/${categoryId}#${eraId}`);
@@ -164,73 +115,29 @@ export default function TangoHistoryPage() {
     router.push(path);
   };
 
-  // Initialize TimelineJS
-  useEffect(() => {
-    if (timelineLoaded && timelineRef.current && window.TL && !timelineInstance.current) {
-      timelineInstance.current = new window.TL.Timeline('timeline-embed', timelineEvents, {
-        hash_bookmark: false,
-        initial_zoom: 1,
-        scale_factor: 1,
-        timenav_position: 'bottom',
-        timenav_height: 150,
-        optimal_tick_width: 60,
-        start_at_slide: 0
-      });
-
-      // Listen for slide changes
-      timelineInstance.current.on('change', function(data) {
-        if (data.unique_id) {
-          const event = timelineEvents.events.find((e, i) => i === data.index - 1); // -1 for title slide
-          if (event) {
-            const year = parseInt(event.start_date.year);
-            setActiveEventYear(year);
-            const eras = findErasForYear(year);
-            setHighlightedEras(eras);
-          }
-        }
-      });
-    }
-  }, [timelineLoaded]);
-
   const timelineHeight = (TIMELINE_END - TIMELINE_START) * PIXELS_PER_YEAR;
 
   return (
-    <>
-      <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css" />
-      <Script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js" onLoad={() => setTimelineLoaded(true)} />
+    <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h3" component="h1" gutterBottom>
+          Tango History Timeline
+        </Typography>
+        <Typography variant="h5" color="text.secondary" gutterBottom>
+          Cronología del Tango
+        </Typography>
+        <Typography variant="body1" color="text.secondary" paragraph>
+          Era bands sized by duration. Click any era to explore details.
+        </Typography>
+      </Box>
 
-      <Container maxWidth="xl" sx={{ py: 4 }}>
-        <Box sx={{ mb: 4 }}>
-          <Typography variant="h3" component="h1" gutterBottom>
-            Tango History Timeline
-          </Typography>
-          <Typography variant="h5" color="text.secondary" gutterBottom>
-            Cronología del Tango
-          </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
-            Era bands sized by duration. Navigate events below to highlight corresponding eras.
-          </Typography>
-
-          {/* Disclaimer */}
-          <Paper sx={{ p: 2, bgcolor: 'grey.100', borderLeft: '4px solid', borderColor: 'warning.main' }}>
-            <Typography variant="body2" color="text.secondary">
-              <strong>Disclaimer:</strong> This timeline was researched and compiled using AI assistance (Claude/Anthropic).
-              Toby Balsley facilitated and curated this research but is not the author of the historical content.
-              Errors may exist — corrections and contributions from the tango community are welcome.
-            </Typography>
-          </Paper>
-        </Box>
-
-        {/* Legend */}
-        <Box sx={{ mb: 3, display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center' }}>
-          <Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>Status:</Typography>
-          <Chip size="small" label="Populated" sx={{ bgcolor: 'success.light' }} />
-          <Chip size="small" label="Partial" sx={{ bgcolor: 'warning.light' }} />
-          <Chip size="small" label="Coming Soon" sx={{ bgcolor: 'grey.300' }} />
-          {activeEventYear && (
-            <Chip size="small" label={`Event: ${activeEventYear}`} color="secondary" sx={{ ml: 2 }} />
-          )}
-        </Box>
+      {/* Legend */}
+      <Box sx={{ mb: 3, display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center' }}>
+        <Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>Status:</Typography>
+        <Chip size="small" label="Populated" sx={{ bgcolor: 'success.light' }} />
+        <Chip size="small" label="Partial" sx={{ bgcolor: 'warning.light' }} />
+        <Chip size="small" label="Coming Soon" sx={{ bgcolor: 'grey.300' }} />
+      </Box>
 
         {/* Visual Timeline - Era Bands */}
         <Paper sx={{ p: { xs: 1, sm: 2, md: 3 }, mb: 2, overflow: 'hidden' }}>
@@ -266,7 +173,6 @@ export default function TangoHistoryPage() {
                 {decades.map(year => {
                   const top = getYearPosition(year);
                   const isMajor = year % 50 === 0;
-                  const isActiveYear = activeEventYear && Math.abs(year - activeEventYear) < 5;
                   return (
                     <Box key={year} sx={{
                       position: 'absolute',
@@ -279,33 +185,21 @@ export default function TangoHistoryPage() {
                       pr: 0.5
                     }}>
                       <Typography variant="caption" sx={{
-                        fontWeight: isMajor || isActiveYear ? 'bold' : 'normal',
+                        fontWeight: isMajor ? 'bold' : 'normal',
                         fontSize: isMajor ? '0.75rem' : '0.65rem',
-                        color: isActiveYear ? 'secondary.main' : isMajor ? 'text.primary' : 'text.secondary'
+                        color: isMajor ? 'text.primary' : 'text.secondary'
                       }}>
                         {year}
                       </Typography>
                       <Box sx={{
                         width: isMajor ? 10 : 5,
                         height: 2,
-                        bgcolor: isActiveYear ? 'secondary.main' : isMajor ? 'text.primary' : 'grey.400',
+                        bgcolor: isMajor ? 'text.primary' : 'grey.400',
                         ml: 0.5
                       }} />
                     </Box>
                   );
                 })}
-                {/* Active year marker */}
-                {activeEventYear && (
-                  <Box sx={{
-                    position: 'absolute',
-                    top: getYearPosition(activeEventYear),
-                    left: 0,
-                    right: 0,
-                    height: 3,
-                    bgcolor: 'secondary.main',
-                    zIndex: 10
-                  }} />
-                )}
               </Box>
             </Box>
 
@@ -355,38 +249,20 @@ export default function TangoHistoryPage() {
                     );
                   })}
 
-                  {/* Active year line across columns */}
-                  {activeEventYear && (
-                    <Box sx={{
-                      position: 'absolute',
-                      top: getYearPosition(activeEventYear),
-                      left: 0,
-                      right: 0,
-                      height: 2,
-                      bgcolor: 'secondary.main',
-                      opacity: 0.5,
-                      zIndex: 0
-                    }} />
-                  )}
-
                   {category.eras.map((era) => {
                     const { top, height } = getEraPosition(era.yearStart, era.yearEnd);
                     const isPopulated = era.status === 'populated';
                     const isPartial = era.status === 'partial';
                     const isHovered = hoveredEra === `${category.categoryId}-${era.id}`;
-                    const isHighlighted = highlightedEras.includes(`${category.categoryId}-${era.id}`);
 
                     // Get lane info for overlapping eras
                     const laneInfo = categoryLanes[category.categoryId]?.[era.id] || { lane: 0, totalLanes: 1 };
                     const { lane, totalLanes } = laneInfo;
-                    const laneWidth = totalLanes > 1 ? `${100 / totalLanes}%` : 'auto';
                     const laneLeft = totalLanes > 1 ? `${(lane / totalLanes) * 100}%` : '3px';
                     const laneRight = totalLanes > 1 ? `${((totalLanes - lane - 1) / totalLanes) * 100}%` : '3px';
 
                     const statusColor = isPopulated ? 'success.main' : isPartial ? 'warning.main' : 'grey.400';
-                    const bgColor = isHighlighted
-                      ? category.color
-                      : isPopulated ? 'success.light' : isPartial ? 'warning.light' : 'grey.200';
+                    const bgColor = isPopulated ? 'success.light' : isPartial ? 'warning.light' : 'grey.200';
 
                     return (
                       <Tooltip
@@ -417,7 +293,7 @@ export default function TangoHistoryPage() {
                             right: laneRight,
                             height: height,
                             bgcolor: isHovered ? category.color : bgColor,
-                            color: (isHovered || isHighlighted) ? 'white' : 'text.primary',
+                            color: isHovered ? 'white' : 'text.primary',
                             borderRadius: 1.5,
                             cursor: 'pointer',
                             transition: 'all 0.3s',
@@ -427,11 +303,10 @@ export default function TangoHistoryPage() {
                             px: 0.75,
                             py: 0.25,
                             overflow: 'hidden',
-                            border: isHighlighted ? '3px solid' : '2px solid',
-                            borderColor: isHighlighted ? 'secondary.main' : isHovered ? category.color : statusColor,
-                            boxShadow: isHighlighted ? 4 : isHovered ? 2 : 0,
-                            zIndex: isHighlighted ? 10 : isHovered ? 5 : 1,
-                            transform: isHighlighted ? 'scale(1.05)' : 'none',
+                            border: '2px solid',
+                            borderColor: isHovered ? category.color : statusColor,
+                            boxShadow: isHovered ? 2 : 0,
+                            zIndex: isHovered ? 5 : 1,
                             '&:hover': { transform: 'scale(1.03)' }
                           }}
                         >
@@ -472,25 +347,35 @@ export default function TangoHistoryPage() {
           </Box>
         </Paper>
 
-        {/* Events Timeline at Bottom */}
-        <Paper sx={{ overflow: 'hidden', mb: 4 }}>
-          <Box sx={{ p: 2, bgcolor: '#e91e63', color: 'white' }}>
-            <Typography variant="h6">Key Events / Eventos Clave</Typography>
-            <Typography variant="caption">Navigate to highlight eras above</Typography>
-          </Box>
-          <div
-            id="timeline-embed"
-            ref={timelineRef}
-            style={{ width: '100%', height: '400px' }}
-          />
-          {!timelineLoaded && (
-            <Box sx={{ p: 4, textAlign: 'center' }}>
-              <Typography>Loading timeline...</Typography>
-            </Box>
-          )}
+        {/* Navigation to Events */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, mb: 4 }}>
+          <Button
+            component={Link}
+            href="/tango-history/events"
+            variant="contained"
+            size="large"
+            endIcon={<ArrowForwardIcon />}
+            sx={{ bgcolor: '#e91e63', '&:hover': { bgcolor: '#c2185b' } }}
+          >
+            View Key Events Timeline
+          </Button>
+        </Box>
+
+        {/* Disclaimer */}
+        <Paper sx={{
+          p: 2,
+          bgcolor: 'warning.light',
+          borderLeft: '4px solid',
+          borderColor: 'warning.dark',
+          mt: 4
+        }}>
+          <Typography variant="body2" color="text.primary">
+            <strong>Disclaimer:</strong> This timeline was researched and compiled using AI assistance (Claude/Anthropic).
+            Toby Balsley facilitated and curated this research but is not the author of the historical content.
+            Errors may exist — corrections and contributions from the tango community are welcome.
+          </Typography>
         </Paper>
 
-      </Container>
-    </>
+    </Container>
   );
 }

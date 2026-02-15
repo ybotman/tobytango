@@ -18,7 +18,7 @@ const timelineData = {
   },
   "eras": [
     {
-      "start_date": { "year": "1880" },
+      "start_date": { "year": "1896" },
       "end_date": { "year": "1920" },
       "text": { "headline": "Guardia Vieja" }
     },
@@ -49,7 +49,7 @@ const timelineData = {
     },
     {
       "start_date": { "year": "2010" },
-      "end_date": { "year": "2030" },
+      "end_date": { "year": "2032" },
       "text": { "headline": "Neo-Traditional" }
     }
   ],
@@ -61,8 +61,8 @@ const timelineData = {
         "text": "<p>Between 1905 and 1910, tango leapt from the streets of Buenos Aires onto wax cylinders and shellac discs. The pivotal figure was <a href='https://en.wikipedia.org/wiki/%C3%81ngel_Villoldo'>Ángel Villoldo</a> (1861–1919), a former typographer, tram driver, and circus clown who became 'the father of tango song.' His iconic <a href='https://en.wikipedia.org/wiki/El_Choclo'>El Choclo</a> (1903) was first recorded no later than 1906 by the Victor Argentine Orchestra in Philadelphia — because at that time, there were no recording studios in Argentina.</p><p>These first recordings were transformative. Before the phonograph, tango existed only in the moment — played by flute, guitar, and violin trios in port neighborhoods, often in bars and brothels. Once captured on disc, the music could cross oceans. Within a few years, 'El Choclo' was being performed across Europe and North America.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/El_choclo.jpg",
-        "credit": "\"El Choclo\" sheet music cover. Photo by Schorle, 2008. Wikimedia Commons, CC BY-SA 3.0."
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/96/El_choclo.jpg",
+        "credit": "\"El Choclo\" sheet music cover. Wikimedia Commons, public domain."
       },
       "group": "Recording"
     },
@@ -74,8 +74,8 @@ const timelineData = {
         "text": "<p>By 1912, tango had exploded from Buenos Aires into the salons of Paris, igniting what the press dubbed 'Tangomania.' <em>Tango Teas</em> and <em>Tango Cafés</em> opened across Paris, London, Berlin, and Shanghai. The craze spawned an entire fashion industry: tango corsets, tango shoes, tango-orange as a fashionable color, and slit skirts designed for dramatic leg movements.</p><p>The backlash was fierce: in 1913, Pope Pius X declared tango immoral. Kaiser Wilhelm II forbade officers to dance it in uniform, Queen Mary expressed disapproval, and the Archbishop of Paris banned tango teachers. The scandal only fueled popularity — the forbidden fruit effect was powerful. World War I eventually cooled the fever, but tango had permanently embedded itself in European culture.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Le_tango_argentin_-_chanson_danse_chant%C3%A9_et_dans%C3%A9_par_Mme_Mad_Brenda_et_Monsieur_Carlus_%C3%A0_l%27Olympia_%28illustration_L%C3%A9on_Pousthomis%29_%28M%C3%A9diHAL_510952%29.jpg",
-        "credit": "\"Le tango argentin\" — sheet music cover illustrated by Léon Pousthomis, c. 1913. Wikimedia Commons, public domain."
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Tango_d%27amour_Tango_argentin%2C_paroles_de_Ren%C3%A9_Pouri%C3%A8re_et_Jean_Sologne%2C_musique_de_E._Nikelmann_-_bpt6k386798g_%284_of_6%29.jpg",
+        "credit": "\"Tango d'amour\" — sheet music cover, c. 1913. Wikimedia Commons, public domain."
       },
       "group": "Cultural"
     },
@@ -86,8 +86,8 @@ const timelineData = {
         "text": "<p>On June 24, 1935, a Ford Trimotor carrying <a href='https://en.wikipedia.org/wiki/Carlos_Gardel'>Carlos Gardel</a> collided with another plane during takeoff at Medellín, Colombia. Gardel — just 44 and at the zenith of his career — was killed, along with his lyricist <a href='https://en.wikipedia.org/wiki/Alfredo_Le_Pera'>Alfredo Le Pera</a> and several others. The news paralyzed Latin America. Millions went into mourning. His body was transported through New York and Rio de Janeiro, drawing tens of thousands to his funeral in Buenos Aires.</p><p>Born in Toulouse, France, in 1890, Gardel arrived in Buenos Aires as a toddler and grew up in Abasto. His 1917 recording of <em>Mi noche triste</em> is widely considered the birth of the tango-canción. His warm baritone, dramatic phrasing, and charisma made him a superstar from Buenos Aires to Paris. His most famous songs — <a href='https://en.wikipedia.org/wiki/El_d%C3%ADa_que_me_quieras_(song)'>El día que me quieras</a>, <a href='https://en.wikipedia.org/wiki/Volver_(song)'>Volver</a>, <a href='https://en.wikipedia.org/wiki/Por_una_cabeza'>Por una cabeza</a> — remain staples nearly a century later. The Argentine saying <em>'Gardel cada día canta mejor'</em> ('Gardel sings better every day') captures how his legend has only grown.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Carlos_Gardel_Rubias_de_New_York.JPG",
-        "credit": "Carlos Gardel during filming of Rubias de New York, c. 1934. Wikimedia Commons, public domain."
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Carlos_Gardel_en_Par%C3%ADs%2C_a%C3%B1o_1923.jpg",
+        "credit": "Carlos Gardel in Paris, 1923. Wikimedia Commons, public domain."
       },
       "group": "Death"
     },
@@ -106,7 +106,7 @@ const timelineData = {
         "text": "<p>On September 16, 1955, the <a href='https://en.wikipedia.org/wiki/Revolución_Libertadora'>Revolución Libertadora</a> toppled President <a href='https://en.wikipedia.org/wiki/Juan_Per%C3%B3n'>Juan Domingo Perón</a>, bringing an abrupt end to Argentina's Golden Age of Tango. The coup followed the devastating <a href='https://en.wikipedia.org/wiki/Bombing_of_Plaza_de_Mayo'>bombing of Plaza de Mayo</a> on June 16 that killed over 300 civilians.</p><p>Under Perón, tango had experienced an extraordinary golden age — he promoted tango as authentic Argentine expression. The new junta reversed all of this: tango songs with Peronist sympathies or <a href='https://en.wikipedia.org/wiki/Lunfardo'>lunfardo</a> lyrics were censored. Laws banning minors from nightclubs were selectively applied to milongas while rock clubs stayed open. As one historian noted: 'If you were 18 in 1955, you probably learned tango well. If you were 13, not at all.' The mentor system was dismantled, and tango was driven underground for nearly three decades.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Plaza-Mayo-bombardeo-1955.JPG",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Plaza-Mayo-bombardeo-1955.JPG",
         "credit": "Aftermath of the 1955 bombing of Plaza de Mayo, Buenos Aires. Wikimedia Commons, public domain."
       },
       "group": "Political"
@@ -119,8 +119,8 @@ const timelineData = {
         "text": "<p>On March 24, 1976, a military junta launched the <a href='https://en.wikipedia.org/wiki/Dirty_War'>Dirty War</a>. The regime 'disappeared' an estimated 22,000 to 30,000 people — kidnapped, tortured, and killed. Curfews (often 10 p.m.), bans on gatherings, and pervasive fear ruled Argentina until 1983.</p><p>For tango, the Dirty War was existentially devastating — though never formally 'banned.' Curfews killed nightlife, prohibition on gatherings made milongas impossible. The roughly 200 milongas at tango's peak were reduced to a handful of clandestine gatherings. The <a href='https://en.wikipedia.org/wiki/Mothers_of_the_Plaza_de_Mayo'>Mothers of the Plaza de Mayo</a> became the most powerful symbol of resistance. By the time the dictatorship fell, an entire generation had grown up without tango.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/M%C3%A3es_da_Pra%C3%A7a_de_Maio2.JPG",
-        "credit": "Mothers of the Plaza de Mayo demonstrating in Buenos Aires. Wikimedia Commons, CC BY 3.0."
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Madres-plaza-mayo-feria-libro.JPG",
+        "credit": "Mothers of the Plaza de Mayo. Wikimedia Commons, CC BY 3.0."
       },
       "group": "Political"
     },
@@ -131,8 +131,8 @@ const timelineData = {
         "text": "<p>On November 11, 1983, at the Théâtre du Châtelet during the <a href='https://en.wikipedia.org/wiki/Festival_d%27Automne'>Festival d'Automne</a> in Paris, <em>Tango Argentino</em> took the stage and changed tango history forever. Created by <a href='https://en.wikipedia.org/wiki/Claudio_Segovia'>Claudio Segovia</a> and Héctor Orezzoli, the cast was extraordinary: <a href='https://en.wikipedia.org/wiki/Juan_Carlos_Copes'>Juan Carlos Copes</a> and <a href='https://en.wikipedia.org/wiki/Mar%C3%ADa_Nieves'>María Nieves</a>, Virulazo and <a href='https://en.wikipedia.org/wiki/Elvira_Santamar%C3%ADa'>Elvira Santamaría</a>, young Pablo Verón, and the <a href='https://en.wikipedia.org/wiki/Sexteto_Mayor'>Sexteto Mayor</a>.</p><p>The impact cannot be overstated. By 1983, tango was all but dead as social dance in Buenos Aires. As poet Enrique Cadícamo said, 'Tango in 1983 was a memory.' The show single-handedly ignited a worldwide renaissance. Cast members began teaching in cities where it toured — Robert Duvall and Mikhail Baryshnikov became students. Milongas sprang up in London, Tokyo, Berlin. If today tango is danced from Verona to Alaska, it is because of <em>Tango Argentino</em>.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Tango_au01.JPG",
-        "credit": "Tango dancers in San Telmo, Buenos Aires. Photo by Anandajoti, public domain, via Wikimedia Commons."
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Tango_Porte%C3%B1o.jpg",
+        "credit": "Tango Porteño dancers. Wikimedia Commons."
       },
       "group": "Show"
     },
@@ -143,7 +143,7 @@ const timelineData = {
         "text": "<p>On October 30, 1983, <a href='https://en.wikipedia.org/wiki/Ra%C3%BAl_Alfons%C3%ADn'>Raúl Alfonsín</a> won Argentina's first free elections in a decade. Inaugurated December 10, 1983 (now Argentina's Democracy Day), civilian government brought immediate end to curfews, gathering bans, and the culture of fear. That same autumn, just weeks before Alfonsín's election, <em>Tango Argentino</em> premiered in Paris — a historic coincidence.</p><p>The simultaneous return of democracy and <em>Tango Argentino</em>'s success ignited a tango renaissance. Surviving milongueros — many now in their 60s and 70s, having danced only in secret for decades — began to emerge and dance publicly again. A younger generation sought them out, hungry to reclaim stolen cultural heritage. The Alfonsín government established cultural programs supporting tango's revival as part of rebuilding Argentine national identity.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Argentina.RaulAlfonsin.01.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Argentina.RaulAlfonsin.01.jpg",
         "credit": "President Raúl Alfonsín. Photo by Roosewelt Pinheiro/Agência Brasil, CC BY 3.0 BR."
       },
       "group": "Political"
@@ -213,8 +213,8 @@ const timelineData = {
         "text": "<p>In December 2001, Argentina's economy imploded in <a href='https://en.wikipedia.org/wiki/1998%E2%80%932002_Argentine_great_depression'><em>La Crisis</em></a>. The government froze bank accounts, limiting withdrawals to $250/week. On December 19–20, massive <a href='https://en.wikipedia.org/wiki/December_2001_riots_in_Argentina'>riots erupted</a> — 39 killed as police clashed with crowds banging pots in the famous <em>cacerolazos</em>. President de la Rúa fled by helicopter. Argentina defaulted on $93 billion — then the largest sovereign default in history. Unemployment soared above 23%.</p><p>The crisis paradoxically transformed tango. Many of Buenos Aires' best teachers — unable to earn a living with the peso at 4:1 — emigrated to teach in Europe, the US, and Japan, seeding communities worldwide. When conditions stabilized, the devalued peso made Buenos Aires astonishingly cheap, sparking a boom in tango tourism. This cycle — teachers spreading tango globally, then students pouring into Buenos Aires — created the worldwide ecosystem that exists today.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Cacerolazo_Argentina_2001-2002.jpg",
-        "credit": "Cacerolazo protests during 2001 Argentine economic crisis. Wikimedia Commons, GNU FDL / CC BY-SA 3.0."
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Crisis_20_diciembre_2001.jpg",
+        "credit": "December 2001 crisis protests in Buenos Aires. Wikimedia Commons."
       },
       "group": "Political"
     },
@@ -225,7 +225,7 @@ const timelineData = {
         "text": "<p>In 2003, Buenos Aires launched the first <a href='https://en.wikipedia.org/wiki/World_tango_dance_tournament'>Campeonato Mundial de Baile de Tango</a> (World Tango Championship). Two categories remain today: <strong>Tango de Pista</strong> (couples dance simultaneously to unfamiliar music, maintaining embrace, moving counterclockwise as in a traditional milonga) and <strong>Tango Escenario</strong> (solo choreographed routines with lifts and theatrical expression). In 2013, rules expanded to allow same-gender couples.</p><p>Many traditional milongueros viewed the competition as antithetical to tango's essence — improvisation over scores, connection over judges. Despite tensions, the Mundial has profoundly shaped global tango. Winning opens doors to international careers. By 2024, over 750 couples from 53 countries competed. Qualifying rounds are held worldwide — Tokyo, Moscow, London, New York, Istanbul — creating a truly global infrastructure.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Buenos_Aires_Festival_y_Mundial_de_Tango.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Buenos_Aires_Festival_y_Mundial_de_Tango.jpg",
         "credit": "Buenos Aires Festival y Mundial de Tango. Photo by Gobierno de la Ciudad de Buenos Aires, CC BY 2.0."
       },
       "group": "Cultural"
@@ -237,7 +237,7 @@ const timelineData = {
         "text": "<p>Carlos Eduardo Gavito (April 27, 1942 – July 1, 2005) grew up in Avellaneda, attending tango <em>prácticas</em> where older men practiced with young boys. His rise to fame came when he joined <a href='https://en.wikipedia.org/wiki/Forever_Tango'><em>Forever Tango</em></a>, opening on Broadway in 1997 and seen by more than five million people. Dancing with Marcela Durán, Gavito became the show's breakout star. He died of cancer in Buenos Aires, buried at <a href='https://en.wikipedia.org/wiki/La_Chacarita_Cemetery'>La Chacarita Cemetery</a>.</p><p>Gavito's style was famously minimalist: dramatic pauses and slow movements to let music breathe. He compared savoring each step to a child licking ice cream slowly to make it last. His philosophy: tango is not about steps but connection — 'a three-minute commitment.' He taught that the man who doesn't make the woman look like a queen will never be king. <em>Forever Tango</em> introduced millions to Argentine tango and inspired a generation.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Gavito_and_Plazaola%2C_Stockholm_Workshop%2C_2004-08-27_b.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Gavito_and_Plazaola%2C_Stockholm_Workshop%2C_2004-08-27_b.jpg",
         "credit": "Carlos Gavito at a Stockholm workshop, August 27, 2004. Wikimedia Commons."
       },
       "group": "Death"
@@ -273,7 +273,7 @@ const timelineData = {
         "text": "<p>On September 30, 2009, in Abu Dhabi, <a href='https://en.wikipedia.org/wiki/UNESCO'>UNESCO</a> inscribed tango on the <a href='https://ich.unesco.org/en/RL/tango-00258'>Representative List of the Intangible Cultural Heritage of Humanity</a>. The inscription was a joint nomination by Argentina and Uruguay — two nations that had disputed tango's origins but united to protect their shared treasure. The recognition encompassed the full 'symbolic universe': music, dance, poetry, song, social customs, codes (like the <em>cabeceo</em>), and oral traditions.</p><p>The recognition was a watershed moment. It formally acknowledged that tango embodies 'diversity and cultural dialogue,' practiced in traditional Buenos Aires halls while adapting worldwide. Both countries committed to safeguarding plans, including training centers. The recognition gave tango communities — musicians, dancers, composers, teachers — formal status as cultural bearers. It bolstered cultural tourism, strengthened tango education, and raised global awareness that tango is living heritage reflecting the soul of the Río de la Plata.</p>"
       },
       "media": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Buenos_Aires_-_Tango_dancers_in_Sunderland_Club_-_7090.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Buenos_Aires_-_Tango_dancers_in_Sunderland_Club_-_7078.jpg",
         "credit": "Tango dancers at the Sunderland Club, Buenos Aires. Photo by Jorge Royan, CC BY-SA 3.0."
       },
       "group": "Cultural"
@@ -314,10 +314,11 @@ export default function EventsTimelinePage() {
     if (timelineLoaded && timelineRef.current && window.TL) {
       new window.TL.Timeline('timeline-embed', timelineData, {
         hash_bookmark: true,
-        initial_zoom: 2,
-        scale_factor: 2,
+        initial_zoom: 1,
+        scale_factor: 1,
         timenav_position: 'bottom',
-        optimal_tick_width: 100
+        optimal_tick_width: 80,
+        timenav_height_percentage: 25
       });
     }
   }, [timelineLoaded]);
@@ -337,8 +338,15 @@ export default function EventsTimelinePage() {
       />
 
       <Container maxWidth="xl" sx={{ py: 4 }}>
-        <Button component={Link} href="/tango-history" startIcon={<ArrowBackIcon />} sx={{ mb: 2 }}>
-          Back to Timeline
+        <Button
+          component={Link}
+          href="/tango-history"
+          variant="contained"
+          size="large"
+          startIcon={<ArrowBackIcon />}
+          sx={{ mb: 3, bgcolor: '#1976d2', '&:hover': { bgcolor: '#1565c0' } }}
+        >
+          View Era Map
         </Button>
 
         <Box sx={{ mb: 3 }}>
@@ -388,9 +396,24 @@ export default function EventsTimelinePage() {
               Argentina Timeline
             </Button>
             <Button component={Link} href="/tango-history" variant="outlined">
-              All Timelines
+              Era Map
             </Button>
           </Box>
+        </Paper>
+
+        {/* Disclaimer */}
+        <Paper sx={{
+          p: 2,
+          bgcolor: 'warning.light',
+          borderLeft: '4px solid',
+          borderColor: 'warning.dark',
+          mt: 4
+        }}>
+          <Typography variant="body2" color="text.primary">
+            <strong>Disclaimer:</strong> This timeline was researched and compiled using AI assistance (Claude/Anthropic).
+            Toby Balsley facilitated and curated this research but is not the author of the historical content.
+            Errors may exist — corrections and contributions from the tango community are welcome.
+          </Typography>
         </Paper>
       </Container>
     </>

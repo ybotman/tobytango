@@ -85,6 +85,44 @@ Flag uncertain facts with `[HITM REVIEW NEEDED]`.
 
 ---
 
+## Timeline Event Suggestions
+
+At the end of your paper, include a **Timeline Events** section with suggested events for the interactive timeline. For each event:
+
+```markdown
+### Suggested Timeline Events
+
+#### [Event Name]
+- **Date**: YYYY-MM-DD (be as specific as possible)
+- **Type**: [Recording|Death|Political|Cultural|Show|Film|Music]
+- **Headline**: Short title (5-10 words)
+- **Description**: 1-2 paragraphs
+- **Image Search Terms**: Keywords for Wikimedia Commons search
+- **Cross-References**: Related eras/categories
+```
+
+**Note:** Do NOT provide image URLs directly. Provide search terms instead. Sage will use the Wikimedia Commons API to find and verify actual image URLs.
+
+---
+
+## Image Guidelines
+
+**IMPORTANT: Do not guess or construct Wikimedia URLs.**
+
+Instead, provide:
+1. **Search terms** for Wikimedia Commons (e.g., "Carlos Gardel 1920s portrait")
+2. **Alternative subjects** if primary not available (e.g., "Abasto neighborhood Buenos Aires" if no Gardel photo)
+3. **Image type preference** (portrait, location, document, sheet music)
+
+Sage will:
+1. Search Wikimedia Commons API with your terms
+2. Verify the URL returns HTTP 200
+3. Extract proper attribution from API metadata
+
+This prevents broken image links from hallucinated URLs.
+
+---
+
 **END OF PROMPT**
 ```
 
