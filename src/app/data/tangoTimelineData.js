@@ -53,7 +53,7 @@ export const timelineCategories = [
         id: "guardia-nueva",
         title: "La Guardia Nueva",
         subtitle: "The New Guard",
-        yearStart: 1920,
+        yearStart: 1925,
         yearEnd: 1935,
         status: "populated",
         summary: [
@@ -154,20 +154,27 @@ export const timelineCategories = [
         id: "investigacion",
         title: "La Investigación",
         subtitle: "The Investigation / Early Nuevo",
-        yearStart: 1995,
+        yearStart: 1990,
         yearEnd: 2005,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Naveira and Salas analyze tango mechanics at Cochabamba sessions",
-          "Open embrace, nuevo vocabulary enters the picture",
-          "Campeonato Mundial begins (2003)",
-          "2001-2002 economic crisis accelerates tango tourism"
+          "Cochabamba 444 practica (early 1990s–1997): birthplace of tango investigation movement",
+          "Naveira & Salas reduce tango to 3 fundamental steps: cruce adelante, apertura, cruce atrás",
+          "Shift from 'what to dance' → 'how to dance': analytical framework replaces rote memorization",
+          "Off-axis vocabulary systematized: volcadas, colgadas, soltadas — Salas called 'Father of Volcadas'",
+          "Chicho joins Investigation Group 1994 — 'In one month-and-a-half I learned what I hadn't learned in two years'",
+          "Cosmotango organization and CITA festival founded (1999)",
+          "2001-2002 economic crisis makes Buenos Aires affordable — tango tourism explodes"
         ],
         keyFigures: [
-          { name: "Gustavo Naveira", type: "individual", role: "Investigation pioneer" },
-          { name: "Fabian Salas", type: "individual", role: "Investigation pioneer" }
+          { name: "Gustavo Naveira", type: "individual", role: "Architect of investigation — born 1960, studied with Dinzels, Pepito, Todaro, Virulazo" },
+          { name: "Fabián Salas", type: "individual", role: "Co-architect — trained as lawyer, first touring tango teacher (1992), 'Father of Volcadas'" },
+          { name: "Chicho Frumboli", type: "individual", role: "Prodigy — rock drummer who became 'absolutely the best dancer' (Naveira)" },
+          { name: "Giselle Anne", type: "individual", role: "Classical ballet background, National Dance School — brought academic rigor" },
+          { name: "Luciana Valle", type: "individual", role: "Investigation Group 1995-1997, contributed to universal teaching language" },
+          { name: "El Pulpo Esbrez", type: "individual", role: "Developed suspension concept, extended barrida vocabulary" }
         ],
-        paperPath: null
+        paperPath: "/tango-papers/argentina/investigacion.md"
       },
       {
         id: "nuevo-peak",
@@ -175,15 +182,21 @@ export const timelineCategories = [
         subtitle: "Globalization Peak",
         yearStart: 2005,
         yearEnd: 2012,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Nuevo tango dance reaches peak visibility",
+          "40+ tango festivals in North America alone by 2006; CITA Buenos Aires: 30+ teachers, 90+ classes",
+          "Istanbul becomes 'world's second-largest tango city'; Japan, Korea, Australia scenes mature",
+          "Chicho & Juana's Canaro tangos and d'Arienzo milongas shock purists — nuevo meets Golden Age",
+          "YouTube launches 2005 — demo videos spread movement vocabulary globally overnight",
           "UNESCO declares tango Intangible Cultural Heritage (2009)",
-          "Marathon and encuentro formats emerge as counter-movement",
-          "Global community fractures between traditionalists and innovators"
+          "Teaching systematized: figures named, vocabulary codified, anyone can learn the framework"
         ],
-        keyFigures: [],
-        paperPath: null
+        keyFigures: [
+          { name: "Chicho Frumboli & Juana Sepúlveda", type: "couple", role: "Peak nuevo expression — virtuosity + Golden Age music" },
+          { name: "Pablo Verón", type: "individual", role: "Film star (Tango Lesson), nuevo poster figure" },
+          { name: "Fabian Salas & Lola Diaz", type: "couple", role: "Investigation systematizer, tours worldwide" }
+        ],
+        paperPath: "/tango-papers/argentina/nuevo-to-neotrad.md"
       },
       {
         id: "neo-traditional",
@@ -191,15 +204,21 @@ export const timelineCategories = [
         subtitle: "Return to Roots",
         yearStart: 2008,
         yearEnd: 2030,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Widespread return to traditional values and close embrace",
-          "Encuentro milonguero movement grows",
-          "Last milongueros pass: Tete (2010), Cartery (2015), Segarra (2018)",
-          "Documentation and preservation become urgent"
+          "2008 financial crisis ends festival economy — teachers can't sustain international circuit",
+          "Encuentro milonguero format spreads from Europe: all-invite, códigos enforced, DJ-centric",
+          "Close embrace + nuevo body mechanics + Golden Age music = neo-traditional synthesis",
+          "Chicho himself shifts to close embrace; Gavito's apilado embraced by former nuevo dancers",
+          "Last milongueros pass: Tete (2010), Cartery (2015), Segarra (2018) — preservation urgent",
+          "COVID (2020-2022) devastates communities; survivors rebuild with stronger local focus"
         ],
-        keyFigures: [],
-        paperPath: null
+        keyFigures: [
+          { name: "Carlos Gavito", type: "individual", role: "Apilado embrace icon — 'tango is a feeling' (1942–2005)" },
+          { name: "Tete Rusconi", type: "individual", role: "Last guardian of estilo del centro (1936–2010)" },
+          { name: "Osvaldo y Coca Cartery", type: "couple", role: "Unbroken milonguero tradition (Coca d. 2015)" }
+        ],
+        paperPath: "/tango-papers/argentina/nuevo-to-neotrad.md"
       }
     ]
   },
@@ -715,8 +734,8 @@ export const timelineCategories = [
       {
         id: "guardia-nueva-orchestras",
         title: "Guardia Nueva Orchestras",
-        subtitle: "Birth of the Orquesta Típica",
-        yearStart: 1920,
+        subtitle: "Refinement of the Orquesta Típica",
+        yearStart: 1925,
         yearEnd: 1935,
         status: "populated",
         summary: [
@@ -772,21 +791,27 @@ export const timelineCategories = [
       {
         id: "post-golden",
         title: "Post-Golden Age",
-        subtitle: "Evolution & Decline",
+        subtitle: "When the Orchestras Died",
         yearStart: 1955,
         yearEnd: 1990,
-        status: "partial",
+        status: "populated",
         summary: [
-          "Big Four collapse: Di Sarli dies 1960, Troilo 1975, D'Arienzo 1976",
-          "Orquestas típicas: hundreds → single digits; economics force downsizing to duos/quintets",
-          "Pugliese alone survives — imprisoned by every regime, red carnation defiance",
-          "Piazzolla's nuevo tango splits community: 'music to listen to, not dance to'"
+          "Coup Sept 16, 1955: Perón overthrown — tango funding evaporates, gatherings restricted",
+          "Military imposes indoor curfews, licensing fees; orchestras can't fill venues or get paid",
+          "Big Four collapse: Di Sarli (1960), D'Arienzo (1976), Troilo (1975), Pugliese survives to 1995",
+          "Orquestas típicas: ~200 (1945) → 12-15 (1965) → 2-3 (1975) — economic extinction",
+          "1970s rock Nacional captures youth; 'Flaca' (Spinetta) replaces 'La Cumparsita'",
+          "Piazzolla's Octeto Buenos Aires (1955) polarizes: 'not tango' vs. 'tango's future'",
+          "80,000+ master recordings lost in vault fires (SADAIC 1962, Radio El Mundo 1988)"
         ],
         keyFigures: [
-          { name: "Osvaldo Pugliese", type: "orchestra", role: "Last survivor of Big Four (1905–1995)" },
-          { name: "Astor Piazzolla", type: "individual", role: "Nuevo tango revolution (1921–1992)" }
+          { name: "Osvaldo Pugliese", type: "orchestra", role: "Last survivor of Big Four — red carnation defiance (1905–1995)" },
+          { name: "Astor Piazzolla", type: "individual", role: "Nuevo tango revolution — exiled from dance halls (1921–1992)" },
+          { name: "Sexteto Tango", type: "orchestra", role: "Ex-Pugliese musicians, late-night Radio Municipal (1968–present)" },
+          { name: "Carlos Di Sarli", type: "orchestra", role: "Last concert June 12, 1960; died Jan 12, 1983 (1903–1960)" },
+          { name: "Aníbal Troilo", type: "orchestra", role: "Kept 15-piece orchestra through bad years; died May 18, 1975" }
         ],
-        paperPath: null
+        paperPath: "/tango-papers/orchestras/post-golden.md"
       },
       {
         id: "revival-orchestras",
