@@ -1481,10 +1481,18 @@ export const timelineCategories = [
         yearEnd: 2022,
         status: "populated",
         summary: [
-          "March 8, 2020: All BA milongas close simultaneously — 118-200 venues, 18 months quarantine",
-          "50+ milongas closed permanently; 10,000-person industry collapses",
-          "Musicians pawn bandoneóns; 'Many older people died of sadness more than COVID'",
-          "Reopening Sept 2021: 'We're back, but the industry isn't on its feet yet'"
+          "March 8, 2020: All BA milongas close simultaneously — 118-200 venues, 18 months quarantine (world's longest)",
+          "50+ milongas closed permanently; 10,000-person industry collapses; musicians pawn bandoneóns",
+          "Survival strategies: Fabián Salas offers free Zoom classes; Nicolás Ponce sells plants; teachers pivot online",
+          "Mora Godoy (taught Obama) closes school after 419 shows in 2019; La Viruta cuts 18 employees to 3",
+          "Rivadavia Club (16 years) shutters March 2021; Daniel Rezk's Nuevo Gricel somehow survives entire pandemic",
+          "Reopening Sept 2021: smaller but committed communities; encuentro circuit dark for 2 full years"
+        ],
+        keyFigures: [
+          { name: "Mora Godoy", type: "individual", role: "Closed school after 419 shows in 2019" },
+          { name: "Fabián Salas", type: "individual", role: "Offered free Zoom technique classes" },
+          { name: "Daniel Rezk", type: "individual", role: "Kept Nuevo Gricel alive through entire pandemic" },
+          { name: "Luciana Fuentes", type: "individual", role: "Organized defiant outdoor dancing at the Obelisco" }
         ],
         eventType: "political",
         paperPath: "/tango-papers/events/covid-pandemic.md"
@@ -1497,10 +1505,12 @@ export const timelineCategories = [
         yearEnd: 2022,
         status: "populated",
         summary: [
-          "Juan Carlos Copes dies January 16, 2021 at 89 — COVID",
-          "Pioneer of tango escenario, 'Tango Argentino' star, controversial legacy"
+          "Juan Carlos Copes dies January 16, 2021 at 89 — COVID; highest-profile pandemic loss in tango",
+          "Contracted virus December 2020; died in Buenos Aires hospital",
+          "Created 'Tango Argentino' (Paris 1983, Broadway 1985) that triggered worldwide revival",
+          "Taught Liza Minnelli, Robert Duvall, Mikhail Baryshnikov, Julio Bocca"
         ],
-        keyFigures: [{ name: "Juan Carlos Copes", type: "individual" }],
+        keyFigures: [{ name: "Juan Carlos Copes", type: "individual", role: "Turned tango from social dance to theatrical art form" }],
         eventType: "death"
       }
     ]

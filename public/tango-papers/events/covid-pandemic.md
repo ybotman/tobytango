@@ -14,7 +14,28 @@ The toll was devastating. More than 50 milongas closed permanently. The Rivadavi
 
 In August 2021, Buenos Aires distributed 16 million pesos (about $152,000) among roughly 100 tango clubs — barely enough to cover a month of expenses.
 
-Communities adapted as best they could: online classes, outdoor milongas at the Obelisco, couples dancing in their apartments. The annual World Championship went virtual in 2020, with dancers submitting video recordings — the Association of Milongas called it "ridiculous."
+Communities adapted as best they could:
+
+- **Fabián Salas** — co-founder of CITA festival — offered free technique classes via Zoom, giving away what he'd once charged premium festival prices for
+- **Iván Romero**, a prominent dancer, survived by teaching online: "I didn't make money but could at least survive"
+- **Luciana Fuentes** practiced alone with a broom every day and organized defiant outdoor dancing at the Obelisco, fearing her muscles would forget to dance
+- **Meredith Klein** (Philadelphia) offered Zoom classes and lectures, though they replaced only 10% of her school's lost income
+
+**Mora Godoy** — who once taught tango steps to President Obama — had to close her dance school. She had done 419 shows in 2019 and over 100 in early 2020 before the shutdown.
+
+**Daniel Rezk**, 76-year-old owner of Nuevo Gricel, somehow kept the venue alive through the entire 18-month closure — one of the few to survive intact.
+
+The annual World Championship went virtual in 2020, with dancers submitting video recordings — the Association of Milongas called it "ridiculous."
+
+## The Highest-Profile Loss
+
+On January 16, 2021, **Juan Carlos Copes** died of COVID-19 complications at age 89 in a Buenos Aires hospital. He had contracted the virus in December 2020. The New York Times obituary called him the man who turned tango from a social dance into a theatrical art form. He created the "Tango Argentino" show that premiered in Paris in 1983 and hit Broadway in 1985, triggering the worldwide tango revival. He had taught Liza Minnelli, Robert Duvall, Mikhail Baryshnikov, and Julio Bocca. His death was tango's single highest-profile COVID loss.
+
+## Regional Differences
+
+The devastation was overwhelmingly Argentina-focused. Buenos Aires had the world's longest lockdown — 18 months — and the most concentrated economic collapse.
+
+**USA and Europe** experienced shorter lockdowns (3–6 months in most US states, variable in Europe) and faster reopenings, but significant community attrition. Studios closed permanently in London, Berlin, and other cities. The encuentro circuit went dark for nearly two full years.
 
 ## The Cruelest Impact
 

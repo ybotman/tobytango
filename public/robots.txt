@@ -3,8 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://tobytango.com
+Host: https://www.tobytango.com
 
 # Sitemaps
-Sitemap: https://tobytango.com/sitemap.xml
-Sitemap: https://tobytango.com/server-sitemap.xml
+Sitemap: https://www.tobytango.com/sitemap.xml
+Sitemap: https://www.tobytango.com/server-sitemap.xml
