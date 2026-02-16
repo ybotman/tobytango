@@ -10,7 +10,7 @@ By 2006, **more than 40 tango festivals operated in North America alone**. The C
 
 ### YouTube Changes Everything
 
-YouTube's launch in February 2005 coincided almost perfectly with this peak. Chicho and Eugenia Parrilla dancing to Narcotango's "Plano Secuencia" became a defining clip of the era. But as one observer noted, the early YouTube archive was "overrepresented by the most highly stylized examples of tango — almost none of it social dancing."
+YouTube's launch in February 2005 coincided almost perfectly with this peak. [Chicho](/people/chicho-frumboli) and Eugenia Parrilla dancing to Narcotango's "Plano Secuencia" became a defining clip of the era. But as one observer noted, the early YouTube archive was "overrepresented by the most highly stylized examples of tango — almost none of it social dancing."
 
 ### The Electrotango Moment
 
@@ -28,7 +28,7 @@ Electrotango's real dance home was **outside Argentina** — in North American "
 
 By August 2008, according to anthropologist Carolyn Merritt, **the youth scene in Buenos Aires had begun a retrenchment to close embrace and traditional music.** The global financial crisis of September 2008 aligned precisely with this shift.
 
-Then came September 2009, when Gustavo Naveira — the co-founder of tango nuevo — **taught a "Seminario on Tango Milonguero" in Boulder, Colorado**. When nuevo's own architect began teaching milonguero, the signal was unmistakable.
+Then came September 2009, when [Gustavo Naveira](/people/gustavo-naveira) — the co-founder of tango nuevo — **taught a "Seminario on Tango Milonguero" in Boulder, Colorado**. When nuevo's own architect began teaching milonguero, the signal was unmistakable.
 
 ### UNESCO Inscription (September 30, 2009)
 
@@ -36,14 +36,14 @@ The UNESCO Intergovernmental Committee inscribed tango on the Representative Lis
 
 ### Chicho's Confession (December 2009)
 
-In **El Tangauta** magazine, Chicho Frúmboli delivered a devastating self-critique:
+In **El Tangauta** magazine, [Chicho Frúmboli](/people/chicho-frumboli) delivered a devastating self-critique:
 
 > "The problem is that we missed something in the teaching, I take total responsibility. **I can't pass on what I have learned.** I was crazy about creating, because I saw a new vein in the evolution of the movement. I threw myself into that, and I lost the way to be able to pass on the tango essence."
 
 ### The Guardians Depart
 
-- **Tete Rusconi** gave his last performance on December 28, 2009, and died **January 7, 2010**
-- **El Turco José** died **April 15, 2010**
+- **[Tete Rusconi](/people/tete-rusconi)** gave his last performance on December 28, 2009, and died **January 7, 2010**
+- **[El Turco José](/people/el-turco-jose)** died **April 15, 2010**
 
 By **September 2011, Practica X had closed.** The era was over.
 
