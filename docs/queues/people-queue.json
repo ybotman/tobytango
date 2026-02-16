@@ -193,22 +193,22 @@
       "slug": "carlos-gardel",
       "displayName": "Carlos Gardel",
       "type": "singer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 18,
-      "notes": "El Zorzal Criollo, most famous tango singer ever, died 1935",
+      "notes": "El Zorzal Criollo, created tango-canción 1917, died plane crash Medellín 1935",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "astor-piazzolla",
       "displayName": "Astor Piazzolla",
       "type": "composer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 19,
-      "notes": "Nuevo tango (music), bandoneonist, revolutionary composer",
+      "notes": "Nuevo tango revolutionary, 750 compositions, Libertango, studied with Boulanger",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
     },
     {
@@ -336,9 +336,9 @@
   "stats": {
     "total": 30,
     "pending": 0,
-    "prompt_ready": 13,
+    "prompt_ready": 12,
     "in_progress": 0,
-    "completed": 17,
+    "completed": 18,
     "blocked": 0
   }
 }

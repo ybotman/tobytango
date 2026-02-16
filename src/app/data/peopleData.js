@@ -360,13 +360,13 @@ const peopleData = [
     fullName: "Astor Pantaleón Piazzolla",
     type: "composer",
     generation: "post-golden",
-    born: "1921",
-    died: "1992",
+    born: "1921-03-11",
+    died: "1992-07-04",
     nationality: "Argentine",
-    tags: ["composer", "bandoneon", "nuevo-tango-music", "revolutionary"],
-    summary: "Nuevo tango (music) revolutionary, legendary bandoneonist and composer.",
+    tags: ["composer", "bandoneon", "nuevo-tango-music", "revolutionary", "quintet"],
+    summary: "Tango assassin/savior — revolutionized tango into nuevo tango, 750 compositions, Libertango, studied with Boulanger. 'I performed plastic surgery on it.'",
     paperPath: "/tango-papers/people/astor-piazzolla.md",
-    status: "pending",
+    status: "published",
     priority: 19
   },
 

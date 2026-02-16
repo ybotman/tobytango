@@ -1227,6 +1227,21 @@
       "status": "complete"
     },
     {
+      "id": "astor-piazzolla",
+      "type": "person",
+      "displayName": "Astor Piazzolla",
+      "fullName": "Astor Pantaleón Piazzolla",
+      "born": "1921-03-11",
+      "died": "1992-07-04",
+      "nationality": "Argentina",
+      "categories": ["composers", "musicians"],
+      "eras": ["epoca-de-oro", "decadencia", "renacimiento"],
+      "summary": "Nuevo tango revolutionary; 750 compositions; Libertango; studied with Boulanger; 'I performed plastic surgery on tango'",
+      "appearsIn": ["/tango-papers/people/astor-piazzolla.md"],
+      "paperPath": "/tango-papers/people/astor-piazzolla.md",
+      "status": "complete"
+    },
+    {
       "id": "rodolfo-biagi",
       "type": "orchestra",
       "displayName": "Rodolfo Biagi",
