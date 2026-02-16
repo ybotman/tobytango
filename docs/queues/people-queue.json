@@ -149,44 +149,44 @@
       "slug": "susana-miller",
       "displayName": "Susana Miller",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 14,
-      "notes": "Bridge generation, brought milonguero style to US, encuentro pioneer",
+      "notes": "Bridge generation, coined 'milonguero style' term, founded La Academia and El Beso",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "pablo-veron",
       "displayName": "Pablo Verón",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 15,
-      "notes": "Stage pioneer, The Tango Lesson film, Sally Potter",
+      "notes": "Stage pioneer, The Tango Lesson, Guggenheim Fellow, 'feet of God'",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "miguel-angel-zotto",
       "displayName": "Miguel Ángel Zotto",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 16,
-      "notes": "Stage pioneer, Tango x 2, Milena Plebs partner",
+      "notes": "Face of tango, one of three greatest, María Ruanova Award, Tango x 2 creator",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "milena-plebs",
       "displayName": "Milena Plebs",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 17,
-      "notes": "Stage pioneer, Tango x 2, El Tangauta interviewer",
+      "notes": "Dancer who writes, Teatro San Martín, Tango x 2, El Tangauta columnist",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
     },
     {
@@ -335,10 +335,10 @@
   ],
   "stats": {
     "total": 30,
-    "pending": 5,
-    "prompt_ready": 12,
+    "pending": 0,
+    "prompt_ready": 13,
     "in_progress": 0,
-    "completed": 13,
+    "completed": 17,
     "blocked": 0
   }
 }

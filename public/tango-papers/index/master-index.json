@@ -488,6 +488,19 @@
       "status": "complete"
     },
     {
+      "id": "susana-miller",
+      "type": "person",
+      "displayName": "Susana Miller",
+      "fullName": "Susana Miller",
+      "nationality": "Argentina",
+      "categories": ["dancers", "teachers"],
+      "eras": ["bridge-generation", "renacimiento", "globalization"],
+      "summary": "Coined 'milonguero style' term (1990s); founded La Academia de Tango Milonguero and El Beso milonga; Clarín named her one of four most important influences on contemporary tango",
+      "appearsIn": ["/tango-papers/people/susana-miller.md"],
+      "paperPath": "/tango-papers/people/susana-miller.md",
+      "status": "complete"
+    },
+    {
       "id": "silvia-ceriani",
       "type": "person",
       "displayName": "Silvia Ceriani",
@@ -2164,6 +2177,47 @@
         "/tango-papers/usa/broadway-impact.md"
       ],
       "paperPath": "/tango-papers/people/maria-nieves.md",
+      "status": "complete"
+    },
+    {
+      "id": "pablo-veron",
+      "type": "person",
+      "displayName": "Pablo Verón",
+      "fullName": "Pablo Verón",
+      "born": "1971-10-17",
+      "nationality": "Argentina",
+      "categories": ["dancers", "stage-pioneers", "film"],
+      "eras": ["renacimiento", "globalization"],
+      "summary": "'Feet of God' (NYT); starred in The Tango Lesson (1997); Guggenheim Fellow; American Choreography Award",
+      "appearsIn": ["/tango-papers/people/pablo-veron.md"],
+      "paperPath": "/tango-papers/people/pablo-veron.md",
+      "status": "complete"
+    },
+    {
+      "id": "miguel-angel-zotto",
+      "type": "person",
+      "displayName": "Miguel Ángel Zotto",
+      "fullName": "Miguel Ángel Zotto",
+      "born": "1958-08-07",
+      "nationality": "Argentina",
+      "categories": ["dancers", "stage-pioneers", "choreographers"],
+      "eras": ["renacimiento", "globalization"],
+      "summary": "Face of tango; one of three greatest dancers of the century; María Ruanova Award; National Tango Academy Academic; Tango x 2 creator with Milena Plebs",
+      "appearsIn": ["/tango-papers/people/miguel-angel-zotto.md"],
+      "paperPath": "/tango-papers/people/miguel-angel-zotto.md",
+      "status": "complete"
+    },
+    {
+      "id": "milena-plebs",
+      "type": "person",
+      "displayName": "Milena Plebs",
+      "fullName": "Milena Plebs",
+      "nationality": "Argentina",
+      "categories": ["dancers", "stage-pioneers", "choreographers", "journalists"],
+      "eras": ["renacimiento", "globalization"],
+      "summary": "Dancer who writes; Teatro San Martín trained; Tango x 2 co-creator; María Ruanova Award; El Tangauta columnist; Honorary Academic",
+      "appearsIn": ["/tango-papers/people/milena-plebs.md"],
+      "paperPath": "/tango-papers/people/milena-plebs.md",
       "status": "complete"
     },
     {
