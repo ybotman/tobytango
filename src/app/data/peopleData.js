@@ -676,6 +676,53 @@ const peopleData = [
     paperPath: "/tango-papers/people/noelia-hurtado.md",
     status: "published",
     priority: 43
+  },
+
+  // === GUARDIAN GENERATION (additional) ===
+  {
+    slug: "gerardo-portalea",
+    displayName: "Gerardo Portalea",
+    fullName: "Gerardo Portalea",
+    type: "dancer",
+    generation: "guardian",
+    born: "1929",
+    died: null,
+    nationality: "Argentine",
+    tags: ["guardian-generation", "milonguero", "villa-urquiza", "sin-rumbo", "teacher"],
+    summary: "The patio dancer — Villa Urquiza legend, slow elegant style, Milonguita's heir, telephone employee by day.",
+    paperPath: "/tango-papers/people/gerardo-portalea.md",
+    status: "published",
+    priority: 44
+  },
+  {
+    slug: "pupi-castello",
+    displayName: "Pupi Castello",
+    fullName: "Ernesto Norberto Castello",
+    type: "dancer",
+    generation: "guardian",
+    born: "1936",
+    died: "2007",
+    nationality: "Argentine",
+    tags: ["guardian-generation", "milonguero", "tango-salon", "musicality"],
+    summary: "Elegant and musical — learned tango in Golden Age, profound musicality, Danza Maligna cast.",
+    paperPath: "/tango-papers/people/pupi-castello.md",
+    status: "published",
+    priority: 45
+  },
+  {
+    slug: "ricardo-vidort",
+    displayName: "Ricardo Vidort",
+    fullName: "Ricardo Vidort",
+    type: "dancer",
+    generation: "guardian",
+    born: "1929",
+    died: "2006-05-21",
+    nationality: "Argentine",
+    tags: ["guardian-generation", "milonguero", "philosopher", "teacher", "parapsychology"],
+    summary: "The philosopher milonguero — degree in parapsychology, Petroleo's student, taught internationally.",
+    paperPath: "/tango-papers/people/ricardo-vidort.md",
+    status: "published",
+    priority: 46
   }
 ];
 

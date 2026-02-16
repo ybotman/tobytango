@@ -466,31 +466,34 @@
       "slug": "gerardo-portalea",
       "displayName": "Gerardo Portalea",
       "type": "dancer",
-      "status": "pending",
+      "status": "completed",
       "priority": 44,
       "notes": "42 mentions in papers - Guardian generation, Villa Urquiza master",
       "addedDate": "2026-02-16",
-      "source": "auto-discovered"
+      "source": "auto-discovered",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "pupi-castello",
       "displayName": "Pupi Castello",
       "type": "dancer",
-      "status": "pending",
+      "status": "completed",
       "priority": 45,
       "notes": "28 mentions - Guardian generation milonguero",
       "addedDate": "2026-02-16",
-      "source": "auto-discovered"
+      "source": "auto-discovered",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "ricardo-vidort",
       "displayName": "Ricardo Vidort",
       "type": "dancer",
-      "status": "pending",
+      "status": "completed",
       "priority": 46,
       "notes": "27 mentions - milonguero philosopher, Guardian generation",
       "addedDate": "2026-02-16",
-      "source": "auto-discovered"
+      "source": "auto-discovered",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "julio-de-caro",
@@ -605,10 +608,10 @@
   ],
   "stats": {
     "total": 57,
-    "pending": 14,
+    "pending": 11,
     "prompt_ready": 0,
     "in_progress": 0,
-    "completed": 43,
+    "completed": 46,
     "blocked": 0
   }
 }

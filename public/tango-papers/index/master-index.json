@@ -3304,6 +3304,64 @@
       "status": "complete"
     },
     {
+      "id": "gerardo-portalea",
+      "type": "person",
+      "displayName": "Gerardo Portalea",
+      "born": "1929",
+      "categories": [
+        "dancers",
+        "argentina"
+      ],
+      "eras": [
+        "guardian-generation"
+      ],
+      "summary": "The patio dancer — Villa Urquiza legend; slow elegant style; Milonguita's heir; telephone employee by day",
+      "appearsIn": [
+        "/tango-papers/people/gerardo-portalea.md"
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "pupi-castello",
+      "type": "person",
+      "displayName": "Pupi Castello",
+      "fullName": "Ernesto Norberto Castello",
+      "born": "1936",
+      "died": "2007",
+      "categories": [
+        "dancers",
+        "argentina"
+      ],
+      "eras": [
+        "guardian-generation"
+      ],
+      "summary": "Elegant and musical — learned tango in Golden Age; profound musicality; Danza Maligna cast",
+      "appearsIn": [
+        "/tango-papers/people/pupi-castello.md"
+      ],
+      "status": "complete"
+    },
+    {
+      "id": "ricardo-vidort",
+      "type": "person",
+      "displayName": "Ricardo Vidort",
+      "born": "1929",
+      "died": "2006-05-21",
+      "categories": [
+        "dancers",
+        "teachers",
+        "argentina"
+      ],
+      "eras": [
+        "guardian-generation"
+      ],
+      "summary": "The philosopher milonguero — degree in parapsychology; Petroleo's student; taught internationally",
+      "appearsIn": [
+        "/tango-papers/people/ricardo-vidort.md"
+      ],
+      "status": "complete"
+    },
+    {
       "id": "fabian-salas",
       "type": "person",
       "displayName": "Fabián Salas",
