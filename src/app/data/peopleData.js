@@ -402,6 +402,83 @@ const peopleData = [
     paperPath: "/tango-papers/people/cachirulo.md",
     status: "published",
     priority: 23
+  },
+
+  // === CONTEMPORARY FIGURES ===
+  {
+    slug: "ignacio-varchausky",
+    displayName: "Ignacio Varchausky",
+    fullName: "Ignacio Varchausky",
+    type: "musician",
+    generation: "contemporary",
+    born: null,
+    died: null,
+    nationality: "Argentine",
+    tags: ["contrabass", "producer", "el-arranque", "orquesta-escuela", "latin-grammy", "preservation"],
+    summary: "Most important preservation figure — El Arranque founder, Orquesta Escuela creator, Latin Grammy winner, TangoVia Buenos Aires.",
+    paperPath: "/tango-papers/people/ignacio-varchausky.md",
+    status: "published",
+    priority: 26
+  },
+  {
+    slug: "dimitris-bronowski",
+    displayName: "Dimitris Bronowski",
+    fullName: "Dimitris Bronowski",
+    type: "author",
+    generation: "contemporary",
+    born: null,
+    died: null,
+    nationality: null,
+    tags: ["author", "blogger", "podcast", "tangofulness", "tango-philosophy"],
+    summary: "Author of Tangofulness (12 languages), The Curious Tanguero creator, mission to help 1M experience tango.",
+    paperPath: "/tango-papers/people/dimitris-bronowski.md",
+    status: "published",
+    priority: 27
+  },
+  {
+    slug: "steve-darmo",
+    displayName: "Steve Darmo",
+    fullName: "Steve Darmo",
+    type: "author",
+    generation: "contemporary",
+    born: null,
+    died: null,
+    nationality: null,
+    tags: ["author", "musicality", "tango-endings", "research"],
+    summary: "Author of Tango Endings — studied 1,700 tangos, classified 9 ending types, definitive musicality work.",
+    paperPath: "/tango-papers/people/steve-darmo.md",
+    status: "published",
+    priority: 28
+  },
+  {
+    slug: "guido-iacopetti",
+    displayName: "Guido Iacopetti",
+    fullName: "Guido Iacopetti",
+    type: "musician",
+    generation: "contemporary",
+    born: null,
+    died: null,
+    nationality: "Argentine",
+    tags: ["composer", "guitarist", "arranger", "producer", "sexteto-fantasma", "latin-grammy-nominee"],
+    summary: "Sexteto Fantasma founder, 2025 Latin Grammy nominee, new tango sound blending jazz/rock/Latin rhythms.",
+    paperPath: "/tango-papers/people/guido-iacopetti.md",
+    status: "published",
+    priority: 29
+  },
+  {
+    slug: "roberto-alvarez",
+    displayName: "Roberto Álvarez",
+    fullName: "Roberto Álvarez",
+    type: "musician",
+    generation: "contemporary",
+    born: "1940",
+    died: "2023-03-05",
+    nationality: "Argentine",
+    tags: ["bandoneon", "orchestra-leader", "color-tango", "pugliese-disciple", "arranger", "composer"],
+    summary: "Pugliese's lead bandoneonist (1984–1995), Color Tango founder (1989), carried Pugliese tradition for 30+ years.",
+    paperPath: "/tango-papers/people/roberto-alvarez.md",
+    status: "published",
+    priority: 30
   }
 ];
 
@@ -419,7 +496,8 @@ export const typeLabels = {
   singer: 'Singer',
   composer: 'Composer',
   teacher: 'Teacher',
-  organizer: 'Organizer'
+  organizer: 'Organizer',
+  author: 'Author'
 };
 
 export const generationLabels = {
@@ -428,7 +506,8 @@ export const generationLabels = {
   stage: 'Stage Pioneers',
   nuevo: 'Nuevo Innovators',
   'golden-age': 'Golden Age',
-  'post-golden': 'Post-Golden Age'
+  'post-golden': 'Post-Golden Age',
+  contemporary: 'Contemporary'
 };
 
 export default peopleData;
