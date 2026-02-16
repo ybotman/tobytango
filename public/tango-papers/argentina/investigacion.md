@@ -1,6 +1,6 @@
 # La Investigación: The Decade That Decoded Tango (1990–2005)
 
-**Between roughly 1995 and 2005, a small group of young Argentine dancers did something no one had attempted in tango's century-long history: they systematically dismantled the dance's movement vocabulary, reduced it to a handful of structural principles, and rebuilt it as an analytical framework.** Led by Gustavo Naveira and Fabián Salas, later joined by Mariano "Chicho" Frumboli, this informal research collective — known simply as *la investigación* — replaced rote memorization of hundreds of named sequences with a generative grammar of movement.
+**Between roughly 1995 and 2005, a small group of young Argentine dancers did something no one had attempted in tango's century-long history: they systematically dismantled the dance's movement vocabulary, reduced it to a handful of structural principles, and rebuilt it as an analytical framework.** Led by [Gustavo Naveira](/people/gustavo-naveira) and [Fabián Salas](/people/fabian-salas), later joined by Mariano "[Chicho](/people/chicho-frumboli)" Frumboli, this informal research collective — known simply as *la investigación* — replaced rote memorization of hundreds of named sequences with a generative grammar of movement.
 
 ---
 
@@ -8,7 +8,7 @@
 
 The physical birthplace of the investigation was Buenos Aires's San Telmo neighborhood. **Club General Belgrano, at Cochabamba 444** — three blocks from Plaza Dorrego — became one of the city's first open tango practice sessions in the early 1990s.
 
-The format was deliberately informal: a **1.5-hour lesson** preceded a **4-hour practica** running until 2:30 AM on Thursday and Friday nights. Admission was *a la gorra* — pass the hat, donations only. The first professor at these sessions was **Pepito Avellaneda** himself, the legendary milonguero. Subsequent teachers included Efraín Ordoñez, Mingo Pugliese, and — critically — **Gustavo Naveira with his then-partner Olga Besio**.
+The format was deliberately informal: a **1.5-hour lesson** preceded a **4-hour practica** running until 2:30 AM on Thursday and Friday nights. Admission was *a la gorra* — pass the hat, donations only. The first professor at these sessions was **[Pepito Avellaneda](/people/pepito-avellaneda)** himself, the legendary milonguero. Subsequent teachers included Efraín Ordoñez, Mingo Pugliese, and — critically — **[Gustavo Naveira](/people/gustavo-naveira) with his then-partner Olga Besio**.
 
 ---
 
@@ -18,7 +18,7 @@ The format was deliberately informal: a **1.5-hour lesson** preceded a **4-hour 
 
 Born **August 12, 1960**, in Comodoro Rivadavia, Patagonia. His parents met dancing milonga; his grandfather danced tango. He studied guitar at the conservatory for **13 years**, economics at the University of Buenos Aires, and at the National Dance School for classical and modern dance.
 
-Around 1981, he began studying with **Rodolfo and Gloria Dinzel** — pioneering tango pedagogues who had developed the "Dinzel System" covering over 3,600 catalogued figures. From there, he sought out the old masters directly: **Pepito Avellaneda**, **Antonio Todaro**, **Gerardo Portalea**, and **Virulazo**.
+Around 1981, he began studying with **Rodolfo and Gloria Dinzel** — pioneering tango pedagogues who had developed the "Dinzel System" covering over 3,600 catalogued figures. From there, he sought out the old masters directly: **[Pepito Avellaneda](/people/pepito-avellaneda)**, **Antonio Todaro**, **Gerardo Portalea**, and **Virulazo**.
 
 By the mid-1980s, his classes at the San Martín Cultural Center drew crowds of **200 or more** — one class packed **500 students** into a tiny room.
 
@@ -30,13 +30,13 @@ Salas was Naveira's essential intellectual partner. Together, they applied **pri
 
 "What did we invent? Nothing," Salas said. "Everything was already there. But we didn't invent them. They were there."
 
-### Chicho Frumboli: The Prodigy
+### [Chicho Frumboli](/people/chicho-frumboli): The Prodigy
 
 Born **September 21, 1970**, in Buenos Aires. His father was a fine arts professor who listened to Piazzolla. Chicho got his first drum set at age 13 and played drums for 14 years. He hated tango.
 
 In **1993**, a theater classmate dragged him to a class with **Ricardo Barrios and Victoria Vieyra**. "I embraced my dance partner for the first time and I got goose bumps." He never stopped.
 
-Between 1994 and 1998, he studied intensively with Barrios and Vieyra while also working with **Tete Rusconi**. Victoria Vieyra then introduced Chicho to Naveira's world. **"In one month-and-a-half I learned what I hadn't learned in two years."**
+Between 1994 and 1998, he studied intensively with Barrios and Vieyra while also working with **[Tete Rusconi](/people/tete-rusconi)**. Victoria Vieyra then introduced Chicho to Naveira's world. **"In one month-and-a-half I learned what I hadn't learned in two years."**
 
 Naveira would later say simply: **"Chicho was absolutely the best dancer I ever saw."**
 
@@ -78,7 +78,7 @@ In **July 2009**, Naveira published his definitive statement:
 
 > "There is great confusion on the question of the way of dancing the tango. **The term tango nuevo is used to refer to a style of dancing, which is an error.** In reality, Tango Nuevo is everything that has happened with the tango since the 1980s. It is not a question of a style."
 
-Chicho was blunter in a **March 2008 interview**: "Tango Nuevo does exist, but it has for a very long time... Copes was dancing a new tango, Miguel Ángel Zotto had a new tango. **To think that 'Tango Nuevo' is something that occurred only 10 years ago is a commercial exploitation that we owe to the festival organizers.**"
+[Chicho](/people/chicho-frumboli) was blunter in a **March 2008 interview**: "Tango Nuevo does exist, but it has for a very long time... [Copes](/people/juan-carlos-copes) was dancing a new tango, [Miguel Ángel Zotto](/people/miguel-angel-zotto) had a new tango. **To think that 'Tango Nuevo' is something that occurred only 10 years ago is a commercial exploitation that we owe to the festival organizers.**"
 
 ---
 
@@ -94,7 +94,7 @@ The **CITA festival** (Congreso Internacional de Tango Argentino), co-founded by
 
 According to anthropologist **Carolyn Merritt**, **between August 2008 and November 2009, the youth tango scene in Buenos Aires made a dramatic retrenchment to close embrace and traditional music.** By September 2011, Practica X was gone.
 
-Chicho's landmark interview with **Milena Plebs in El Tangauta magazine (December 2009)** delivered a devastating self-critique:
+[Chicho's](/people/chicho-frumboli) landmark interview with **[Milena Plebs](/people/milena-plebs) in El Tangauta magazine (December 2009)** delivered a devastating self-critique:
 
 > "The problem is that we missed something in the teaching, I take total responsibility, and other colleagues should do so as well. **I can't pass on what I have learned.** I was crazy about creating, because I saw a new vein in the evolution of the movement. I threw myself into that, and I lost the way to be able to pass on the tango essence that I have very much inside."
 

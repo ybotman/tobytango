@@ -17,7 +17,7 @@ lastUpdated: 2026-02-16
 
 # Mariano "Chicho" Frúmboli
 
-**One of the three most influential living tango dancers**, a self-described "kamikaze" who helped shatter tango's formal vocabulary in the 1990s and has spent the decades since grappling publicly with the consequences. Born September 21, 1970, in Buenos Aires, he arrived at tango through rock drumming and theater, joined the legendary Naveira/Salas investigation group, and became the dancer Gustavo Naveira called "absolutely the best dancer I ever saw." Now in his mid-fifties and still touring intensively across Europe, he remains a polarizing and vital figure — a master improviser who rejects the "Tango Nuevo" label he helped create and advocates passionately for tango's essence over its spectacle.
+**One of the three most influential living tango dancers**, a self-described "kamikaze" who helped shatter tango's formal vocabulary in the 1990s and has spent the decades since grappling publicly with the consequences. Born September 21, 1970, in Buenos Aires, he arrived at tango through rock drumming and theater, joined the legendary [Naveira](/people/gustavo-naveira)/[Salas](/people/fabian-salas) investigation group, and became the dancer [Gustavo Naveira](/people/gustavo-naveira) called "absolutely the best dancer I ever saw." Now in his mid-fifties and still touring intensively across Europe, he remains a polarizing and vital figure — a master improviser who rejects the "Tango Nuevo" label he helped create and advocates passionately for tango's essence over its spectacle.
 
 ---
 
@@ -49,7 +49,7 @@ In 1993, Chicho attended a tango class taught by Ricardo Barrios and Victoria Vi
 
 > "I was into rock-and-roll; I had long hair and played the drums. I hated tango, I didn't like it one bit. But when I went to take a class with Ricardo Barrios and Victoria Vieyra, I embraced my dance partner for the first time and I got goose bumps. I said, 'there's something going on here…' and I never stopped."
 
-Victoria Vieyra introduced him to the Tango Investigation Group led by Gustavo Naveira and Fabián Salas. Naveira later said:
+Victoria Vieyra introduced him to the Tango Investigation Group led by [Gustavo Naveira](/people/gustavo-naveira) and [Fabián Salas](/people/fabian-salas). Naveira later said:
 
 > "I met Chicho through Victoria, his partner at the time. Victoria was a contemporary dancer, actress, and many other things, a great artist. And she was learning tango, and she met Chicho as a partner in her acting work… with only 6 months of study, he was amazing as a tango dancer."
 
@@ -78,10 +78,10 @@ In October 1998, Chicho arrived in Europe with Victoria Vieyra. He settled first
 | 2003 | "Charbons Ardents" with company of Camilla Saracens; begins partnership with Eugenia Parrilla |
 | 2003–2006 | Partners with Eugenia Parrilla — his "most artistic years" |
 | ~2004–2005 | Iconic "Plano Secuencia" performance with Parrilla goes viral on YouTube |
-| 2007 | Partnership with Juana Sepúlveda begins |
+| 2007 | Partnership with [Juana Sepúlveda](/people/juana-sepulveda) begins |
 | 2008 | Mantua Tango Festival landmark performance with Juana |
 | 2009 | First Tango Element Festival in Baltimore (annual event, continuing to present) |
-| 2009 | Landmark El Tangauta interview with Milena Plebs — the famous "confession" |
+| 2009 | Landmark El Tangauta interview with [Milena Plebs](/people/milena-plebs) — the famous "confession" |
 | 2012 | Stars as "L'Argentin" in Belgian film *Tango Libre* — wins **Special Orizzonti Jury Prize at 69th Venice International Film Festival** |
 | 2014 | *Fermín, glorias del tango*; film receives 10 nominations at 4th Magritte Awards |
 | 2017 | *ARCOS* by Jelly Films |
@@ -96,7 +96,7 @@ In October 1998, Chicho arrived in Europe with Victoria Vieyra. He settled first
 | Victoria Vieyra | ~1995–1998 | First teacher and partner; arrived in Europe together |
 | Lucía Mazer | 1999–2003 | "The most creative years of my career" |
 | Eugenia Parrilla | 2003–2006 | "The most artistic moments of my career" |
-| Juana Sepúlveda | 2007–present | Longest partnership; 18+ years and counting |
+| [Juana Sepúlveda](/people/juana-sepulveda) | 2007–present | Longest partnership; 18+ years and counting |
 
 ---
 
@@ -169,7 +169,7 @@ Chicho pioneered a partnership dynamic where the follower co-creates the dance i
 ### Interview #1: El Tangauta, April 2005
 
 On Tango Nuevo as marketing:
-> "It's a question I ask myself too… It's first and foremost a question of marketing… I feel close to the electronic orchestras in the way I dance. But beyond the fact that I know many musicians who play in those orchestras, I identify more with the music of Troilo, Pugliese and D'Arienzo."
+> "It's a question I ask myself too… It's first and foremost a question of marketing… I feel close to the electronic orchestras in the way I dance. But beyond the fact that I know many musicians who play in those orchestras, I identify more with the music of [Troilo](/people/anibal-troilo), [Pugliese](/people/osvaldo-pugliese) and [D'Arienzo](/people/juan-darienzo)."
 
 On tango's essence:
 > "A very strong connection between the man and the woman who dance tango. Nowadays people learn two or three steps and go dancing… I really believe that dancing is thinking about how to embrace your partner, perceiving how she feels, how much she weighs, smelling her perfume, paying attention to how she takes your hand, if she trembles, if she sweats…"
@@ -209,9 +209,9 @@ On the future:
 
 **His preferences:**
 - **Top three tangos:** Como dos extraños, Quedémonos aquí, Pasional
-- **Top three orchestras:** Pugliese, Di Sarli, and "el gran Astor" (Piazzolla)
-- **Top three male dancers:** Gustavo Naveira, Julio Balmaceda, Osvaldo Soto
-- **Top three female dancers:** Milena Plebs, Guillermina Quiroga, Vanina Bilous
+- **Top three orchestras:** [Pugliese](/people/osvaldo-pugliese), [Di Sarli](/people/carlos-di-sarli), and "el gran Astor" ([Piazzolla](/people/astor-piazzolla))
+- **Top three male dancers:** [Gustavo Naveira](/people/gustavo-naveira), Julio Balmaceda, Osvaldo Soto
+- **Top three female dancers:** [Milena Plebs](/people/milena-plebs), Guillermina Quiroga, Vanina Bilous
 
 ### Statement #5: Facebook Manifesto, August 2015
 
