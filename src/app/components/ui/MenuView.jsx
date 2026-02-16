@@ -19,8 +19,9 @@ const navItems = [
   },
   {
     id: 3,
-    title: "Tango History",
-    mainImage: "/navigation/tango-history.png",
+    title: "Tangology",
+    brandText: "TANGOLOGY",
+    brandSubtitle: "TANGO HISTORY",
     link: "/tango-history",
   },
   {
@@ -41,6 +42,8 @@ export default function MenuView() {
             title={item.title}
             mainImage={item.mainImage}
             link={item.link}
+            brandText={item.brandText}
+            brandSubtitle={item.brandSubtitle}
           />
         ))}
       </Box>
