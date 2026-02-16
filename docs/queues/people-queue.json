@@ -1,0 +1,263 @@
+{
+  "description": "Queue of people to research for individual profile pages. Process in priority order.",
+  "lastUpdated": "2026-02-15",
+  "queue": [
+    {
+      "slug": "chicho-frumboli",
+      "displayName": "Chicho Frúmboli",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 1,
+      "notes": "Nuevo innovator, El Tangauta interview 2009, key figure in nuevo-to-neotrad arc",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "gustavo-naveira",
+      "displayName": "Gustavo Naveira",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 2,
+      "notes": "Co-founder of tango nuevo, Cosmotango, analytical framework pioneer",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "fabian-salas",
+      "displayName": "Fabián Salas",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 3,
+      "notes": "Co-founder of tango nuevo, CITA organizer, investigation group",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "tete-rusconi",
+      "displayName": "Tete Rusconi",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 4,
+      "notes": "Guardian generation, milonguero style master, died Jan 2010",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "el-turco-jose",
+      "displayName": "El Turco José Brahemcha",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 5,
+      "notes": "Guardian generation, Villa Urquiza style co-creator, died Apr 2010",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "carlos-gavito",
+      "displayName": "Carlos Gavito",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 6,
+      "notes": "Stage pioneer, Tango Argentino show, dramatic style master",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "juan-carlos-copes",
+      "displayName": "Juan Carlos Copes",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 7,
+      "notes": "Stage pioneer, Tango Argentino show, partner María Nieves",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "maria-nieves",
+      "displayName": "María Nieves",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 8,
+      "notes": "Stage pioneer, Tango Argentino show, partner Juan Carlos Copes",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "anibal-troilo",
+      "displayName": "Aníbal Troilo",
+      "type": "musician",
+      "status": "pending",
+      "priority": 9,
+      "notes": "Pichuco, major Golden Age orchestra leader, bandoneonist",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "carlos-di-sarli",
+      "displayName": "Carlos Di Sarli",
+      "type": "musician",
+      "status": "pending",
+      "priority": 10,
+      "notes": "El Señor del Tango, Golden Age orchestra leader, elegant style",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "juan-darienzo",
+      "displayName": "Juan D'Arienzo",
+      "type": "musician",
+      "status": "pending",
+      "priority": 11,
+      "notes": "El Rey del Compás, Golden Age orchestra leader, rhythmic revolution 1935",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "osvaldo-pugliese",
+      "displayName": "Osvaldo Pugliese",
+      "type": "musician",
+      "status": "pending",
+      "priority": 12,
+      "notes": "Golden Age orchestra leader, dramatic style, La Yumba",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "graciela-gonzalez",
+      "displayName": "Graciela González",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 13,
+      "notes": "Bridge generation, milonguera, teacher",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "susana-miller",
+      "displayName": "Susana Miller",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 14,
+      "notes": "Bridge generation, brought milonguero style to US, encuentro pioneer",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "pablo-veron",
+      "displayName": "Pablo Verón",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 15,
+      "notes": "Stage pioneer, The Tango Lesson film, Sally Potter",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "miguel-angel-zotto",
+      "displayName": "Miguel Ángel Zotto",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 16,
+      "notes": "Stage pioneer, Tango x 2, Milena Plebs partner",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "milena-plebs",
+      "displayName": "Milena Plebs",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 17,
+      "notes": "Stage pioneer, Tango x 2, El Tangauta interviewer",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "carlos-gardel",
+      "displayName": "Carlos Gardel",
+      "type": "singer",
+      "status": "pending",
+      "priority": 18,
+      "notes": "El Zorzal Criollo, most famous tango singer ever, died 1935",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "astor-piazzolla",
+      "displayName": "Astor Piazzolla",
+      "type": "composer",
+      "status": "pending",
+      "priority": 19,
+      "notes": "Nuevo tango (music), bandoneonist, revolutionary composer",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "daniel-trenner",
+      "displayName": "Daniel Trenner",
+      "type": "teacher",
+      "status": "pending",
+      "priority": 20,
+      "notes": "American pioneer, Tango Archive, filmed milongueros 1980s-90s",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "juana-sepulveda",
+      "displayName": "Juana Sepúlveda",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 21,
+      "notes": "Chicho's partner, nuevo performer",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "giselle-anne",
+      "displayName": "Giselle Anne",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 22,
+      "notes": "Naveira's partner, nuevo pioneer, Boulder-based",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "cachirulo",
+      "displayName": "Cachirulo (Carlos Anzuate)",
+      "type": "organizer",
+      "status": "pending",
+      "priority": 23,
+      "notes": "Milonga organizer, tradition keeper",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "pepito-avellaneda",
+      "displayName": "Pepito Avellaneda",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 24,
+      "notes": "Guardian generation, milonguero, died 1995",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    },
+    {
+      "slug": "finito",
+      "displayName": "Finito (José Giambuzzi)",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 25,
+      "notes": "Guardian generation, canyengue master, died 1996",
+      "addedDate": "2026-02-15",
+      "completedDate": null
+    }
+  ],
+  "stats": {
+    "total": 25,
+    "pending": 25,
+    "in_progress": 0,
+    "completed": 0,
+    "blocked": 0
+  }
+}

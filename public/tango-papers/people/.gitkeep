@@ -1,0 +1,13 @@
+# People Profiles Directory
+
+This directory contains individual profile pages for tango figures.
+
+## File Format
+- One markdown file per person: `[slug].md`
+- Frontmatter with structured metadata
+- Body with biography, videos, links, cross-references
+
+## See Also
+- Queue: `/docs/queues/people-queue.json`
+- Template: `/docs/prompts/person-research-template.md`
+- Documentation: `/public/tango-papers/README-CONTENT-SYSTEM.md` (Part 9)
