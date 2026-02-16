@@ -1212,6 +1212,21 @@
       "status": "complete"
     },
     {
+      "id": "carlos-gardel",
+      "type": "person",
+      "displayName": "Carlos Gardel",
+      "fullName": "Carlos Gardel",
+      "born": "1890-12-11",
+      "died": "1935-06-24",
+      "nationality": "Argentina",
+      "categories": ["singers", "composers", "film"],
+      "eras": ["guardia-nueva", "epoca-de-oro"],
+      "summary": "El Zorzal Criollo — most famous tango singer ever; created tango-canción (1917); died plane crash Medellín at height of fame",
+      "appearsIn": ["/tango-papers/people/carlos-gardel.md"],
+      "paperPath": "/tango-papers/people/carlos-gardel.md",
+      "status": "complete"
+    },
+    {
       "id": "rodolfo-biagi",
       "type": "orchestra",
       "displayName": "Rodolfo Biagi",
