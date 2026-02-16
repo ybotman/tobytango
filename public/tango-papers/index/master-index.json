@@ -1295,6 +1295,35 @@
       "status": "complete"
     },
     {
+      "id": "pepito-avellaneda",
+      "type": "person",
+      "displayName": "Pepito Avellaneda",
+      "fullName": "José Domingo Monteleone",
+      "born": "1930-11-30",
+      "died": "1996-04-29",
+      "nationality": "Argentina",
+      "categories": ["dancers", "teachers"],
+      "eras": ["epoca-de-oro", "decadencia", "renacimiento"],
+      "summary": "Guardian generation milonguero; neighborhood legend; established European tango schools; true milonguero philosophy",
+      "appearsIn": ["/tango-papers/people/pepito-avellaneda.md"],
+      "paperPath": "/tango-papers/people/pepito-avellaneda.md",
+      "status": "complete"
+    },
+    {
+      "id": "finito",
+      "type": "person",
+      "displayName": "Finito",
+      "fullName": "Ramón Rivera",
+      "died": "1987",
+      "nationality": "Argentina",
+      "categories": ["dancers"],
+      "eras": ["epoca-de-oro", "decadencia"],
+      "summary": "Elegance personified; best social dancer of 1980s; Villa Urquiza style; returned after 20-year hiatus for revival",
+      "appearsIn": ["/tango-papers/people/finito.md"],
+      "paperPath": "/tango-papers/people/finito.md",
+      "status": "complete"
+    },
+    {
       "id": "rodolfo-biagi",
       "type": "orchestra",
       "displayName": "Rodolfo Biagi",
