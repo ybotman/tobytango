@@ -479,24 +479,12 @@
       "type": "person",
       "displayName": "Graciela González",
       "fullName": "Graciela González",
-      "born": null,
-      "died": null,
-      "categories": [
-        "dancers",
-        "argentina"
-      ],
-      "eras": [
-        "renacimiento",
-        "investigacion"
-      ],
-      "styles": [
-        "salon"
-      ],
-      "summary": "La Leona del Tango, creator of first Followers Technique seminar (1994)",
-      "appearsIn": [
-        "/tango-papers/dancers/generations/pre-nuevo-masters.md",
-        "/tango-papers/dancers/generations/milonguero-generation.md"
-      ],
+      "nationality": "Argentina",
+      "categories": ["dancers", "teachers"],
+      "eras": ["bridge-generation", "renacimiento"],
+      "summary": "Bridge generation pedagogy pioneer; 'Followers/Leaders Technique' (1994–95); trained Mora Godoy, Marcela Durán",
+      "appearsIn": ["/tango-papers/people/graciela-gonzalez.md", "/tango-papers/dancers/generations/pre-nuevo-masters.md"],
+      "paperPath": "/tango-papers/people/graciela-gonzalez.md",
       "status": "complete"
     },
     {

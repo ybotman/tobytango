@@ -252,10 +252,10 @@ const peopleData = [
     born: null,
     died: null,
     nationality: "Argentine",
-    tags: ["milonguera", "bridge", "teacher"],
-    summary: "Bridge generation, milonguera, influential teacher.",
+    tags: ["milonguera", "bridge", "teacher", "pedagogy-pioneer"],
+    summary: "Bridge generation, 'Followers/Leaders Technique' pioneer (1994–95), trained Mora Godoy and Marcela Durán.",
     paperPath: "/tango-papers/people/graciela-gonzalez.md",
-    status: "pending",
+    status: "published",
     priority: 13
   },
   {

@@ -138,11 +138,11 @@
       "slug": "graciela-gonzalez",
       "displayName": "Graciela González",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 13,
       "notes": "Bridge generation, milonguera, teacher",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
@@ -336,9 +336,9 @@
   "stats": {
     "total": 30,
     "pending": 5,
-    "prompt_ready": 13,
+    "prompt_ready": 12,
     "in_progress": 0,
-    "completed": 12,
+    "completed": 13,
     "blocked": 0
   }
 }
