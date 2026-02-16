@@ -39,11 +39,11 @@
       "slug": "tete-rusconi",
       "displayName": "Tete Rusconi",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 4,
       "notes": "Guardian generation, milonguero style master, died Jan 2010",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
@@ -281,59 +281,64 @@
       "slug": "ignacio-varchausky",
       "displayName": "Ignacio Varchausky",
       "type": "musician",
-      "status": "pending",
+      "status": "prompt_ready",
       "priority": 26,
       "notes": "Revival orchestras founder, El Arranque, Orquesta Escuela creator, Latin Grammy producer, most important contemporary preservation figure",
       "addedDate": "2026-02-16",
-      "completedDate": null
+      "completedDate": null,
+      "promptSentDate": "2026-02-16"
     },
     {
       "slug": "dimitris-bronowski",
       "displayName": "Dimitris Bronowski",
       "type": "author",
-      "status": "pending",
+      "status": "prompt_ready",
       "priority": 27,
       "notes": "Author of Tangofulness (12 languages), TheCuriousTanguero.com, 7+ books on tango",
       "addedDate": "2026-02-16",
-      "completedDate": null
+      "completedDate": null,
+      "promptSentDate": "2026-02-16"
     },
     {
       "slug": "steve-darmo",
       "displayName": "Steve Darmo",
       "type": "author",
-      "status": "pending",
+      "status": "prompt_ready",
       "priority": 28,
       "notes": "Author of Tango Endings, studied 1700+ tangos, definitive musicality work",
       "addedDate": "2026-02-16",
-      "completedDate": null
+      "completedDate": null,
+      "promptSentDate": "2026-02-16"
     },
     {
       "slug": "guido-iacopetti",
       "displayName": "Guido Iacopetti",
       "type": "musician",
-      "status": "pending",
+      "status": "prompt_ready",
       "priority": 29,
       "notes": "Sexteto Fantasma founder/director, 2025 Latin Grammy nominee, contemporary tango composer",
       "addedDate": "2026-02-16",
-      "completedDate": null
+      "completedDate": null,
+      "promptSentDate": "2026-02-16"
     },
     {
       "slug": "roberto-alvarez",
       "displayName": "Roberto Álvarez",
       "type": "musician",
-      "status": "pending",
+      "status": "prompt_ready",
       "priority": 30,
       "notes": "Color Tango founder, Pugliese's first bandoneonist, died 2023",
       "addedDate": "2026-02-16",
-      "completedDate": null
+      "completedDate": null,
+      "promptSentDate": "2026-02-16"
     }
   ],
   "stats": {
     "total": 30,
-    "pending": 5,
-    "prompt_ready": 22,
+    "pending": 0,
+    "prompt_ready": 26,
     "in_progress": 0,
-    "completed": 3,
+    "completed": 4,
     "blocked": 0
   }
 }
