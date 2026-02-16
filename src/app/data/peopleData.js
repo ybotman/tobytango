@@ -66,10 +66,10 @@ const peopleData = [
     born: null,
     died: null,
     nationality: "Argentine",
-    tags: ["nuevo", "performer"],
-    summary: "Chicho's partner, nuevo performer and teacher.",
+    tags: ["nuevo", "performer", "teacher", "chicho-partner"],
+    summary: "Chicho's partner since 2007, 17+ years tango experience, 'innovative subtlety and stunning power.'",
     paperPath: "/tango-papers/people/juana-sepulveda.md",
-    status: "pending",
+    status: "published",
     priority: 21
   },
   {
@@ -81,10 +81,10 @@ const peopleData = [
     born: null,
     died: null,
     nationality: "Argentine",
-    tags: ["nuevo", "boulder", "teacher"],
-    summary: "Naveira's partner, nuevo pioneer, Boulder-based teacher.",
+    tags: ["nuevo", "boulder", "teacher", "choreographer", "ballet-trained", "naveira-partner"],
+    summary: "Naveira's partner since ~1995, co-created nuevo methodology, ballet-trained, learned from Todaro & Pepito, Boulder Tango Festival.",
     paperPath: "/tango-papers/people/giselle-anne.md",
-    status: "pending",
+    status: "published",
     priority: 22
   },
 
@@ -380,10 +380,10 @@ const peopleData = [
     born: null,
     died: null,
     nationality: "American",
-    tags: ["teacher", "historian", "tango-archive", "filmmaker"],
-    summary: "American pioneer, Tango Archive, filmed milongueros 1980s-90s.",
+    tags: ["teacher", "historian", "tango-archive", "filmmaker", "american-pioneer"],
+    summary: "Johnny Appleseed of tango — filmed Golden Age milongueros, 80+ instructional videos, Bridge to the Tango tours, M.Ed. in Dance.",
     paperPath: "/tango-papers/people/daniel-trenner.md",
-    status: "pending",
+    status: "published",
     priority: 20
   },
 
@@ -391,16 +391,16 @@ const peopleData = [
   {
     slug: "cachirulo",
     displayName: "Cachirulo",
-    fullName: "Carlos Anzuate",
+    fullName: "Héctor Pellozo",
     type: "organizer",
     generation: "bridge",
-    born: null,
+    born: "1937-07-05",
     died: null,
     nationality: "Argentine",
-    tags: ["organizer", "milonga", "tradition"],
-    summary: "Legendary milonga organizer, tradition keeper.",
+    tags: ["organizer", "milonga", "tradition-keeper", "milonguero", "codes"],
+    summary: "The rule enforcer — organizes Cachirulo milonga, enforces codes with red/yellow cards, featured in Milongueros documentary.",
     paperPath: "/tango-papers/people/cachirulo.md",
-    status: "pending",
+    status: "published",
     priority: 23
   }
 ];
