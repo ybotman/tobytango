@@ -1,0 +1,525 @@
+{
+  "section": "Key Singers",
+  "description": "Golden Age tango vocalists and their contributions",
+  "entities": [
+    {
+      "id": "carlos-gardel",
+      "type": "person",
+      "displayName": "Carlos Gardel",
+      "spanish": "",
+      "aliases": ["El Zorzal Criollo", "The Creole Thrush", "El Morocho del Abasto"],
+      "summary": "The founding voice of tango — its first and greatest international star",
+      "definition": "Carlos Gardel (1890–1935) was the most iconic figure in tango history, transforming tango from a purely instrumental form into a vocal art. His warm baritone, film career, and tragic death in a plane crash cemented his mythic status. His recordings precede the Golden Age and are not typically used for social dancing.",
+      "categories": ["singer", "historical"],
+      "relatedTerms": ["guardia-nueva"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Carlos Gardel (birth name disputed)",
+        "birthDeath": "1890–1935",
+        "primaryOrchestras": ["Solo artist with guitar accompaniment"],
+        "voiceStyle": "Warm, velvety baritone with impeccable phrasing; set the standard for all tango singers",
+        "signatureRecordings": ["El Día Que Me Quieras", "Volver", "Por Una Cabeza", "Mi Buenos Aires Querido"]
+      }
+    },
+    {
+      "id": "alberto-echague",
+      "type": "person",
+      "displayName": "Alberto Echagüe",
+      "spanish": "",
+      "aliases": ["Echagüe"],
+      "summary": "D'Arienzo's signature vocalist — rhythmic and energetic",
+      "definition": "Alberto Echagüe (1909–1984) was the singer most associated with D'Arienzo's orchestra across three periods (1938–1975). Not technically the strongest vocalist, his rhythmic energy and ability to match D'Arienzo's driving beat made him the perfect partner for the King of the Beat.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["juan-darienzo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Juan de Dios Osvaldo Rodríguez Bonfanti",
+        "birthDeath": "1909–1984",
+        "primaryOrchestras": ["Juan D'Arienzo (1938–1939, 1944–1957, 1968–1975)"],
+        "voiceStyle": "Energetic, rhythmic, punchy; matched D'Arienzo's driving beat perfectly",
+        "signatureRecordings": ["Loca", "Paciencia", "Animal", "Mandria"]
+      }
+    },
+    {
+      "id": "hector-maure",
+      "type": "person",
+      "displayName": "Héctor Mauré",
+      "spanish": "",
+      "aliases": ["Mauré"],
+      "summary": "D'Arienzo's finest vocalist — lyrical voice in a rhythmic orchestra",
+      "definition": "Héctor Mauré (1920–1976) is considered by many as D'Arienzo's best singer. His lyrical, romantic quality created a unique contrast with the orchestra's rhythmic drive, so much so that D'Arienzo slightly slowed his tempo to accommodate Mauré's melodic style.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["juan-darienzo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Héctor Mauré",
+        "birthDeath": "1920–1976",
+        "primaryOrchestras": ["Juan D'Arienzo (1940–1944)"],
+        "voiceStyle": "Lyrical, romantic, smooth; beautiful contrast with D'Arienzo's rhythm",
+        "signatureRecordings": ["Amarras", "No Vendrá", "Nada Más"]
+      }
+    },
+    {
+      "id": "francisco-fiorentino",
+      "type": "person",
+      "displayName": "Francisco Fiorentino",
+      "spanish": "",
+      "aliases": ["Fiore"],
+      "summary": "Troilo's most beloved vocalist — warm, natural, and deeply musical",
+      "definition": "Francisco Fiorentino (1905–1955) created some of the most popular social dance recordings in tango history with Troilo (1941–1943). His warm, natural style perfectly balanced melody and rhythm. He earlier recorded with D'Arienzo in 1928.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["anibal-troilo", "juan-darienzo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Francisco Fiorentino",
+        "birthDeath": "1905–1955",
+        "primaryOrchestras": ["Aníbal Troilo (1941–1943)", "Juan D'Arienzo (1928)"],
+        "voiceStyle": "Warm, natural, unaffected; perfect melody-rhythm balance",
+        "signatureRecordings": ["Toda Mi Vida (con Troilo)", "Malena (con Troilo)", "Gricel (con Troilo)"]
+      }
+    },
+    {
+      "id": "alberto-marino",
+      "type": "person",
+      "displayName": "Alberto Marino",
+      "spanish": "",
+      "aliases": ["Marino"],
+      "summary": "Troilo's dramatic vocalist — powerful and expressive",
+      "definition": "Alberto Marino (1924–1989) succeeded Fiorentino in Troilo's orchestra (1943–1947), bringing a more dramatic, powerful vocal approach. His recordings with Troilo are among the most celebrated in tango.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["anibal-troilo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Alberto Marino (born Alberto Marinaro)",
+        "birthDeath": "1924–1989",
+        "primaryOrchestras": ["Aníbal Troilo (1943–1947)"],
+        "voiceStyle": "Dramatic, powerful, rich baritone; more theatrical than Fiorentino",
+        "signatureRecordings": ["Uno (con Troilo)", "Percal (con Troilo)", "Sur (con Troilo)"]
+      }
+    },
+    {
+      "id": "floreal-ruiz",
+      "type": "person",
+      "displayName": "Floreal Ruiz",
+      "spanish": "",
+      "aliases": ["Ruiz"],
+      "summary": "Troilo's lyrical vocalist — smooth, elegant, and melodic",
+      "definition": "Floreal Ruiz (1916–1978) sang with Troilo (1947–1953), bringing smooth, lyrical elegance. Less dramatic than Marino but beautifully melodic, his recordings represent some of the most refined vocal tango of the era.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["anibal-troilo", "jose-basso"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Floreal Ruiz",
+        "birthDeath": "1916–1978",
+        "primaryOrchestras": ["Aníbal Troilo (1947–1953)", "José Basso"],
+        "voiceStyle": "Smooth, lyrical, elegant; sophisticated phrasing",
+        "signatureRecordings": ["Romance de Barrio (con Troilo)", "María (con Troilo)"]
+      }
+    },
+    {
+      "id": "roberto-rufino",
+      "type": "person",
+      "displayName": "Roberto Rufino",
+      "spanish": "",
+      "aliases": ["Rufino"],
+      "summary": "Di Sarli's youthful romantic voice — sentimental and passionate",
+      "definition": "Roberto Rufino (1922–1999) began with Di Sarli at just 16 years old (1939–1942). His youthful, sentimental voice perfectly matched Di Sarli's romantic arrangements. He later sang with Troilo and Francini-Pontier.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["carlos-di-sarli", "anibal-troilo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Roberto Rufino",
+        "birthDeath": "1922–1999",
+        "primaryOrchestras": ["Carlos Di Sarli (1939–1942)", "Aníbal Troilo", "Francini-Pontier"],
+        "voiceStyle": "Youthful, sentimental, passionate; romantic warmth",
+        "signatureRecordings": ["Corazón (con Di Sarli)", "Nido Gaucho (con Di Sarli)"]
+      }
+    },
+    {
+      "id": "alberto-podesta",
+      "type": "person",
+      "displayName": "Alberto Podestá",
+      "spanish": "",
+      "aliases": ["Podestá"],
+      "summary": "Clear, expressive voice who sang with Di Sarli, Caló, and Laurenz",
+      "definition": "Alberto Podestá (1924–2023) was one of the most versatile Golden Age singers, recording with Di Sarli, Caló, Laurenz, and Francini-Pontier. His clear, expressive voice adapted beautifully to different orchestral styles. He was one of the last surviving Golden Age vocalists.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["carlos-di-sarli", "miguel-calo", "pedro-laurenz"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Alberto Podestá (born Alberto Alejandro Bittini)",
+        "birthDeath": "1924–2023",
+        "primaryOrchestras": ["Carlos Di Sarli", "Miguel Caló", "Pedro Laurenz", "Francini-Pontier"],
+        "voiceStyle": "Clear, warm, expressive; versatile across orchestra styles",
+        "signatureRecordings": ["Cosas Olvidadas (con Di Sarli)", "Al Compás del Corazón (con Caló)", "Milonga de Mis Amores (con Laurenz)"]
+      }
+    },
+    {
+      "id": "angel-vargas",
+      "type": "person",
+      "displayName": "Ángel Vargas",
+      "spanish": "",
+      "aliases": ["Vargas"],
+      "summary": "Warm, conversational vocalist — inseparable from D'Agostino's sound",
+      "definition": "Ángel Vargas (1904–1959) defined D'Agostino's sound with his warm, conversational singing style (1940–1946). Their intimate, charming recordings are milonga staples. His natural, unforced delivery epitomizes the Golden Age vocal aesthetic.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["angel-dagostino"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Ángel Vargas (born Ángel Sánchez Crespo)",
+        "birthDeath": "1904–1959",
+        "primaryOrchestras": ["Ángel D'Agostino (1940–1946)"],
+        "voiceStyle": "Warm, conversational, natural; intimate storytelling quality",
+        "signatureRecordings": ["Café de los Angelitos (con D'Agostino)", "Hotel Victoria", "El Yacaré"]
+      }
+    },
+    {
+      "id": "raul-beron",
+      "type": "person",
+      "displayName": "Raúl Berón",
+      "spanish": "",
+      "aliases": ["Berón"],
+      "summary": "One of tango's greatest voices — rich, emotional, deeply musical",
+      "definition": "Raúl Berón (1920–1982) is widely considered one of the finest tango singers ever. His rich, emotionally resonant voice with Caló and Demare produced some of the most beautiful recordings in tango. His ability to convey deep emotion with perfect musicality was unmatched.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["miguel-calo", "lucio-demare", "anibal-troilo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Raúl Berón",
+        "birthDeath": "1920–1982",
+        "primaryOrchestras": ["Miguel Caló (1942–1945)", "Lucio Demare", "Aníbal Troilo", "Francini-Pontier"],
+        "voiceStyle": "Rich, emotionally resonant, deeply musical; one of tango's supreme vocal instruments",
+        "signatureRecordings": ["Que Te Importa Que Te Llore (con Caló)", "Tristezas de la Calle Corrientes (con Caló)", "Malena (con Demare)"]
+      }
+    },
+    {
+      "id": "roberto-goyeneche",
+      "type": "person",
+      "displayName": "Roberto Goyeneche",
+      "spanish": "",
+      "aliases": ["El Polaco"],
+      "summary": "\"El Polaco\" — the raw, dramatic voice of late-era tango",
+      "definition": "Roberto Goyeneche (1926–1994), 'El Polaco,' was the last great tango singer of the classic era. His raw, dramatic style with Troilo (1956–1963) evolved into an increasingly theatrical solo career. His interpretive intensity remains unmatched in tango.",
+      "categories": ["singer"],
+      "relatedTerms": ["anibal-troilo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Roberto Goyeneche",
+        "birthDeath": "1926–1994",
+        "primaryOrchestras": ["Aníbal Troilo (1956–1963)", "Solo career"],
+        "voiceStyle": "Raw, dramatic, intensely emotional; increasingly theatrical",
+        "signatureRecordings": ["La Última Curda (solo)", "Sur (con Troilo)", "Balada Para un Loco"]
+      }
+    },
+    {
+      "id": "edmundo-rivero",
+      "type": "person",
+      "displayName": "Edmundo Rivero",
+      "spanish": "",
+      "aliases": ["Rivero"],
+      "summary": "Deep bass-baritone voice — master of dramatic tango interpretation",
+      "definition": "Edmundo Rivero (1911–1986) possessed the deepest voice in tango history, a remarkable bass-baritone. His recordings with Troilo (1947–1950) brought a dark, dramatic quality to the orchestra. He later became famous as a solo interpreter and opened the legendary tango venue 'El Viejo Almacén.'",
+      "categories": ["singer"],
+      "relatedTerms": ["anibal-troilo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Edmundo Rivero",
+        "birthDeath": "1911–1986",
+        "primaryOrchestras": ["Aníbal Troilo (1947–1950)", "Solo career"],
+        "voiceStyle": "Extraordinary deep bass-baritone; dark, dramatic; powerful storytelling",
+        "signatureRecordings": ["El Último Café (con Troilo)", "Cafetín de Buenos Aires", "Sur"]
+      }
+    },
+    {
+      "id": "jorge-casal",
+      "type": "person",
+      "displayName": "Jorge Casal",
+      "spanish": "",
+      "aliases": ["Casal"],
+      "summary": "Smooth vocalist who sang with Troilo and Sassone",
+      "definition": "Jorge Casal (1924–1998) was a smooth, polished tango vocalist who recorded with Troilo's orchestra and later with Florindo Sassone. His refined vocal style and versatility made him a valued collaborator across multiple ensembles.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["anibal-troilo", "florindo-sassone"],
+      "confidence": "likely",
+      "status": "complete",
+      "meta": {
+        "fullName": "Jorge Casal",
+        "birthDeath": "1924–1998",
+        "primaryOrchestras": ["Aníbal Troilo", "Florindo Sassone"],
+        "voiceStyle": "Smooth, polished, refined; versatile across orchestra styles",
+        "signatureRecordings": ["Che Bandoneón (con Troilo)"]
+      }
+    },
+    {
+      "id": "jorge-duran",
+      "type": "person",
+      "displayName": "Jorge Durán",
+      "spanish": "",
+      "aliases": ["Durán"],
+      "summary": "Powerful Di Sarli vocalist with dramatic, passionate delivery",
+      "definition": "Jorge Durán (1923–2003) sang with Di Sarli in the 1940s and returned in 1956–1958, bringing a powerful, dramatic vocal style. His recordings capture some of Di Sarli's most emotionally charged moments.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["carlos-di-sarli"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Jorge Durán",
+        "birthDeath": "1923–2003",
+        "primaryOrchestras": ["Carlos Di Sarli (1940s, 1956–1958)"],
+        "voiceStyle": "Powerful, dramatic, passionate; strong presence",
+        "signatureRecordings": ["Motivo Sentimental (con Di Sarli)", "Verdemar (con Di Sarli)"]
+      }
+    },
+    {
+      "id": "mario-bustos",
+      "type": "person",
+      "displayName": "Mario Bustos",
+      "spanish": "",
+      "aliases": ["Bustos"],
+      "summary": "Emotional D'Arienzo vocalist with a tender, expressive style",
+      "definition": "Mario Bustos (1928–1968) brought emotional tenderness to D'Arienzo's later recordings. His expressive, heartfelt vocal style softened the orchestra's rhythmic drive, creating recordings of surprising emotional depth within the energetic D'Arienzo framework.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["juan-darienzo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Mario Bustos",
+        "birthDeath": "1928–1968",
+        "primaryOrchestras": ["Juan D'Arienzo (1950s)"],
+        "voiceStyle": "Tender, emotional, expressive; surprisingly lyrical for D'Arienzo",
+        "signatureRecordings": ["Enamorado (con D'Arienzo)", "Miedo (con D'Arienzo)"]
+      }
+    },
+    {
+      "id": "enrique-campos",
+      "type": "person",
+      "displayName": "Enrique Campos",
+      "spanish": "",
+      "aliases": ["Campos"],
+      "summary": "Tanturi's romantic voice — smooth and elegant contrast to Castillo",
+      "definition": "Enrique Campos (1913–1970) replaced the energetic Alberto Castillo in Tanturi's orchestra (1943–1946), bringing a completely different aesthetic: smooth, romantic, and elegant. The Tanturi-Campos recordings are among the most beautiful romantic tandas in tango.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["ricardo-tanturi", "alberto-castillo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Enrique Campos",
+        "birthDeath": "1913–1970",
+        "primaryOrchestras": ["Ricardo Tanturi (1943–1946)"],
+        "voiceStyle": "Smooth, romantic, elegant; beautiful lyrical phrasing",
+        "signatureRecordings": ["Oigo Tu Voz (con Tanturi)", "Una Emoción (con Tanturi)", "Domingo a la Noche"]
+      }
+    },
+    {
+      "id": "alberto-castillo",
+      "type": "person",
+      "displayName": "Alberto Castillo",
+      "spanish": "",
+      "aliases": ["Castillo"],
+      "summary": "Theatrical, energetic showman — the most dramatic singer of the era",
+      "definition": "Alberto Castillo (1914–2002) was a trained doctor who became tango's most theatrical and energetic singer. His partnership with Tanturi (1939–1943) produced wildly popular, high-energy recordings. His dramatic vocal style and stage presence were unique in the Golden Age.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["ricardo-tanturi"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Alberto Castillo (born Alberto Salvador De Lucca)",
+        "birthDeath": "1914–2002",
+        "primaryOrchestras": ["Ricardo Tanturi (1939–1943)", "Solo career with own orchestra"],
+        "voiceStyle": "Theatrical, energetic, dramatic; showman; trained doctor who became tango's wildest performer",
+        "signatureRecordings": ["Así Se Baila el Tango (con Tanturi)", "Muñeca Brava (con Tanturi)", "El Ciruja"]
+      }
+    },
+    {
+      "id": "oscar-serpa",
+      "type": "person",
+      "displayName": "Oscar Serpa",
+      "spanish": "",
+      "aliases": ["Serpa"],
+      "summary": "Lyrical vocalist with Di Sarli — warm and expressive",
+      "definition": "Oscar Serpa sang with Di Sarli during his Music Hall period (1951–1953), bringing a warm, lyrical quality to the orchestra's recordings. His vocal style aligned beautifully with Di Sarli's melodic emphasis.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["carlos-di-sarli"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Oscar Serpa",
+        "primaryOrchestras": ["Carlos Di Sarli (1951–1953)"],
+        "voiceStyle": "Warm, lyrical, expressive; aligned with Di Sarli's melodic style",
+        "signatureRecordings": ["Al Compás del Corazón (con Di Sarli)", "Como Se Muere de Amor"]
+      }
+    },
+    {
+      "id": "alberto-moran",
+      "type": "person",
+      "displayName": "Alberto Morán",
+      "spanish": "",
+      "aliases": ["Morán"],
+      "summary": "Pugliese's main vocalist — emotional and dramatic",
+      "definition": "Alberto Morán (1922–1997) was Pugliese's principal vocalist (1945–1955), whose emotional, dramatic delivery matched the orchestra's intense, complex arrangements. His recordings with Pugliese are essential to the Pugliese dance repertoire.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["osvaldo-pugliese"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Alberto Morán (born Remo Andrea Recagno)",
+        "birthDeath": "1922–1997",
+        "primaryOrchestras": ["Osvaldo Pugliese (1945–1955)"],
+        "voiceStyle": "Emotional, dramatic, intense; never formally trained, which added raw authenticity",
+        "signatureRecordings": ["Pasional (con Pugliese)", "Remembranza", "Farol"]
+      }
+    },
+    {
+      "id": "roberto-chanel",
+      "type": "person",
+      "displayName": "Roberto Chanel",
+      "spanish": "",
+      "aliases": ["Chanel"],
+      "summary": "Pugliese's early vocalist — rhythmic and crisp",
+      "definition": "Roberto Chanel (1914–1972) was Pugliese's first major vocalist (1943–1948), bringing a rhythmic, crisp vocal style that complemented the orchestra's developing dramatic sound. His recordings represent Pugliese's earlier, more dance-oriented period.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["osvaldo-pugliese"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Roberto Chanel (born Roberto Alfredo Domenech)",
+        "birthDeath": "1914–1972",
+        "primaryOrchestras": ["Osvaldo Pugliese (1943–1948)"],
+        "voiceStyle": "Rhythmic, crisp, energetic; strong diction",
+        "signatureRecordings": ["Corrientes y Esmeralda (con Pugliese)", "La Abandoné y No Sabía"]
+      }
+    },
+    {
+      "id": "julio-sosa",
+      "type": "person",
+      "displayName": "Julio Sosa",
+      "spanish": "",
+      "aliases": ["El Varón del Tango"],
+      "summary": "\"El Varón del Tango\" — powerful Uruguayan vocalist of the post-Golden Age",
+      "definition": "Julio Sosa (1926–1964) was a powerful Uruguayan-born singer known as 'El Varón del Tango' (The Man of Tango). His commanding voice and dramatic interpretations made him hugely popular in the late 1950s–60s. His career was cut short by a car accident at age 38.",
+      "categories": ["singer"],
+      "relatedTerms": [],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Julio María Sosa Venturini",
+        "birthDeath": "1926–1964",
+        "primaryOrchestras": ["Armando Pontier", "Leopoldo Federico", "Solo career"],
+        "voiceStyle": "Commanding, powerful, masculine; dramatic intensity; Uruguayan",
+        "signatureRecordings": ["Cambalache", "Nada", "Uno"]
+      }
+    },
+    {
+      "id": "nelly-omar",
+      "type": "person",
+      "displayName": "Nelly Omar",
+      "spanish": "",
+      "aliases": ["La Gardel con Faldas"],
+      "summary": "\"The Gardel in Skirts\" — one of tango's greatest female vocalists",
+      "definition": "Nelly Omar (1911–2013) was one of the most important female tango singers, nicknamed 'La Gardel con Faldas.' Her powerful, expressive voice recorded with Francisco Canaro and as a soloist. She lived to 102, remaining a beloved figure in tango culture.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["francisco-canaro"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Nelly Omar (born Nilda Elvira Vattuone)",
+        "birthDeath": "1911–2013",
+        "primaryOrchestras": ["Francisco Canaro", "Solo career"],
+        "voiceStyle": "Powerful, expressive, passionate; one of the supreme female voices in tango",
+        "signatureRecordings": ["Desde el Alma", "Aquel Tapado de Armiño"]
+      }
+    },
+    {
+      "id": "ada-falcon",
+      "type": "person",
+      "displayName": "Ada Falcón",
+      "spanish": "",
+      "aliases": ["Falcón"],
+      "summary": "Canaro's star vocalist who abruptly retired into religious seclusion",
+      "definition": "Ada Falcón (1905–2002) was Francisco Canaro's most famous female vocalist and rumored romantic partner. At the height of her fame in the 1940s, she abruptly retired from public life and entered religious seclusion, creating one of tango's great mysteries.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": ["francisco-canaro"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Ada Falcón (born Aída Elsa Ada Falcone)",
+        "birthDeath": "1905–2002",
+        "primaryOrchestras": ["Francisco Canaro"],
+        "voiceStyle": "Dramatic, passionate, theatrical; powerful soprano",
+        "signatureRecordings": ["Yo No Sé Qué Me Han Hecho Tus Ojos", "Soy Una Fiera"]
+      }
+    },
+    {
+      "id": "mercedes-simone",
+      "type": "person",
+      "displayName": "Mercedes Simone",
+      "spanish": "",
+      "aliases": ["La Dama del Tango"],
+      "summary": "\"La Dama del Tango\" — elegant female vocalist of the Golden Age",
+      "definition": "Mercedes Simone (1904–1990), 'La Dama del Tango' (The Lady of Tango), was one of the most refined and popular female tango singers. Her elegant vocal style and wide repertoire made her a major recording and radio star through the Golden Age.",
+      "categories": ["singer", "epoca-de-oro"],
+      "relatedTerms": [],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Mercedes Simone",
+        "birthDeath": "1904–1990",
+        "primaryOrchestras": ["Solo career with various accompaniments"],
+        "voiceStyle": "Elegant, refined, warm; clean diction and musical sophistication",
+        "signatureRecordings": ["Cantando", "La Última Copa"]
+      }
+    },
+    {
+      "id": "libertad-lamarque",
+      "type": "person",
+      "displayName": "Libertad Lamarque",
+      "spanish": "",
+      "aliases": ["La Novia de América"],
+      "summary": "\"La Novia de América\" — tango singer and international film star",
+      "definition": "Libertad Lamarque (1908–2000) was a tango singer and actress who became Latin America's biggest film star. Known as 'La Novia de América,' she recorded with D'Arienzo and others before exile in Mexico (reportedly due to conflict with Eva Perón) launched her film career.",
+      "categories": ["singer"],
+      "relatedTerms": ["juan-darienzo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Libertad Lamarque",
+        "birthDeath": "1908–2000",
+        "primaryOrchestras": ["Juan D'Arienzo", "Various", "Solo film career"],
+        "voiceStyle": "Dramatic, theatrical, expressive; powerful soprano suited for both tango and film",
+        "signatureRecordings": ["Madreselva", "Besos Brujos"]
+      }
+    },
+    {
+      "id": "tita-merello",
+      "type": "person",
+      "displayName": "Tita Merello",
+      "spanish": "",
+      "aliases": ["La Morocha Argentina"],
+      "summary": "Iconic actress and singer — tango's most colorful female personality",
+      "definition": "Tita Merello (1904–2002) was an actress and tango singer known for her gutsy, street-wise personality and dramatic interpretations. Though more famous as an actress, her tango recordings have a raw, authentic quality that captures the spirit of the arrabal.",
+      "categories": ["singer"],
+      "relatedTerms": ["arrabal"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "fullName": "Laura Ana Merello",
+        "birthDeath": "1904–2002",
+        "primaryOrchestras": ["Solo career; various accompaniments"],
+        "voiceStyle": "Gutsy, dramatic, authentic; raw street-wise quality; more actress than pure singer",
+        "signatureRecordings": ["Se Dice de Mí", "Arrabalera"]
+      }
+    }
+  ]
+}

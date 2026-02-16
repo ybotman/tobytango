@@ -1,0 +1,315 @@
+{
+  "section": "Historic Venues",
+  "description": "Buenos Aires tango venues, both historic and current",
+  "entities": [
+    {
+      "id": "hansens",
+      "type": "venue",
+      "displayName": "Lo de Hansen",
+      "spanish": "Lo de Hansen",
+      "aliases": ["Hansen's", "Café de Hansen", "Restaurant Hansen"],
+      "summary": "Legendary early tango venue in Palermo, active circa 1880s–1910s",
+      "definition": "Lo de Hansen was one of the most famous early tango venues, located near the Palermo parks in Buenos Aires. Operating from the late 1800s through the early 1900s, it was a key site where tango transitioned from the arrabales into more public spaces. Both the respectable and the rough mingled there.",
+      "categories": ["venue", "historic", "guardia-vieja"],
+      "relatedTerms": ["guardia-vieja", "compadrito", "arrabal"],
+      "confidence": "likely",
+      "status": "complete",
+      "meta": {
+        "barrio": "Palermo",
+        "era": "Guardia Vieja (1880s–1910s)",
+        "currentStatus": "No longer exists",
+        "significance": "One of the birthplace venues of public tango performance"
+      }
+    },
+    {
+      "id": "palais-de-glace",
+      "type": "venue",
+      "displayName": "Palais de Glace",
+      "spanish": "Palais de Glace",
+      "aliases": ["Palace of Ice"],
+      "summary": "Elegant early 1900s venue where tango gained upper-class acceptance",
+      "definition": "The Palais de Glace in Buenos Aires' Recoleta neighborhood was originally an ice-skating rink (built 1911) that became a fashionable dance venue where tango gained acceptance among the upper classes. D'Arienzo played there early in his career. It now serves as a national art exhibition hall.",
+      "categories": ["venue", "historic"],
+      "relatedTerms": ["guardia-nueva", "juan-darienzo"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "Recoleta",
+        "era": "1910s–1930s (as tango venue)",
+        "currentStatus": "National art exhibition hall (Palais de Glace - Salas Nacionales de Cultura)",
+        "significance": "Symbol of tango's transition from the arrabal to high society"
+      }
+    },
+    {
+      "id": "armenonville",
+      "type": "venue",
+      "displayName": "El Armenonville",
+      "spanish": "El Armenonville",
+      "aliases": ["Armenonville"],
+      "summary": "Elite early 1900s cabaret where tango met high society",
+      "definition": "El Armenonville was an upscale cabaret in Palermo (near the current Planetario) active in the early 1900s. It was one of the premier venues where tango first gained acceptance among Buenos Aires' elite, alongside the Palais de Glace. Many important early tango musicians performed there.",
+      "categories": ["venue", "historic"],
+      "relatedTerms": ["palais-de-glace", "guardia-nueva"],
+      "confidence": "likely",
+      "status": "complete",
+      "meta": {
+        "barrio": "Palermo",
+        "era": "1910s–1920s",
+        "currentStatus": "No longer exists",
+        "significance": "Elite venue that helped legitimize tango among upper classes"
+      }
+    },
+    {
+      "id": "royal-pigall",
+      "type": "venue",
+      "displayName": "Royal Pigall",
+      "spanish": "Royal Pigall",
+      "aliases": [],
+      "summary": "Famous cabaret on Corrientes where Golden Age orchestras played",
+      "definition": "The Royal Pigall was a famous cabaret on Avenida Corrientes that hosted major tango orchestras during the late Guardia Nueva and early Golden Age periods. It was part of the vibrant nightlife corridor that made Corrientes the heartbeat of Buenos Aires' entertainment scene.",
+      "categories": ["venue", "historic"],
+      "relatedTerms": ["epoca-de-oro", "guardia-nueva"],
+      "confidence": "likely",
+      "status": "complete",
+      "meta": {
+        "barrio": "San Nicolás (Corrientes corridor)",
+        "era": "1920s–1940s",
+        "currentStatus": "No longer exists",
+        "significance": "Part of the legendary Corrientes nightlife scene"
+      }
+    },
+    {
+      "id": "cafe-de-los-angelitos",
+      "type": "venue",
+      "displayName": "Café de los Angelitos",
+      "spanish": "Café de los Angelitos",
+      "aliases": ["Los Angelitos"],
+      "summary": "Historic café immortalized in tango lyrics, now a dinner show venue",
+      "definition": "Café de los Angelitos, originally opened in 1890 on Avenida Rivadavia, is one of Buenos Aires' most famous tango-associated cafés. Immortalized in the D'Agostino-Vargas recording, it was a gathering place for musicians, poets, and tango figures. After decades of closure, it reopened as a tango dinner show venue.",
+      "categories": ["venue", "historic"],
+      "relatedTerms": ["angel-dagostino", "angel-vargas", "guardia-vieja"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "Balvanera",
+        "era": "1890–present (with closure periods)",
+        "address": "Avenida Rivadavia 2100",
+        "currentStatus": "Open as tango dinner show venue (tourist-oriented)",
+        "significance": "Historic café immortalized in the famous tango 'Café de los Angelitos'"
+      }
+    },
+    {
+      "id": "cafe-tortoni",
+      "type": "venue",
+      "displayName": "Café Tortoni",
+      "spanish": "Café Tortoni",
+      "aliases": ["Tortoni"],
+      "summary": "Buenos Aires' most famous historic café — cultural landmark since 1858",
+      "definition": "Café Tortoni, established in 1858 on Avenida de Mayo, is Buenos Aires' most iconic café and a National Historic Monument. While not exclusively a tango venue, it has deep connections to tango culture, hosting live performances and having been frequented by tango legends, writers, and artists for over 160 years.",
+      "categories": ["venue", "historic"],
+      "relatedTerms": ["porteno"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "Monserrat",
+        "era": "1858–present",
+        "address": "Avenida de Mayo 825",
+        "currentStatus": "Open — National Historic Monument; hosts tango shows in basement",
+        "significance": "Cultural landmark of Buenos Aires; hosts tango and jazz performances"
+      }
+    },
+    {
+      "id": "salon-canning",
+      "type": "venue",
+      "displayName": "Salón Canning",
+      "spanish": "Salón Canning",
+      "aliases": ["Canning", "Parakultural"],
+      "summary": "Iconic Palermo milonga venue — closed permanently in 2022",
+      "definition": "Salón Canning was one of Buenos Aires' most important milonga venues, located on Avenida Scalabrini Ortiz in Palermo. Home to the famous Milonga Parakultural (since the 1990s), its beautiful old wooden floor hosted legendary dancers for decades. The venue closed permanently in December 2022.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["milonga-event", "codigos", "la-viruta"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "Palermo",
+        "era": "Decades as milonga venue; closed December 2022",
+        "currentStatus": "Permanently closed (December 30, 2022 was the last milonga)",
+        "significance": "One of Buenos Aires' most important milonga venues; Parakultural was considered the premier milonga"
+      }
+    },
+    {
+      "id": "la-viruta",
+      "type": "venue",
+      "displayName": "La Viruta",
+      "spanish": "La Viruta Tango Club",
+      "aliases": ["Viruta"],
+      "summary": "Vibrant, youth-friendly milonga in Palermo — open late, all levels welcome",
+      "definition": "La Viruta is one of Buenos Aires' most popular and accessible milongas, located in the basement of the Armenian Cultural Center in Palermo. Known for its late-night hours, welcoming atmosphere, and mix of tango, salsa, and rock, it attracts both locals and international visitors. Classes are offered before the milonga.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["milonga-event", "salon-canning"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "Palermo",
+        "address": "Armenia 1366 (basement)",
+        "era": "1990s–present",
+        "currentStatus": "Open and active",
+        "significance": "Perhaps Buenos Aires' most famous current milonga; accessible, inclusive, and vibrant"
+      }
+    },
+    {
+      "id": "confiteria-ideal",
+      "type": "venue",
+      "displayName": "Confitería Ideal",
+      "spanish": "Confitería Ideal",
+      "aliases": ["La Ideal"],
+      "summary": "Grand Belle Époque confitería hosting milongas since the early 1900s",
+      "definition": "Confitería Ideal is a stunning Belle Époque venue on Calle Suipacha in downtown Buenos Aires, opened in 1912. Its ornate architecture, marble columns, and chandeliers make it one of the most atmospheric tango venues in the world. It hosts milongas and tango shows, connecting dancers to the Golden Age ambiance.",
+      "categories": ["venue", "milonga", "historic"],
+      "relatedTerms": ["milonga-event", "epoca-de-oro"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "San Nicolás (downtown)",
+        "address": "Suipacha 384",
+        "era": "1912–present (with restoration periods)",
+        "currentStatus": "Open after restoration; hosts milongas and shows",
+        "significance": "Buenos Aires' most architecturally stunning tango venue; transports dancers to the Golden Age"
+      }
+    },
+    {
+      "id": "lo-de-celia",
+      "type": "venue",
+      "displayName": "Lo de Celia",
+      "spanish": "Lo de Celia",
+      "aliases": [],
+      "summary": "Traditional milonga known for strict códigos and classic atmosphere",
+      "definition": "Lo de Celia is a traditional Buenos Aires milonga known for maintaining strict códigos, including cabeceo, formal dress, and respect for the ronda. Popular with older, more traditional dancers, it represents the most authentic milonga experience, staying true to how milongas operated during the Golden Age.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["codigos", "cabeceo", "milonga-event"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "Centro/Constitución area",
+        "era": "1990s–present",
+        "currentStatus": "Active (verify current schedule)",
+        "significance": "One of Buenos Aires' most traditional milongas; strong códigos"
+      }
+    },
+    {
+      "id": "nino-bien",
+      "type": "venue",
+      "displayName": "Niño Bien",
+      "spanish": "Niño Bien",
+      "aliases": [],
+      "summary": "Traditional Thursday milonga at Centro Región Leonesa",
+      "definition": "Niño Bien is a famous traditional milonga held at the Centro Región Leonesa in the Constitución neighborhood. Known for its Thursday night milonga, it attracts a dedicated crowd of skilled dancers who value traditional códigos, elegant dress, and Golden Age music. One of Buenos Aires' most respected milongas.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["codigos", "milonga-event"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "Constitución",
+        "address": "Centro Región Leonesa, Humberto Primo 1462",
+        "era": "Long-running traditional milonga",
+        "currentStatus": "Active",
+        "significance": "One of the most respected traditional milongas in Buenos Aires"
+      }
+    },
+    {
+      "id": "la-catedral",
+      "type": "venue",
+      "displayName": "La Catedral",
+      "spanish": "La Catedral",
+      "aliases": [],
+      "summary": "Bohemian alternative milonga in a converted warehouse in Almagro",
+      "definition": "La Catedral is an unconventional milonga housed in a former warehouse in the Almagro neighborhood. Known for its bohemian atmosphere, high ceilings, eclectic décor, and relaxed vibe, it attracts a younger, more alternative crowd. Less formal than traditional milongas, it's popular with both locals and visitors.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["milonga-event", "practica"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "barrio": "Almagro",
+        "era": "2000s–present",
+        "currentStatus": "Active",
+        "significance": "Leading alternative/bohemian milonga venue; accessible to all levels"
+      }
+    },
+    {
+      "id": "porteno-y-bailarin",
+      "type": "venue",
+      "displayName": "Porteño y Bailarín",
+      "spanish": "Porteño y Bailarín",
+      "aliases": [],
+      "summary": "Classic, no-frills milonga popular with traditional local dancers",
+      "definition": "Porteño y Bailarín is a classic, unpretentious Buenos Aires milonga popular with local dancers who value traditional codes and good music over fancy décor. Its straightforward atmosphere reflects the everyday tango culture of Buenos Aires porteños.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["codigos", "milonga-event", "porteno"],
+      "confidence": "likely",
+      "status": "complete",
+      "meta": {
+        "barrio": "Centro",
+        "era": "Long-running",
+        "currentStatus": "Active (verify current schedule)",
+        "significance": "Authentic, no-frills local milonga experience"
+      }
+    },
+    {
+      "id": "la-baldosa",
+      "type": "venue",
+      "displayName": "La Baldosa",
+      "spanish": "La Baldosa",
+      "aliases": [],
+      "summary": "Traditional milonga known for warm atmosphere and older dancers",
+      "definition": "La Baldosa is a warm, traditional milonga in Buenos Aires popular with older dancers and those who appreciate a classic milonga atmosphere. The name means 'the tile' and the venue maintains traditional códigos and a friendly, welcoming environment.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["codigos", "milonga-event"],
+      "confidence": "likely",
+      "status": "complete",
+      "meta": {
+        "barrio": "Various locations",
+        "era": "Long-running",
+        "currentStatus": "Active (verify current schedule and location)",
+        "significance": "Traditional, warm milonga atmosphere"
+      }
+    },
+    {
+      "id": "gricel",
+      "type": "venue",
+      "displayName": "Club Gricel",
+      "spanish": "Club Gricel",
+      "aliases": ["Gricel"],
+      "summary": "Historic tango club with beautiful dance floor in San Cristóbal",
+      "definition": "Club Gricel is a historic social club in the San Cristóbal neighborhood that has hosted milongas for decades. Known for its large, beautiful dance floor and traditional atmosphere, it's a venue where porteños have danced tango across generations.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["milonga-event"],
+      "confidence": "likely",
+      "status": "complete",
+      "meta": {
+        "barrio": "San Cristóbal",
+        "era": "Decades of milonga hosting",
+        "currentStatus": "Active",
+        "significance": "Historic club with a long tradition of hosting milongas"
+      }
+    },
+    {
+      "id": "el-arranque",
+      "type": "venue",
+      "displayName": "El Arranque",
+      "spanish": "El Arranque",
+      "aliases": [],
+      "summary": "Traditional Sunday milonga popular with serious local dancers",
+      "definition": "El Arranque is a respected traditional milonga in Buenos Aires, particularly known for its Sunday sessions. It draws serious local dancers who value good music, proper floorcraft, and the social codes of traditional milonga culture.",
+      "categories": ["venue", "milonga"],
+      "relatedTerms": ["codigos", "milonga-event"],
+      "confidence": "likely",
+      "status": "complete",
+      "meta": {
+        "barrio": "Various locations",
+        "era": "Long-running",
+        "currentStatus": "Active (verify current schedule)",
+        "significance": "Respected traditional milonga with serious local dancers"
+      }
+    }
+  ]
+}

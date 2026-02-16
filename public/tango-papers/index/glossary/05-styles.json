@@ -1,0 +1,174 @@
+{
+  "section": "Dance Styles",
+  "description": "Major Argentine tango dance styles and their characteristics",
+  "entities": [
+    {
+      "id": "milonguero-apilado",
+      "type": "style",
+      "displayName": "Milonguero / Apilado",
+      "spanish": "Estilo milonguero / Apilado",
+      "aliases": ["apilado", "close embrace style", "estilo del centro"],
+      "summary": "Intimate close embrace style born in crowded downtown milongas",
+      "definition": "The milonguero or apilado style features a close, chest-to-chest embrace where the partners lean slightly into each other, creating a shared axis. Born in the crowded milongas of downtown Buenos Aires, it emphasizes musical connection, small movements, and walking over complex figures. The embrace rarely opens.",
+      "categories": ["dance-style"],
+      "relatedTerms": ["abrazo-cerrado", "milonguero", "villa-urquiza", "codigos", "milonguero-style"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["Constant close embrace", "Shared axis (slight forward lean)", "Small, compact movements", "Emphasis on walking and musical interpretation", "Minimal use of open-embrace figures"],
+        "historicalContext": "Developed in the crowded downtown milongas of Buenos Aires during the Golden Age. The limited floor space made large movements impractical, leading to an intimate, musical style focused on connection.",
+        "notablePractitioners": ["Tete Rusconi", "Ricardo Vidort", "Pepito Avellaneda", "Pupi Castello", "Finito"],
+        "socialDancerNotes": "The most practical style for crowded social floors. Prioritizes the embrace and musicality over visual spectacle. Many tango educators now use 'close embrace' rather than 'milonguero style' as the preferred term."
+      }
+    },
+    {
+      "id": "villa-urquiza-salon",
+      "type": "style",
+      "displayName": "Villa Urquiza / Salón",
+      "spanish": "Estilo Villa Urquiza / Salón",
+      "aliases": ["salon style", "estilo Villa Urquiza", "tango de salon elegante"],
+      "summary": "Elegant salon style with precise technique and embrace transitions",
+      "definition": "The Villa Urquiza or salon style is characterized by elegant, precise technique with smooth transitions between open and close embrace. Named after the Buenos Aires neighborhood whose social clubs developed this aesthetic, it emphasizes posture, clean pivots, and graceful movement while respecting the ronda.",
+      "categories": ["dance-style"],
+      "relatedTerms": ["abrazo", "giro", "milonguero-apilado", "villa-urquiza"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["Dynamic embrace (open and close transitions)", "Precise technique and clean lines", "Elegant posture and carriage", "Full use of tango vocabulary within social dance context", "Respect for navigation and floorcraft"],
+        "historicalContext": "Developed in the social clubs (clubes de barrio) of the Villa Urquiza neighborhood in northern Buenos Aires. These clubs had more spacious dance floors than downtown milongas, allowing for larger movements while maintaining social dance ethics.",
+        "notablePractitioners": ["Gerardo Portalea", "Carlos Perez & Rosa Forte", "Jorge Dispari & María del Carmen", "El Turco José"],
+        "socialDancerNotes": "Villa Urquiza style represents the gold standard of elegant social tango for many dancers. It's social tango at its most refined—technically precise but always danceable and navigable."
+      }
+    },
+    {
+      "id": "tango-nuevo-style",
+      "type": "style",
+      "displayName": "Tango Nuevo",
+      "spanish": "Tango Nuevo",
+      "aliases": ["nuevo", "new tango (dance)"],
+      "summary": "Analytical, exploratory approach emphasizing off-axis and new vocabulary",
+      "definition": "Tango nuevo as a dance style emerged in the 1990s through the analytical research of Gustavo Naveira and Fabián Salas, who systematically explored tango's movement possibilities. It features off-axis movements (colgadas, volcadas), complex sacadas, and an open, exploratory approach to the embrace and vocabulary.",
+      "categories": ["dance-style"],
+      "relatedTerms": ["colgada", "volcada", "sacada", "astor-piazzolla"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["Analytical approach to movement", "Off-axis movements (colgadas, volcadas)", "Complex sacadas and leg interplay", "Often danced in open embrace", "Exploration of new movement possibilities within tango principles"],
+        "historicalContext": "Emerged in Buenos Aires in the 1990s when dancers like Gustavo Naveira, Fabián Salas, and Chicho Frúmboli began systematically analyzing tango mechanics. Not actually 'new tango' but a research-based approach to understanding movement. Distinct from Piazzolla's 'nuevo tango' music.",
+        "notablePractitioners": ["Gustavo Naveira & Giselle Anne", "Fabián Salas & Carolina del Rivero", "Chicho Frúmboli & Juana Sepúlveda", "Sebastián Arce & Mariana Montes"],
+        "socialDancerNotes": "Nuevo vocabulary has been widely absorbed into social tango. Elements like volcadas and colgadas appear in many dancers' repertoire. The analytical approach improved tango pedagogy worldwide. On crowded floors, adapt to smaller, social-friendly expressions."
+      }
+    },
+    {
+      "id": "fantasia-stage",
+      "type": "style",
+      "displayName": "Fantasía / Stage Tango",
+      "spanish": "Tango Fantasía / Tango Escenario",
+      "aliases": ["stage tango", "tango escenario", "show tango", "tango de escenario"],
+      "summary": "Choreographed performance tango with lifts, high kicks, and drama",
+      "definition": "Tango fantasía or escenario is choreographed tango designed for stage performance, featuring dramatic lifts, high kicks, athletic movements, and theatrical expression. It's what most non-dancers think of as 'tango.' While spectacular to watch, it is distinctly separate from social tango and not appropriate for the milonga floor.",
+      "categories": ["dance-style"],
+      "relatedTerms": ["milonga-event"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["Choreographed sequences", "Lifts and aerial elements", "High boleos and dramatic leg extensions", "Athletic, gymnastic elements", "Theatrical expression and costuming"],
+        "historicalContext": "Stage tango has existed since the early 1900s, but the modern form was shaped by shows like 'Tango Argentino' (1983) and the Mundial de Tango competition. Juan Carlos Copes was a pioneering figure in developing stage tango alongside Pugliese's dramatic music.",
+        "notablePractitioners": ["Juan Carlos Copes & María Nieves", "Miguel Ángel Zotto & Milena Plebs", "Pablo Verón"],
+        "socialDancerNotes": "Stage tango and social tango are different disciplines. Stage moves—lifts, high boleos, dramatic hooks—are dangerous on social floors and violate milonga etiquette. Many great social dancers never perform, and many great performers struggle on the social floor."
+      }
+    },
+    {
+      "id": "canyengue-style",
+      "type": "style",
+      "displayName": "Canyengue",
+      "spanish": "Canyengue",
+      "aliases": ["tango canyengue", "canyengue tango"],
+      "summary": "Earthy early tango style with bent knees and rhythmic playfulness",
+      "definition": "Canyengue is an early style of tango from the 1920s–1930s characterized by a close, offset embrace, bent knees, rhythmic footwork, and a playful, grounded quality. It reflects tango before the Golden Age refinements, with a more earthy, street-wise aesthetic rooted in the music of the Guardia Vieja.",
+      "categories": ["dance-style"],
+      "relatedTerms": ["guardia-vieja", "compadrito"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["Bent knees and low center of gravity", "Close, offset embrace (bodies slightly angled)", "Rhythmic, playful footwork", "Short, grounded steps", "Swaying, syncopated quality"],
+        "historicalContext": "Canyengue represents tango as it was danced before the Golden Age formalization. The word may derive from an African-origin term. It was a street dance style of the compadritos and working class. A revival movement in the 1990s brought renewed interest.",
+        "notablePractitioners": ["El Negro Lavandina", "Marta Antón & Manolo 'El Gallego' Salvador", "Roxina Villegas & Adrián Griffero"],
+        "socialDancerNotes": "Canyengue is occasionally seen at milongas and is sometimes danced to early tango recordings. It offers a fun, playful alternative to Golden Age styles and connects dancers to tango's earliest roots."
+      }
+    },
+    {
+      "id": "orillero-style",
+      "type": "style",
+      "displayName": "Orillero",
+      "spanish": "Estilo orillero",
+      "aliases": ["tango orillero"],
+      "summary": "Flashy neighborhood style with elaborate footwork from the arrabal",
+      "definition": "Orillero refers to the tango style of the orillas (outskirts/edges) of Buenos Aires—the working-class neighborhoods where tango was born. Characterized by elaborate footwork, firuletes, and a flashy, show-off quality, it reflected the competitive spirit of the compadritos who danced to impress.",
+      "categories": ["dance-style"],
+      "relatedTerms": ["arrabal", "compadrito", "firuletes", "guardia-vieja"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["Elaborate footwork (firuletes)", "Competitive, show-off quality", "Complex rhythmic embellishments", "More open than milonguero style", "Reflects compadrito swagger"],
+        "historicalContext": "The orillero style emerged from the arrabal neighborhoods (La Boca, Barracas, Pompeya) where tango was born. The men of these neighborhoods used elaborate footwork to demonstrate their skill and machismo. The style predates the more refined salon aesthetics.",
+        "notablePractitioners": ["Associated with the old milongueros of the outer barrios"],
+        "socialDancerNotes": "Pure orillero is rarely seen at modern milongas, but elements of its flashy footwork live on in many dancers' embellishments. The term 'orillero' also has social-class connotations, referring to the people of Buenos Aires' outer edges."
+      }
+    },
+    {
+      "id": "tango-de-salon",
+      "type": "style",
+      "displayName": "Tango de Salón",
+      "spanish": "Tango de salón",
+      "aliases": ["salon tango"],
+      "summary": "Broad category of social tango danced in salons and milongas",
+      "definition": "Tango de salón is the broad category encompassing all social tango styles danced in milongas and dance halls, as distinct from stage/performance tango. It includes both milonguero and Villa Urquiza approaches, unified by respect for navigation, the embrace, and social codes. At the Mundial de Tango, the 'Tango de Pista' category judges social dancing.",
+      "categories": ["dance-style"],
+      "relatedTerms": ["milonguero-apilado", "villa-urquiza-salon", "ronda", "codigos"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["Social dance context (not performance)", "Respect for ronda and floorcraft", "Embrace-centered connection", "Improvised (not choreographed)", "Musical interpretation"],
+        "historicalContext": "Tango de salón has been the dominant form of tango throughout its history—the vast majority of tango has always been social dancing, not performance. The term emphasizes tango's nature as a participatory social art form.",
+        "socialDancerNotes": "All social tango is tango de salón. The term is sometimes used specifically to distinguish the more open, elegant salon approach from close milonguero embrace, but properly it encompasses all social dancing."
+      }
+    },
+    {
+      "id": "vals-dance",
+      "type": "style",
+      "displayName": "Vals (as dance)",
+      "spanish": "Vals criollo / Vals tanguero",
+      "aliases": ["tango waltz dance", "vals criollo"],
+      "summary": "Tango waltz — flowing, turning, lighter than tango",
+      "definition": "Vals as a dance is Argentine tango performed to waltz-time (3/4) music. It features more continuous movement, flowing turns, and a lighter, more buoyant quality than tango. Couples typically move with more rotation and fewer pauses. Vals tandas (usually three songs) provide a refreshing contrast to tango within the milonga.",
+      "categories": ["dance-style", "music"],
+      "relatedTerms": ["vals", "tanda", "giro"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["3/4 time rhythm", "Flowing, continuous movement", "More turning than tango", "Lighter, more buoyant quality", "Fewer pauses than tango"],
+        "historicalContext": "The Argentine vals is distinct from Viennese waltz—it uses tango embrace and vocabulary adapted to waltz time. It has been part of the milonga repertoire since the early days of tango, providing rhythmic variety.",
+        "socialDancerNotes": "Vals is danced with tango technique but requires adaptation: the 3/4 rhythm creates a lilting quality, and dancers typically emphasize the first beat of each measure. Most movements work but should feel lighter and more flowing."
+      }
+    },
+    {
+      "id": "milonga-dance",
+      "type": "style",
+      "displayName": "Milonga (as dance)",
+      "spanish": "Milonga",
+      "aliases": ["milonga lisa", "milonga con traspié"],
+      "summary": "The fast, rhythmic, playful dance in 2/4 time",
+      "definition": "Milonga as a dance style is faster and more rhythmic than tango, featuring a strong 2/4 beat, traspié (syncopated steps), and a playful, energetic character. There are two main approaches: milonga lisa (smooth, walking-based) and milonga con traspié (with syncopated double-time steps). It predates tango and maintains its own distinct identity.",
+      "categories": ["dance-style", "music"],
+      "relatedTerms": ["milonga-rhythm", "traspie", "tanda"],
+      "confidence": "verified",
+      "status": "complete",
+      "meta": {
+        "keyCharacteristics": ["Fast 2/4 rhythm", "Traspié (quick-quick-slow syncopation)", "Playful, energetic character", "Simpler vocabulary than tango (fewer pauses, fewer complex figures)", "Two approaches: lisa (smooth) and con traspié (syncopated)"],
+        "historicalContext": "Milonga as a musical and dance form predates tango and influenced its development. The dance maintains connections to the habanera rhythm and African-influenced music of the Río de la Plata region.",
+        "socialDancerNotes": "Milonga is considered more challenging than tango for many dancers because of the speed and the traspié. Start with milonga lisa (just walking) before adding traspié. Milonga tandas at milongas are typically two or three songs."
+      }
+    }
+  ]
+}
