@@ -1,6 +1,6 @@
 {
-  "version": "1.5",
-  "lastUpdated": "2026-02-15",
+  "version": "1.6",
+  "lastUpdated": "2026-02-16",
   "entities": [
     {
       "id": "angel-villoldo",
@@ -1608,7 +1608,31 @@
       "categories": ["dancers", "argentina"],
       "eras": ["nuevo-innovators"],
       "summary": "Investigation pioneer; studied with Tete; 'In one month-and-a-half I learned what I hadn't learned in two years' (on Naveira); repudiated 'nuevo' as style label (2009)",
-      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md"],
+      "appearsIn": ["/tango-papers/dancers/generations/thirty-year-window.md", "/tango-papers/people/chicho-frumboli.md"],
+      "status": "complete"
+    },
+    {
+      "id": "gustavo-naveira",
+      "type": "person",
+      "displayName": "Gustavo Naveira",
+      "fullName": "Gustavo Naveira",
+      "born": "1960-08-12",
+      "categories": ["dancers", "teachers", "argentina"],
+      "eras": ["investigacion", "nuevo-innovators"],
+      "summary": "Co-founder of tango nuevo; organized the Cochabamba Investigation Group (1990s); co-founded Cosmotango and CITA with Fabian Salas; 'Godfather of Argentine Tango'",
+      "appearsIn": ["/tango-papers/people/gustavo-naveira.md", "/tango-papers/dancers/generations/thirty-year-window.md"],
+      "status": "complete"
+    },
+    {
+      "id": "fabian-salas",
+      "type": "person",
+      "displayName": "Fabián Salas",
+      "fullName": "Fabián Salas",
+      "born": "1963",
+      "categories": ["dancers", "teachers", "organizers", "argentina"],
+      "eras": ["investigacion", "nuevo-innovators"],
+      "summary": "Co-founder of tango nuevo with Naveira; creator of CITA (1999); pioneer of colgadas; 'Outstanding Personality of Culture' (2015)",
+      "appearsIn": ["/tango-papers/people/fabian-salas.md", "/tango-papers/dancers/generations/thirty-year-window.md"],
       "status": "complete"
     },
     {
@@ -1946,6 +1970,158 @@
       "eras": ["renacimiento", "neo-traditional"],
       "summary": "Forever Tango star; apilado embrace icon — 'tango is not a step, it is a feeling' — defined neo-traditional aesthetic",
       "appearsIn": ["/tango-papers/argentina/nuevo-to-neotrad.md", "/tango-papers/usa/american-growth.md"],
+      "status": "complete"
+    },
+    {
+      "id": "sexteto-fantasma",
+      "type": "group",
+      "displayName": "Sexteto Fantasma",
+      "founded": "2012",
+      "nationality": "Argentina",
+      "categories": ["musicians", "orchestras", "contemporary"],
+      "eras": ["revival-orchestras"],
+      "summary": "Latin Grammy-nominated (2025) tango ensemble led by Guido Iacopetti; fuses tango with jazz, rock, folklore",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "otff",
+      "type": "group",
+      "displayName": "Orquesta Típica Fernández Fierro",
+      "founded": "2001",
+      "nationality": "Argentina",
+      "categories": ["musicians", "orchestras", "contemporary"],
+      "eras": ["revival-orchestras"],
+      "summary": "Punk-tango cooperative; owns CAFF venue; documentary 'Orquesta Típica (Tango or Death)' (2005)",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "color-tango",
+      "type": "group",
+      "displayName": "Color Tango",
+      "founded": "1990",
+      "nationality": "Argentina",
+      "categories": ["musicians", "orchestras"],
+      "eras": ["revival-orchestras"],
+      "summary": "Founded by Roberto Álvarez (Pugliese's bandoneonist); 12 CDs; now led by Ramiro Boero",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "tango-bardo",
+      "type": "group",
+      "displayName": "Tango Bardo",
+      "founded": "2010",
+      "nationality": "Argentina",
+      "categories": ["musicians", "orchestras", "contemporary"],
+      "eras": ["revival-orchestras"],
+      "summary": "Virtuosic milonga orchestra led by Lucas Furno; Disarliana vocal project (2024)",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "orquesta-tipica-andariega",
+      "type": "group",
+      "displayName": "Orquesta Típica Andariega",
+      "founded": "2009",
+      "nationality": "Argentina",
+      "categories": ["musicians", "orchestras", "contemporary"],
+      "eras": ["revival-orchestras"],
+      "summary": "Innovative milonguero orchestra by Luigi Coviello; deconstructive yet danceable",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "romantica-milonguera",
+      "type": "group",
+      "displayName": "Orquesta Romantica Milonguera",
+      "founded": "2017",
+      "nationality": "Argentina",
+      "categories": ["musicians", "orchestras", "contemporary"],
+      "eras": ["revival-orchestras"],
+      "summary": "Maximally expressive neo-traditional orchestra by Tomás Regolo",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "bandonegro",
+      "type": "group",
+      "displayName": "Bandonegro",
+      "founded": "2015",
+      "nationality": "Poland",
+      "categories": ["musicians", "orchestras", "international"],
+      "eras": ["revival-orchestras"],
+      "summary": "World-class Polish tango orchestra; TANUEVO (2025); own festival in Poznań",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "el-arranque",
+      "type": "group",
+      "displayName": "Orquesta El Arranque",
+      "founded": "1996",
+      "nationality": "Argentina",
+      "categories": ["musicians", "orchestras"],
+      "eras": ["revival-orchestras"],
+      "summary": "Founded by Ignacio Varchausky; 10+ albums; 300+ cities; Latin Grammy nominated (2004)",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "ignacio-varchausky",
+      "type": "person",
+      "displayName": "Ignacio Varchausky",
+      "nationality": "Argentina",
+      "categories": ["musicians", "historians", "educators", "producers"],
+      "eras": ["revival-orchestras"],
+      "summary": "Bassist; El Arranque founder; Orquesta Escuela creator (~300 musicians trained); Latin Grammy winner",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "dimitris-bronowski",
+      "type": "person",
+      "displayName": "Dimitris Bronowski",
+      "nationality": "Greece",
+      "categories": ["authors", "educators", "content-creators"],
+      "eras": ["contemporary"],
+      "summary": "Author of 'Tangofulness' (12 languages); TheCuriousTanguero.com; 7+ books",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "steve-darmo",
+      "type": "person",
+      "displayName": "Steve Darmo",
+      "nationality": "USA",
+      "categories": ["authors", "educators", "musicality"],
+      "eras": ["contemporary"],
+      "summary": "Author of 'Tango Endings'; studied 1700+ tangos; definitive musicality work",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "aires-de-milonga",
+      "type": "channel",
+      "displayName": "AiresDeMilonga",
+      "nationality": "Argentina",
+      "categories": ["content-creators", "media"],
+      "eras": ["contemporary"],
+      "summary": "'Largest tango video library'; Buenos Aires milonga documentation",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
+      "status": "complete"
+    },
+    {
+      "id": "hyperion-ensemble",
+      "type": "group",
+      "displayName": "Hyperion Ensemble",
+      "founded": "1998",
+      "nationality": "Italy",
+      "categories": ["musicians", "orchestras", "international"],
+      "eras": ["revival-orchestras"],
+      "summary": "Italian tango ensemble; 9 albums; European festivals and Buenos Aires milongas",
+      "appearsIn": ["/tango-papers/orchestras/revival-orchestras.md"],
       "status": "complete"
     }
   ]

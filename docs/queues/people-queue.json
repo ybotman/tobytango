@@ -17,22 +17,22 @@
       "slug": "gustavo-naveira",
       "displayName": "Gustavo Naveira",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 2,
       "notes": "Co-founder of tango nuevo, Cosmotango, analytical framework pioneer",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "fabian-salas",
       "displayName": "Fabián Salas",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 3,
       "notes": "Co-founder of tango nuevo, CITA organizer, investigation group",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
@@ -276,14 +276,64 @@
       "addedDate": "2026-02-15",
       "completedDate": null,
       "promptSentDate": "2026-02-16"
+    },
+    {
+      "slug": "ignacio-varchausky",
+      "displayName": "Ignacio Varchausky",
+      "type": "musician",
+      "status": "pending",
+      "priority": 26,
+      "notes": "Revival orchestras founder, El Arranque, Orquesta Escuela creator, Latin Grammy producer, most important contemporary preservation figure",
+      "addedDate": "2026-02-16",
+      "completedDate": null
+    },
+    {
+      "slug": "dimitris-bronowski",
+      "displayName": "Dimitris Bronowski",
+      "type": "author",
+      "status": "pending",
+      "priority": 27,
+      "notes": "Author of Tangofulness (12 languages), TheCuriousTanguero.com, 7+ books on tango",
+      "addedDate": "2026-02-16",
+      "completedDate": null
+    },
+    {
+      "slug": "steve-darmo",
+      "displayName": "Steve Darmo",
+      "type": "author",
+      "status": "pending",
+      "priority": 28,
+      "notes": "Author of Tango Endings, studied 1700+ tangos, definitive musicality work",
+      "addedDate": "2026-02-16",
+      "completedDate": null
+    },
+    {
+      "slug": "guido-iacopetti",
+      "displayName": "Guido Iacopetti",
+      "type": "musician",
+      "status": "pending",
+      "priority": 29,
+      "notes": "Sexteto Fantasma founder/director, 2025 Latin Grammy nominee, contemporary tango composer",
+      "addedDate": "2026-02-16",
+      "completedDate": null
+    },
+    {
+      "slug": "roberto-alvarez",
+      "displayName": "Roberto Álvarez",
+      "type": "musician",
+      "status": "pending",
+      "priority": 30,
+      "notes": "Color Tango founder, Pugliese's first bandoneonist, died 2023",
+      "addedDate": "2026-02-16",
+      "completedDate": null
     }
   ],
   "stats": {
-    "total": 25,
-    "pending": 0,
-    "prompt_ready": 24,
+    "total": 30,
+    "pending": 5,
+    "prompt_ready": 22,
     "in_progress": 0,
-    "completed": 1,
+    "completed": 3,
     "blocked": 0
   }
 }
