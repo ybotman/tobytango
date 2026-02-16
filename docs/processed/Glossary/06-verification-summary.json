@@ -1,0 +1,70 @@
+{
+  "verificationSummary": {
+    "totalEntities": 152,
+    "bySection": {
+      "tangoTerms": 75,
+      "orchestras": 24,
+      "singers": 25,
+      "venues": 16,
+      "styles": 9
+    },
+    "confidenceCounts": {
+      "verified": 135,
+      "likely": 14,
+      "uncertain": 3
+    },
+    "flaggedForReview": [
+      {
+        "id": "hansens",
+        "reason": "Exact dates of operation and precise location are poorly documented. Multiple sources give conflicting information about when it opened and closed."
+      },
+      {
+        "id": "royal-pigall",
+        "reason": "Limited primary source information about this venue. Dates of operation approximate."
+      },
+      {
+        "id": "armenonville",
+        "reason": "Exact location and dates vary across sources. Some sources place it differently within Palermo."
+      },
+      {
+        "id": "jorge-casal",
+        "reason": "Birth and death dates not fully confirmed across all sources. Some discography details uncertain."
+      },
+      {
+        "id": "contra-ronda",
+        "reason": "Usage and acceptance of the contra-ronda varies significantly by milonga and era. Some traditional milongueros reject the concept entirely."
+      },
+      {
+        "id": "mario-bustos",
+        "reason": "Some sources give varying birth years (1926 vs 1928). Death at young age confirmed but exact circumstances vary."
+      },
+      {
+        "id": "la-baldosa",
+        "reason": "Venue has changed locations over the years. Current status and location should be verified with Buenos Aires sources."
+      },
+      {
+        "id": "el-arranque",
+        "reason": "Current schedule and location should be verified. Buenos Aires milonga schedules change frequently."
+      },
+      {
+        "id": "porteno-y-bailarin",
+        "reason": "Current status should be verified. Buenos Aires venue landscape is dynamic."
+      },
+      {
+        "id": "oscar-serpa",
+        "reason": "Birth and death dates not confirmed across sources. Less documented than other Di Sarli singers."
+      },
+      {
+        "id": "lo-de-celia",
+        "reason": "Current operating status and exact location should be verified with Buenos Aires sources."
+      }
+    ],
+    "notes": {
+      "orchestraDates": "Active years for orchestras represent approximate recording/performing periods. Many leaders continued performing casually beyond their main recording careers.",
+      "singerTenures": "Singer tenures with orchestras sometimes have disputed start/end dates. Dates represent the commonly accepted periods.",
+      "venueStatus": "Buenos Aires milonga venues are dynamic—schedules, locations, and operating status change frequently. All current statuses should be verified for publishing.",
+      "styleDefinitions": "Tango style categories are debated within the community. These definitions represent mainstream consensus among tango educators and dancers.",
+      "existingEntities": "The following entities were excluded per the prompt (already in master-index.json): tete-rusconi, ricardo-vidort, pepito-avellaneda, pupi-castello, gerardo-portalea, finito, el-turco-jose, graciela-gonzalez, silvia-ceriani, carlos-perez-rosa-forte, sin-rumbo, sunderland, el-beso, villa-urquiza (style), milonguero-style. These IDs ARE referenced in relatedTerms fields of other entries."
+    }
+  }
+}

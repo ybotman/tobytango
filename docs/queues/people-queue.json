@@ -50,66 +50,66 @@
       "slug": "el-turco-jose",
       "displayName": "El Turco José Brahemcha",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 5,
       "notes": "Guardian generation, Villa Urquiza style co-creator, died Apr 2010",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "carlos-gavito",
       "displayName": "Carlos Gavito",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 6,
       "notes": "Stage pioneer, Tango Argentino show, dramatic style master",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "juan-carlos-copes",
       "displayName": "Juan Carlos Copes",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 7,
       "notes": "Stage pioneer, Tango Argentino show, partner María Nieves",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "maria-nieves",
       "displayName": "María Nieves",
       "type": "dancer",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 8,
       "notes": "Stage pioneer, Tango Argentino show, partner Juan Carlos Copes",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "anibal-troilo",
       "displayName": "Aníbal Troilo",
       "type": "musician",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 9,
       "notes": "Pichuco, major Golden Age orchestra leader, bandoneonist",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "carlos-di-sarli",
       "displayName": "Carlos Di Sarli",
       "type": "musician",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 10,
       "notes": "El Señor del Tango, Golden Age orchestra leader, elegant style",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
@@ -335,10 +335,10 @@
   ],
   "stats": {
     "total": 30,
-    "pending": 0,
-    "prompt_ready": 26,
+    "pending": 5,
+    "prompt_ready": 15,
     "in_progress": 0,
-    "completed": 4,
+    "completed": 10,
     "blocked": 0
   }
 }
