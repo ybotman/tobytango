@@ -149,6 +149,96 @@ const peopleData = [
     status: "published",
     priority: 25
   },
+  {
+    slug: "antonio-todaro",
+    displayName: "Antonio Todaro",
+    fullName: "Antonio Todaro",
+    type: "dancer",
+    generation: "guardian",
+    born: "1929-09-12",
+    died: "1994-02-28",
+    nationality: "Argentine",
+    tags: ["teacher", "choreographer", "stage-pioneer", "mataderos", "revival-era"],
+    summary: "The tailor of tango — trained generation of stage dancers (Zotto, Plebs, Herrera) through tango's dark age, never stopped teaching.",
+    paperPath: "/tango-papers/people/antonio-todaro.md",
+    status: "published",
+    priority: 31
+  },
+  {
+    slug: "rodolfo-cieri",
+    displayName: "Rodolfo Cieri",
+    fullName: "Rodolfo Cieri",
+    type: "dancer",
+    generation: "guardian",
+    born: "1932-10-30",
+    died: "2000-06-04",
+    nationality: "Argentine",
+    tags: ["canyengue", "orillero", "teacher", "revival", "la-paternal"],
+    summary: "The keeper of canyengue — preserved and revived tango's oldest style from his father's teachings, iconic with wife María Topa.",
+    paperPath: "/tango-papers/people/rodolfo-cieri.md",
+    status: "published",
+    priority: 32
+  },
+  {
+    slug: "mingo-pugliese",
+    displayName: "Mingo Pugliese",
+    fullName: "Mingo Pugliese",
+    type: "dancer",
+    generation: "bridge",
+    born: "1932",
+    died: "2017",
+    nationality: "Argentine",
+    tags: ["milonguero", "teacher", "8-count-molinete", "bridge-generation", "villa-devoto"],
+    summary: "The teacher's teacher — devised 8-count molinete method, disciple of Petroleo, bridge between old and new styles.",
+    paperPath: "/tango-papers/people/mingo-pugliese.md",
+    status: "published",
+    priority: 33
+  },
+  {
+    slug: "carolina-del-rivero",
+    displayName: "Carolina del Rivero",
+    fullName: "Carolina del Rivero",
+    type: "dancer",
+    generation: "nuevo",
+    born: null,
+    died: null,
+    nationality: "Argentine",
+    tags: ["nuevo", "teacher", "performer", "teatro-colon", "feldenkrais", "cita"],
+    summary: "Fabián Salas' main partner, Teatro Colón trained, CITA master teacher 2001–2014, certified Feldenkrais practitioner.",
+    paperPath: "/tango-papers/people/carolina-del-rivero.md",
+    status: "published",
+    priority: 34
+  },
+  {
+    slug: "eugenia-parrilla",
+    displayName: "Eugenia Parrilla",
+    fullName: "Eugenia Parrilla",
+    type: "dancer",
+    generation: "nuevo",
+    born: null,
+    died: null,
+    nationality: "Argentine",
+    tags: ["nuevo", "teacher", "performer", "paris-based"],
+    summary: "Chicho's partner 2003–2006, Paris-based, now partners with Yanick Wyler.",
+    paperPath: "/tango-papers/people/eugenia-parrilla.md",
+    status: "published",
+    priority: 35
+  },
+  {
+    slug: "silvia-ceriani",
+    displayName: "Silvia Ceriani",
+    fullName: "Silvia Ceriani",
+    type: "dancer",
+    generation: "bridge",
+    born: null,
+    died: null,
+    nationality: "Argentine",
+    tags: ["milonguera", "teacher", "writer", "artist", "vals-specialist"],
+    summary: "Tete Rusconi's teaching partner 1995–2010, writer and artist, known for musicality and vals.",
+    paperPath: "/tango-papers/people/silvia-ceriani.md",
+    status: "published",
+    priority: 36
+  },
 
   // === DANCERS: Stage Pioneers ===
   {
@@ -335,6 +425,51 @@ const peopleData = [
     status: "published",
     priority: 12
   },
+  {
+    slug: "rodolfo-biagi",
+    displayName: "Rodolfo Biagi",
+    fullName: "Rodolfo Biagi",
+    type: "musician",
+    generation: "golden-age",
+    born: "1906-03-14",
+    died: "1969-09-24",
+    nationality: "Argentine",
+    tags: ["orchestra-leader", "piano", "composer", "golden-age", "manos-brujas", "darienzo"],
+    summary: "'Manos Brujas' — D'Arienzo's pianist 1935–38, accelerated the rhythm revolution, founded own fast and playful orchestra.",
+    paperPath: "/tango-papers/people/rodolfo-biagi.md",
+    status: "published",
+    priority: 37
+  },
+  {
+    slug: "alfredo-de-angelis",
+    displayName: "Alfredo De Angelis",
+    fullName: "Alfredo De Angelis",
+    type: "musician",
+    generation: "golden-age",
+    born: "1910-11-02",
+    died: "1992-03-31",
+    nationality: "Argentine",
+    tags: ["orchestra-leader", "piano", "composer", "golden-age", "vocal-duos"],
+    summary: "Orchestra of the people — accessible traditional tango, Dante & Martel vocal duo, 486 Odeon recordings, irresistible waltzes.",
+    paperPath: "/tango-papers/people/alfredo-de-angelis.md",
+    status: "published",
+    priority: 38
+  },
+  {
+    slug: "francisco-canaro",
+    displayName: "Francisco Canaro",
+    fullName: "Francisco Canaro",
+    type: "musician",
+    generation: "golden-age",
+    born: "1888-11-26",
+    died: "1964-12-14",
+    nationality: "Uruguayan",
+    tags: ["orchestra-leader", "violin", "composer", "pioneer", "sadaic-founder"],
+    summary: "'Pirincho' — most prolific tango recording artist (3,500+ recordings), founded SADAIC, oil can violin legend.",
+    paperPath: "/tango-papers/people/francisco-canaro.md",
+    status: "published",
+    priority: 39
+  },
 
   // === SINGER ===
   {
@@ -479,6 +614,68 @@ const peopleData = [
     paperPath: "/tango-papers/people/roberto-alvarez.md",
     status: "published",
     priority: 30
+  },
+
+  // === NEOTRAD GENERATION ===
+  {
+    slug: "sebastian-achaval",
+    displayName: "Sebastián Achaval",
+    fullName: "Sebastián Achaval",
+    type: "dancer",
+    generation: "neotrad",
+    born: null,
+    died: null,
+    nationality: "Argentine",
+    tags: ["neotrad", "teacher", "performer", "mundial-champion", "salon"],
+    summary: "World Champion Tango de Salón 2005, partner of Roxana Suárez since 2007, authentic milonga tango.",
+    paperPath: "/tango-papers/people/sebastian-achaval.md",
+    status: "published",
+    priority: 40
+  },
+  {
+    slug: "roxana-suarez",
+    displayName: "Roxana Suárez",
+    fullName: "Roxana Suárez",
+    type: "dancer",
+    generation: "neotrad",
+    born: null,
+    died: null,
+    nationality: "Argentine",
+    tags: ["neotrad", "teacher", "performer", "salon", "congreso"],
+    summary: "Born into tango — grandmother organized milongas, partner of Sebastián Achaval since 2007.",
+    paperPath: "/tango-papers/people/roxana-suarez.md",
+    status: "published",
+    priority: 41
+  },
+  {
+    slug: "carlitos-espinoza",
+    displayName: "Carlitos Espinoza",
+    fullName: "Carlos Espinoza",
+    type: "dancer",
+    generation: "neotrad",
+    born: "1981-03-08",
+    died: null,
+    nationality: "Chilean",
+    tags: ["neotrad", "milonguero-style", "teacher", "performer"],
+    summary: "Chilean milonguero — teaching since 1998, partner of Noelia Hurtado since 2011.",
+    paperPath: "/tango-papers/people/carlitos-espinoza.md",
+    status: "published",
+    priority: 42
+  },
+  {
+    slug: "noelia-hurtado",
+    displayName: "Noelia Hurtado",
+    fullName: "Noelia Hurtado",
+    type: "dancer",
+    generation: "neotrad",
+    born: null,
+    died: null,
+    nationality: "Argentine",
+    tags: ["neotrad", "villa-urquiza", "teacher", "performer", "queen-of-embellishments"],
+    summary: "Queen of embellishments — Villa Urquiza trained, 2006 Metropolitan Champion, partner of Carlitos Espinoza.",
+    paperPath: "/tango-papers/people/noelia-hurtado.md",
+    status: "published",
+    priority: 43
   }
 ];
 

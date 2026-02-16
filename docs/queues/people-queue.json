@@ -396,64 +396,71 @@
       "slug": "rodolfo-biagi",
       "displayName": "Rodolfo Biagi",
       "type": "musician",
-      "status": "pending",
+      "status": "completed",
       "priority": 37,
       "notes": "D'Arienzo's pianist, own orchestra, 'Manos Brujas'",
-      "addedDate": "2026-02-16"
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "alfredo-de-angelis",
       "displayName": "Alfredo De Angelis",
       "type": "musician",
-      "status": "pending",
+      "status": "completed",
       "priority": 38,
       "notes": "Orchestra of the people, accessible style",
-      "addedDate": "2026-02-16"
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "francisco-canaro",
       "displayName": "Francisco Canaro",
       "type": "musician",
-      "status": "pending",
+      "status": "completed",
       "priority": 39,
       "notes": "Recording pioneer, 7,000+ recordings, founded SADAIC",
-      "addedDate": "2026-02-16"
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "sebastian-achaval",
       "displayName": "Sebasti\u00e1n Achaval",
       "type": "dancer",
-      "status": "pending",
+      "status": "completed",
       "priority": 40,
       "notes": "Roxana's partner, educators, neotrad leaders",
-      "addedDate": "2026-02-16"
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "roxana-suarez",
       "displayName": "Roxana Su\u00e1rez",
       "type": "dancer",
-      "status": "pending",
+      "status": "completed",
       "priority": 41,
       "notes": "Mundial champions 2015, educators",
-      "addedDate": "2026-02-16"
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "carlitos-espinoza",
       "displayName": "Carlitos Espinoza",
       "type": "dancer",
-      "status": "pending",
+      "status": "completed",
       "priority": 42,
       "notes": "Neotrad leader, Noelia's partner",
-      "addedDate": "2026-02-16"
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "noelia-hurtado",
       "displayName": "Noelia Hurtado",
       "type": "dancer",
-      "status": "pending",
+      "status": "completed",
       "priority": 43,
       "notes": "Neotrad performer, Carlitos' partner",
-      "addedDate": "2026-02-16"
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
     },
     {
       "slug": "gerardo-portalea",
@@ -598,10 +605,10 @@
   ],
   "stats": {
     "total": 57,
-    "pending": 21,
+    "pending": 14,
     "prompt_ready": 0,
     "in_progress": 0,
-    "completed": 36,
+    "completed": 43,
     "blocked": 0
   }
 }
