@@ -31,6 +31,11 @@ const menuStructure = [
     ]
   },
   {
+    title: 'People',
+    path: '/people',
+    icon: null
+  },
+  {
     title: 'Glossary',
     path: '/tango-history/glossary',
     icon: null
