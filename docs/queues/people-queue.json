@@ -116,22 +116,22 @@
       "slug": "juan-darienzo",
       "displayName": "Juan D'Arienzo",
       "type": "musician",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 11,
       "notes": "El Rey del Compás, Golden Age orchestra leader, rhythmic revolution 1935",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "osvaldo-pugliese",
       "displayName": "Osvaldo Pugliese",
       "type": "musician",
-      "status": "prompt_ready",
+      "status": "completed",
       "priority": 12,
       "notes": "Golden Age orchestra leader, dramatic style, La Yumba",
       "addedDate": "2026-02-15",
-      "completedDate": null,
+      "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
@@ -336,9 +336,9 @@
   "stats": {
     "total": 30,
     "pending": 5,
-    "prompt_ready": 15,
+    "prompt_ready": 13,
     "in_progress": 0,
-    "completed": 10,
+    "completed": 12,
     "blocked": 0
   }
 }

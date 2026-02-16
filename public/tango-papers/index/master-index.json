@@ -1130,23 +1130,18 @@
     },
     {
       "id": "juan-darienzo",
-      "type": "orchestra",
+      "type": "person",
       "displayName": "Juan D'Arienzo",
       "fullName": "Juan D'Arienzo",
       "nickname": "El Rey del Compás",
       "born": "1900-12-14",
       "died": "1976-01-14",
-      "categories": [
-        "orchestras",
-        "argentina"
-      ],
-      "eras": [
-        "epoca-de-oro"
-      ],
-      "summary": "The King of the Beat — returned tango to danceable 2/4 rhythm in 1935",
-      "appearsIn": [
-        "/tango-papers/argentina/epoca-de-oro.md"
-      ],
+      "nationality": "Argentina",
+      "categories": ["orchestras", "musicians", "composers"],
+      "eras": ["epoca-de-oro"],
+      "summary": "'El Rey del Compás' — saved tango with 1935 rhythmic revolution; 'tango is rhythm, nerve, strength and character'",
+      "appearsIn": ["/tango-papers/people/juan-darienzo.md", "/tango-papers/argentina/epoca-de-oro.md"],
+      "paperPath": "/tango-papers/people/juan-darienzo.md",
       "status": "complete"
     },
     {
@@ -1202,24 +1197,17 @@
     },
     {
       "id": "osvaldo-pugliese",
-      "type": "orchestra",
+      "type": "person",
       "displayName": "Osvaldo Pugliese",
-      "fullName": "Osvaldo Pugliese",
+      "fullName": "Osvaldo Pedro Pugliese",
       "born": "1905-12-02",
       "died": "1995-07-25",
-      "categories": [
-        "orchestras",
-        "argentina"
-      ],
-      "eras": [
-        "epoca-de-oro",
-        "decadencia",
-        "renacimiento"
-      ],
-      "summary": "Last survivor of Big Four — imprisoned by every regime, red carnation defiance, cooperative orchestra; kept tango alive through Decadencia; created 'La Yumba' (1946)",
-      "appearsIn": [
-        "/tango-papers/argentina/epoca-de-oro.md"
-      ],
+      "nationality": "Argentina",
+      "categories": ["orchestras", "musicians", "composers"],
+      "eras": ["epoca-de-oro", "decadencia", "renacimiento"],
+      "summary": "Communist, imprisoned by every regime, red carnation defiance, cooperative orchestra, 'La Yumba' (1946)",
+      "appearsIn": ["/tango-papers/people/osvaldo-pugliese.md", "/tango-papers/argentina/epoca-de-oro.md"],
+      "paperPath": "/tango-papers/people/osvaldo-pugliese.md",
       "status": "complete"
     },
     {

@@ -10,7 +10,14 @@ import {
   Button,
   Divider,
   Skeleton,
-  Alert
+  Alert,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Link as MuiLink
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
@@ -20,6 +27,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DownloadIcon from '@mui/icons-material/Download';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { getPersonBySlug, typeLabels, generationLabels } from '../../data/peopleData';
 
 const typeIcons = {
@@ -38,6 +47,142 @@ const generationColors = {
   nuevo: '#1976D2',
   'golden-age': '#F9A825',
   'post-golden': '#E65100'
+};
+
+// Custom components for ReactMarkdown to use MUI
+const markdownComponents = {
+  h1: ({ children }) => (
+    <Typography variant="h4" component="h1" gutterBottom sx={{ mt: 4, mb: 2, fontWeight: 600 }}>
+      {children}
+    </Typography>
+  ),
+  h2: ({ children }) => (
+    <Typography variant="h5" component="h2" gutterBottom sx={{ mt: 4, mb: 2, fontWeight: 600, borderBottom: '2px solid', borderColor: 'primary.main', pb: 1 }}>
+      {children}
+    </Typography>
+  ),
+  h3: ({ children }) => (
+    <Typography variant="h6" component="h3" gutterBottom sx={{ mt: 3, mb: 1, fontWeight: 600 }}>
+      {children}
+    </Typography>
+  ),
+  p: ({ children }) => (
+    <Typography variant="body1" paragraph sx={{ lineHeight: 1.8 }}>
+      {children}
+    </Typography>
+  ),
+  blockquote: ({ children }) => (
+    <Paper
+      elevation={0}
+      sx={{
+        borderLeft: '4px solid',
+        borderColor: 'primary.main',
+        pl: 3,
+        py: 1,
+        my: 2,
+        bgcolor: 'action.hover',
+        fontStyle: 'italic'
+      }}
+    >
+      {children}
+    </Paper>
+  ),
+  ul: ({ children }) => (
+    <Box component="ul" sx={{ pl: 3, my: 2 }}>
+      {children}
+    </Box>
+  ),
+  ol: ({ children }) => (
+    <Box component="ol" sx={{ pl: 3, my: 2 }}>
+      {children}
+    </Box>
+  ),
+  li: ({ children }) => (
+    <Typography component="li" variant="body1" sx={{ mb: 1, lineHeight: 1.8 }}>
+      {children}
+    </Typography>
+  ),
+  table: ({ children }) => (
+    <TableContainer component={Paper} sx={{ my: 3 }} elevation={1}>
+      <Table size="small">
+        {children}
+      </Table>
+    </TableContainer>
+  ),
+  thead: ({ children }) => (
+    <TableHead sx={{ bgcolor: 'primary.main' }}>
+      {children}
+    </TableHead>
+  ),
+  tbody: ({ children }) => (
+    <TableBody>
+      {children}
+    </TableBody>
+  ),
+  tr: ({ children }) => (
+    <TableRow hover>
+      {children}
+    </TableRow>
+  ),
+  th: ({ children }) => (
+    <TableCell sx={{ fontWeight: 600, color: 'white' }}>
+      {children}
+    </TableCell>
+  ),
+  td: ({ children }) => (
+    <TableCell>
+      {children}
+    </TableCell>
+  ),
+  a: ({ href, children }) => (
+    <MuiLink href={href} target="_blank" rel="noopener noreferrer" underline="hover">
+      {children}
+    </MuiLink>
+  ),
+  hr: () => (
+    <Divider sx={{ my: 4 }} />
+  ),
+  strong: ({ children }) => (
+    <Box component="strong" sx={{ fontWeight: 600 }}>
+      {children}
+    </Box>
+  ),
+  em: ({ children }) => (
+    <Box component="em" sx={{ fontStyle: 'italic' }}>
+      {children}
+    </Box>
+  ),
+  code: ({ children }) => (
+    <Box
+      component="code"
+      sx={{
+        bgcolor: 'action.hover',
+        px: 0.5,
+        py: 0.25,
+        borderRadius: 0.5,
+        fontFamily: 'monospace',
+        fontSize: '0.9em'
+      }}
+    >
+      {children}
+    </Box>
+  ),
+  pre: ({ children }) => (
+    <Paper
+      component="pre"
+      sx={{
+        p: 2,
+        my: 2,
+        overflow: 'auto',
+        bgcolor: 'grey.900',
+        color: 'grey.100',
+        fontFamily: 'monospace',
+        fontSize: '0.85em'
+      }}
+    >
+      {children}
+    </Paper>
+  )
 };
 
 export default function PersonProfilePage() {
@@ -64,7 +209,9 @@ export default function PersonProfilePage() {
         return res.text();
       })
       .then(text => {
-        setContent(text);
+        // Remove YAML frontmatter if present
+        const contentWithoutFrontmatter = text.replace(/^---[\s\S]*?---\n*/m, '');
+        setContent(contentWithoutFrontmatter);
         setLoading(false);
       })
       .catch(err => {
@@ -91,55 +238,6 @@ export default function PersonProfilePage() {
       </Container>
     );
   }
-
-  // Parse markdown content (simple parser for display)
-  const renderContent = (markdown) => {
-    if (!markdown) return null;
-
-    // Split into sections by ## headers
-    const sections = markdown.split(/(?=^## )/gm);
-
-    return sections.map((section, idx) => {
-      const lines = section.trim().split('\n');
-      const firstLine = lines[0];
-
-      // Check if it's a header
-      if (firstLine.startsWith('## ')) {
-        const headerText = firstLine.replace('## ', '');
-        const bodyLines = lines.slice(1).join('\n').trim();
-
-        return (
-          <Box key={idx} sx={{ mb: 3 }}>
-            <Typography variant="h5" gutterBottom sx={{ mt: 3 }}>
-              {headerText}
-            </Typography>
-            <Typography
-              variant="body1"
-              component="div"
-              sx={{ whiteSpace: 'pre-wrap' }}
-            >
-              {bodyLines}
-            </Typography>
-          </Box>
-        );
-      } else if (firstLine.startsWith('# ')) {
-        // Skip title header, we display it separately
-        return null;
-      } else {
-        // Regular content
-        return (
-          <Typography
-            key={idx}
-            variant="body1"
-            component="div"
-            sx={{ whiteSpace: 'pre-wrap', mb: 2 }}
-          >
-            {section.trim()}
-          </Typography>
-        );
-      }
-    });
-  };
 
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
@@ -244,9 +342,14 @@ export default function PersonProfilePage() {
         </Alert>
       ) : (
         <Box>
-          {renderContent(content)}
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={markdownComponents}
+          >
+            {content}
+          </ReactMarkdown>
 
-          <Divider sx={{ my: 3 }} />
+          <Divider sx={{ my: 4 }} />
 
           <Button
             variant="outlined"

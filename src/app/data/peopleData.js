@@ -323,16 +323,16 @@ const peopleData = [
   {
     slug: "osvaldo-pugliese",
     displayName: "Osvaldo Pugliese",
-    fullName: "Osvaldo Pugliese",
+    fullName: "Osvaldo Pedro Pugliese",
     type: "musician",
     generation: "golden-age",
-    born: "1905",
-    died: "1995",
+    born: "1905-12-02",
+    died: "1995-07-25",
     nationality: "Argentine",
-    tags: ["orchestra-leader", "piano", "golden-age", "dramatic", "la-yumba"],
-    summary: "Golden Age orchestra leader, dramatic style, composer of La Yumba.",
+    tags: ["orchestra-leader", "piano", "composer", "golden-age", "dramatic", "la-yumba", "big-four"],
+    summary: "Communist, cooperative orchestra, imprisoned by every regime, red carnation symbol, composer of 'La Yumba.'",
     paperPath: "/tango-papers/people/osvaldo-pugliese.md",
-    status: "pending",
+    status: "published",
     priority: 12
   },
 
