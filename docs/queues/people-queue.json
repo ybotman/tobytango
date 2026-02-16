@@ -4,7 +4,7 @@
   "queue": [
     {
       "slug": "chicho-frumboli",
-      "displayName": "Chicho Frúmboli",
+      "displayName": "Chicho Fr\u00famboli",
       "type": "dancer",
       "status": "completed",
       "priority": 1,
@@ -26,7 +26,7 @@
     },
     {
       "slug": "fabian-salas",
-      "displayName": "Fabián Salas",
+      "displayName": "Fabi\u00e1n Salas",
       "type": "dancer",
       "status": "completed",
       "priority": 3,
@@ -48,7 +48,7 @@
     },
     {
       "slug": "el-turco-jose",
-      "displayName": "El Turco José Brahemcha",
+      "displayName": "El Turco Jos\u00e9 Brahemcha",
       "type": "dancer",
       "status": "completed",
       "priority": 5,
@@ -74,14 +74,14 @@
       "type": "dancer",
       "status": "completed",
       "priority": 7,
-      "notes": "Stage pioneer, Tango Argentino show, partner María Nieves",
+      "notes": "Stage pioneer, Tango Argentino show, partner Mar\u00eda Nieves",
       "addedDate": "2026-02-15",
       "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
     },
     {
       "slug": "maria-nieves",
-      "displayName": "María Nieves",
+      "displayName": "Mar\u00eda Nieves",
       "type": "dancer",
       "status": "completed",
       "priority": 8,
@@ -92,7 +92,7 @@
     },
     {
       "slug": "anibal-troilo",
-      "displayName": "Aníbal Troilo",
+      "displayName": "An\u00edbal Troilo",
       "type": "musician",
       "status": "completed",
       "priority": 9,
@@ -107,7 +107,7 @@
       "type": "musician",
       "status": "completed",
       "priority": 10,
-      "notes": "El Señor del Tango, Golden Age orchestra leader, elegant style",
+      "notes": "El Se\u00f1or del Tango, Golden Age orchestra leader, elegant style",
       "addedDate": "2026-02-15",
       "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
@@ -118,7 +118,7 @@
       "type": "musician",
       "status": "completed",
       "priority": 11,
-      "notes": "El Rey del Compás, Golden Age orchestra leader, rhythmic revolution 1935",
+      "notes": "El Rey del Comp\u00e1s, Golden Age orchestra leader, rhythmic revolution 1935",
       "addedDate": "2026-02-15",
       "completedDate": "2026-02-15",
       "promptSentDate": "2026-02-16"
@@ -136,7 +136,7 @@
     },
     {
       "slug": "graciela-gonzalez",
-      "displayName": "Graciela González",
+      "displayName": "Graciela Gonz\u00e1lez",
       "type": "dancer",
       "status": "completed",
       "priority": 13,
@@ -158,7 +158,7 @@
     },
     {
       "slug": "pablo-veron",
-      "displayName": "Pablo Verón",
+      "displayName": "Pablo Ver\u00f3n",
       "type": "dancer",
       "status": "completed",
       "priority": 15,
@@ -169,11 +169,11 @@
     },
     {
       "slug": "miguel-angel-zotto",
-      "displayName": "Miguel Ángel Zotto",
+      "displayName": "Miguel \u00c1ngel Zotto",
       "type": "dancer",
       "status": "completed",
       "priority": 16,
-      "notes": "Face of tango, one of three greatest, María Ruanova Award, Tango x 2 creator",
+      "notes": "Face of tango, one of three greatest, Mar\u00eda Ruanova Award, Tango x 2 creator",
       "addedDate": "2026-02-15",
       "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
@@ -184,7 +184,7 @@
       "type": "dancer",
       "status": "completed",
       "priority": 17,
-      "notes": "Dancer who writes, Teatro San Martín, Tango x 2, El Tangauta columnist",
+      "notes": "Dancer who writes, Teatro San Mart\u00edn, Tango x 2, El Tangauta columnist",
       "addedDate": "2026-02-15",
       "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
@@ -195,7 +195,7 @@
       "type": "singer",
       "status": "completed",
       "priority": 18,
-      "notes": "El Zorzal Criollo, created tango-canción 1917, died plane crash Medellín 1935",
+      "notes": "El Zorzal Criollo, created tango-canci\u00f3n 1917, died plane crash Medell\u00edn 1935",
       "addedDate": "2026-02-15",
       "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
@@ -224,7 +224,7 @@
     },
     {
       "slug": "juana-sepulveda",
-      "displayName": "Juana Sepúlveda",
+      "displayName": "Juana Sep\u00falveda",
       "type": "dancer",
       "status": "completed",
       "priority": 21,
@@ -246,7 +246,7 @@
     },
     {
       "slug": "cachirulo",
-      "displayName": "Cachirulo (Héctor Pellozo)",
+      "displayName": "Cachirulo (H\u00e9ctor Pellozo)",
       "type": "organizer",
       "status": "completed",
       "priority": 23,
@@ -268,7 +268,7 @@
     },
     {
       "slug": "finito",
-      "displayName": "Finito (Ramón Rivera)",
+      "displayName": "Finito (Ram\u00f3n Rivera)",
       "type": "dancer",
       "status": "completed",
       "priority": 25,
@@ -323,7 +323,7 @@
     },
     {
       "slug": "roberto-alvarez",
-      "displayName": "Roberto Álvarez",
+      "displayName": "Roberto \u00c1lvarez",
       "type": "musician",
       "status": "completed",
       "priority": 30,
@@ -331,14 +331,277 @@
       "addedDate": "2026-02-16",
       "completedDate": "2026-02-16",
       "promptSentDate": "2026-02-16"
+    },
+    {
+      "slug": "antonio-todaro",
+      "displayName": "Antonio Todaro",
+      "type": "dancer",
+      "status": "completed",
+      "priority": 31,
+      "notes": "Guardian generation teacher, trained Naveira, Chicho, Zotto",
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
+    },
+    {
+      "slug": "rodolfo-cieri",
+      "displayName": "Rodolfo Cieri",
+      "type": "dancer",
+      "status": "completed",
+      "priority": 32,
+      "notes": "Canyengue/orillero revivalist, born 1932, died 2000. Note: queue said trained Copes but research found no evidence.",
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
+    },
+    {
+      "slug": "mingo-pugliese",
+      "displayName": "Mingo Pugliese",
+      "type": "dancer",
+      "status": "completed",
+      "priority": 33,
+      "notes": "Trained Gavito, Bridge generation figure",
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
+    },
+    {
+      "slug": "carolina-del-rivero",
+      "displayName": "Carolina del Rivero",
+      "type": "dancer",
+      "status": "completed",
+      "priority": 34,
+      "notes": "Fabi\u00e1n Salas' main partner",
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
+    },
+    {
+      "slug": "eugenia-parrilla",
+      "displayName": "Eugenia Parrilla",
+      "type": "dancer",
+      "status": "completed",
+      "priority": 35,
+      "notes": "CORRECTED: Was Chicho's partner 2003-2006, NOT Tete's. Now with Yanick Wyler.",
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
+    },
+    {
+      "slug": "silvia-ceriani",
+      "displayName": "Silvia Ceriani",
+      "type": "dancer",
+      "status": "completed",
+      "priority": 36,
+      "notes": "Tete's earlier partner",
+      "addedDate": "2026-02-16",
+      "completedDate": "2026-02-16"
+    },
+    {
+      "slug": "rodolfo-biagi",
+      "displayName": "Rodolfo Biagi",
+      "type": "musician",
+      "status": "pending",
+      "priority": 37,
+      "notes": "D'Arienzo's pianist, own orchestra, 'Manos Brujas'",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "alfredo-de-angelis",
+      "displayName": "Alfredo De Angelis",
+      "type": "musician",
+      "status": "pending",
+      "priority": 38,
+      "notes": "Orchestra of the people, accessible style",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "francisco-canaro",
+      "displayName": "Francisco Canaro",
+      "type": "musician",
+      "status": "pending",
+      "priority": 39,
+      "notes": "Recording pioneer, 7,000+ recordings, founded SADAIC",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "sebastian-achaval",
+      "displayName": "Sebasti\u00e1n Achaval",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 40,
+      "notes": "Roxana's partner, educators, neotrad leaders",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "roxana-suarez",
+      "displayName": "Roxana Su\u00e1rez",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 41,
+      "notes": "Mundial champions 2015, educators",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "carlitos-espinoza",
+      "displayName": "Carlitos Espinoza",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 42,
+      "notes": "Neotrad leader, Noelia's partner",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "noelia-hurtado",
+      "displayName": "Noelia Hurtado",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 43,
+      "notes": "Neotrad performer, Carlitos' partner",
+      "addedDate": "2026-02-16"
+    },
+    {
+      "slug": "gerardo-portalea",
+      "displayName": "Gerardo Portalea",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 44,
+      "notes": "42 mentions in papers - Guardian generation, Villa Urquiza master",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "pupi-castello",
+      "displayName": "Pupi Castello",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 45,
+      "notes": "28 mentions - Guardian generation milonguero",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "ricardo-vidort",
+      "displayName": "Ricardo Vidort",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 46,
+      "notes": "27 mentions - milonguero philosopher, Guardian generation",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "julio-de-caro",
+      "displayName": "Julio De Caro",
+      "type": "musician",
+      "status": "pending",
+      "priority": 47,
+      "notes": "23 mentions - Guardia Nueva revolutionary, sexteto innovator",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "carlos-perez",
+      "displayName": "Carlos P\u00e9rez",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 48,
+      "notes": "22 mentions - Rosa Forte's partner, milonguero style",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "marcela-duran",
+      "displayName": "Marcela Dur\u00e1n",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 49,
+      "notes": "19 mentions - stage dancer, Forever Tango",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "el-chino-perico",
+      "displayName": "El Chino Perico",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 50,
+      "notes": "19 mentions - Guardian generation, Villa Urquiza",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "rosa-forte",
+      "displayName": "Rosa Forte",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 51,
+      "notes": "9 mentions - Carlos P\u00e9rez's partner, milonguero style teacher",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "hector-orezzoli",
+      "displayName": "H\u00e9ctor Orezzoli",
+      "type": "producer",
+      "status": "pending",
+      "priority": 52,
+      "notes": "7 mentions - Tango Argentino show producer/director with Claudio Segovia",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "claudio-segovia",
+      "displayName": "Claudio Segovia",
+      "type": "producer",
+      "status": "pending",
+      "priority": 53,
+      "notes": "Tango Argentino show creator with H\u00e9ctor Orezzoli, 1983 revival catalyst",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "gloria-dinzel",
+      "displayName": "Gloria Dinzel",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 54,
+      "notes": "4 mentions - Los Dinzel, academic methodology, Rodolfo's partner",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "rodolfo-dinzel",
+      "displayName": "Rodolfo Dinzel",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 55,
+      "notes": "Los Dinzel, academic methodology, Universidad del Tango founder",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "mora-godoy",
+      "displayName": "Mora Godoy",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 56,
+      "notes": "Stage dancer, own company, commercial success",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
+    },
+    {
+      "slug": "victoria-vieyra",
+      "displayName": "Victoria Vieyra",
+      "type": "dancer",
+      "status": "pending",
+      "priority": 57,
+      "notes": "6 mentions - partner of multiple profiled dancers",
+      "addedDate": "2026-02-16",
+      "source": "auto-discovered"
     }
   ],
   "stats": {
-    "total": 30,
-    "pending": 0,
+    "total": 57,
+    "pending": 21,
     "prompt_ready": 0,
     "in_progress": 0,
-    "completed": 30,
+    "completed": 36,
     "blocked": 0
   }
 }
