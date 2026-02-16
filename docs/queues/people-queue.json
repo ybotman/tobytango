@@ -6,11 +6,12 @@
       "slug": "chicho-frumboli",
       "displayName": "Chicho Frúmboli",
       "type": "dancer",
-      "status": "pending",
+      "status": "completed",
       "priority": 1,
       "notes": "Nuevo innovator, El Tangauta interview 2009, key figure in nuevo-to-neotrad arc",
       "addedDate": "2026-02-15",
-      "completedDate": null
+      "promptSentDate": "2026-02-15",
+      "completedDate": "2026-02-15"
     },
     {
       "slug": "gustavo-naveira",
@@ -255,9 +256,9 @@
   ],
   "stats": {
     "total": 25,
-    "pending": 25,
+    "pending": 24,
     "in_progress": 0,
-    "completed": 0,
+    "completed": 1,
     "blocked": 0
   }
 }

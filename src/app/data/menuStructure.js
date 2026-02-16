@@ -111,8 +111,9 @@ const menuStructure = [
         submenus: [
           { title: 'Era Map', path: '/tango-history', isSecondary: true },
           { title: 'Key Events', path: '/tango-history/events', isSecondary: true },
+          { title: 'People Profiles', path: '/people', isSecondary: true, highlight: true },
           { title: 'Tango Argentina', path: '/tango-history/argentina', isSecondary: true },
-          { title: 'Dancers & Couples', path: '/tango-history/dancers', isSecondary: true, highlight: true },
+          { title: 'Dancers & Couples', path: '/tango-history/dancers', isSecondary: true },
           { title: 'Tango Europe', path: '/tango-history/europe', isSecondary: true },
           { title: 'Tango USA', path: '/tango-history/usa', isSecondary: true },
           { title: 'Orchestras', path: '/tango-history/orchestras', isSecondary: true },
