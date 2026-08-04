@@ -1,6 +1,9 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /festival/
 
 # Host
 Host: https://www.tobytango.com

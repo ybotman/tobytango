@@ -5,6 +5,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import PeopleIcon from '@mui/icons-material/People';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import ScienceIcon from '@mui/icons-material/Science';
+import FestivalIcon from '@mui/icons-material/Festival';
 
 /**
  * Menu structure for navigation
@@ -154,6 +155,17 @@ const menuStructure = [
           { title: 'More coming soon...', isSecondary: true }
         ]
       }
+    ]
+  },
+  {
+    id: 'festival',
+    title: 'Festival',
+    path: '/festival',
+    icon: FestivalIcon,
+    // Workshop archives, newest first. Add older festivals (Chicho 2025, etc.)
+    // as further entries here — each is its own route under /festival/.
+    items: [
+      { title: 'Chicho 2026', path: '/festival/chicho2026' }
     ]
   },
   {
