@@ -1,22 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# tobytango.com
+
+Next.js 16 / React 19 / MUI 7 site, deployed on Vercel.
+
+## Documentation
+
+| Doc | What |
+|---|---|
+| **[docs/FESTIVAL-ARCHIVE.md](docs/FESTIVAL-ARCHIVE.md)** | **Festival Archive (Chicho 2026) — handover doc.** Architecture, Azure setup, env-var contract, blob layout, and the list of known deferrals. Read this before touching `/admin` or `/festival`. |
+| [CLAUDE.md](CLAUDE.md) | Repo conventions, branch strategy, content pipeline |
+| [public/tango-papers/README-CONTENT-SYSTEM.md](public/tango-papers/README-CONTENT-SYSTEM.md) | Tango timeline content system |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install     # npm cache is on /Volumes/DEVL — that volume must be mounted
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:4003](http://localhost:4003) — **port 4003**, not the
+Next.js default 3000. The blob CORS rules are configured for that exact origin,
+so running on another port will break media playback locally.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Environment variables are required for the API routes to function; see the
+env-var contract in [docs/FESTIVAL-ARCHIVE.md](docs/FESTIVAL-ARCHIVE.md#4-environment-variable-contract).
+
+## Branches
+
+Work on `DEVL`. Never push `master` without approval.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
