@@ -96,11 +96,17 @@ The transcription/assembly scripts live in iCloud, **not** in this repo:
 Source media and derived data are on the external DEVL volume at
 `/Volumes/DEVL/Tango/workshops/chicho202606/`.
 
-**Transcode status at handover: 72 of 92 proxies complete (2.9 GB), still
-running, zero failures.** Ratio is a consistent ~6% of source, so the finished
-set should land near **4.2 GB** from 68 GB of originals. Re-running
-`make_proxies.py` is idempotent and resumes; it writes `.part.mp4` and renames
-atomically, so an interrupted run never leaves a partial file looking complete.
+**Transcode COMPLETE at handover: 92 of 92 proxies, 4.17 GB, zero failures**
+(68.1 GB of HEVC originals → 6% of source). Verified on all 92 outputs:
+`h264` video + `aac` audio, 1280×720, and `faststart` confirmed (moov atom
+precedes mdat, so playback and seeking start before the file finishes
+downloading — required for jumping to a timestamp inside a long clip).
+
+Proxies are at `/Volumes/DEVL/Tango/workshops/chicho202606/Video_web/`.
+Re-running `make_proxies.py` is idempotent and resumes; it writes `.part.mp4`
+and renames atomically, so an interrupted run never leaves a partial file
+looking complete. Total encode time was ~40 min using `h264_videotoolbox`
+(hardware) — do not switch to software x264 on this machine, it has 8 GB RAM.
 
 Two facts about the media the team will need:
 
@@ -178,7 +184,7 @@ was deliberately **not** auto-generated — Toby chooses it.
 ```
 Container:  festival-<slug>-<yyyymm>          e.g. festival-chicho-202606
   audio/    <local-timestamp>.m4a             79 files, 241 MB
-  video/    <local-timestamp>.mp4             92 files, ~4.2 GB (720p H.264)
+  video/    <local-timestamp>.mp4             92 files, 4.17 GB (720p H.264)
   data/     access.json                       the allowlist
             workshop.json                     transcript + subjects
             video-index.json                  corrected video timings
