@@ -41,20 +41,21 @@ export default async function Chicho2026Page() {
       </Box>
 
       <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-        Workshop archive — Chicho and Juana, June 2026.
+        Workshop archive — Chicho and Juana, 27 July – 1 August 2026.
       </Typography>
 
       <Divider sx={{ mb: 3 }} />
 
       <Paper variant="outlined" sx={{ p: 3 }}>
-        <Typography variant="h6" gutterBottom>The recordings are not up yet</Typography>
+        <Typography variant="h6" gutterBottom>The players are still being built</Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-          You are on the list and the door works. The video and audio are still
-          being processed and uploaded; the transcripts and the players land with
-          them. Check back, or ask Toby when he expects them.
+          You are on the list and the door works. All six days are recorded and
+          stored — video, audio and transcripts. What is not ready yet is the way
+          to watch them: the archive page and its players are still being built.
+          Check back, or ask Toby.
         </Typography>
         <Alert severity="warning" variant="outlined">
-          When it is here, please keep it here. This is Chicho and Juana&apos;s
+          When it opens, please keep it here. This is Chicho and Juana&apos;s
           copyrighted workshop material, and the audio carries other
           attendees&apos; voices.
         </Alert>

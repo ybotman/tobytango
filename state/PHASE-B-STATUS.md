@@ -275,4 +275,58 @@ Franklin's A1b verification and remains, holding an empty user list.
   enumeration oracle are won't-do-unless-asked. **E4 in this document is
   withdrawn** — not built, and not to be built.
 
+---
+
+# Addendum 2 — PROD copy corrections (2026-08-05)
+
+Phase B is **fully closed**: deployed to PROD on Toby's go, and the last hedged
+item is now observed rather than asserted — `Secure; HttpOnly; SameSite=lax` seen
+on a real HTTPS `Set-Cookie` from `www.tobytango.com`. Nothing in Phase B is
+hedged any more.
+
+Two copy defects were live in front of real attendees. Both mine, both fixed.
+
+1. **"still being processed and uploaded" was false.** Franklin completed Phase C
+   — the media is in the container. What is actually missing is the delivery
+   path (SAS minting) and the player, which is Phase D. Rewritten to say the
+   recordings are stored and the **players** are still being built. It does not
+   explain the plumbing to an attendee.
+2. **"June 2026" was wrong.** The workshop was **27 July – 1 August 2026** — six
+   days, corroborated by the media spanning `20260727`–`20260801` and by the
+   handover doc §1 independently. Every person who can read this page was there,
+   so the displayed date now matches what they lived.
+
+Swept the whole festival surface for both errors and their softer variants
+(`June`, `uploading`, `being processed`, `not up yet`, `land with`, `soon`,
+`coming`, `pending`) across the gated page, the `/festival` index, the gate, the
+menu label, page metadata and titles. **All instances were confined to
+`festival/chicho2026/page.js`; the index, gate and menu made no date or upload
+claims.** Zero remaining.
+
+Verified by **rendering the page as a signed-in user**, not by grepping source —
+7/7 assertions on the served HTML: the new dates present, "June" absent, no
+upload/processing claim, no "not up yet", the recordings stated as stored, the
+players stated as still being built, and the rights notice still intact.
+
+**The container slug `festival-chicho-202606` is deliberately untouched.** The
+June error is baked into the name of a container now holding 4.4 GB, it is
+invisible to users, and renaming it is not worth it. Only displayed text was
+corrected.
+
+### Housekeeping note — a test row was briefly left behind
+The first copy-check run crashed on a bug in my own harness *after* it had added
+its test row, so that row survived until the next run cleaned it. The re-run's
+baseline comparison caught the discrepancy, which is what it is for. Final state
+verified directly: **no test rows remain, and the one real row
+(`toby.balsley@gmail.com`) is intact.** Nothing was clobbered.
+
+### Flag for Edison — concurrency hazard, now that PROD is live
+`data/access.json` is a single blob updated read-modify-write with no ETag,
+lease or conditional write. PROD and a local dev server hit the **same**
+container, so two admin edits that overlap will silently drop one of them. That
+was harmless while the list was empty; it is not harmless now that real people
+are on it. I have stopped running write-tests against the live container. Not
+proposing a fix — per §R4b the hardening dial is down — but it should be a known
+sharp edge before a second admin ever uses that page.
+
 — Charlotte, Menlo floor, 2026-08-05
