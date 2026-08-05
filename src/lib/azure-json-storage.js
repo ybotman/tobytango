@@ -61,6 +61,20 @@ function resolveAccount(account) {
   };
 }
 
+/**
+ * The festival account's name and a fresh credential, resolved through the same
+ * fail-closed rules as everything else here. Exported so the media-SAS layer
+ * cannot drift into its own copy of the credential logic.
+ */
+export function festivalAccount() {
+  const r = resolveAccount('festival');
+  return {
+    accountName: r.accountName,
+    defaultContainer: r.defaultContainer,
+    credential: r.makeCredential(),
+  };
+}
+
 // One service client (and so one cached token) per account, not per request.
 const serviceClients = new Map();
 
