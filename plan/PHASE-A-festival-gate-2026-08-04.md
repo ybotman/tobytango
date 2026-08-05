@@ -111,7 +111,66 @@ the whole storage account. Nothing here is user-visible.*
 
 **Lane: Azure (A1, A2) · floor (A3)**
 
-### A1 — Swap the account key for a scoped service principal *(closes §6.2)*
+### A1 — DONE (2026-08-05). Service principal created.
+
+On Toby's explicit GO. App registration **`tobytango-festival-blob`**, one role
+assignment, **`Storage Blob Data Contributor` scoped to the
+`festival-chicho-202606` container only** — verified: not the account, not the
+RG, no other assignment. Credentials are in `.env.local` as
+`AZURE_FESTIVAL_TENANT_ID` / `_CLIENT_ID` / `_CLIENT_SECRET` (namespaced so
+`DefaultAzureCredential` cannot pick them up globally and change behaviour
+elsewhere). **Still to do: the same three, plus `AZURE_FESTIVAL_ACCOUNT_NAME`
+and `AZURE_FESTIVAL_CONTAINER`, in Vercel project settings.**
+
+### A1b — 🔴 THE FESTIVAL CODE IS WIRED TO THE WRONG STORAGE ACCOUNT.
+
+**Found 2026-08-05 while setting the env contract. The handover doc does not
+mention this and its §4 table is wrong about it.** This is why nothing could
+ever have worked, and it is a bigger problem than the missing password.
+
+`src/lib/azure-json-storage.js:4` resolves the **account** from a single global
+`AZURE_STORAGE_ACCOUNT_NAME`. Only the **container** is overridable per call.
+And that global is set to **`tangotiempoimages`** — a different storage account,
+holding `tangolab-study` and the `*-images` containers used by the pre-existing
+routes.
+
+The festival container lives in the **`tobytango`** account. Verified:
+`festival-chicho-202606` does **not** exist in `tangotiempoimages`, and
+`tangotiempoimages` is the only account the code can currently reach.
+
+So with every env var correctly set, the festival code would still connect to
+`tangotiempoimages`, look for `festival-chicho-202606`, take a 404, return an
+empty list, and **deny everybody**. It fails closed — the safety design holds —
+but it presents as "access is broken" with no clue why, and the handover's §4
+table attributes that exact symptom to a wrong *container* value. The cause is
+the *account*.
+
+**Do not fix this by repointing `AZURE_STORAGE_ACCOUNT_NAME` to `tobytango`.**
+That would break `practice-videos`, `artists-umbrella` and `tango-collab`, which
+legitimately live in `tangotiempoimages`. Two accounts are genuinely in play.
+
+**The fix — extend the lib to resolve account *and* credential per call**, the
+same backward-compatible way the `container` option was added:
+
+- Festival calls → account `tobytango`, credential = **`ClientSecretCredential`**
+  from the `AZURE_FESTIVAL_*` trio.
+- Every existing call → account `tangotiempoimages`, credential = the existing
+  **`StorageSharedKeyCredential`**, unchanged.
+- Default path with no options given must behave **exactly** as it does today.
+  The three pre-existing routes are the regression test.
+
+Note what this means for the original §6.2: the account key in `.env.local` is a
+key for `tangotiempoimages`, and it stays — those three routes need it. The
+festival never had working credentials at all, so there is no "swap" to make on
+the festival side, only a correct wiring to build. `tangotiempoimages` keeping a
+full-account key is now its own separate, lower-priority item.
+
+**Acceptance:** admin page reads and writes `data/access.json` in
+`tobytango/festival-chicho-202606` using **only** the SP credentials; the three
+pre-existing routes still read and write `tangotiempoimages` untouched; removing
+the `AZURE_FESTIVAL_*` trio breaks the festival and nothing else.
+
+### A1-original — Swap the account key for a scoped service principal *(closes §6.2)*
 
 Today `AZURE_STORAGE_ACCOUNT_KEY` sits in `.env.local` and Vercel and grants
 full control of the entire `tobytango` storage account, revocable only by
