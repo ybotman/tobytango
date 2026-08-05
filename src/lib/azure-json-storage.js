@@ -121,6 +121,35 @@ export async function readJsonFromBlob(blobName, options = {}) {
   }
 }
 
+/**
+ * Read a TEXT blob (e.g. an `.srt` transcript) as a string.
+ *
+ * Same account/container resolution and the same fail-closed semantics as
+ * readJsonFromBlob — it just does not parse. Exists so the transcript path does
+ * not need its own copy of the festival credential logic, which is the drift
+ * that causes the two to disagree later.
+ *
+ * A missing blob returns `fallback` when one is given, otherwise null. Any
+ * other error rethrows when the caller supplied a fallback, so a read failure
+ * can never be mistaken for "this transcript is empty".
+ */
+export async function readTextFromBlob(blobName, options = {}) {
+  const { container, account, fallback } = options;
+  try {
+    const blobClient = getBlobClient(blobName, { container, account });
+    const downloadResponse = await blobClient.download(0);
+    const downloaded = await streamToBuffer(downloadResponse.readableStreamBody);
+    return downloaded.toString('utf-8');
+  } catch (error) {
+    if (error.statusCode === 404) {
+      return fallback !== undefined ? fallback : null;
+    }
+    console.error(`Error reading ${blobName}:`, error.message);
+    if (fallback !== undefined) throw error;
+    return null;
+  }
+}
+
 export async function writeJsonToBlob(blobName, data, options = {}) {
   try {
     const blobClient = getBlobClient(blobName, {
