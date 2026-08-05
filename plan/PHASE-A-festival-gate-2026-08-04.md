@@ -233,12 +233,47 @@ account key absent from Vercel env.
 
 - `FESTIVAL_ADMIN_PASSWORD` — Toby chooses it. Do not generate one.
 - `AZURE_FESTIVAL_CONTAINER=festival-chicho-202606`
-- SP trio from A1.
+- `AZURE_FESTIVAL_ACCOUNT_NAME=tobytango` — **required, and not in the original
+  contract.** See §A1b: the festival lives in a different account.
+- SP trio from A1, namespaced `AZURE_FESTIVAL_*` — **not** the unprefixed
+  `AZURE_CLIENT_ID` etc. that §A1-original names, so `DefaultAzureCredential`
+  cannot pick them up globally.
+- `FESTIVAL_SESSION_SECRET` — **added 2026-08-05 off Charlotte's E3.** HMAC key
+  for the signed session cookie; the plan specified the cookie but never said
+  what signs it. Machine-generated (`openssl rand -hex 32`), not human-chosen —
+  it is a key, not a password, which is why it did not go to Toby the way the
+  admin password did. **Hex on purpose:** no `$`, so it cannot hit the
+  dotenv-expand trap. Unset or under 16 chars → the gate 503s and refuses
+  everyone.
+
+**STATUS 2026-08-05: all eight are set in `.env.local` and in Vercel
+(Production + Development).** Preview is deliberately unset — the Vercel CLI
+loops on `git_branch_required`, and a Preview deploy fails *closed* (a visible
+denial, not the silent fallthrough that bit BTB). Ask if Preview is wanted.
+
+The `package.json` port fix (`-p 4003`) is still uncommitted — a fresh clone
+starts on 3000, which is not in the blob CORS list, and media playback then
+fails looking like a broken player. Commit it with the next change that touches
+the file.
 
 Also commit the already-modified `package.json` (`next dev --turbopack -p 4003`).
 It is uncommitted and the docs now depend on it: a fresh clone starts on 3000,
 which is not in the blob CORS list, and local media playback fails with what
 looks like a broken player.
+
+### A1b-correction — there are TWO pre-existing routes, not three.
+
+Franklin's finding, 2026-08-05. This plan repeatedly names `practice-videos`,
+`artists-umbrella` and `tango-collab` as the regression surface for the lib
+change. **`artists-umbrella` does not use the lib at all** — it reads the local
+filesystem (`public/artists-umbrella`). Only `practice-videos` and
+`tango-collab` are real regression surface. The fix is unaffected; what changes
+is what "regression tested" honestly means. Corrected at source here so nobody
+tests a route that was never at risk and believes they covered more than they did.
+
+Also flagged, pre-existing and NOT fallout from A1b: `practice-videos.json` does
+not exist in the container (404 → legacy `{videos:[]}`). If that list looks
+empty later, this is why — it was already so.
 
 ### A3 — First live exercise
 
