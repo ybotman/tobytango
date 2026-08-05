@@ -15,6 +15,13 @@ import { readJsonFromBlob, writeJsonToBlob } from '@/lib/azure-json-storage';
 export const FESTIVAL_CONTAINER =
   (process.env.AZURE_FESTIVAL_CONTAINER || 'festival-chicho-202606').trim();
 
+/**
+ * The festival container lives in the `tobytango` storage account, NOT in the
+ * `tangotiempoimages` account the other routes use. This selects that account
+ * (and its container-scoped service principal) in azure-json-storage.
+ */
+const FESTIVAL_ACCOUNT = 'festival';
+
 const ACCESS_BLOB = 'data/access.json';
 const EMPTY = { users: [] };
 
@@ -37,6 +44,7 @@ export function isValidEmail(e) {
  */
 export async function readAccess() {
   const data = await readJsonFromBlob(ACCESS_BLOB, {
+    account: FESTIVAL_ACCOUNT,
     container: FESTIVAL_CONTAINER,
     fallback: EMPTY,
   });
@@ -47,7 +55,7 @@ export async function writeAccess(data) {
   return writeJsonToBlob(
     ACCESS_BLOB,
     { users: data.users || [] },
-    { container: FESTIVAL_CONTAINER }
+    { account: FESTIVAL_ACCOUNT, container: FESTIVAL_CONTAINER }
   );
 }
 

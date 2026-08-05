@@ -11,6 +11,7 @@
     "full": "npm run build && npm run dev"
   },
   "dependencies": {
+    "@azure/identity": "^4.13.1",
     "@azure/storage-blob": "^12.25.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
