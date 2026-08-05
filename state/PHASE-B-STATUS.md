@@ -93,16 +93,16 @@ and re-checked: `/festival` is absent.
 
 ## NOT verified — do not read these as done
 
-1. **The happy path has never run.** No email has ever been let *in*, because
-   nobody can be added to the allowlist yet (see E1 + E2). The `allowed` branch
-   of the gated page — the archive shell — has never rendered from a real grant.
-2. **Revocation has never been observed biting.** The mechanism is verified by
-   construction (force-dynamic + re-check on every request, cookie carries only
-   the email) and its rejection paths are unit-tested, but the
-   add → get in → revoke → denied-next-request loop has not been executed.
-3. **`secure` on the cookie has not been observed on real HTTPS.** It is
-   `NODE_ENV === 'production'`-gated (see Deviation V1) and asserted in unit
-   tests, not seen on a deployed response.
+*(Items 1 and 2 were closed on 2026-08-05 — see the Happy-path addendum below.
+Left in place so the record shows what was outstanding and when.)*
+
+1. ~~**The happy path has never run.**~~ **CLOSED** — observed 2026-08-05.
+2. ~~**Revocation has never been observed biting.**~~ **CLOSED** — observed
+   2026-08-05, and isolated from cookie invalidation.
+3. **`secure` on the cookie has not been observed on real HTTPS.** Still open.
+   It is `NODE_ENV === 'production'`-gated (see Deviation V1) and asserted in
+   unit tests, not seen on a deployed response. Genuinely needs a deploy;
+   Edison's call is to leave it, note it, and not chase it locally.
 4. **Nothing is deployed.** All of this is local on DEVL. PROD is untouched and
    `/festival/*` still 404s on www.
 
@@ -153,7 +153,11 @@ Without it the gate refuses everyone with a 503 (verified). The plan's §A2 env
 contract does not list it, because the plan did not specify how the session is
 signed. Flagging rather than quietly adding it to the contract.
 
-### E4 — the enumeration oracle now has a second mouth
+### E4 — ~~the enumeration oracle now has a second mouth~~ — WITHDRAWN 2026-08-05
+*Closed by plan §R4b: Toby ruled the threat model first-hand — the adversary is
+a search engine, not an attacker. §6.3 and §6.4 are won't-do-unless-asked. Not
+built. Original text kept below for the record.*
+
 `POST /api/festival/session` reveals "on the list / not on the list" exactly as
 the existing unauthenticated `check` action does. No new class of disclosure,
 but it is a second unrated endpoint. Plan §E covers rate-limiting both; I have
@@ -199,5 +203,76 @@ outstanding. It takes minutes once A1b lands.
 
 Plan §A1b was read at commit `294943b`; Phase B is unchanged from `349bbea`, so
 this build is against the current membrane.
+
+---
+
+# Addendum — the happy path, OBSERVED (2026-08-05)
+
+All three blockers cleared: **A1b** landed by Franklin (`047d4b3`, per-call
+account resolution), **`FESTIVAL_ADMIN_PASSWORD`** set by Toby, and
+**`FESTIVAL_SESSION_SECRET`** generated and added to the §A2 env contract.
+Rebuilt on that, served on `:4003`, run against **live Azure** —
+`tobytango/festival-chicho-202606` via the scoped service principal.
+
+This is the section that was missing. Everything before it verifies the door
+stays **shut**. This verifies it **opens for the right person and shuts again on
+command**.
+
+## The loop — 20/20 observed
+
+| # | Step | Result |
+|---|---|---|
+| 0 | Baseline allowlist captured | 0 users |
+| 0 | Test address not already present | ✅ |
+| 1 | Grant via `/admin/access` (live Azure write) | ✅ 200, address on the list |
+| 2 | That email entered at the gate → session issued | ✅ 200 + `Set-Cookie` |
+| 2 | Cookie `HttpOnly` · `SameSite=Lax` · `Max-Age` present | ✅ |
+| 3 | **Gated page rendered the archive shell** | ✅ **door OPENS** |
+| 3 | Gate markup absent; signed-in address shown | ✅ |
+| 4 | Revoked via `/admin/access` | ✅ 200, address gone |
+| 4 | **Same cookie, not cleared, not expired → DENIED** | ✅ **door SHUTS** |
+| 4 | Gate shown again; archive content absent | ✅ |
+| 5 | Allowlist restored to baseline | ✅ 0 users |
+
+## Mechanism isolated — 5/5
+
+A denial after revocation could equally have meant "the cookie stopped working."
+It did not. **One** cookie was minted and then reused verbatim, never re-issued,
+while only the allowlist changed underneath it:
+
+| Allowlist state | Same cookie | Result |
+|---|---|---|
+| granted | reused | ✅ **opens** |
+| revoked | reused | ✅ **denied** |
+| re-granted | reused | ✅ **opens again** |
+| granted, but scoped to a *different* festival key | reused | ✅ **denied for `chicho2026`** |
+
+The same bytes open, close and reopen the door purely as the grant changes. That
+is the B2 claim demonstrated rather than argued: **the cookie carries identity,
+not permission**, the allowlist is read live on every request, and per-festival
+scoping is enforced — so swapping the email box for a magic link later touches
+nothing downstream.
+
+## Test data — cleaned up
+
+One synthetic address, `charlotte-phaseb-test@example.com`, was added and
+removed. `example.com` is RFC-2606 reserved, so it can never be a real person.
+No attendee address was used at any point. **The allowlist ends the run exactly
+as it began — 0 users** (asserted, not assumed: baseline captured before and
+compared after, in both runs). `data/access.json` itself already existed from
+Franklin's A1b verification and remains, holding an empty user list.
+
+## Still open after this addendum
+
+- **`secure` on real HTTPS** — unchanged, needs a deploy, deliberately not
+  chased locally (item 3 above).
+- **Nothing is deployed.** PROD still 404s on `/festival/*`. No PROD landing has
+  been requested and none has been made.
+- Phase C (media) is Franklin's and is untouched. Phase D (the archive page) is
+  not started; the placeholder shell behind the gate remains the correct
+  stopping point until the media is actually there.
+- Per plan **§R4b** (Toby's threat model, first-hand): §6.3 rate-limit and §6.4
+  enumeration oracle are won't-do-unless-asked. **E4 in this document is
+  withdrawn** — not built, and not to be built.
 
 — Charlotte, Menlo floor, 2026-08-05
