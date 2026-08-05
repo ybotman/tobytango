@@ -88,6 +88,11 @@ The transcription/assembly scripts live in iCloud, **not** in this repo:
   build_workshop.py    Assembles .srt into a dated Markdown tree
   build_site.py        Builds a standalone local HTML browser with audio
   video_index.py       Corrects DJI timestamps, emits video_index.json
+                       *** DOES NOT EXIST on the volume as of 2026-08-05.
+                       Only its output, Video/video_index.json, is present.
+                       The +4.0h DJI clock error and the local = creation_time
+                       + 2h rule were RE-DERIVED empirically by Franklin and
+                       hold; the derivation script itself is gone. ***
   make_proxies.py      HEVC → 720p H.264 web proxies
   annotations.py       Human judgement: subjects, day inference, speakers
   README.md            Full documentation of that pipeline
