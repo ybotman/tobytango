@@ -102,6 +102,36 @@ video, "no one uses it" stops being true and the blast radius changes. Phases A
 and B are what make that moment safe. Speed is granted everywhere *except* the
 access-control path.
 
+### R4b — Amended 2026-08-05, Toby first-hand. Dial the ceremony DOWN.
+
+Toby: *"this is not a worrysome issue. no mon or cc or person. just some videos
+that i dont want the average person to see."*
+
+That is the threat model, stated by the owner, and it is the right one: **no
+money, no payment details, no sensitive personal records.** The adversary is a
+search engine and a casual passer-by — not a motivated attacker.
+
+Consequences, binding on the floor:
+
+- **Phase E shrinks to nearly nothing.** The admin rate-limit (§6.3) and the
+  enumeration oracle (§6.4) were sized for a threat that does not exist here.
+  "Someone could discover that a friend's email is on a list of tango workshop
+  attendees" is not a harm worth engineering against. **Both drop to
+  won't-do-unless-asked.** Do not build them.
+- **§6.5 CORS localhost — confirmed leave it.**
+- **§6.6 festivals registry — still only when a second festival is actually
+  wanted.**
+- The gate stays a **courtesy gate** and the UI keeps saying so honestly.
+
+**What does NOT relax, and why it is a short list rather than an argument:**
+the fails-closed behaviour and the read-error-is-not-empty guard. Neither is
+there for security — they are there because the alternative is an operator
+seeing an empty table, re-adding everyone, and wiping the real allowlist. That
+is a data-loss bug, not a threat model, and it costs nothing to keep.
+
+The container-scoped service principal also stays as built — it is already
+done, and narrow credentials cost nothing to keep once they exist.
+
 ---
 
 ## PHASE A — make it real and safe
