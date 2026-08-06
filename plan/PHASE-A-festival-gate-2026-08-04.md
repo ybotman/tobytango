@@ -415,6 +415,88 @@ elaborate machinery.*
 
 ---
 
+## PHASE E — what Toby actually wants next (scoped 2026-08-05)
+
+*Supersedes the old §PHASE E hardening list, which R4b reduced to won't-do.*
+
+### E0 — 🔴 RESCUE THE CURATION FIRST. Nothing else starts.
+
+`site/index.html` on DEVL holds **13,456 classified transcript segments — 3,161
+kept, 10,295 marked chatter/dropped**. That classification is **not** in
+`workshop.json`, **not** in the blob, and exists nowhere else on the volume. One
+file, one external drive.
+
+`annotations.py` survives in iCloud, so it is regenerable rather than lost — but
+regenerating is not the same as preserving, and a rebuild that classifies
+differently would silently discard Toby's curation. Extract it into the archive
+(`data/annotations.json`, keyed by recording + cue) **before** any feature is
+built on top of it.
+
+### E1 — Audio↔video time alignment *(also fixes the missing timestamps)*
+
+Toby: *"the video was attempting to be tied to the audio. Most of the audio
+breaks should be tied to video soon after."*
+
+**This is the same job as recovering the lost clock times.** Audio timing splits
+cleanly by day: 28 Jul (0 exact / 22 inferred) and 29 Jul (0 / 13) have **no
+clock time at all** — those days were recorded to `New Recording NN.m4a`, the
+Voice Memos default, which carries no timestamp, and the file metadata was
+overwritten by the copy to DEVL. 30 Jul onward the time is *in the filename*
+(`Chichi :2026-07-30T16:34:20+02:00.m4a`) and is exact.
+
+The video's problem was a **systematic** +4h camera offset — arithmetic fixes it.
+The audio's problem is **destroyed** data — there is no offset to apply.
+
+**But those exact two days carry 22 and 14 video clips with real corrected
+timestamps.** The video is the clock the audio lost. Align them and Tue/Wed come
+back. Any reconstructed audio time must be rendered as approximate — never as a
+clock time it did not earn.
+
+### E2 — Restore the Show chatter / Show dropped toggles
+
+Dropped in Phase D. **Edison's fault, not Charlotte's** — the brief told her to
+carry the reference's *feel* and framed the edit controls as authoring tools an
+attendee does not need. She followed a wrong instruction correctly.
+
+**RULED: admin-only.** It is Toby's curation, and every attendee should see the
+same curated view. Not a per-visitor preference.
+
+### E3 — Search
+
+Across subjects, transcripts and comments. Land on the audio moment, with the
+matching video right after (E1 supplies the pairing).
+
+### E4 — Comments, visible on the page and searchable
+
+**RULED 2026-08-05, Toby first-hand: "correct only for me / for admin."**
+**Comments are AUTHORED BY THE ADMIN ONLY. Attendees read them, never write.**
+
+Applied to E2 as well: both authoring surfaces — the chatter/dropped editor and
+comments — are admin-only. Toby curates and annotates; the archive is a read
+surface for everyone else.
+
+That single ruling removes the two hard problems this feature would otherwise
+have carried, which is worth recording so nobody "helpfully" re-opens them:
+
+- **No multi-writer clobbering.** `access.json`'s read-modify-write on one blob
+  is safe *only* because one admin writes it. Many writers, naive same pattern,
+  and two simultaneous comments mean one vanishes with no error — the same
+  silent-loss shape as the `/tmp` bug that started this project. Single-author
+  keeps the simple pattern correct. **If this is ever widened to attendees, that
+  is not a permissions change — it needs per-comment blobs or etag/If-Match
+  optimistic concurrency first.**
+- **No attribution risk.** The gate is a *courtesy* gate: it does not verify the
+  address belongs to whoever typed it. Fine for watching video; not fine for
+  words published under a named attendee's name, since misattribution harms a
+  third party rather than merely exposing content. Admin-only means every comment
+  is Toby's own, under his own name, written by someone who is provably himself.
+  **Widening this to attendee comments requires the magic-link upgrade first** —
+  R4b's threat model does not cover speech attributed to real named people.
+
+Comments anchor to a recording and, where useful, to a transcript cue, so search
+can land on the moment rather than the page. They join the E3 index alongside
+subjects and transcripts.
+
 ## Standing constraints
 
 - **Fails closed, everywhere.** Unknown email, unreadable list, missing grant,
