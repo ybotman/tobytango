@@ -432,6 +432,47 @@ differently would silently discard Toby's curation. Extract it into the archive
 (`data/annotations.json`, keyed by recording + cue) **before** any feature is
 built on top of it.
 
+### E1b — MANUAL PAIRING IN EDIT MODE *(Toby, 2026-08-06 — supersedes automatic reconstruction)*
+
+Automatic timestamp recovery is **abandoned**. Every avenue was exhausted:
+filesystem birth/mtime and the m4a's internal `creation_time` all read the export
+moment; the Voice Memos database on this Mac is stale (30 Jan, empty recordings
+folder) because **Voice Memos iCloud is not enabled on this Mac** — verified by
+listing the active iCloud data classes, 23 present, Voice Memos absent. Enabling
+it did not resolve it in the time available.
+
+Toby: *"Allow me to drag the video to the audio? I can listen and match."*
+
+**This is the better answer, not a fallback.** The metadata is genuinely
+destroyed; he is the only person who was in the room. Human judgement is the
+correct instrument where the machine evidence no longer exists.
+
+**Crucially, the manual and automatic paths share ONE data model.** Do not build
+two. A *pairing* is `{audio, video[], source: 'auto' | 'manual'}`:
+
+- Thu/Fri/Sat: the §E1 rule pre-populates pairings from real timestamps.
+- Tue/Wed: Toby creates them by hand, by ear.
+- Either way the reader renders the same thing and never sees which was which.
+- A manual pairing always **wins** over an auto one. Never silently re-derive
+  over a human decision — that is the single worst thing this feature could do.
+
+**The accelerant, which should shape the UI:** the Tue/Wed *video* clips carry
+real corrected timestamps, and the audio is in known recording-number order. So
+Toby is matching two already-ordered sequences, not doing free-form assignment.
+Present them as two ordered columns and drag across.
+
+Better still: **each manual match places its neighbours.** Pair one audio to a
+video with a real time and that audio inherits an approximate time; the
+recordings either side are then bounded. So he may only need to match a handful
+per day, not all 35. Show what a match implies about its neighbours, and let him
+confirm rather than re-drag. Any time derived this way is **approximate** and
+must render as such — never as a clock time it did not earn.
+
+Persistence: `data/pairings.json`, admin-authored only, so the single-writer
+read-modify-write pattern stays safe (see §E4). Include `source` and, for manual
+pairings, when it was made — so a later automatic pass can never quietly
+overwrite Toby's ear.
+
 ### E1 — Audio↔video time alignment *(also fixes the missing timestamps)*
 
 Toby: *"the video was attempting to be tied to the audio. Most of the audio
