@@ -3,9 +3,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Accordion, AccordionDetails, AccordionSummary, Alert, Box, Chip, CircularProgress,
-  Divider, Paper, Stack, Typography, Button,
+  Divider, Paper, Stack, Typography, Button, TextField, IconButton, Tooltip,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AdminPanel from './AdminPanel';
 
 /**
  * A day of the archive: recordings, each opening into a transcript whose lines
@@ -26,7 +28,74 @@ const fmt = (s) => {
   return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`;
 };
 
-export default function DayArchive({ festivalKey, day }) {
+/**
+ * Toby's notes on a recording. Read-only for everyone but him (plan §E4): the
+ * gate is a courtesy gate and does not prove an address belongs to whoever
+ * typed it, so words are never published under an attendee's name.
+ */
+function CommentBlock({ rec, comments, isAdmin, draft, setDraft, busy, error, onSave, onRemove, onSeek }) {
+  if (!comments.length && !isAdmin) return null;
+  return (
+    <Box sx={{ mt: 2 }}>
+      {comments.length > 0 && (
+        <>
+          <Typography variant="subtitle2" gutterBottom>Toby&apos;s notes</Typography>
+          <Stack spacing={1} sx={{ mb: 1 }}>
+            {comments.map((c) => (
+              <Paper key={c.id} variant="outlined" sx={{ p: 1.25 }}>
+                <Stack direction="row" spacing={1} alignItems="flex-start">
+                  {c.t != null && (
+                    <Button size="small" onClick={() => onSeek(c.t)}
+                      sx={{ minWidth: 0, fontFamily: 'monospace' }}>
+                      {fmt(c.t)}
+                    </Button>
+                  )}
+                  <Typography variant="body2" sx={{ flex: 1, whiteSpace: 'pre-wrap' }}>
+                    {c.text}
+                  </Typography>
+                  {isAdmin && (
+                    <Tooltip title="Delete note">
+                      <IconButton size="small" onClick={() => onRemove(c.id)} disabled={busy}>
+                        <DeleteIcon fontSize="small" />
+                      </IconButton>
+                    </Tooltip>
+                  )}
+                </Stack>
+              </Paper>
+            ))}
+          </Stack>
+        </>
+      )}
+
+      {error && <Alert severity="error" sx={{ mb: 1 }}>{error}</Alert>}
+
+      {isAdmin && draft && (
+        <Paper variant="outlined" sx={{ p: 1.5 }}>
+          <Typography variant="caption" color="text.secondary">
+            {draft.t != null
+              ? `Anchored to ${fmt(draft.t)} — search will land on this moment.`
+              : 'Anchored to the whole recording.'}
+          </Typography>
+          <TextField fullWidth multiline minRows={2} size="small" sx={{ mt: 1 }}
+            placeholder="Your note…" value={draft.text}
+            onChange={(e) => setDraft({ ...draft, text: e.target.value })} />
+          <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
+            <Button size="small" variant="contained" disabled={busy || !draft.text.trim()}
+              onClick={() => onSave(draft.text, draft.t, draft.cue)}>
+              Save note
+            </Button>
+            <Button size="small" onClick={() => setDraft(undefined)}>Cancel</Button>
+          </Stack>
+        </Paper>
+      )}
+    </Box>
+  );
+}
+
+export default function DayArchive({
+  festivalKey, day, isAdmin = false, adminAvailable = false,
+  initialComments = [], commentsError = null,
+}) {
   const [openId, setOpenId] = useState(null);
   const [transcripts, setTranscripts] = useState({});
   const [mediaUrls, setMediaUrls] = useState({});
@@ -34,6 +103,27 @@ export default function DayArchive({ festivalKey, day }) {
   const [activeLine, setActiveLine] = useState(-1);
   const [openVideo, setOpenVideo] = useState(null);
   const audioRef = useRef(null);
+
+  // Curation view (admin only -- attendees are never sent the hidden lines).
+  const [showChatter, setShowChatter] = useState(false);
+  const [showDropped, setShowDropped] = useState(false);
+  const onToggle = (which, value) =>
+    (which === 'chatter' ? setShowChatter : setShowDropped)(value);
+
+  const [comments, setComments] = useState(initialComments);
+  const [commentDraft, setCommentDraft] = useState({});
+  const [commentBusy, setCommentBusy] = useState(false);
+  const [commentError, setCommentError] = useState(null);
+
+  const visibleLines = useCallback((lines) => {
+    if (!isAdmin) return lines; // the server already sent only the kept lines
+    return lines.filter((l) => {
+      const cls = l.cls || 'keep';
+      if (cls === 'chatter') return showChatter;
+      if (cls === 'dropped') return showDropped;
+      return true;
+    });
+  }, [isAdmin, showChatter, showDropped]);
 
   /* ---- media: minted on demand, never rendered into the page ----
      Contract is Franklin's B4 route: { festival, blobs: [...] } ->
@@ -139,10 +229,75 @@ export default function DayArchive({ festivalKey, day }) {
     return () => el.removeEventListener('timeupdate', onTime);
   }, [openId, transcripts]);
 
+  /* ---- comments: everyone reads, only the owner writes (plan E4) ---- */
+  const mutateComment = async (payload) => {
+    setCommentBusy(true);
+    setCommentError(null);
+    try {
+      const res = await fetch('/api/festival/comments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ festival: festivalKey, ...payload }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+      setComments((data.comments || []).filter((c) => c.date === day.date));
+    } catch (e) {
+      setCommentError(e.message);
+    } finally {
+      setCommentBusy(false);
+    }
+  };
+
+  /* ---- curation: admin re-classifies one line ---- */
+  const setLineClass = async (rec, line, cls) => {
+    try {
+      const res = await fetch('/api/festival/annotations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ festival: festivalKey, recording: rec.blob, cue: line.i, cls }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+      setTranscripts((t) => {
+        const entry = t[rec.id];
+        if (!entry?.data) return t;
+        return {
+          ...t,
+          [rec.id]: {
+            ...entry,
+            data: {
+              ...entry.data,
+              lines: entry.data.lines.map((l) => (l.i === line.i ? { ...l, cls } : l)),
+            },
+          },
+        };
+      });
+    } catch (e) {
+      setMediaError((m) => ({ ...m, [rec.id]: e.message }));
+    }
+  };
+
   const hasAudio = day.recordings.length > 0;
 
   return (
     <Box>
+      <AdminPanel
+        isAdmin={isAdmin}
+        adminAvailable={adminAvailable}
+        showChatter={showChatter}
+        showDropped={showDropped}
+        onToggle={onToggle}
+        curation={transcripts[openId]?.data?.curation}
+      />
+
+      {commentsError && (
+        <Alert severity="warning" sx={{ mb: 2 }}>
+          The comments could not be read, so none are shown. That is a reading
+          problem, not a missing-comments one. ({commentsError})
+        </Alert>
+      )}
+
       {day.note && (
         <Alert severity="info" variant="outlined" sx={{ mb: 3 }}>{day.note}</Alert>
       )}
@@ -227,6 +382,22 @@ export default function DayArchive({ festivalKey, day }) {
                     <Alert severity="error">Could not load the transcript: {entry.error}</Alert>
                   )}
 
+                  {/* Comments: everyone reads them, only the owner writes them. */}
+                  <CommentBlock
+                    rec={rec}
+                    comments={comments.filter((c) => c.recording === rec.blob)}
+                    isAdmin={isAdmin}
+                    draft={commentDraft[rec.id]}
+                    setDraft={(v) => setCommentDraft((d) => ({ ...d, [rec.id]: v }))}
+                    busy={commentBusy}
+                    error={commentError}
+                    onSave={(text, t, cue) => mutateComment({
+                      action: 'add', recording: rec.blob, text, t, cue,
+                    }).then(() => setCommentDraft((d) => ({ ...d, [rec.id]: undefined })))}
+                    onRemove={(id) => mutateComment({ action: 'remove', id })}
+                    onSeek={(t) => playFrom(rec, t)}
+                  />
+
                   {t && !t.usable && (
                     <Alert severity="info" variant="outlined">
                       <strong>No usable transcript for this recording.</strong> The
@@ -243,35 +414,87 @@ export default function DayArchive({ festivalKey, day }) {
                           near-silence. Those lines are marked; the rest is real.
                         </Alert>
                       )}
+                      {isAdmin && t.curation?.counts && (
+                        <Typography variant="caption" color="text.secondary"
+                          sx={{ display: 'block', mb: 1 }}>
+                          Curation: {t.curation.counts.keep} kept ·{' '}
+                          {t.curation.counts.chatter} chatter ·{' '}
+                          {t.curation.counts.dropped} dropped.
+                          {(!showChatter || !showDropped) &&
+                            ' Attendees see only the kept lines.'}
+                        </Typography>
+                      )}
+
                       <Paper variant="outlined" sx={{ maxHeight: 420, overflowY: 'auto' }}>
-                        {t.lines.map((line, i) => (
-                          <Box key={line.i}>
-                            {i > 0 && <Divider />}
-                            <Box
-                              onClick={() => playFrom(rec, line.t)}
-                              sx={{
-                                display: 'flex', gap: 1.5, p: 1, cursor: 'pointer',
-                                alignItems: 'baseline',
-                                bgcolor: openId === rec.id && activeLine === i
-                                  ? 'action.selected' : 'transparent',
-                                '&:hover': { bgcolor: 'action.hover' },
-                              }}
-                            >
-                              <Typography variant="caption" sx={{ fontFamily: 'monospace', opacity: 0.7 }}>
-                                {fmt(line.t)}
-                              </Typography>
-                              <Typography variant="body2"
-                                sx={{ opacity: line.loop ? 0.45 : 1, fontStyle: line.loop ? 'italic' : 'normal' }}>
-                                {line.loop ? '[transcriber loop] ' : ''}{line.text}
-                              </Typography>
+                        {visibleLines(t.lines).map((line, i) => {
+                          const cls = line.cls || 'keep';
+                          return (
+                            <Box key={line.i}>
+                              {i > 0 && <Divider />}
+                              <Box
+                                sx={{
+                                  display: 'flex', gap: 1.5, p: 1, alignItems: 'baseline',
+                                  bgcolor: openId === rec.id && activeLine === line.i
+                                    ? 'action.selected' : 'transparent',
+                                  '&:hover': { bgcolor: 'action.hover' },
+                                }}
+                              >
+                                <Typography variant="caption" onClick={() => playFrom(rec, line.t)}
+                                  sx={{ fontFamily: 'monospace', opacity: 0.7, cursor: 'pointer' }}>
+                                  {fmt(line.t)}
+                                </Typography>
+                                <Typography variant="body2" onClick={() => playFrom(rec, line.t)}
+                                  sx={{
+                                    flex: 1, cursor: 'pointer',
+                                    opacity: line.loop || cls !== 'keep' ? 0.45 : 1,
+                                    fontStyle: line.loop ? 'italic' : 'normal',
+                                    textDecoration: cls === 'dropped' ? 'line-through' : 'none',
+                                  }}>
+                                  {line.loop ? '[transcriber loop] ' : ''}{line.text}
+                                </Typography>
+
+                                {isAdmin && (
+                                  <Stack direction="row" spacing={0.5} alignItems="center">
+                                    {cls !== 'keep' && (
+                                      <Chip size="small" variant="outlined" label={cls} />
+                                    )}
+                                    {['keep', 'chatter', 'dropped']
+                                      .filter((c) => c !== cls)
+                                      .map((c) => (
+                                        <Button key={c} size="small" sx={{ minWidth: 0, px: 0.75 }}
+                                          onClick={() => setLineClass(rec, line, c)}>
+                                          {c}
+                                        </Button>
+                                      ))}
+                                  </Stack>
+                                )}
+                              </Box>
                             </Box>
-                          </Box>
-                        ))}
+                          );
+                        })}
                       </Paper>
                       <Typography variant="caption" color="text.secondary"
                         sx={{ display: 'block', mt: 1 }}>
                         Click any line to hear that moment.
                       </Typography>
+
+                      {isAdmin && (
+                        <Box sx={{ mt: 1 }}>
+                          <Button size="small" variant="outlined"
+                            onClick={() => setCommentDraft((d) => ({
+                              ...d,
+                              [rec.id]: {
+                                text: '',
+                                t: activeLine >= 0
+                                  ? visibleLines(t.lines).find((l) => l.i === activeLine)?.t ?? null
+                                  : null,
+                                cue: activeLine >= 0 ? activeLine : null,
+                              },
+                            }))}>
+                            + Comment{activeLine >= 0 ? ' on this moment' : ' on this recording'}
+                          </Button>
+                        </Box>
+                      )}
                     </>
                   )}
                 </AccordionDetails>

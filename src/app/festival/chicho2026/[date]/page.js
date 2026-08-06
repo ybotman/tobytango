@@ -5,6 +5,8 @@ import { Box, Container, Typography, Alert, Divider, Button } from '@mui/materia
 import { hasAccess, FESTIVALS } from '@/lib/festival-access';
 import { SESSION_COOKIE, verifySession } from '@/lib/festival-session';
 import { getDay } from '@/lib/festival-archive';
+import { isAdminRequest, isAdminSessionConfigured } from '@/lib/festival-admin';
+import { readComments } from '@/lib/festival-comments';
 import FestivalGate from '../../FestivalGate';
 import SignOutButton from '../../SignOutButton';
 import DayArchive from './DayArchive';
@@ -39,6 +41,19 @@ export default async function DayPage({ params }) {
   }
   if (!loadError && !day) notFound();
 
+  const isAdmin = isAdminRequest(store);
+
+  // Comments are read here rather than in the browser so they are present in the
+  // rendered page -- everyone reads them, only the admin writes them (plan E4).
+  let comments = [];
+  let commentsError = null;
+  try {
+    comments = (await readComments()).comments.filter((c) => c.date === date);
+  } catch (e) {
+    // A read failure is not "no comments". Say which it is.
+    commentsError = e.message;
+  }
+
   return (
     <Container maxWidth="md" sx={{ py: 5 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap', mb: 1 }}>
@@ -56,7 +71,14 @@ export default async function DayPage({ params }) {
         <>
           <Typography variant="h4" sx={{ mb: 1 }}>{day.label}</Typography>
           <Divider sx={{ mb: 3 }} />
-          <DayArchive festivalKey={FESTIVAL_KEY} day={day} />
+          <DayArchive
+            festivalKey={FESTIVAL_KEY}
+            day={day}
+            isAdmin={isAdmin}
+            adminAvailable={isAdminSessionConfigured()}
+            initialComments={comments}
+            commentsError={commentsError}
+          />
         </>
       )}
     </Container>

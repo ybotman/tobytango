@@ -3,6 +3,8 @@ import { cookies } from 'next/headers';
 import { hasAccess, FESTIVALS } from '@/lib/festival-access';
 import { SESSION_COOKIE, verifySession } from '@/lib/festival-session';
 import { getTranscript, loadWorkshop } from '@/lib/festival-archive';
+import { isAdminRequest } from '@/lib/festival-admin';
+import { readAnnotations, classOf, tally } from '@/lib/festival-annotations';
 
 /**
  * Transcript for one recording, fetched on demand when a reader opens it.
@@ -35,6 +37,7 @@ export async function POST(request) {
   const session = verifySession(store.get(SESSION_COOKIE)?.value);
   if (!session?.email) return deny('Not signed in', 401);
   if (!(await hasAccess(session.email, festival))) return deny('No access', 403);
+  const isAdmin = isAdminRequest(store);
 
   const blob = String(body?.blob || '').trim();
 
@@ -48,9 +51,37 @@ export async function POST(request) {
   const known = (workshop.audio || []).some((a) => a.transcript?.srt === blob);
   if (!known) return deny('Unknown transcript', 404);
 
+  const recording = (workshop.audio || []).find((a) => a.transcript?.srt === blob)?.blob;
+
+  let transcript;
   try {
-    return NextResponse.json(await getTranscript(blob));
+    transcript = await getTranscript(blob);
   } catch (e) {
     return deny(`Could not read the transcript: ${e.message}`, 502);
   }
+
+  // Apply Toby's curation (plan E2). Attendees get the curated view, filtered
+  // HERE rather than hidden in the browser -- "curated" should mean the chatter
+  // was not sent, not that it is one devtools click away. The admin gets every
+  // line plus its classification so it can be changed.
+  const annotations = await readAnnotations();
+  const classified = transcript.lines.map((line) => ({
+    ...line,
+    cls: recording ? classOf(annotations, recording, line.i) : 'keep',
+  }));
+
+  return NextResponse.json({
+    ...transcript,
+    lines: isAdmin ? classified : classified.filter((l) => l.cls === 'keep'),
+    isAdmin,
+    curation: {
+      present: annotations.present,
+      malformed: Boolean(annotations.malformed),
+      error: annotations.error || annotations.overlayError || null,
+      // Lets the admin see what attendees are not being shown.
+      counts: annotations.present && recording
+        ? tally(annotations, recording, transcript.lines.length)
+        : null,
+    },
+  }, { headers: { 'Cache-Control': 'no-store' } });
 }
